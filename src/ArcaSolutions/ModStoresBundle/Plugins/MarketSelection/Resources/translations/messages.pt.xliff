@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:47:08Z" source-language="en" target-language="pt" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="b5aef4b10f7f5539cebd4098d1f47a6034e7241c" resname="If 'Show Market' is checked, this location will be shown.">
+        <source>If 'Show Market' is checked, this location will be shown.</source>
+        <target>Se 'Disponibilizar Mercado' for selecionado, essa localização irá ser habilidade na segmentação de localidade.</target>
+        <jms:reference-file line="8">/../src/ArcaSolutions/ModStoresBundle/Plugins/MarketSelection/Resources/views/sitemgr-location-market.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="81e4e177a5706f40f8ec9acde5853c85cd3f4026" resname="Pick your market">
+        <source>Pick your market</source>
+        <target>Selecione uma localidade</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/MarketSelection/Resources/views/marketselection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a7426e1b8f7b8e46fd7897b600ecc73852b4c640" resname="Show Market Location">
+        <source>Show Market Location</source>
+        <target>Disponibilizar Mercado</target>
+        <jms:reference-file line="6">/../src/ArcaSolutions/ModStoresBundle/Plugins/MarketSelection/Resources/views/sitemgr-location-market.html.twig</jms:reference-file>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/MarketSelection/Resources/views/sitemgr-locationsettings-market.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

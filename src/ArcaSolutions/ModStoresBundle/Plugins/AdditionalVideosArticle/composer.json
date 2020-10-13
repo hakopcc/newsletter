@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/additionalvideosarticle",
+  "description": "Additional Videos for Article",
+  "version": "2.0.3",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^1.0.0"
+  },
+  "extra": {
+    "bundle-name": "AdditionalVideosArticleBundle"
+  }
+}

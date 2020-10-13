@@ -1,0 +1,7 @@
+parameters:
+    plugin.eventassociation.service.class: ArcaSolutions\ModStoresBundle\Plugins\EventAssociationListing\Services\EventAssociationService
+services:
+    plugin.eventassociation.service:
+        class: "%plugin.eventassociation.service.class%"
+        arguments:
+            - '@service_container'

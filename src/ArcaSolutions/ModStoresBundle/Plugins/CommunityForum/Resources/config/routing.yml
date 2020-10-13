@@ -1,0 +1,31 @@
+forum_category_load:
+    path: /%alias_forum_module%/loadcategory
+    defaults: { _controller: CommunityForumBundle:Default:loadCategory }
+    methods: [POST]
+    options:
+        expose: true
+
+forum_homepage:
+    path:     /%alias_forum_module%
+    defaults: { _controller: CommunityForumBundle:Default:index }
+
+forum_detail:
+    path:     /%alias_forum_module%/{friendlyUrl}.{_format}
+    defaults: { _controller: CommunityForumBundle:Default:detail }
+    requirements:
+        _format:  html
+
+forum_savequestion:
+    path:     /%alias_forum_module%/question
+    defaults: { _controller: CommunityForumBundle:Default:question }
+    methods: [POST]
+    options:
+        expose: true
+
+forum_saveanswer:
+    path:     /%alias_forum_module%/answer
+    defaults: { _controller: CommunityForumBundle:Default:answer }
+    methods: [POST]
+    options:
+        expose: true
+

@@ -14,7 +14,11 @@ if (!function_exists('HookFire')) {
 
     function HookFire($hookName = null, $params = null, $returnResult = null)
     {
-        return Hooks::Fire($hookName, $params, $returnResult);
+        if($returnResult===null){
+            return Hooks::Fire($hookName, $params);
+        } else {
+            return Hooks::Fire($hookName, $params, $returnResult);
+        }
     }
-
 }
+

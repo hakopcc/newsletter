@@ -1,0 +1,5 @@
+tailoredmaplisting_geobound:
+    path:     /plugins/tailoredmaplisting/geobound
+    defaults: { _controller: TailoredMapListingBundle:Default:geobound }
+    options:
+        expose: true

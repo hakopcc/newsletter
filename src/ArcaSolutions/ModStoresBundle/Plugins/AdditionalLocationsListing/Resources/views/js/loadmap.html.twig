@@ -1,0 +1,380 @@
+<script type="text/javascript">
+    function loadMap(form, use_lat_long, location_number
+    ) {
+
+        if (location_number && document.getElementById('address_extra_loc_' + location_number)) {
+            var address = document.getElementById('address_extra_loc_' + location_number).value;
+            var zip = document.getElementById('zip_code_extra_loc_' + location_number).value;
+        } else {
+            if (document.getElementById('address')) {
+                var address = document.getElementById('address').value;
+            }
+            if (document.getElementById('zip_code')) {
+                var zip = document.getElementById('zip_code').value;
+            }
+        }
+        var location_3 = '';
+        var location_4 = '';
+        var location_5 = '';
+        if (location_number && document.getElementById('loc_latitude_' + location_number)) {
+            var latitude = document.getElementById('loc_latitude_' + location_number).value;
+            var longitude = document.getElementById('loc_longitude_' + location_number).value;
+        } else {
+            var latitude = document.getElementById('latitude').value;
+            var longitude = document.getElementById('longitude').value;
+        }
+        var index;
+        var google_location = '';
+        var locations = new Array();
+        var array_index = 0;
+        var callMap = false;
+        var valid_coord = true;
+
+        if (use_lat_long && latitude && longitude) {
+
+            if (!isFinite(latitude) || !isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+
+                if (!isFinite(latitude) || latitude < -90 || latitude > 90) {
+                    valid_coord = false;
+                }
+                if (!isFinite(longitude) || longitude < -180 || longitude > 180) {
+                    valid_coord = false;
+                }
+            }
+
+            if (valid_coord) {
+                callMap = true;
+            }
+
+        } else {
+            if (address) {
+                locations[array_index] = address;
+                array_index++;
+                callMap = true;
+            }
+
+            if (zip) {
+                locations[array_index] = zip;
+                array_index++;
+                callMap = true;
+            }
+
+            if (location_number && document.getElementById('new_location5_field_extra_loc_' + location_number)) {
+
+                if (document.getElementById('new_location5_field_extra_loc_' + location_number) && document.getElementById('new_location5_field_extra_loc_' + location_number).value) {
+                    location_5 = document.getElementById('new_location5_field_extra_loc_' + location_number).value;
+                    locations[array_index] = location_5;
+                    array_index++;
+                    callMap = true;
+                } else if (document.getElementById('location_5_extra_loc_' + location_number)) {
+                    var e = document.getElementById('location_5_extra_loc_' + location_number);
+                    if (e.options[e.selectedIndex]) {
+                        if (e.options[e.selectedIndex].value) {
+                            location_5 = e.options[e.selectedIndex].text;
+                            locations[array_index] = location_5;
+                            array_index++;
+                            callMap = true;
+                        }
+                    }
+                }
+                else if (document.getElementById('neighborhood' + location_number)) {
+                    location_5 = document.getElementById('neighborhood' + location_number).value;
+                    locations[array_index] = location_5;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('new_location4_field_extra_loc_' + location_number) && document.getElementById('new_location4_field_extra_loc_' + location_number).value) {
+                    location_4 = document.getElementById('new_location4_field_extra_loc_' + location_number).value;
+                    locations[array_index] = location_4;
+                    array_index++;
+                    callMap = true;
+                } else if (document.getElementById('location_4_extra_loc_' + location_number)) {
+                    var e = document.getElementById('location_4_extra_loc_' + location_number);
+                    if (e.options[e.selectedIndex]) {
+                        if (e.options[e.selectedIndex].value) {
+                            location_4 = e.options[e.selectedIndex].text;
+                            locations[array_index] = location_4;
+                            array_index++;
+                            callMap = true;
+                        }
+                    }
+                } else if (document.getElementById('city' + location_number)) {
+                    location_4 = document.getElementById('city' + location_number).value;
+                    locations[array_index] = location_4;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('new_location3_field_extra_loc_' + location_number) && document.getElementById('new_location3_field_extra_loc_' + location_number).value) {
+                    location_3 = document.getElementById('new_location3_field_extra_loc_' + location_number).value;
+                    locations[array_index] = location_3;
+                    array_index++;
+                    callMap = true;
+                } else if (document.getElementById('location_3_extra_loc_' + location_number)) {
+                    var e = document.getElementById('location_3_extra_loc_' + location_number);
+                    if (e.options[e.selectedIndex]) {
+                        if (e.options[e.selectedIndex].value) {
+                            location_3 = e.options[e.selectedIndex].text;
+                            locations[array_index] = location_3;
+                            array_index++;
+                            callMap = true;
+                        }
+                    }
+                } else if (document.getElementById('state' + location_number)) {
+                    location_3 = document.getElementById('state' + location_number).value;
+                    locations[array_index] = location_3;
+                    array_index++;
+                    callMap = true;
+                }
+
+            } else {
+                if (document.getElementById('location_5')) {
+                    index = form.location_5.selectedIndex;
+                    if (document.getElementById('location_5').options[index].value) {
+                        location_5 = document.getElementById('location_5').options[index].text;
+                        locations[array_index] = location_5;
+                        array_index++;
+                        callMap = true;
+                    }
+                } else if (document.getElementById('neighborhood')) {
+                    location_5 = document.getElementById('neighborhood').value;
+                    locations[array_index] = location_5;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('location_4')) {
+                    index = form.location_4.selectedIndex;
+                    if (document.getElementById('location_4').options[index].value) {
+                        location_4 = document.getElementById('location_4').options[index].text;
+                        locations[array_index] = location_4;
+                        array_index++;
+                        callMap = true;
+                    }
+                } else if (document.getElementById('city')) {
+                    location_4 = document.getElementById('city').value;
+                    locations[array_index] = location_4;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('new_location5_field') && document.getElementById('new_location5_field').value) {
+                    location_5 = document.getElementById('new_location5_field').value;
+                    locations[array_index] = location_5;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('new_location4_field') && document.getElementById('new_location4_field').value) {
+                    location_4 = document.getElementById('new_location4_field').value;
+                    locations[array_index] = location_4;
+                    array_index++;
+                    callMap = true;
+                }
+
+                if (document.getElementById('location_3')) {
+                    index = form.location_3.selectedIndex;
+                    if (document.getElementById('location_3').options[index].value) {
+                        location_3 = document.getElementById('location_3').options[index].text;
+                        locations[array_index] = location_3;
+                        array_index++;
+                        callMap = true;
+                    }
+                } else if (document.getElementById('state')) {
+                    location_3 = document.getElementById('state').value;
+                    locations[array_index] = location_3;
+                    array_index++;
+                    callMap = true;
+                } else if (document.getElementById('location_name')) {
+                    location_3 = document.getElementById('location_name').value;
+                    locations[array_index] = location_3;
+                    array_index++;
+                    callMap = true;
+                }
+            }
+
+            google_location = locations.join(", ");
+        }
+
+        if (location_number && $("#tableMapTuning" + location_number)) {
+            if (callMap) {
+                $("#tableMapTuning" + location_number).css("display", "block");
+                initialize({{ map_zoom }}, google_location, latitude, longitude, use_lat_long, location_number);
+            } else {
+                $("#tableMapTuning" + location_number).css("display", "none");
+            }
+        } else {
+            if (callMap) {
+                $("#tableMapTuning").css("display", "block");
+                initialize({{ map_zoom }}, google_location, latitude, longitude, use_lat_long);
+            } else {
+                $("#tableMapTuning").css("display", "none");
+            }
+        }
+    }
+
+    function initialize(map_zoom, google_location, latitude, longitude, use_lat_long, location_number
+    ) {
+        geocoder = new google.maps.Geocoder();
+        var myOptions = {
+            zoom: map_zoom,
+            scrollwheel: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        if (location_number && document.getElementById("map" + location_number)) {
+            map = new google.maps.Map(document.getElementById("map" + location_number), myOptions);
+            codeAddress(google_location, latitude, longitude, use_lat_long, location_number);
+        } else {
+            map = new google.maps.Map(document.getElementById("map"), myOptions);
+            codeAddress(google_location, latitude, longitude, use_lat_long);
+        }
+
+        function codeAddress(google_location, latitude, longitude, use_lat_long, location_number) {
+            var address = google_location;
+            var marker = new google.maps.Marker({
+                map: map,
+                draggable: true
+            });
+
+            if (use_lat_long && latitude && longitude) {
+                var latlng = new google.maps.LatLng(latitude, longitude);
+                marker.setPosition(latlng);
+                map.setCenter(latlng);
+            } else {
+                if (geocoder) {
+                    geocoder.geocode({'address': address}, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            map.setCenter(results[0].geometry.location);
+                            marker.setPosition(results[0].geometry.location);
+                            if (location_number) {
+                                setCoordinates(results[0].geometry.location, location_number);
+                            } else {
+                                setCoordinates(results[0].geometry.location, location_number);
+                            }
+                        }
+                    });
+                }
+            }
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                if (location_number) {
+                    setCoordinates(event.latLng, location_number);
+                } else {
+                    setCoordinates(event.latLng);
+                }
+            });
+
+            google.maps.event.addListener(map, 'zoom_changed', function () {
+                if (location_number && document.getElementById('loc_map_zoom_' + location_number)) {
+                    document.getElementById('loc_map_zoom_' + location_number).value = map.getZoom();
+                } else {
+                    document.getElementById('map_zoom').value = map.getZoom();
+                }
+            });
+
+        }
+    }
+
+    function displayMapForm(form, show, location_number
+    ) {
+        if (location_number && $('#map' + location_number)) {
+            var use_lat_long = false;
+            $('#map' + location_number).css('display', '');
+            $('#tipsMap' + location_number).css('display', '');
+            if (!show) {
+
+                if (document.getElementById('myLatitudeLongitude_' + location_number).value) {
+                    use_lat_long = true;
+                }
+
+                loadMap(form, use_lat_long, location_number);
+            }
+        } else {
+            var use_lat_long = false;
+            $('#map').css('display', '');
+            $('#tipsMap').css('display', '');
+            if (!show) {
+
+                if (document.getElementById('myLatitudeLongitude').value) {
+                    use_lat_long = true;
+                }
+
+                loadMap(form, use_lat_long);
+            }
+        }
+    }
+
+    function setCoordinates(coord, location_number
+    ) {
+        var new_lat;
+        var new_long;
+        var aux_latlong;
+
+        if (location_number && document.getElementById('myLatitudeLongitude_' + location_number)) {
+            document.getElementById('myLatitudeLongitude_' + location_number).value = coord;
+            if (document.getElementById('loc_map_tuning_' + location_number)) {
+                document.getElementById('loc_map_tuning_' + location_number).value = "y";
+            }
+            aux_latlong = document.getElementById('myLatitudeLongitude_' + location_number).value;
+            aux_latlong = aux_latlong.replace("(", "").replace(")", "").replace(" ", "").split(',');
+            new_lat = aux_latlong[0];
+            new_long = aux_latlong[1];
+
+            var num_lat = new Number(new_lat);
+            var num_long = new Number(new_long);
+
+
+            document.getElementById('loc_latitude_' + location_number).value = num_lat.toFixed(6);
+            document.getElementById('loc_longitude_' + location_number).value = num_long.toFixed(6);
+        } else {
+            document.getElementById('myLatitudeLongitude').value = coord;
+            if (document.getElementById('maptuning_done')) {
+                document.getElementById('maptuning_done').value = "y";
+            }
+            aux_latlong = document.getElementById('myLatitudeLongitude').value;
+            aux_latlong = aux_latlong.replace("(", "").replace(")", "").replace(" ", "").split(',');
+            new_lat = aux_latlong[0];
+            new_long = aux_latlong[1];
+
+            var num_lat = new Number(new_lat);
+            var num_long = new Number(new_long);
+
+            document.getElementById('latitude').value = num_lat.toFixed(6);
+            document.getElementById('longitude').value = num_long.toFixed(6);
+        }
+    }
+
+    function loadTermsMap(termId) {
+        var latitude = document.getElementById('latitude' + termId).value;
+        var longitude = document.getElementById('longitude' + termId).value;
+        var token = document.getElementById('token' + termId).value;
+        var callMap = false;
+        var valid_coord = true;
+        var tableMapTuning = document.getElementById("tableMapTuning" + termId);
+        var loaded = document.getElementById("myLatitudeLongitude" + termId).value;
+
+        if (latitude && longitude) {
+            if (!isFinite(latitude) || latitude < -90 || latitude > 90) {
+                valid_coord = false;
+            }
+            if (!isFinite(longitude) || longitude < -180 || longitude > 180) {
+                valid_coord = false;
+            }
+
+            if (valid_coord) {
+                callMap = true;
+            }
+
+        }
+
+        if (callMap && !loaded) {
+            $("#tableMapTuning" + termId).css("display", "");
+            initialize(15, token, latitude, longitude, true, termId);
+        } else {
+            if (!latitude && !longitude) {
+                $("#tableMapTuning" + termId).css("display", "none");
+            }
+        }
+    }
+</script>

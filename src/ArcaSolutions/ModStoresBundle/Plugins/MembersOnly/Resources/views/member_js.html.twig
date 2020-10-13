@@ -1,0 +1,5 @@
+<script src="{{ asset('bundles/membersonly/js/members_only.js') }}"></script>
+<script type="text/javascript">
+    const BECOME_MEMBER_CLICK_LOCATION_HREF = '{{ app.request.getSchemeAndHttpHost() ~ customRouteBecomeMember }}';
+    const LOGIN_MEMBER_CLICK_LOCATION_HREF = '{{ app.request.getSchemeAndHttpHost() ~ customRouteLogin }}';
+</script>

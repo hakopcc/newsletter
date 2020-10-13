@@ -1,0 +1,52 @@
+function filterLeads(item_id) {
+    var filter_month = $('#filter_month').val();
+    var filter_year = $('#filter_year').val();
+    var loadingHtml = '<div class="text-center"><img src="/{{ getParameter('alias_sitemgr_module') }}/assets/img/preloader-32.gif" alt="Loading" />{{ "Loading..."|trans }}</div>';
+    $("#leads_list_section").html(loadingHtml);
+    $.post("/bundles/enhancedlead/code/load_leads.php", {
+        item_id: item_id,
+        filter_month: filter_month,
+        filter_year: filter_year,
+        screen: "{{ screen }}",
+        letter: "{{ letter }}"
+    }, function (ret) {
+        $("#leads_list_section").html(ret);
+
+        updateLeadsCount();
+    });
+}
+
+function updateLeadsCount() {
+    var leads_count = $('#leads-count').html();
+    $("#leads-header-panel").html(leads_count);
+}
+
+function sendSiteMgrLeadsUpgrade(listing_id) {
+    var loadingHtml = '<div class="text-center"><img src="/{{ getParameter('alias_sitemgr_module') }}/assets/img/preloader-32.gif" alt="Loading" />{{ "Loading..."|trans }}</div>';
+    var buttomHtml = $('#send_sitemgr_buttom').html();
+    $('#send_sitemgr_buttom').html(loadingHtml);
+
+    $.post("/{{ getParameter('alias_members_module') }}/ajax.php", {
+        ajax_type: 'sendOwnerNewLeads',
+        listing_id: listing_id,
+    }, function (ret) {
+        if (ret == 'ok') {
+            $('#send_sitemgr_buttom').hide(0, function () {
+                // Animation complete.
+                $('#send_sitemgr_section').html("{{ "Your request was successfully sent. Our team will contact you soon."|trans }}");
+                $('#send_sitemgr_section').show(500);
+            });
+        } else {
+            $('#send_sitemgr_section').html("{{ "Your request hasn't been sent. Please contact us and report this problem."|trans }}");
+            $('#send_sitemgr_section').show(500);
+        }
+        setTimeout(function () {
+            $('#send_sitemgr_message').hide(500, function () {
+                // Animation complete.
+                $('#send_sitemgr_section').html('');
+                $('#send_sitemgr_buttom').html(buttomHtml)
+                $('#send_sitemgr_buttom').show();
+            });
+        }, 8000);
+    });
+}

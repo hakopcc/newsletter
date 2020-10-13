@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:24:57Z" source-language="en" target-language="tr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="77dfd2135f4db726c47299bb55be26f7f4525a46" resname="Cancel">
+        <source>Cancel</source>
+        <target>İptal etmek</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84add5b2952787581cb9a8851eef63d1ec75d22b" resname="Email">
+        <source>Email</source>
+        <target>E-posta</target>
+        <jms:reference-file line="295">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d7decf1aa22b02ae8abf9a96849ee423eee838e4" resname="Filter">
+        <source>Filter</source>
+        <target state="new">Filter</target>
+        <jms:reference-file line="23">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3f66052a107eaf9bae7cad0f61fb462f47ec2c47" resname="From">
+        <source>From</source>
+        <target state="new">From</target>
+        <jms:reference-file line="6">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f5a62f8c1be4b1164646e335c9a9db338e30682e" resname="Hello Manager,\n\nI would like to view more leads for my listing LISTING_TITLE.\nActuallly I can view LIMIT_LEVEL leads, but i have COUNT_LEADS leads available for this listing this month.\n\nListing information:\nACCOUNT EMAIL: ACCOUNT_EMAIL\nACCOUNT NAME: ACCOUNT_NAME\nLISTING TITLE: LISTING_TITLE\nLEADS AVAILABLE: COUNT_LEADS\n\n">
+        <source>Hello Manager,\n\nI would like to view more leads for my listing LISTING_TITLE.\nActuallly I can view LIMIT_LEVEL leads, but i have COUNT_LEADS leads available for this listing this month.\n\nListing information:\nACCOUNT EMAIL: ACCOUNT_EMAIL\nACCOUNT NAME: ACCOUNT_NAME\nLISTING TITLE: LISTING_TITLE\nLEADS AVAILABLE: COUNT_LEADS\n\n</source>
+        <target state="new">Hello Manager,\n\nI would like to view more leads for my listing LISTING_TITLE.\nActuallly I can view LIMIT_LEVEL leads, but i have COUNT_LEADS leads available for this listing this month.\n\nListing information:\nACCOUNT EMAIL: ACCOUNT_EMAIL\nACCOUNT NAME: ACCOUNT_NAME\nLISTING TITLE: LISTING_TITLE\nLEADS AVAILABLE: COUNT_LEADS\n\n</target>
+        <jms:reference-file line="642">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="67bb6b8972c421cabe10261addb8a757a9630ca2" resname="How many leads can an owner view?">
+        <source>How many leads can an owner view?</source>
+        <target state="new">How many leads can an owner view?</target>
+        <jms:reference-file line="143">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ecdda59aea5ee67d7d854c969ccf7f4f4b4a4c54" resname="Item">
+        <source>Item</source>
+        <target>Öğe</target>
+        <jms:reference-file line="293">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c6f71d85aeaa3b60db80eedad5ebb75e321f3eb0" resname="Lead">
+        <source>Lead</source>
+        <target state="new">Lead</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f12ee6d3aaf34ed6aaddc2c2f920af3a6dbe6864" resname="Leads">
+        <source>Leads</source>
+        <target state="new">Leads</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b1401c4de6eb5802f4011a81695ed8a1330a07dc" resname="Leads available, click here to unlock">
+        <source>Leads available, click here to unlock</source>
+        <target state="new">Leads available, click here to unlock</target>
+        <jms:reference-file line="34">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b04ba49f848624bb97ab094a2631d2ad74913498" resname="Loading...">
+        <source>Loading...</source>
+        <target state="new">Loading...</target>
+        <jms:reference-file line="25">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/js/lead_requests.js.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/js/lead_requests.js.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="68f4145fee7dde76afceb910165924ad14cf0d00" resname="Message">
+        <source>Message</source>
+        <target>İleti</target>
+        <jms:reference-file line="309">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+        <jms:reference-file line="341">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+        <jms:reference-file line="38">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="440d4449d3ca6f6d0d4c46e69aecc11fdabaaf1b" resname="More leads available, click  here to unlock">
+        <source>More leads available, click  here to unlock</source>
+        <target state="new">More leads available, click  here to unlock</target>
+        <jms:reference-file line="32">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="08d2e98e6754af941484848930ccbaddfefe13d6" resname="N/A">
+        <source>N/A</source>
+        <target state="new">N/A</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="709a23220f2c3d64d1e1d6d18c4d5280f8d82fca" resname="Name">
+        <source>Name</source>
+        <target>isim</target>
+        <jms:reference-file line="294">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7d688ab4a80b47e137d09bd38e40ba5e8b3889aa" resname="Replied">
+        <source>Replied</source>
+        <target state="new">Replied</target>
+        <jms:reference-file line="563">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+        <jms:reference-file line="566">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+        <jms:reference-file line="22">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6c2bb735a46a8ff307fe2e638d581295b2a49e09" resname="Reply">
+        <source>Reply</source>
+        <target state="new">Reply</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b970a3083ec9ec5f4bb9b0c81b3f501bcc1e819" resname="Request more quantity of Leads.">
+        <source>Request more quantity of Leads.</source>
+        <target state="new">Request more quantity of Leads.</target>
+        <jms:reference-file line="641">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cb6376d1a60772262d41294886b868f299ba2a0e" resname="Share and get more leads">
+        <source>Share and get more leads</source>
+        <target state="new">Share and get more leads</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2dacf65959849884a011f36f76a04eebea94c5ea" resname="Submit">
+        <source>Submit</source>
+        <target state="new">Submit</target>
+        <jms:reference-file line="43">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-viewmore.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="aee1d58745c891945408defd163f01608e400e5b" resname="Total Allowed Leads">
+        <source>Total Allowed Leads</source>
+        <target state="new">Total Allowed Leads</target>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/sitemgr-form-listing-leads.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="413a164d589fe3b3bde9cef5368692c5ab7406cb" resname="Total Leads">
+        <source>Total Leads</source>
+        <target state="new">Total Leads</target>
+        <jms:reference-file line="142">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e3c5fa8992af22fed085cd6a256d6a55dd3a028c" resname="View more">
+        <source>View more</source>
+        <target state="new">View more</target>
+        <jms:reference-file line="50">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/view-member-dashboard-leads-listing-hasemail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0c856cfb4ee507b685a6d7952cb732a8dac866d4" resname="We can not send your email. Try again, please.">
+        <source>We can not send your email. Try again, please.</source>
+        <target>Biz e-posta gönderebilirsiniz olamaz. Tekrar lütfen deneyin.</target>
+        <jms:reference-file line="310">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9ca9957eca5c189afefe37ae3c2747e7a8f3c5fc" resname="Your e-mail has been sent. Thank you.">
+        <source>Your e-mail has been sent. Thank you.</source>
+        <target>E-postanız gönderildi. Teşekkür ederim.</target>
+        <jms:reference-file line="342">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/EnhancedLeadBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b343ebe94fa9ec355cb4705808dd2ebd5e3dd53e" resname="Your request hasn't been sent. Please contact us and report this problem.">
+        <source>Your request hasn't been sent. Please contact us and report this problem.</source>
+        <target state="new">Your request hasn't been sent. Please contact us and report this problem.</target>
+        <jms:reference-file line="40">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/js/lead_requests.js.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a6a3e152d7f67196e0447aed95a25167ca5f5696" resname="Your request was successfully sent. Our team will contact you soon.">
+        <source>Your request was successfully sent. Our team will contact you soon.</source>
+        <target state="new">Your request was successfully sent. Our team will contact you soon.</target>
+        <jms:reference-file line="36">/../src/ArcaSolutions/ModStoresBundle/Plugins/EnhancedLead/Resources/views/js/lead_requests.js.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

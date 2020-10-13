@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/enhancedlead",
+  "description": "Enhanced Lead",
+  "version": "1.0.3",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^0.5.3"
+  },
+  "extra": {
+    "bundle-name": "EnhancedLeadBundle"
+  }
+}

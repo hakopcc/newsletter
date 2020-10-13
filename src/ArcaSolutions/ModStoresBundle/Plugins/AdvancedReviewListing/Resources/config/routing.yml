@@ -1,0 +1,3 @@
+advancedreviewlisting_galleryitem:
+    path:     /plugins/advancedreviewlisting/review/gallery/item
+    defaults: { _controller: AdvancedReviewListingBundle:Default:galleryItem }

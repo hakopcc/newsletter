@@ -1,0 +1,155 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        let clearPinFields = function () {
+            let categoryModal = $('#modal-create-categories');
+            categoryModal.find("#pin #image-thumb").find("img").fadeOut(function(){
+                $(this).remove();
+            });
+            categoryModal.find('.pinImageDeleteButton').addClass("hidden");
+            categoryModal.find('[name=pin_id]').val(0);
+            categoryModal.find("#pin-thumb").find("img").fadeOut(function(){
+                $(this).remove();
+            });
+            categoryModal.find('#category-pin').show();
+            categoryModal.find('#pin').show();
+        };
+        $('#modal-create-categories').on('show.bs.modal', function (showBsModalEvent) {
+            clearPinFields();
+            let categoryId = $('#category_id').val();
+            if(categoryId) {
+                $('#loading_ajax').fadeIn('fast');
+                let data = {
+                    module: $('#module').val(),
+                    action: 'retrieve',
+                    id: categoryId,
+                    domain_id: {{ domainId }}
+                };
+
+                let level = $('.editCategory[data-id="' + categoryId + '"]').data('tree');
+
+                $.get("{{ defaultUrl }}/includes/code/CategoryGetAjax.php", data).done(function (result) {
+                    try {
+                        let data = JSON.parse(result);
+                        if (typeof (data.exception) === 'undefined') {
+                            $('#btn-delete-pin').attr('data-id', data.id);
+
+                            if (level !== 0) {
+                                $('#modal-create-categories').find('#pin').hide();
+                            }
+
+                            if (data.pin !== undefined) {
+                                $("#pin-thumb").hide().fadeIn('slow').html("<input type=hidden name=\"pin_id\" value=\"" + data.pin.id + "\"' >" +
+                                    "<img class=\"img-responsive\" src=\"" + data.pin.url + "\">");
+                                $("#btn-delete-pin").removeClass("hidden");
+                                $("#category-pin").hide();
+                            } else {
+                                $("#pin-thumb").hide();
+                                $("#btn-delete-pin").addClass("hidden");
+                                $("#category-pin").show();
+                            }
+                        } else {
+                            throw data;
+                        }
+                    } catch (exceptionData) {
+                        let message = '{{ 'Unexpected error'|trans({},'messages',locale) }}';
+                        let frontMessage = message;
+                        let stackTrace = '';
+                        if (typeof (exceptionData.exceptionMessage) !== 'undefined') {
+                            message = exceptionData.exceptionMessage;
+                        }
+                        if (typeof (exceptionData.exceptionStackTrace) !== 'undefined') {
+                            stackTrace = exceptionData.exceptionStackTrace;
+                        }
+                        if (window.notify !== undefined) {
+                            window.notify.error(frontMessage, '', {fadeOut: 0});
+                        }
+                        console.error('Error: ' + message + '; StackTrace: ' + stackTrace);
+                        $('#modal-create-categories').modal('hide');
+                    }
+                }).fail(function(result){
+                    let message = '{{ 'Unexpected error'|trans({},'messages',locale) }}';
+                    let frontMessage = message;
+                    if(window.notify!==undefined) {
+                        window.notify.error(frontMessage, '', {fadeOut: 0});
+                    }
+                    console.error('Error: ' + message + '; "{{ defaultUrl }}/includes/code/CategoryActionAjax.php" Ajax call failed');
+                    $('#modal-create-categories').modal('hide');
+                }).always(function(result){
+                    $('#loading_ajax').fadeOut('fast');
+                });
+            }
+        });
+
+        window.sendCategoryPin = function(form_id, path, action) {
+
+            let returnMessage = $("#returnMessage");
+            let iconFile = $("#" + form_id + ' input[type="file"][name="icon"]');
+            let actionType = "upload";
+
+            if (iconFile.length && iconFile.prop('files')[0].size > {{ maximumFileSize }} * 1024 * 1024) {
+                iconFile.val('');
+                returnMessage.removeClass("alert-success");
+                returnMessage.removeClass("alert-warning");
+                returnMessage.addClass("alert-warning");
+                returnMessage.html("{{ 'Uploaded pin exceded the allowed maximum file size.' |trans({},'messages',locale) }}");
+                returnMessage.show();
+                return;
+            }
+
+            $("#" + form_id).vPB({
+                url: "{{ defaultUrl }}/includes/code/CategoryActionAjax.php?action=ajax&type=" + action + "&domain_id=" + {{ domainId }},
+                data: {
+                    actionType: actionType,
+                    type: action,
+                    module: $('#module').val()
+                },
+                success: function (response) {
+                    let strReturn = response.split("||");
+
+                    if (strReturn[0] === "ok") {
+                        returnMessage.hide();
+                        $("#pin-thumb").hide().fadeIn('slow').html(strReturn[1]);
+                        $("#btn-delete-pin").removeClass("hidden");
+                        $("#category-pin").hide();
+                    } else {
+                        returnMessage.removeClass("alert-success");
+                        returnMessage.removeClass("alert-warning");
+                        returnMessage.addClass("alert-warning");
+                        returnMessage.html(strReturn[1]);
+                        returnMessage.show();
+                    }
+
+                    let btn = $('.action-save');
+                    btn.button('reset');
+                }
+            }).submit();
+        };
+
+        $(".pinImageDeleteButton").click(function () {
+            let clickedItem = $(this);
+
+            let data = {
+                action: "ajax",
+                type: "removePin",
+                module: $('#module').val(),
+                id: clickedItem.data("id"),
+                domain_id: {{ domainId }}
+            };
+
+            $.post('{{ defaultUrl }}/includes/code/CategoryActionAjax.php', data).done(function (response) {
+                if (response) {
+                    data = JSON.parse(response);
+
+                    if (data && data.status) {
+                        $("#pin-thumb").find("img").fadeOut(function () {
+                            $(this).remove()
+                        });
+                        clickedItem.addClass("hidden");
+                        $('[name=pin_id]').val(0);
+                        $('#category-pin').show();
+                    }
+                }
+            });
+        });
+    });
+</script>

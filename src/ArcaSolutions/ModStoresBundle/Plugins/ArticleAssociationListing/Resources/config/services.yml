@@ -1,0 +1,7 @@
+parameters:
+    plugin.articleassociation.service.class: ArcaSolutions\ModStoresBundle\Plugins\ArticleAssociationListing\Services\ArticleAssociationService
+services:
+    plugin.articleassociation.service:
+        class: "%plugin.articleassociation.service.class%"
+        arguments:
+            - '@service_container'

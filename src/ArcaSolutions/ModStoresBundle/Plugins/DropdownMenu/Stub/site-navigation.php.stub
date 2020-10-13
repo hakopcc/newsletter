@@ -1,0 +1,479 @@
+<?php
+/*
+* # Admin Panel for eDirectory
+* @copyright Copyright 2020 Arca Solutions, Inc.
+* @author Basecode - Arca Solutions, Inc.
+*/
+
+# ----------------------------------------------------------------------------------------------------
+# * FILE: /sitemgr/design/site-navigation/index.php
+# ----------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------
+# LOAD CONFIG
+# ----------------------------------------------------------------------------------------------------
+
+include("../../../conf/loadconfig.inc.php");
+
+# ----------------------------------------------------------------------------------------------------
+# SESSION
+# ----------------------------------------------------------------------------------------------------
+sess_validateSMSession();
+permission_hasSMPerm();
+
+mixpanel_track("Accessed section site navigation");
+# ----------------------------------------------------------------------------------------------------
+# CODE
+# ----------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------
+# SUBMIT
+# ----------------------------------------------------------------------------------------------------
+/** @var \Symfony\Component\DependencyInjection\ContainerInterface $container */
+$container = SymfonyCore::getContainer();
+/** @var \ArcaSolutions\ModStoresBundle\Plugins\DropdownMenu\Services\NavigationDropdownMenuService $ddmPluginNavigationService */
+$ddmPluginNavigationService = $container->get('ddm_plugin.navigation.service');
+$arrayOptions = null;
+$arrayOptionsFromPost = null;
+$errorMessage = null;
+$successMessage = null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !DEMO_LIVE_MODE) {
+    if (!empty($_POST['ddm_plugin_resetNavigation']) && $_POST['ddm_plugin_resetNavigation'] === 'reset') {
+        try {
+            if ($ddmPluginNavigationService !== null) {
+                $ddmPluginNavigationService->resetNavigation();
+                mixpanel_track('Restored navigation');
+                $successMessage = 1;
+            } else {
+                throw new Exception('Cannot get container,navigation service instance');
+            }
+        } catch (Exception $e) {
+            $errorMessage = $ddmPluginNavigationService->getTranslatedString('Unexpected error on reset navigation.', true);
+        }
+    } elseif (validate_form('ddm_plugin_navigation_form', $_POST, $errorMessage)) {
+        try {
+            if (!$ddmPluginNavigationService->tryToSaveNavigationForm($_POST, $errorMessage)) {
+                $successMessage = 1;
+                mixpanel_track('Updated navigation (Dropdown Menu Plugin)');
+            }
+        } catch (Exception $e) {
+            $errorMessage = $ddmPluginNavigationService->getTranslatedString('Unexpected error on save navigation.', true);
+        }
+        if(!empty($errorMessage))
+        {//TODO: implementar uso deste arrayOptionsFromPost
+            $arrayOptionsFromPost = $ddmPluginNavigationService->tryToBuildNavigationFromPost($_POST);
+            if(empty($arrayOptionsFromPost)){
+                $errorMessage .= $ddmPluginNavigationService->getTranslatedString('Reloading previous saved navigation.', true);
+            }
+        }
+    }
+}
+
+try {
+    $arrayOptions = $ddmPluginNavigationService->getHeader(true, true, true);
+} catch (Exception $e) {
+    $errorMessage .= $ddmPluginNavigationService->getTranslatedString('Unexpected error on load navigation.', true);
+}
+if (empty($arrayOptions) && empty($errorMessage)) { //TODO: Evaluate if this is valid, because if user delete all menus, it will be force to recreate default ones without user interaction
+    try {
+        $ddmPluginNavigationService->resetNavigation();
+        $arrayOptions = $ddmPluginNavigationService->getHeader(true, true, true);
+    } catch (Exception $e){
+        $errorMessage = $ddmPluginNavigationService->getTranslatedString('Unexpected error on after rebuild navigation due to an empty navigation data.', true);
+    }
+}
+
+# ----------------------------------------------------------------------------------------------------
+# HEADER
+# ----------------------------------------------------------------------------------------------------
+include(SM_EDIRECTORY_ROOT . "/layout/header.php");
+?>
+<main class="main-dashboard">
+    <nav class="main-sidebar">
+<?php include(SM_EDIRECTORY_ROOT."/layout/sidebar-dashboard.php"); ?>
+        <div class="sidebar-submenu">
+<?php include(SM_EDIRECTORY_ROOT . "/layout/sidebar.php"); ?>
+        </div>
+    </nav>
+    <div class="main-wrapper ddm-plugin-main-wrapper-fix">
+<?php include(SM_EDIRECTORY_ROOT."/layout/navbar.php"); ?>
+        <div class="main-content" content-full="true">
+<?php
+require(SM_EDIRECTORY_ROOT . "/registration.php");
+require(EDIRECTORY_ROOT . "/includes/code/checkregistration.php");
+
+$somethingUnexpected = false;
+$somethingUnexpectedHappened = $ddmPluginNavigationService->getTranslatedString('Unable to display navigation edit form due to an unexpected behavior.', true);
+if (empty($arrayOptions)) {
+    $somethingUnexpected = true;
+} else {
+    try {
+        $array_modules = $ddmPluginNavigationService->getArrayModules();
+        $aux_selectModuleLink = '';
+        $linktoDropdownItems = array();
+        $linktoDropdownAvailablePageIds = array();
+        for ($j = 0, $jMax = count($array_modules); $j < $jMax; $j++) {
+            $linktoDropdownItem = $array_modules[$j];
+            $value = !empty($array_modules[$j]['page_id']) ? $array_modules[$j]['page_id'] : $array_modules[$j]['url'];
+            if(!empty($array_modules[$j]['page_id'])){
+                $linktoDropdownAvailablePageIds[] = $array_modules[$j]['page_id'];
+            }
+            $linktoDropdownItem['value'] = $value;
+            $linktoDropdownItems[] = $linktoDropdownItem;
+            $aux_selectModuleLink .= '<option value="' . $value .'"'. ($value==='custom'?' selected':'') .'>' . string_ucwords($array_modules[$j]['name']) . '</option>' . PHP_EOL;
+        }
+        $parentsDropdownOptionsString = '<option value="NULL" selected>' . $ddmPluginNavigationService->getTranslatedString('Not associated', true, 'system') . '</option>' . PHP_EOL;
+        $parentsDropdown = array();
+        for ($l = 0, $lMax = count($arrayOptions); $l < $lMax; $l++) {
+            $parentDropdownItem = $arrayOptions[$l];
+            $parentDropdownItem['order'] = ($l+1) * 100;
+            if ($arrayOptions[$l]['area'] === 'header_dropdown') {
+                $parentsDropdown[] = $parentDropdownItem;
+                $parentsDropdownOptionsString .= '<option value="' . $parentDropdownItem['order'] . '">' . $parentDropdownItem['label'] . '</option>' . PHP_EOL;;
+            }
+        }
+        $siteMgrLang = $ddmPluginNavigationService->getSitemanagerLang();
+        try {
+            $aux_LI_code = $container->get('twig')->render('DropdownMenuBundle::legacy-design-sitenavigation-item-template.html.twig', array('selectModuleLink' => $aux_selectModuleLink, 'parentsDropdown' => $parentsDropdownOptionsString, 'lang' => $siteMgrLang));
+        } catch (Twig_Error_Loader $e) {
+            throw $e;
+        } catch (Twig_Error_Runtime $e) {
+            throw $e;
+        } catch (Twig_Error_Syntax $e) {
+            throw $e;
+        }
+
+        // Merge children with parents after set parents dropdown options and set order and parentId
+        $arrayOptionsWithChilds = $arrayOptions;
+        $arrayOptions = array();
+        $nextNonChildOrder = 100;
+        for ($k = 0, $kMax = count($arrayOptionsWithChilds); $k < $kMax; $k++) {
+            $arrayOptionsWithChilds[$k]['order'] = $arrayOptionsWithChilds[$k]['order'];
+            $arrayOptionsWithChilds[$k]['order'] = $nextNonChildOrder;
+            $nextNonChildOrder += 100;
+
+            $childsToMerge = array();
+            $allChildsNotVisible = false;
+            if (!empty($arrayOptionsWithChilds[$k]['children']) && is_array($arrayOptionsWithChilds[$k]['children'])) {
+                $allChildsNotVisible = true;
+                $childsToMerge = $arrayOptionsWithChilds[$k]['children'];
+                for ($j = 0, $jMax = count($childsToMerge); $j < $jMax; $j++) {
+                    unset($childsToMerge[$j]['children']);
+                    $childsToMerge[$j]['order'] = $childsToMerge[$j]['order'];
+                    $childsToMerge[$j]['order'] = $arrayOptionsWithChilds[$k]['order'] + ($j + 1);
+                    $childsToMerge[$j]['parentId'] = $arrayOptionsWithChilds[$k]['order'];
+                    $childsToMerge[$j]['lastChild'] = ($j === ($jMax-1));
+                    if(!empty($childsToMerge[$j]['pageId'])){
+                        $childsToMerge[$j]['visible'] = in_array($childsToMerge[$j]['pageId'], $linktoDropdownAvailablePageIds, true);
+                        if($childsToMerge[$j]['visible']){
+                            $allChildsNotVisible = false;
+                        }
+                    } elseif($childsToMerge[$j]['custom']) {
+                        $childsToMerge[$j]['visible'] = !empty($childsToMerge[$j]['link']);
+                        if($childsToMerge[$j]['visible']){
+                            $allChildsNotVisible = false;
+                        }
+                    } else {
+                        $allChildsNotVisible = false;
+                        $childsToMerge[$j]['visible'] = true;
+                    }
+                }
+                $arrayOptionsWithChilds[$k]['hasChild'] = true;
+            } else {
+                $arrayOptionsWithChilds[$k]['hasChild'] = false;
+                $arrayOptionsWithChilds[$k]['parentId'] = null;
+                $arrayOptionsWithChilds[$k]['lastChild'] = null;
+            }
+            if($arrayOptionsWithChilds[$k]['area']==='header_dropdown' && (empty($childsToMerge) || $allChildsNotVisible)){
+                $arrayOptionsWithChilds[$k]['visible'] = false;
+            } else {
+                if(!empty($arrayOptionsWithChilds[$k]['pageId'])) {
+                    $arrayOptionsWithChilds[$k]['visible'] = in_array($arrayOptionsWithChilds[$k]['pageId'], $linktoDropdownAvailablePageIds, true);
+                } elseif($arrayOptionsWithChilds[$k]['custom']) {
+                    $arrayOptionsWithChilds[$k]['visible'] = !empty($arrayOptionsWithChilds[$k]['link']);
+                } else {
+                    $arrayOptionsWithChilds[$k]['visible'] = true;
+                }
+            }
+            unset($arrayOptionsWithChilds[$k]['children']);
+            $arrayOptions[] = $arrayOptionsWithChilds[$k];
+            if (!empty($childsToMerge)) {
+                for ($j = 0, $jMax = count($childsToMerge); $j < $jMax; $j++) {
+                    $arrayOptions[] = $childsToMerge[$j];
+                }
+            }
+            unset($childsToMerge);
+        }
+    } catch (Exception $e) {
+        $somethingUnexpected = true;
+        $container->get('logger')->critical('Unexpected error on load Navigation menu edit page (/sitemgr/design/site-navigation/index.php)', ['exception' => $e]);
+    }
+}
+if ($somethingUnexpected) {
+?>
+            <section class="section-heading">
+                <div class="section-heading-content">
+                    <h1 class="section-heading-title"><?= system_showText(LANG_SITEMGR_NAVIGATION_EDIT) ?></h1>
+                </div>
+            </section>
+            <section class="ddm-plugin-section">
+                <div class="panel panel-default">
+                    <div class="panel-body container">
+                        <div class="text-center row">
+                            <div class="col-md">
+                                <?= $somethingUnexpectedHappened ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<?php
+} else {
+?>
+            <section class="section-heading">
+				<div class="section-heading-content">
+                	<h1 class="section-heading-title"><?= $ddmPluginNavigationService->getTranslatedString('Configure navigation menu for your site', true,'system') ?></h1>
+				</div>
+                <div class="section-heading-action">
+                    <a class="btn btn-warning" data-toggle="modal" href="#modal-reset"><?= $ddmPluginNavigationService->getTranslatedString('Reset navigation menu', true,'system') ?></a>
+                    <button type="button" class="btn btn-primary action-save" id="ddmPluginSaveButton"
+                            data-loading-text="<?= system_showText(LANG_LABEL_FORM_WAIT) ?>"
+                            data-demo-live-mode="<?=DEMO_LIVE_MODE?>">
+                        <?= system_showText(LANG_SITEMGR_SAVE_CHANGES); ?>
+                    </button>
+                </div>
+			</section>
+            <section class="ddm-plugin-section">
+                <div class="panel-info">
+                    <h3 class="panel-info-title"><?= $ddmPluginNavigationService->getTranslatedString('Navigation menu configurations', true,'system') ?></h3>
+                    <div class="panel-info-description"><?= $ddmPluginNavigationService->getTranslatedString('Configure below your site navigation menu. You can change or delete actual ones, add new ones, reorder then and also create sub-menus.', true,'messages')?></div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><?= $ddmPluginNavigationService->getTranslatedString('Navigation menu', true,'system') ?></div>
+                    <div class="panel-body">
+                        <div id="aux_litext" class="ddm-plugin-hide"><?= $aux_LI_code ?></div>
+                        <form role="form" id="form_navigation" class="ddm-plugin-form" name="ddm_plugin_navigation_form" action="<?= system_getFormAction($_SERVER["PHP_SELF"]) ?>" method="post">
+                            <ul id="ddmPluginSortableNavigation" data-next-menu-order="<?=$nextNonChildOrder?>" class="ddm-plugin-list-sortable container">
+                                <div class="row ddm-plugin-list-sortable-header ddm-plugin-not-sortable">
+                                    <div class="col-sm-1 col-xs-2 text-center"><?= $ddmPluginNavigationService->getTranslatedString('Visibility', true,'system') ?></div>
+                                    <div class="col-sm-3 col-xs-3 text-center"><?= $ddmPluginNavigationService->getTranslatedString('Label', true,'system') ?></div>
+                                    <div class="col-sm-3 col-xs-3 text-center"><?= $ddmPluginNavigationService->getTranslatedString('Links to', true,'system') ?></div>
+                                    <div class="col-sm-2 col-xs-2 text-center"><?= system_showText(LANG_SITEMGR_NAVIGATION_CUSTOM_LINK) ?></div>
+                                    <div class="col-sm-2 col-xs-2 text-center"><?= $ddmPluginNavigationService->getTranslatedString('Association', true,'system') ?></div>
+                                </div>
+<?php
+        $hiddenEntryMessage = $ddmPluginNavigationService->getTranslatedString('Menu item hidden on front-end', true);
+        $shownEntryMessage = $ddmPluginNavigationService->getTranslatedString('Menu item appears on front-end', true);
+        for ($i = 0, $iMax = count($arrayOptions); $i < $iMax; $i++) {
+            $skippedItem = false;
+            $parentOfItemSelected = false;
+            $selectedParentLabel = '';
+            $parentsDropdownForItem = '';
+            for ($parentsDropdownIndex = 0, $parentsDropdownCount = count($parentsDropdown); $parentsDropdownIndex < $parentsDropdownCount; $parentsDropdownIndex++) {
+                $parentSelectedForThisItem = !empty($arrayOptions[$i]['parentId']) && $arrayOptions[$i]['parentId'] === $parentsDropdown[$parentsDropdownIndex]["order"];
+                $parentsDropdownForItem .= '<option value="' . $parentsDropdown[$parentsDropdownIndex]['order'] . '"' . ($parentSelectedForThisItem ? ' selected' : '') . '>' . $parentsDropdown[$parentsDropdownIndex]['label'] . '</option>' . PHP_EOL;
+                if($parentSelectedForThisItem){
+                    $selectedParentLabel = $parentsDropdown[$parentsDropdownIndex]['label'];
+                }
+                $parentOfItemSelected = $parentOfItemSelected || $parentSelectedForThisItem;
+            }
+            if(!$parentOfItemSelected && !empty($arrayOptions[$i]['parentId'])){
+                $skippedItem = true;//When no parent option can be selected and navigation entry has parent, it is invalid and will be skipped
+            }
+            $parentsDropdownForItem = '<option value="NULL"' . ((!$parentOfItemSelected) ? ' selected' : '') . '>'.$ddmPluginNavigationService->getTranslatedString('Not associated', true, 'system').'</option>'. PHP_EOL . $parentsDropdownForItem;
+
+            $menuVisibleOnFrontEnd = $arrayOptions[$i]['visible'];
+            $linktoOfItemSelected = false;
+            $linktoDropdownItemsOfItem = '';
+            $itemHasParentSelected = !empty($arrayOptions[$i]['pageId']) || (!empty($arrayOptions[$i]['custom']) && !empty($arrayOptions[$i]['link'])) || ($arrayOptions[$i]['area']==='header_dropdown' && empty($arrayOptions[$i]['pageId']) && empty($arrayOptions[$i]['custom']));
+            for ($linktoDropdownItemsIndex = 0, $linktoDropdownItemsCount = count($linktoDropdownItems); $linktoDropdownItemsIndex < $linktoDropdownItemsCount; $linktoDropdownItemsIndex++) {
+                $linkToSelectedForThisItem = false;
+                $linkToValueForThisItem = null;
+                if(!empty($linktoDropdownItems[$linktoDropdownItemsIndex]['page_id'])){
+                    $linkToValueForThisItem = $linktoDropdownItems[$linktoDropdownItemsIndex]['page_id'];
+                } else {
+                    $linkToValueForThisItem = $linktoDropdownItems[$linktoDropdownItemsIndex]['url'];
+                }
+
+                $ignoreLinkToItemOption = $linkToValueForThisItem === 'dropdown' && $arrayOptions[$i]['area']==='header_dropdown' && (!empty($arrayOptions[$i]['pageId']) || !empty($arrayOptions[$i]['custom']));
+
+                if (!empty($arrayOptions[$i]['pageId'])) { //If is page or custom page
+                    $linkToSelectedForThisItem = $arrayOptions[$i]['pageId'] === $linktoDropdownItems[$linktoDropdownItemsIndex]['page_id'];
+                } elseif (!empty($arrayOptions[$i]['custom'])) { //If is custom link
+                    $linkToSelectedForThisItem = $linktoDropdownItems[$linktoDropdownItemsIndex]["url"] === 'custom';
+                } elseif ($arrayOptions[$i]['area']==='header_dropdown' && empty($arrayOptions[$i]['custom'])) { //If is parent of dropdown. When area equals to header_dropdown it is a dropdown parent or child. To determine if is a parent, check if item do not have page_id and custom is false.
+                    $linkToSelectedForThisItem = $linktoDropdownItems[$linktoDropdownItemsIndex]["url"] === 'dropdown';
+                }
+
+                if(!empty($linkToValueForThisItem) && !$ignoreLinkToItemOption) {
+                    $linktoDropdownItemsOfItem .= '<option value="' . $linkToValueForThisItem . '"' . ($linkToSelectedForThisItem ? ' selected' : '') . '>' . $linktoDropdownItems[$linktoDropdownItemsIndex]['name'] . '</option>' . PHP_EOL;
+                }
+                $linktoOfItemSelected = $linktoOfItemSelected || $linkToSelectedForThisItem;
+            }
+            $unavailablePageToFrontEnd = null;
+            if(!$linktoOfItemSelected && $itemHasParentSelected){
+                $linktoOfItemSelected = true;
+                $linkToValueForUnknowItem = null;
+                $menuVisibleOnFrontEnd = false;
+                if (!empty($arrayOptions[$i]['pageId'])) { //If is page or custom page
+                    $unavailablePageToFrontEnd = $arrayOptions[$i]['pageId'];
+                    $linkToValueForUnknowItem = $arrayOptions[$i]['pageId'];
+                    $pageTitle = $ddmPluginNavigationService->tryGetPageTitle($arrayOptions[$i]['pageId']);
+                    if(empty($pageTitle)) {
+                        $linkToCaptionForUnknowItem = $ddmPluginNavigationService->getTranslatedString('Unavailable page', true, 'system').' #' . $arrayOptions[$i]['pageId'];
+                    } else {
+                        $linkToCaptionForUnknowItem = '(' . $ddmPluginNavigationService->getTranslatedString('Unav.', true, 'system') . ') ' . $pageTitle;
+                    }
+                } elseif (!empty($arrayOptions[$i]['custom'])) { //If is custom link
+                    $linkToValueForUnknowItem = 'custom';
+                    $linkToCaptionForUnknowItem = LANG_SITEMGR_NAVIGATION_CUSTOM_LINK;
+                } elseif ($arrayOptions[$i]['area']==='header_dropdown' && empty($arrayOptions[$i]['custom'])) { //If is parent of dropdown. When area equals to header_dropdown it is a dropdown parent or child. To determine if is a parent, check if item do not have page_id and custom is false.
+                    $linkToValueForUnknowItem = 'dropdown';
+                    $linkToCaptionForUnknowItem = $ddmPluginNavigationService->getTranslatedString('Menu with sub menus', true, 'system');
+                }
+                $linktoDropdownItemsOfItem .= '<option value="' . $linkToValueForUnknowItem . '" selected>' . $linkToCaptionForUnknowItem . '</option>' . PHP_EOL;
+            }
+            if (!$linktoOfItemSelected){
+                $skippedItem = true;//When no link to option can be selected the navigation entry is invalid and will be skipped
+            }
+            if($skippedItem){
+?>
+                                <li class="row ddm-plugin-hide" id="<?= $i ?>">
+                                    <span class="col-sm">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][area]" value="<?= $arrayOptions[$i]['area'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][order]" value="<?= $arrayOptions[$i]['order'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][label]" value="<?= $arrayOptions[$i]['label'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][pageId]" value="<?= $arrayOptions[$i]['pageId'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][link]" value="<?= $arrayOptions[$i]['link'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][custom]" value="<?= empty($arrayOptions[$i]['custom'])?0:1 ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][parentId]" value="<?= empty($arrayOptions[$i]['parentId'])?'':$arrayOptions[$i]['parentId']?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][deleted]" id="ddm_plugin_navigation_deleted_<?= $i ?>" value="0">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][area]" id="ddm_plugin_navigation_area_<?= $i ?>" value="<?= $arrayOptions[$i]['area'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][order]" id="ddm_plugin_navigation_order_<?= $i ?>" value="<?= $arrayOptions[$i]['order'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][label]" id="ddm_plugin_navigation_label_<?= $i ?>" value="<?= $arrayOptions[$i]['label'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][pageId]" id="ddm_plugin_navigation_pageid_<?= $i ?>" value="<?= $arrayOptions[$i]['pageId'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][link]" id="ddm_plugin_navigation_link_<?= $i ?>" value="<?= $arrayOptions[$i]['link'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][custom]" id="ddm_plugin_navigation_custom_<?= $i ?>" value="<?= empty($arrayOptions[$i]['custom'])?0:1 ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][parentId]" value="<?= empty($arrayOptions[$i]['parentId'])?'':$arrayOptions[$i]['parentId']?>">
+                                    </span>
+                                </li>
+<?php
+            } else {
+?>
+                                <li class="row ui-sortable-handle" id="<?= $i ?>">
+                                    <span class="col-sm-1 col-xs-1 text-center">
+                                        <i class="fa fa-eye-slash ddm-plugin-hidden-on-frontend-icon<?=($menuVisibleOnFrontEnd?' ddm-plugin-hide':'')?>" title="<?=$hiddenEntryMessage?>"></i>
+                                        <i class="fa fa-eye ddm-plugin-shown-on-frontend-icon" title="<?=$shownEntryMessage?>"></i>
+                                    </span>
+                                    <span class="col-sm-3 col-xs-3">
+                                        <i class="ddm-plugin-dropdown-icon<?=($arrayOptions[$i]['area'] !== 'header_dropdown' || empty($arrayOptions[$i]['parentId']))?' ddm-plugin-hide':(!empty($arrayOptions[$i]['lastChild'])?' ddm-plugin-dropdown-last-child':'')?>" aria-hidden="true"></i>
+                                        <input type="text" class="form-control" name="ddm_plugin_navigation[<?= $i ?>][new][label]"
+                                               value="<?= $arrayOptions[$i]['label'] ?>" id="ddm_plugin_navigation_label_<?= $i ?>"/>
+                                    </span>
+                                    <span class="col-sm-3 col-xs-3">
+                                        <span id="ddm_plugin_navigation_linkto_<?= $i ?>_container" data-unavailable-frontend-pageid="<?=(!empty($unavailablePageToFrontEnd))?$unavailablePageToFrontEnd:''?>">
+                                            <select id="ddm_plugin_navigation_linkto_<?= $i ?>" class="ddm-plugin-form-select" <?= $arrayOptions[$i]['hasChild']?'disabled="disabled"':'' ?>>
+                                                <?= $linktoDropdownItemsOfItem ?>
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="col-sm-2 col-xs-2">
+                                        <input type="text" class="form-control<?= ((!$arrayOptions[$i]['custom']) ? ' ddm-plugin-disabled-custom-link' : '') ?>"
+                                               name="ddm_plugin_navigation[<?= $i ?>][new][link]"
+                                               id="ddm_plugin_navigation_link_<?= $i ?>"
+                                               value="<?= ($arrayOptions[$i]['area'] === 'header_dropdown' && !$arrayOptions[$i]['custom']) ? '' : $arrayOptions[$i]['link'] ?>" <?= ((!$arrayOptions[$i]['custom']) ? 'disabled="true"' : '') ?> />
+                                    </span>
+                                    <span class="col-sm-2 col-xs-2 ddm-association">
+                                        <button type="button" data-associationlabel="<?=$ddmPluginNavigationService->getTranslatedString('Not associated', true, 'system')?>" class="btn ddm-plugin-detach-all-sub-menus<?=($arrayOptions[$i]['area'] === 'header_dropdown' && empty($arrayOptions[$i]['pageId']) && empty($arrayOptions[$i]['custom']))?'':' ddm-plugin-hide'?>" <?= !($arrayOptions[$i]['hasChild'])?'disabled="disabled"':'' ?>><?=$ddmPluginNavigationService->getTranslatedString('Separate all sub menus', true, 'system')?></button>
+                                        <button type="button" data-associationlabel="<?=$parentOfItemSelected?$selectedParentLabel:$ddmPluginNavigationService->getTranslatedString('Not associated', true, 'system')?>" class="btn ddm-plugin-detach-sub-menu<?=(!$parentOfItemSelected)?' ddm-plugin-hide':''?>"><?=$ddmPluginNavigationService->getTranslatedString('Separate this sub menu', true, 'system')?></button>
+                                        <span id="ddm_plugin_navigation_parent_<?= $i ?>_container" class="ddm-plugin-parent<?=($parentOfItemSelected||($arrayOptions[$i]['area'] === 'header_dropdown' && empty($arrayOptions[$i]['pageId']) && empty($arrayOptions[$i]['custom'])))?' ddm-plugin-hide':''?>">
+                                            <select id="ddm_plugin_navigation_parent_<?= $i ?>" class="ddm-plugin-form-select">
+                                                <?= $parentsDropdownForItem ?>
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="col-sm-1 col-xs-1">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][area]" value="<?= $arrayOptions[$i]['area'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][order]" value="<?= $arrayOptions[$i]['order'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][label]" value="<?= $arrayOptions[$i]['label'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][pageId]" value="<?= $arrayOptions[$i]['pageId'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][link]" value="<?= $arrayOptions[$i]['link'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][custom]" value="<?= empty($arrayOptions[$i]['custom'])?0:1 ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][original][parentId]" value="<?= empty($arrayOptions[$i]['parentId'])?'':$arrayOptions[$i]['parentId']?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][deleted]" id="ddm_plugin_navigation_deleted_<?= $i ?>" value="0">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][area]" id="ddm_plugin_navigation_area_<?= $i ?>" value="<?= $arrayOptions[$i]['area'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][order]" id="ddm_plugin_navigation_order_<?= $i ?>" value="<?= $arrayOptions[$i]['order'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][pageId]" id="ddm_plugin_navigation_pageid_<?= $i ?>" value="<?= $arrayOptions[$i]['pageId'] ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][custom]" id="ddm_plugin_navigation_custom_<?= $i ?>" value="<?= empty($arrayOptions[$i]['custom'])?0:1 ?>">
+                                        <input type="hidden" name="ddm_plugin_navigation[<?= $i ?>][new][parentId]" id="ddm_plugin_navigation_selected_parent_<?= $i ?>" value="<?= empty($arrayOptions[$i]['parentId'])?'':$arrayOptions[$i]['parentId']?>">
+                                        <span class="options">
+                                            <a class="remove-item" href="javascript:"
+                                               data-current-item-index="<?= $i ?>">
+                                                <i class="fa fa-trash ddm-plugin-remove-icon" title="<?= system_showText(LANG_SITEMGR_REMOVE) ?>"></i>
+                                            </a>
+                                            <i class="fa fa-bars ddm-plugin-drag-icon"></i>
+                                        </span>
+                                    </span>
+                                </li>
+<?php
+            }
+        }
+?>
+                                <span class="row text-center ddm-plugin-not-sortable ddm-plugin-add-item-row" id="addItem">
+                                    <span class="col-sm-12 col-xs-12">
+                                        <a class="add-item create-new-item" id="ddm_plugin_add-item-div" href="javascript:">
+                                            <i class="fa fa-plus-circle ddm-plugin-add-icon" aria-hidden="true"></i>&nbsp;<?= $ddmPluginNavigationService->getTranslatedString('Add menu item', true, 'system') ?>
+                                        </a>
+                                    </span>
+                                </span>
+                            </ul>
+                        </form>
+                        <form id="ddm_plugin_reset_navigation" name="reset_navigation" action="<?= system_getFormAction($_SERVER["PHP_SELF"]) ?>" method="post" style="display: none;">
+                            <input type="hidden" name="ddm_plugin_resetNavigation" value="reset"/>
+                        </form>
+                    </div>
+                </div>
+            </section>
+<?php
+}
+?>
+        </div>
+    </div>
+</main>
+<script type="text/javascript">
+    document.DDM_PLUGIN_TRANSLATED_NEW_NAVIGATION_ITEM_DEFAULT_LABEL_VALUE = "<?=$ddmPluginNavigationService->getTranslatedString('New menu', true, 'messages')?>";
+    document.DDM_PLUGIN_TRANSLATED_CONFIRM_NAVIGATION_ITEM_REMOVE = "<?=$ddmPluginNavigationService->getTranslatedString('Are you sure you would like to remove this menu item, including all sub menus related to it: ', true, 'messages')?>";
+    document.DDM_PLUGIN_TRANSLATED_LINKSTO_DROPDOWN_TEXT = "<?=$ddmPluginNavigationService->getTranslatedString('Menu with sub menus', true, 'system')?>";
+    document.DDM_PLUGIN_TRANSLATED_NOT_ASSOCIATED = "<?=$ddmPluginNavigationService->getTranslatedString('Not associated', true, 'system')?>";
+    document.DDM_PLUGIN_TRANSLATED_EMPTY_LABEL_NOT_ALLOWED = "<?=$ddmPluginNavigationService->getTranslatedString('Empty menu label is not allowed. The last valid value has been restored.', true, 'messages')?>";
+    document.DDM_PLUGIN_TRANSLATED_NOT_ASSOCIATED_LABEL_NOT_ALLOWED = "<?=$ddmPluginNavigationService->getTranslatedString('\'Not associated\' menu label is not allowed. The last valid value has been restored.', true, 'messages')?>";
+    document.DDM_PLUGIN_TRANSLATED_SOMETHING_WRONG_UNABLE_TO_SAVE = "<?=$ddmPluginNavigationService->getTranslatedString('Something went wrong. You are unable to save any changes in this page.', true, 'messages')?>";
+</script>
+<?php
+if (!empty($errorMessage) || !empty($successMessage)) {
+?>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function () {
+<?php
+    if (!empty($errorMessage)) {
+?>
+            notify.error('<?=$errorMessage?>', '', { fadeOut: 0 });
+<?php
+    } elseif (!empty($_GET['']) && $_GET['successMessage'] === 1) { ?>
+            notify.success('<?=system_showText(LANG_SITEMGR_MENU_SUCCESS);?>');
+<?php
+    }
+?>
+        });
+    });
+</script>
+<?php
+}
+include(INCLUDES_DIR . "/modals/modal-reset-navigation.php");
+# ----------------------------------------------------------------------------------------------------
+# FOOTER
+# ----------------------------------------------------------------------------------------------------
+include(SM_EDIRECTORY_ROOT . "/layout/footer.php");
+?>

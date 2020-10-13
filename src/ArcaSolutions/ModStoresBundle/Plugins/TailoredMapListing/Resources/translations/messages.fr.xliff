@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-09-11T13:52:49Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="d96eba13a4a3f7af11ebd95cd4fbc52d1696e0e0" resname="Central Latitude">
+        <source>Central Latitude</source>
+        <target>Latitude centrale</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="142eee762badccc4912c9865a6ad6832d0d362ad" resname="Central Longitude">
+        <source>Central Longitude</source>
+        <target>Longitude centrale</target>
+        <jms:reference-file line="15">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a479c9c34e878d07b4d67a73a48f432ad7dc53c8" resname="Download">
+        <source>Download</source>
+        <target>Télécharger</target>
+        <jms:reference-file line="15">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="320656e6c539902b1411c319b43901505fc8d630" resname="Invalid image type. Please insert a JPG, GIF or PNG image.">
+        <source>Invalid image type. Please insert a JPG, GIF or PNG image.</source>
+        <target>Type d'image non valide. Veuillez insérer une image JPG, GIF ou PNG.</target>
+        <jms:reference-file line="550">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/TailoredMapListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="28764b81023e7f2fd750517bfe953ce65a127c78" resname="Map Pin">
+        <source>Map Pin</source>
+        <target>Pin de la carte</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d42631cefaa58355c02535bd1d86490833845c78" resname="Map zoom">
+        <source>Map zoom</source>
+        <target>Zoom sur la carte</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="66aa39a6c5f2eb21762965b8742b304a8da321d3" resname="Maximum file size">
+        <source>Maximum file size</source>
+        <target>Taille maximale du fichier</target>
+        <jms:reference-file line="14">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>S'il vous plaît, attendez...</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="616273c8125799f01eb67508328de9150784924e" resname="Recommended dimensions">
+        <source>Recommended dimensions</source>
+        <target>Dimensions recommandées</target>
+        <jms:reference-file line="14">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2770db30ee4adce0096abea48a1712dc9c39beb0" resname="Sample Pin Image">
+        <source>Sample Pin Image</source>
+        <target>Exemple d'image d'épingle</target>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target>Sauvegarder les modifications</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e2e7ad2d1f5fbcbd5eef31c64bb31a371f51714a" resname="Tailored Placement Settings">
+        <source>Tailored Placement Settings</source>
+        <target>Paramètres de placement personnalisés</target>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-tailored-map.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b369906de4d1fb9411de8414d4dd2e96f2333be1" resname="This pin will be displayed in tailored map widget in coordinates that a listing that have the category where.">
+        <source>This pin will be displayed in tailored map widget in coordinates that a listing that have the category where.</source>
+        <target>Cette épingle sera affichée dans un widget de carte personnalisé dans les coordonnées d'une liste qui ont la catégorie où.</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/sitemgr-form-category-tailored.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="831b916850bbfe9943ac6b5b1e90dbf2fb1292f1" resname="Unexpected error">
+        <source>Unexpected error</source>
+        <target>Erreur inattendue</target>
+        <jms:reference-file line="54">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/js/sitemgr-form-category-tailored-js.html.twig</jms:reference-file>
+        <jms:reference-file line="70">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/js/sitemgr-form-category-tailored-js.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="949407e6da5b7cbf73d9e42e229b8a9b58b7b04d" resname="Uploaded pin exceded the allowed maximum file size.">
+        <source>Uploaded pin exceded the allowed maximum file size.</source>
+        <target>La broche téléchargée a dépassé la taille de fichier maximale autorisée.</target>
+        <jms:reference-file line="94">/../src/ArcaSolutions/ModStoresBundle/Plugins/TailoredMapListing/Resources/views/js/sitemgr-form-category-tailored-js.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

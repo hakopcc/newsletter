@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:33:34Z" source-language="en" target-language="pt" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="423208095dd7fc394399b8c356f8f00cd260869b" resname="Distance">
+        <source>Distance</source>
+        <target>Distância</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-form-banner-customdistance.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ed232919b87bc76b2883da16e03a41cdd7d3929a" resname="Distance unity">
+        <source>Distance unity</source>
+        <target>Unidade de distância</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84f34339bc9c033b2c5c5c0fc666a897c3f5e1ba" resname="Geo-Targeted Banner Settings">
+        <source>Geo-Targeted Banner Settings</source>
+        <target>Configurações de Banner geolocalizado</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="79750447238958f43ba05a0d3e1d2b6cc10ff0d1" resname="Geo-Targeted Settings">
+        <source>Geo-Targeted Settings</source>
+        <target state="new">Geo-Targeted Settings</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-form-banner-customdistance.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="87bafdbb82c61625882d74515ef2c7e566177ea5" resname="Kilometers">
+        <source>Kilometers</source>
+        <target>Kilometros</target>
+        <jms:reference-file line="24">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5fa6c4032be31076212eb57f2fe6ba44d445d501" resname="Miles">
+        <source>Miles</source>
+        <target>Milhas</target>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2fc86694ae5e24e6d790a042cc1fa24055de95c1" resname="Miles Limit = 25000 / Kilometers Limit = 40000">
+        <source>Miles Limit = 25000 / Kilometers Limit = 40000</source>
+        <target>Limite em milhas = 25000 / Limite em kilometros = 40000</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-form-banner-customdistance.html.twig</jms:reference-file>
+        <jms:reference-file line="35">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Por favor aguarde...</target>
+        <jms:reference-file line="42">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="43">/../src/ArcaSolutions/ModStoresBundle/Plugins/GeoTargetedBanner/Resources/views/sitemgr-general-settings.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

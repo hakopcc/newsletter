@@ -1,0 +1,120 @@
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({{ facebookInitParamsEncodedJson|raw }});
+    };
+    $(document).ready(function () {
+        $('#facebookSelectIdModal').modal({'show':false});
+        let loggedInFbUserId = null;
+        let loggedInFbUserAccessToken = null;
+        let loggedInAction = function (response) {
+            let fbLoggedInData = [];
+            let fbData = [];
+            if (response.authResponse) {
+                loggedInFbUserAccessToken = response.authResponse.accessToken;
+                FB.api('/me', 'get', {
+                    access_token: loggedInFbUserAccessToken,
+                    fields: 'id,name'
+                }, function (userResponse) {
+                    loggedInFbUserId = userResponse.id;
+
+                    fbLoggedInData.push({
+                        id: userResponse.id,
+                        name: userResponse.name,
+                        link: '',
+                        showLink: false
+                    });
+                    let displayLoggedInFbUserTemplate = $.templates("#display-logged-in-fb-user-template");
+                    let displayLoggedInFbUsertHtml = displayLoggedInFbUserTemplate.render(fbLoggedInData);
+                    $("#display-logged-in-fb-user").html(displayLoggedInFbUsertHtml);
+                    $('#logOffFacebook').on('click', function () {
+                        FB.getLoginStatus(function (response) {
+                            if (response.status === 'connected' || response.status === 'not_authorized') {
+                                $('#facebookSelectIdModal').modal('hide');
+                                FB.api('/' + loggedInFbUserId + '/permissions', 'delete', {
+                                    access_token: loggedInFbUserAccessToken,
+                                }, function (deletePermissionsResponse) {
+                                    FB.login(function (reLoginResponse) {
+                                        loggedInAction(reLoginResponse);
+                                    }, { auth_type: 'rerequest',scope:'pages_show_list' });
+                                });
+                            }
+                        });
+                    });
+
+                    FB.api('/' + userResponse.id + '/accounts', 'get', {
+                        access_token: loggedInFbUserAccessToken,
+                        fields: 'id,name,link'
+                    }, function (pagesResponse) {
+                        let pagesReponseData = pagesResponse.data;
+                        if (Array.isArray(pagesReponseData)) {
+                            pagesReponseData.forEach(function (item, index) {
+                                fbData.push({id: item.id, name: item.name, link: item.link, showLink: true});
+                            });
+                        }
+                        if (fbData.length > 0) {
+                            let selectFbIdOptTemplate = $.templates("#select-fb-id-options-template");
+                            let selectFbIdOptHtml = selectFbIdOptTemplate.render(fbData);
+                            $("#select-fb-id-radiogroup").html(selectFbIdOptHtml);
+                            $("#select-fb-id-form").show();
+                        }
+                        $('#facebookSelectIdModal').modal('show');
+                    });
+                });
+            } else {
+                $('#facebookSelectIdModal').modal('hide');
+            }
+        };
+        $('#startFbValidation').on('click', function () {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    loggedInAction(response);
+                } else if (response.status === 'not_authorized') {
+                    // the user is logged in to Facebook,
+                    // but has not authenticated your app
+                    // re-request authorizations
+                    FB.login(function (loginResponse) {
+                        loggedInAction(loginResponse);
+                    }, { auth_type: 'rerequest', scope:'pages_show_list' });
+                } else {
+                    FB.login(function (loginResponse) {
+                        loggedInAction(loginResponse);
+                    }, { auth_type: 'rerequest', scope:'pages_show_list' });
+                }
+            });
+        });
+
+        let checkValidationOnRadioChange = function(event) {
+            if ($("#select-fb-id-form")[0].checkValidity()) {
+                $('#select-fb-id-radiogroup').removeClass('has-error');
+                $("#select-fb-id-radiogroup>div.radio>label>input").off('change', checkValidationOnRadioChange);
+            }
+        };
+
+        $("#select-fb-id-form").submit(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let form = $(this);
+
+            if (form[0].checkValidity()) {
+                $('#select-fb-id-radiogroup').removeClass('has-error');
+                $("#select-fb-id-radiogroup>div.radio>label>input").off('change', checkValidationOnRadioChange);
+                if(form.hasClass('was-validated')){
+                    form.removeClass('was-validated');
+                }
+                let selectedMessengerUserId = $("#select-fb-id-radiogroup>div.radio>label>input").filter(":checked")[0];
+                $("#plugin_messenger_user_id").val(selectedMessengerUserId.value);
+                let selectedMessengerCaption = $("#selected-fb-caption-"+selectedMessengerUserId.value)[0];
+                $("#plugin_messenger_caption").val(selectedMessengerCaption.value);
+                $('#facebookSelectIdModal').modal('hide');
+            } else {
+                $('#select-fb-id-radiogroup').addClass('has-error');
+                $("#select-fb-id-radiogroup>div.radio>label>input").on('change', checkValidationOnRadioChange);
+            }
+            form.addClass('was-validated');
+        });
+
+        $("#submit-select-fb-id-form").on('click', function(event){
+            $("#select-fb-id-form").submit();
+        });
+    });
+</script>

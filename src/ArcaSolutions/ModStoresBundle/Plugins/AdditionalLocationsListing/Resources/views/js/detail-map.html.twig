@@ -1,0 +1,32 @@
+<script type="text/javascript">
+
+    clusterClick = function (cluster) {
+        var markers = cluster.getMarkers();
+
+        if (markers) {
+            var position = markers[0].position;
+            var match = true;
+            var elements = [markers[0].itemElement];
+
+            for (var i = 1; i < markers.length && match; i++) {
+                var marker = markers[i];
+
+                if (match = position.equals(marker.position)) {
+                    elements.push(marker.itemElement);
+                }
+            }
+
+            if (match) {
+                viewElement(elements, markers[0]);
+            }
+        }
+    };
+
+    window.onload = function() {
+        var clusterJSVar = {{ clustererJSVariable }};
+        if(clusterJSVar!=null)
+        {
+            clusterJSVar.fitMapToMarkers();
+        }
+    };
+</script>

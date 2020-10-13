@@ -1,0 +1,41 @@
+{% set locale = app.request.locale|split('_') %}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#reviews_reviewImages").fileinput({
+            theme: 'fa',
+            language: '{{ locale|first }}',
+            maxFileCount: {{ total_review_images }},
+            maxFilePreviewSize: 10240,
+            allowedFileExtensions: ["jpg", "png", "gif"],
+            initialPreviewAsData: true,
+            overwriteInitial: false,
+            browseOnZoneClick: true,
+            autoReplace: true,
+            uploadAsync: false,
+            showClose: false,
+            showUpload: false,
+            showCancel: false,
+            fileActionSettings: {
+                showUpload: false,
+                showDownload: false,
+                showZoom: false,
+                showDrag: false,
+            },
+            removeLabel: '',
+            layoutTemplates: {
+                footer: '<div class="file-thumbnail-footer">{progress} {actions}</div>',
+                caption: '<div class="file-caption form-control {class}" tabindex="500"> <input class="file-caption-name" onkeydown="return false;" onpaste="return false;"> </div>',
+                actions: '<div class="file-actions"> <div class="file-footer-buttons"> {delete} </div> <div class="clearfix"></div> </div>'
+            },
+            previewSettings: {
+                image: {width: "auto", height: "160px", 'max-width': "100%", 'max-height': "160px"},
+                html: {width: "auto", height: "160px"}
+            },
+            previewSettingsSmall: {
+                image: {width: "100%", height: "auto", 'max-width': "100%", 'max-height': "auto"},
+                html: {width: "100%", height: "auto"}
+            }
+        });
+    });
+</script>

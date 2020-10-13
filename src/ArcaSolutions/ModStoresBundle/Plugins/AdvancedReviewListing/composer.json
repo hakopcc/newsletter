@@ -1,0 +1,13 @@
+{
+  "name": "arcasolutions/advancedreviewlisting",
+  "description": "Advanced Review for Listing",
+  "version": "1.4.4",
+  "license": "proprietary",
+  "require": {
+      "arcasolutions/edirectory-plugins": "^1.0.0",
+      "arcasolutions/edirectory": "^13.0.00"
+  },
+  "extra": {
+    "bundle-name": "AdvancedReviewListingBundle"
+  }
+}

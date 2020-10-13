@@ -1,0 +1,5 @@
+marketselection_setmarket:
+    path:     /plugins/marketselection/market
+    defaults: { _controller: MarketSelectionBundle:Default:setMarket }
+    options:
+        expose: true

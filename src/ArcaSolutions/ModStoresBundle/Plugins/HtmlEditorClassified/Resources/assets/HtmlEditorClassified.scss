@@ -1,0 +1,43 @@
+.custom-content.ckeditor-content {
+    line-height: 1.5;
+    color: customColor(neutral, base);
+    font-family: $paragraph-font;
+    font-weight: normal;
+    font-size: 0.9em;
+
+    table, table>thead, table>caption, table>tbody, table>thead>tr, table>tbody>tr {
+        line-height: inherit;
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        margin-bottom: revert;
+    }
+
+    p, th, td {
+        line-height: inherit;
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        margin-bottom: revert;
+
+        span, strong, em, u, s {
+            line-height: inherit;
+            color: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+        }
+        span{
+            margin-bottom: revert;
+        }
+        strong {
+            font-weight: revert;
+        }
+    }
+
+    table {
+        caption {
+            caption-side: revert;
+            text-align: revert;
+        }
+    }
+}

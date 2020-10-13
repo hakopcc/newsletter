@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-27T15:58:42Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="9875a29b75ca7c935461458e7ca15d86fad6cfd6" resname="Add a new Article">
+        <source>Add a new Article</source>
+        <target>Agregar un nuevo artículo</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4360c2dcd4af965377499b10a52640af435c9258" resname="Article">
+        <source>Article</source>
+        <target>Artículo</target>
+        <jms:reference-file line="362">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/ArticleAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eedab7f756cac654ff60a688c19d605814bcecca" resname="Article Association">
+        <source>Article Association</source>
+        <target>Asociación de Artículo</target>
+        <jms:reference-file line="231">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/ArticleAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3dfc37c8e0652d789df92a89d5ffae5bfda6705e" resname="Article {0} need to have the same owner of the listing.">
+        <source>Article {0} need to have the same owner of the listing.</source>
+        <target state="new">El artículo {0} debe tener el mismo propietario de el listado.</target>
+        <jms:reference-file line="789">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Services/ArticleAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4294d16c9420d8201a79f05d2bc6ab162ed8df58" resname="Associate an article to this listing">
+        <source>Associate an article to this listing</source>
+        <target state="new">Asociar un artículo a este listado</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1b30ceb0e9c97f175c609c26f5f98041d738c467" resname="Associate an existing Article with this Listing">
+        <source>Associate an existing Article with this Listing</source>
+        <target>Asociar un artículo existente con este listado</target>
+        <jms:reference-file line="19">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e8e15b53307f6e5bd3330afd2720d0fab3d20e83" resname="Associate with a Listing">
+        <source>Associate with a Listing</source>
+        <target>Asociar con el Listado</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-article.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-article.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7f3b51d18d517165af3bcb65b93db9136d21fba4" resname="Leave it blank to unlink the Article.">
+        <source>Leave it blank to unlink the Article.</source>
+        <target>Déjelo en blanco para desvincular el artículo.</target>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-article.html.twig</jms:reference-file>
+        <jms:reference-file line="25">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/article_form_association.html.twig</jms:reference-file>
+        <jms:reference-file line="82">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/article_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="94d79688d5e152cc5578f6cf47b924b332ba103a" resname="Listing article association updated successfully.">
+        <source>Listing article association updated successfully.</source>
+        <target state="new">La asociación del artículo de listado se actualizó correctamente.</target>
+        <jms:reference-file line="803">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Services/ArticleAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8cd21ed4a23a378993f85ff68029fd3967d30067" resname="No article available for association with this Listing. In order to be linked to this Listing, the article should not be associated with other Listing and should belong to the same account.">
+        <source>No article available for association with this Listing. In order to be linked to this Listing, the article should not be associated with other Listing and should belong to the same account.</source>
+        <target>Ningún artículo disponible para asociarse con este Listado. Para vincularse a este Listado, el artículo no debe asociarse con otro Listado y debe pertenecer a la misma cuenta.</target>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/listing_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bb23ab9cbb5d578506224b35cb0c4e06e23aabab" resname="No listings available for association with this Article. In order to be linked to this Article, the Listing should not be associated with more than the permitted number of Articles and should belong to the same account.">
+        <source>No listings available for association with this Article. In order to be linked to this Article, the Listing should not be associated with more than the permitted number of Articles and should belong to the same account.</source>
+        <target>No hay listados disponibles para asociar con este artículo. Para estar vinculado a este Artículo, el Listado no debe estar asociado con más del número permitido de Artículos y debe pertenecer a la misma cuenta.</target>
+        <jms:reference-file line="53">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/article_form_association.html.twig</jms:reference-file>
+        <jms:reference-file line="84">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/article_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="12cfaf288d0bef15c5c809354744a70eb70473ad" resname="Number of Articles the listing owner is able to associate">
+        <source>Number of Articles the listing owner is able to associate</source>
+        <target>Cantidad de Artículo que el propietario de la lista puede asociar</target>
+        <jms:reference-file line="232">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/ArticleAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="507b1a3da0b11742ff6f991f6604c5d229b81bb5" resname="Offered by">
+        <source>Offered by</source>
+        <target>Presentado por</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/articleassoc-articledetail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e3544cb15d5159695d10bd224183dd65660cc7a5" resname="Select an Article">
+        <source>Select an Article</source>
+        <target>Seleccione un Artículo</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/listing_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1d5d49907aaba6397d31d21eb3ce4fcf832c141a" resname="The article is linked from the listing.">
+        <source>The article is linked from the listing.</source>
+        <target state="new">El artículo está vinculado a el listado.</target>
+        <jms:reference-file line="44">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d33d59e38bd7033b737c9d1bfa15f0f798f814bb" resname="Type the Listing name for suggestions">
+        <source>Type the Listing name for suggestions</source>
+        <target>Escriba el nombre del listado para sugerencias</target>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/js/article_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2be774a36a9b32be804acb58606e991cd696dfc9" resname="Unable to acquire available articles for association with this Listing due to an internal unexpected behavior.">
+        <source>Unable to acquire available articles for association with this Listing due to an internal unexpected behavior.</source>
+        <target state="new">No se pueden adquirir los artículos disponibles para asociarlos con este listado debido a un comportamiento interno inesperado.</target>
+        <jms:reference-file line="616">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Services/ArticleAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2bcd08bf0044f330b755fdbac5f3e4ac32cd2f13" resname="Unexpected error.">
+        <source>Unexpected error.</source>
+        <target state="new">Error inesperado.</target>
+        <jms:reference-file line="704">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Services/ArticleAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" resname="or">
+        <source>or</source>
+        <target>o</target>
+        <jms:reference-file line="18">/../src/ArcaSolutions/ModStoresBundle/Plugins/ArticleAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

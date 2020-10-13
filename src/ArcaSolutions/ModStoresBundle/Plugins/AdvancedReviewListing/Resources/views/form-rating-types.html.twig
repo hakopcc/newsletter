@@ -1,0 +1,73 @@
+{% set count = 0 %}
+<div class="form-group">
+    <div class="panel panel-form">
+        <div class="panel-heading">{{ "Rating Types"|trans }}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>{{ "Label"|trans }}</label>
+                </div>
+            </div>
+
+            <div class="rating-types-list">
+                {% if ratingTypes is not empty -%}
+                    {% for type in ratingTypes -%}
+                        <div class="rating-types-item">
+                            <input type="text" name="rating[old][{{ type.id }}]" class="form-control" placeholder="Ex: Service" value="{{ type.label }}" id="rating{{ count }}">
+                            <button class="rating-types-remove-button" type="button"><i class="fa fa-close"></i></button>
+                        </div>
+                        {% set count = count + 1 %}
+                    {% endfor -%}
+                {% endif -%}
+
+                <button class="rating-types-placeholder" type="button"><i class="fa fa-plus-circle"></i></button>
+
+                <input type="hidden" name="rating-type-max-items" id="rating-type-max-items" value="{{totalItems}}">
+                <input type="hidden" name="rating-type-count" id="rating-type-count" value="{{count}}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.rating-types-list {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px;
+}
+.rating-types-list .rating-types-item {
+  width: calc((100% / 2) - 8px);
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+.rating-types-list .rating-types-item .form-control {
+  border-color: #a1b3c9;
+}
+.rating-types-list .rating-types-item .rating-types-remove-button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #e6e6e6;
+  transition: color 0.2s ease-in-out;
+}
+.rating-types-list .rating-types-item .rating-types-remove-button:hover {
+  color: #721c24;
+}
+.rating-types-list .rating-types-placeholder {
+  width: calc((100% / 2) - 33px);
+  margin-top: 8px;
+  background: none;
+  border: 1px dashed #dddddd;
+  border-radius: 3px;
+  margin-left: 8px;
+  color: #199ada;
+  font-size: 18px;
+  transition: border-color 0.2s ease-in-out;
+  outline: none;
+}
+.rating-types-list .rating-types-placeholder:hover {
+  border-color: #199ada;
+}
+</style>

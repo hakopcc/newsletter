@@ -1,0 +1,59 @@
+parameters:
+    question.search.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Search\QuestionConfiguration
+    question.synchronization.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Services\Synchronization\QuestionSynchronizable
+    question.category.synchronization.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Services\Synchronization\QuestionCategorySynchronizable
+    forum.twig.extension.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Twig\Extension\ForumExtension
+    question.seo.twig.extension.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Twig\Extension\SeoExtension
+    question.reporthandler.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Services\ReportHandlerWithCommunityForum
+    forum.blocks.twig.extension.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Twig\Extension\BlocksExtension
+    question.category.service.class: ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Services\QuestionCategoryService
+
+services:
+    question.category.service:
+        class: "%question.category.service.class%"
+        arguments:
+            - "@service_container"
+
+    forum.blocks:
+        class: "%forum.blocks.twig.extension.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: twig.extension }
+
+    question.reporthandler:
+        class: %question.reporthandler.configuration.class%
+        arguments: ["@service_container"]
+
+    question.search:
+        class: %question.search.configuration.class%
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    question.synchronization:
+        class: %question.synchronization.configuration.class%
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    question.category.synchronization:
+        class: %question.category.synchronization.configuration.class%
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    # twig extensions
+    forum.twig_extension:
+        class: '%forum.twig.extension.class%'
+        public: false
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: twig.extension }
+
+    seo.question:
+        class: %question.seo.twig.extension.class%
+        arguments:
+            - @service_container
+        tags:
+            - { name: twig.extension }
+
+

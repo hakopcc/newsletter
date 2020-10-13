@@ -1,0 +1,31 @@
+
+function legacyLeadBox(option, id) {
+    var replyBlock = $("div[data-id='" + id + "']").find(".reply-block");
+    var replyForm = $("div[data-id='" + id + "']").find(".reply-form");
+    var buttonText = $("button[data-ref='" + id + "']").data("text");
+    if(typeof replyBlock != 'undefined') {
+        replyBlock.slideToggle(400);
+    }
+    if(typeof replyForm != 'undefined') {
+        replyForm.slideToggle(400);
+    }
+    if(typeof buttonText != 'undefined') {
+        $("button[data-ref='" + id + "']").toggleText(buttonText[0], buttonText[1]);
+    }
+}
+
+function leadBox(option, id) {
+    if(typeof(id) == "undefined" ) {
+        var el = option;
+        var replyBlock = $("[data-id='" + $(el).data('ref') + "']").find(".reply-block");
+        var replyForm = $("[data-id='" + $(el).data('ref') + "']").find(".reply-form");
+        var buttonText = $(el).data("text");
+
+        replyBlock.slideToggle(400);
+        replyForm.slideToggle(400);
+        $(el).toggleText(buttonText[0], buttonText[1]);
+    }
+    else{
+        legacyLeadBox(option, id)
+    }
+}

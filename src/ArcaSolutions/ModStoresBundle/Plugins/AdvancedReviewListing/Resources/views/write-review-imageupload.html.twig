@@ -1,0 +1,5 @@
+<div class="advanced-rating review-file-uploader">
+    {{ form_widget(form.reviewImages) }}
+</div>
+
+{{ form_widget(form.advancedRating, {id: 'advancedFormRating', attr: { value : form.advancedRating.vars.value, 'class': 'review-rating' }}) }}

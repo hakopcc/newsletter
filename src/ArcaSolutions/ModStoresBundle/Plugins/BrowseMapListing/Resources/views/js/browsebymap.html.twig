@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    $.getJSON("{{ path('browsemaplisting_data')|raw }}", function (data) {
+
+        var mapConfig = {
+            map: "{{ browsebymap_map }}",
+            container: $('#browsebymap'),
+            backgroundColor: "#{{ browsebymap_mapBackgroundColor|raw }}",
+            zoomMax: 4,
+            regionStyle: {
+                initial: {
+                    fill: "#{{ browsebymap_mapColor|raw }}",
+                    "fill-opacity": 1,
+                    stroke: 'none',
+                    "stroke-width": 0,
+                    "stroke-opacity": 1
+                },
+                hover: {
+                    "fill-opacity": 0.8,
+                    cursor: 'pointer'
+                },
+            },
+            onRegionTipShow: function (e, el, code) {
+                var total = 0;
+                if (data.amount != undefined) {
+                    if (data.amount[code] != undefined) {
+                        total = data.amount[code];
+                    }
+                }
+                el.html(el.html() + ' (' + total + ')');
+            },
+            onRegionClick: function (event, code) {
+                var url = "{{ path('listing_homepage') }}";
+                if (data.locations != undefined && data.locations[code]) {
+                    if (data.locations[code].location_1 && data.locations[code].location_1 != "" && !data.locations[code].location_3) {
+                        url += data.locations[code].location_1;
+                    }
+                    if (data.locations[code].location_3 && data.locations[code].location_3 != "") {
+                        url += data.locations[code].location_3;
+                    }
+                    if (data.locations[code].location_1 == '' && data.locations[code].location_3 == '') {
+                        url += 'w:' + data.locations[code].name;
+                    }
+                } else {
+                    url += 'w:' + mapObj.getRegionName(code);
+                }
+                window.location.href = url;
+            }
+        };
+
+        {% if browsebymap_colorcoded == 'y' %}
+        mapConfig.series = {
+            regions: [{
+                values: data.amount,
+                scale: ["#{{ browsebymap_mapColorRangeStart|raw }}", "#{{ browsebymap_mapColorRangeEnd|raw }}"],
+                normalizeFunction: 'polynomial',
+                attribute: 'fill',
+                min: 1
+            }]
+        };
+        mapConfig.regionStyle.initial.fill = "#{{ browsebymap_mapColorRangeStart|raw }}",
+                {% endif %}
+
+            mapObj = new jvm.Map(mapConfig);
+
+    });
+</script>

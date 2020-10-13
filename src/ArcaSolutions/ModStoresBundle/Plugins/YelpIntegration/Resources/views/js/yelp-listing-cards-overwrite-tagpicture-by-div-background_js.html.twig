@@ -1,0 +1,7 @@
+{% if divId is not empty and yelpImagePath is not empty %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('{{ '#' ~ divId|raw }}').css("background-image", "url({{ yelpImagePath|raw }})");
+    });
+</script>
+{% endif %}

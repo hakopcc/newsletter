@@ -1,0 +1,27 @@
+<div id="tour-socialnetwork">
+
+    {% if 'facebook_page' in array_fields %}
+        <div class="form-group">
+            <label for="modstore_facebook">{{ "Facebook page"|trans }}</label>
+            <input type="text" name="modstore_facebook" class="form-control" value="{{ facebookPage }}"
+                   placeholder="https://www.facebook.com/fanpage"/>
+        </div>
+    {% endif %}
+
+    {% if 'instagram_page' in array_fields %}
+        <div class="form-group">
+            <label for="modstore_instagram">{{ "Instagram profile"|trans }}</label>
+            <input type="text" name="modstore_instagram" class="form-control" value="{{ instagramPage }}"
+                   placeholder="@username"/>
+        </div>
+    {% endif %}
+
+    {% if 'twitter_page' in array_fields %}
+        <div class="form-group">
+            <label for="modstore_twitter">{{ "Twitter page"|trans }}</label>
+            <input type="text" name="modstore_twitter" class="form-control" value="{{ twitterPage }}"
+                   placeholder="https://twitter.com/username"/>
+        </div>
+    {% endif %}
+
+</div>

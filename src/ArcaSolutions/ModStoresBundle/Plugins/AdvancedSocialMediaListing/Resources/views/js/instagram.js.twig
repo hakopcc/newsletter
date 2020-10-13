@@ -1,0 +1,52 @@
+<script>
+    $(document).ready(function () {
+        var username = $("#instuser").text();
+
+        if ($("#instuser").length) {
+            $.ajax({
+                url: "https://www.instagram.com/"+username+"/",
+                dataType: 'html',
+                success: function (htmlresult) {
+                    var resultStr = '{"entry_data":{"ProfilePage":""}}';
+                    if((typeof htmlresult)==="string" && htmlresult !== ""){
+                        var checkPattern = /^.*window\.\_sharedData\s*\=\s*/gm;
+                        var cutPattern = /^.*window\.\_sharedData\s*\=\s*(\{.*?\});.*$/gm;
+                        var checkPos = htmlresult.search(checkPattern);
+                        if(checkPos){
+                            cutPatternMatch = cutPattern.exec(htmlresult);
+                            if(cutPatternMatch.length){
+                                resultStr = cutPatternMatch[1];
+                            }
+                        }
+                    }
+                    var result = JSON.parse(resultStr);
+                    if (result['entry_data']['ProfilePage'] != null && result['entry_data']['ProfilePage'] !== "") {
+                        var profile = result['entry_data']['ProfilePage'][0]['graphql']['user'];
+                        var imageNodes = result['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges'];
+
+                        $("#profile-picture").fadeTo('slow', 0.3, function(){
+                            $(this).removeClass("animated-background").css("background-image", "url("+profile.profile_pic_url+")")
+                        }).fadeTo('slow', 1);
+
+                        $(".line-title").delay(1000).fadeOut(function(){
+                            $("#username-insta").attr("href", "https://instagram.com/" + profile.username).html(profile.full_name).fadeIn();
+                        });
+
+                        $(".line-description").delay(1000).fadeOut(function(){
+                            $("#profile-description").html(profile.biography).fadeIn();
+                        });
+
+                        $(imageNodes).each(function(){
+                            $(".insta-content").append("<a href='https://instagram.com/p/"+this.node.shortcode+"' class='insta-picture' target='_blank' style='background-image: url("+this.node.display_url+")'></a>");
+                        });
+
+                        $(".insta-content-placeholder").delay(2000).fadeOut(function(){
+                            $(this).fadeOut();
+                            $(".insta-content").addClass('is-loaded').fadeIn();
+                        });
+                    }
+                }
+            });
+        }
+    });
+</script>

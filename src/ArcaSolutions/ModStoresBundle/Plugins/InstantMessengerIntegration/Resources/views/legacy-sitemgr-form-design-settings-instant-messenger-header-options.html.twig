@@ -1,0 +1,44 @@
+{% if instantMessengerTypes|length > 0 %}
+<br>
+<div class="widget-options">
+    <h4>{{"Instant Messenger Integration Options"|trans}}</h4>
+    <div class="options-list">
+        <div class="options-item">
+            <label class="option-title" for="plugin_instant_messenger_integration_display_instant_messenger_link_and_phone">
+                {{"What will be displayed at right side of header?"|trans}}
+            </label>
+            <div class="selectize">
+                <select name="plugin[instant_messenger_integration][display_instant_messenger_link_and_phone]"
+                        id="plugin_instant_messenger_integration_display_instant_messenger_link_and_phone" class="form-control">
+                    <option value="phone" {{ (displayInstantMessengerLinkAndPhone=='phone') ? 'selected' : '' }}>{{"Phone Number only"|trans}}</option>
+                    <option value="instant_messenger" {{ (displayInstantMessengerLinkAndPhone=='instant_messenger') ? 'selected' : '' }}>{{"Instant Messenger only"|trans}}</option>
+                    <option value="both" {{ (displayInstantMessengerLinkAndPhone=='both') ? 'selected' : '' }}>{{"Phone Number and Instant Messenger"|trans}}</option>
+                </select>
+            </div>
+            <div class="option-description">{{"Choose how the widget will include phone/instant messaging information in the widget."|trans}}</div>
+        </div>
+
+        <div class="options-item">
+            <label class="option-title" for="plugin_instant_messenger_integration_instant_messenger_type_to_display">
+                {{"Instant messenger type to consider in widget"|trans}}
+            </label>
+            <div class="selectize">
+                <select name="plugin[instant_messenger_integration][instant_messenger_type_to_display]"
+                        id="plugin_instant_messenger_integration_instant_messenger_type_to_display" class="form-control">
+                    {% for instantMessengerTypeOptionValue, instantMessengerTypeOptionLabel in instantMessengerTypes -%}
+                    <option value="{{ instantMessengerTypeOptionValue }}" {{ ((instantMessengerTypeOptionValue == instantMessengerTypeToDisplay) or (instantMessengerTypes|length)==1) ? 'selected' : '' }}>{{ (instantMessengerTypeOptionLabel is not empty)?instantMessengerTypeOptionLabel:instantMessengerTypeOptionValue }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="option-description">{{"Choose which instant messenger will be used to include information in the widget."|trans}}</div>
+        </div>
+    </div>
+</div>
+{% else %}
+<input type="hidden" id="plugin_instant_messenger_integration_display_instant_messenger_link_and_phone"
+       name="plugin[instant_messenger_integration][display_instant_messenger_link_and_phone]"
+       value="phone">
+<input type="hidden" id="plugin_instant_messenger_integration_instant_messenger_type_to_display"
+       name="plugin[instant_messenger_integration][instant_messenger_type_to_display]"
+       value="whatsapp">
+{% endif %}

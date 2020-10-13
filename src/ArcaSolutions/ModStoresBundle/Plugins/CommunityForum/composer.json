@@ -1,0 +1,13 @@
+{
+  "name": "arcasolutions/communityforum",
+  "description": "Community Forum",
+  "version": "2.1.6",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^1.0.0",
+    "arcasolutions/edirectory": "^13.0.02"
+  },
+  "extra": {
+    "bundle-name": "CommunityForumBundle"
+  }
+}

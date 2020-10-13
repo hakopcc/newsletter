@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    function isValidKey() {
+        $('#yelp_keyValidator').addClass('disabled').text("{{ 'Please wait...'|trans }}").blur();
+        var info = {yelpKey: $('#yelp_appSecret').val()};
+        $.post("{{ path('yelp_checkkey')|raw }}", info).done(function (response) {
+            if (response.validKey) {
+                $('#yelp_saveButton').removeClass('disabled');
+                $('#yelp_messageAlert').append("<div class='alert alert-success'>{{ 'Yelp key successfully validated.'|trans }}</div>");
+                setTimeout(function () {
+                    $('.alert-success').remove();
+                }, 5000);
+                $('#yelp_keyValidator').removeClass('disabled').text("{{ 'Validate Yelp Key'|trans }}");
+            } else {
+                $('#yelp_messageAlert').append("<div class='alert alert-warning'>{{ 'Invalid Yelp Key.'|trans }}</div>");
+                setTimeout(function () {
+                    $('.alert-warning').remove();
+                }, 5000);
+                $('#yelp_keyValidator').removeClass('disabled').text("{{ 'Validate Yelp Key'|trans }}");
+            }
+        });
+    }
+
+    function changeKey() {
+        $('#yelp_saveButton').addClass('disabled');
+    }
+</script>

@@ -1,0 +1,6 @@
+{% if (level.hasPhone and yelpBusiness["display_phone"] is not empty) -%}
+    <div class="contact-item item-phone">
+        <span class="icon icon-md"><i class="fa fa-phone"></i></span>
+        <a href="tel:{{ yelpBusiness["display_phone"]|spaceless }}" rel="noopener noreferrer nofollow">{{ yelpBusiness["display_phone"] }}</a>
+    </div>
+{% endif -%}

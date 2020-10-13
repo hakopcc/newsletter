@@ -1,0 +1,19 @@
+{% if locations is not empty -%}
+    <div class="market-box">
+        <div class="market-content">
+            <div class="heading h-5 text-center market-title">{{ 'Pick your market'|trans }}</div>
+            {% if selectedLocationName is not empty %}
+                <div class="market-selected">{{ selectedLocationName }} <a href="javascript:" onclick="removeLocations()"><i class="fa fa-close"></i></a></div>
+            {% endif %}
+            <hr>
+            <div class="martket-list">
+                {% for location in locations -%}
+                    {% if selectedLocationName != location.name %}
+                        <a href="javascript:" class="market-item" onclick="setLocations({{ location.id }},{{ locationLevel }})">{{ location.name }}</a>
+                    {% endif %}
+                {% endfor -%}
+            </div>
+        </div>
+        <div class="market-button"><i class="fa fa-crosshairs"></i></div>
+    </div>
+{% endif -%}

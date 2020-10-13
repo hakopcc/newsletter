@@ -1,0 +1,5 @@
+{% if yelpData['yelpLocation']["display_address"][0] is not empty %}
+    <address class="summary-address">
+        <p>{{ yelpData['yelpLocation']["display_address"][0] }}</p>
+    </address>
+{% endif %}

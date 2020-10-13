@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="form-group  col-xs-12" id="tableMapTuning" {{ hasValidCoord ? "" : "style=\"display: none\"" }}>
+        <div id="map" style="height: 200px"></div>
+        <input type="hidden" id="address" value="">
+        <input type="hidden" id="zip_code" value="">
+        <input type="hidden" name="latitude_longitude" id="myLatitudeLongitude" value="{{ latitude_longitude }}">
+        <input type="hidden" name="map_zoom" id="map_zoom" value="{{ map_zoom }}">
+        <input type="hidden" name="maptuning_done" id="maptuning_done\" value="{{ maptuning_done }}">
+        <input type="hidden" name="latitude" id="latitude" value="{{ latitude }}">
+        <input type="hidden" name="longitude" id="longitude" value="{{ longitude }}">
+    </div>
+</div>

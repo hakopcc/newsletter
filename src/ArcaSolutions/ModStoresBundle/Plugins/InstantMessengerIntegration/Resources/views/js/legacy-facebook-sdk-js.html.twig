@@ -1,0 +1,19 @@
+{% set langStr='en_US' %}
+{% if lang|lower in ['de','ge']  %}
+    {% set langStr='de_DE' %}
+{% elseif lang|lower == 'es' %}
+    {% set langStr='es_ES' %}
+{% elseif lang|lower == 'fr' %}
+    {% set langStr='fr_FR' %}
+{% elseif lang|lower == 'it' %}
+    {% set langStr='it_IT' %}
+{% elseif lang|lower == 'pt' %}
+    {% set langStr='pt_BR' %}
+{% elseif lang|lower == 'tr' %}
+    {% set langStr='tr_TR' %}
+{%  endif %}
+{% set sdkSrc='sdk.js' %}
+{% if app.environment != 'prod' %}
+    {% set sdkSrc='sdk/debug.js' %}
+{% endif %}
+<script async defer src="https://connect.facebook.net/{{ langStr }}/{{ sdkSrc }}"></script>

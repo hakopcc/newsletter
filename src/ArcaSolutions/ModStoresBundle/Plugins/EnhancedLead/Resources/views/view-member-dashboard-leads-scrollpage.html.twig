@@ -1,0 +1,12 @@
+<p>
+    <a href="javascript:" onclick="scrollPage('#leads-list');">{{ "See all leads" }}</a>
+    {% if (item_type|lower == 'listing' and count_unread_leads is not empty) or (item_type|lower !='listing' and newLeads is not empty) %}
+        {% if item_type|lower == 'listing' %}
+            <em class="alert-new"
+                title="{{ newLeadsTip }}">{{ (count_unread_leads > 9 ? "9+" : count_unread_leads) }}</em>
+        {% else %}
+            <em class="alert-new"
+                title="{{ newLeadsTip }}">{{ (newLeads > 9 ? "9+" : newLeads) }}</em>
+        {% endif %}
+    {% endif %}
+</p>

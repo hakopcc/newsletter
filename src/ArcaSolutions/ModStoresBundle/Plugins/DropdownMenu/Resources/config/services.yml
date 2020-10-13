@@ -1,0 +1,15 @@
+parameters:
+    ddm_plugin.navigation.service.class: ArcaSolutions\ModStoresBundle\Plugins\DropdownMenu\Services\NavigationDropdownMenuService
+
+services:
+    ddm_plugin.navigation.service:
+        class: '%ddm_plugin.navigation.service.class%'
+        arguments:
+            - '@multi_domain.information'
+            - '@settings'
+            - '@doctrine'
+            - '@service_container'
+            - '@modules'
+            - '@navigation.service'
+            - '@languagehandler'
+            - '@translator'

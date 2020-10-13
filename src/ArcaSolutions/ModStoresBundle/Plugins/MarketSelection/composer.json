@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/marketselection",
+  "description": "Market Selection",
+  "version": "1.0.1",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^0.5.3"
+  },
+  "extra": {
+    "bundle-name": "MarketSelectionBundle"
+  }
+}

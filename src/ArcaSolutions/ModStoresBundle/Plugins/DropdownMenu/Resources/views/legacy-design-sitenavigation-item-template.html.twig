@@ -1,0 +1,55 @@
+                                <li class="row ui-sortable-handle" id="LI_ID">
+                                    <span class="col-sm-1 col-xs-2 text-center">
+                                        <i class="fa fa-eye-slash ddm-plugin-hidden-on-frontend-icon ddm-plugin-hide" title="{{ 'Menu item hidden on front-end'|trans({},'messages', lang) }}"></i>
+                                        <i class="fa fa-eye ddm-plugin-shown-on-frontend-icon" title="{{ 'Menu item hidden on front-end'|trans({},'messages', lang) }}"></i>
+                                    </span>
+                                    <span class="col-sm-3 col-xs-3">
+                                        <i class="ddm-plugin-dropdown-icon ddm-plugin-hide" aria-hidden="true"></i>
+                                        <input type="text" class="form-control" name="ddm_plugin_navigation[LI_ID][new][label]"
+                                               value="LI_LABEL" id="ddm_plugin_navigation_label_LI_ID"/>
+                                    </span>
+                                    <span class="col-sm-3 col-xs-3">
+                                        <span id="ddm_plugin_navigation_linkto_LI_ID_container" data-unavailable-frontend-pageid="">
+                                            <select id="ddm_plugin_navigation_linkto_LI_ID" class="ddm-plugin-form-select">
+                                                {{selectModuleLink|raw}}
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="col-sm-2 col-xs-2">
+                                        <input type="text" class="form-control"
+                                               name="ddm_plugin_navigation[LI_ID][new][link]"
+                                               id="ddm_plugin_navigation_link_LI_ID"
+                                               value="">
+                                    </span>
+                                    <span class="col-sm-2 col-xs-2 ddm-association">
+                                        <button type="button" data-associationlabel="{{ 'Not associated'|trans({}, 'system', lang) }}" class="btn ddm-plugin-detach-all-sub-menus ddm-plugin-hide">{{ 'Separate all sub menus'|trans({}, 'system', lang) }}</button>
+                                        <button type="button" data-associationlabel="{{ 'Not associated'|trans({}, 'system', lang) }}" class="btn ddm-plugin-detach-sub-menu ddm-plugin-hide">{{ 'Separate this sub menu'|trans({}, 'system', lang) }}</button>
+                                        <span id="ddm_plugin_navigation_parent_LI_ID_container" class="ddm-plugin-parent">
+                                            <select id="ddm_plugin_navigation_parent_LI_ID" class="ddm-plugin-form-select">
+                                                {{parentsDropdown|raw}}
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="col-sm-1 col-xs-1">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][area]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][order]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][label]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][pageId]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][link]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][custom]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][original][parentId]" value="">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][deleted]" id="ddm_plugin_navigation_deleted_LI_ID" value="0">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][area]" id="ddm_plugin_navigation_area_LI_ID" value="header">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][order]" id="ddm_plugin_navigation_order_LI_ID" value="LI_ORDER">
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][pageId]" id="ddm_plugin_navigation_pageid_LI_ID" value="" >
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][custom]" id="ddm_plugin_navigation_custom_LI_ID" value="1" >
+                                        <input type="hidden" name="ddm_plugin_navigation[LI_ID][new][parentId]" id="ddm_plugin_navigation_selected_parent_LI_ID" value="">
+                                        <span class="options">
+                                            <a class=" remove-item" href="javascript:"
+                                               data-current-item-index="LI_ID">
+                                                <i class="fa fa-trash ddm-plugin-remove-icon" title="{{'Remove'|trans({},'system', lang)}}"></i>
+                                            </a>
+                                            <i class="fa fa-bars ddm-plugin-drag-icon"></i>
+                                        </span>
+                                    </span>
+                                </li>

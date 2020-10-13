@@ -1,0 +1,18 @@
+<div class="panel {{ panelType=='form'?'panel-form':'panel-default' }} instant-messenger-integration-plugin">
+    <div class="panel-heading">{{"Instant messaging"|trans}}</div>
+    <div class="panel-body">
+{# Modstores Hooks #}
+{% do HookFire("legacy_instant_messaging_panel_body_twig", {
+    "messenger_data": messengerData,
+    "telegram_data": telegramData,
+    "whatsapp_data": whatsappData,
+    "highlight": highlight
+})%}
+   </div>
+{% do HookFire("legacy_instant_messaging_panel_footer_twig", {
+    "messenger_data": messengerData,
+    "telegram_data": telegramData,
+    "whatsapp_data": whatsappData,
+    "footerData": footerData
+})%}
+</div>

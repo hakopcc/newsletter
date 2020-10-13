@@ -1,0 +1,18 @@
+<div class="form-group row custom-content-row">
+    <div class="col-sm-6 selectize">
+        <label for="plugin_whatsapp_number">{{"WhatsApp"|trans}}</label><label for="plugin_whatsapp_country_code"></label>
+        <select name="plugin[instant_messenger_integration][whatsapp][country_code]" id="plugin_whatsapp_country_code" class="form-control{{(highlight == 'additional' and not whatsappData.country_code)?' highlight':''}}">
+            <option value="">{{"Select WhatsApp phone country code"|trans}}</option>
+            {% for phone_country_code in phone_country_codes -%}
+                {% if phone_country_code.code is defined and phone_country_code.code is not empty and phone_country_code.country is defined and phone_country_code.country is not empty -%}
+                    {%  set optionValue = phone_country_code.code ~ ((phone_country_code.area_code is defined and phone_country_code.area_code is not empty) ? phone_country_code.area_code : '') %}
+                    <option value="{{optionValue}}" {{ (whatsappData.country_code == optionValue) ? 'selected' : '' }}>{{phone_country_code.country}} +{{phone_country_code.code}}{{(phone_country_code.area_code is defined and phone_country_code.area_code is not empty) ? ' (' ~ phone_country_code.area_code ~ ')' : '' }}</option>
+                {% endif %}
+            {% endfor -%}
+        </select>
+    </div>
+    <div class="col-sm-6">
+        <label for="plugin_whatsapp_number">&nbsp;</label>
+        <input type="tel" name="plugin[instant_messenger_integration][whatsapp][number]" value="{{whatsappData.number}}" placeholder="{{"Insert WhatsApp phone number"|trans}}" class="form-control{{(highlight == 'additional' and not whatsappData.number)?' highlight':''}}" id="plugin_whatsapp_number" />
+    </div>
+</div>

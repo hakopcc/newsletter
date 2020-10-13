@@ -1,0 +1,6 @@
+yelp_checkkey:
+    path:     /plugins/yelpintegration/checkyelpkey
+    defaults: { _controller: YelpIntegrationBundle:Default:checkYelpKey }
+    methods: [POST]
+    options:
+        expose: true

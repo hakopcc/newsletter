@@ -1,0 +1,39 @@
+doctrine:
+    orm:
+        entity_managers:
+            domain:
+                mappings:
+                    CommunityForumBundle: null
+framework:
+    translator:
+        paths:
+            - '%kernel.root_dir%/../app/Resources/translations'
+            - '%kernel.root_dir%/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/translations'
+jms_translation:
+    locales: ['de', 'en', 'es', 'fr', 'it', 'pt', 'tr']
+    source_language: 'en'
+    configs:
+        community_forum_plugin:
+            dirs:
+                - "%kernel.root_dir%/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum"
+            output_dir: "%kernel.root_dir%/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/translations"
+            ignored_domains:
+                - "routes"
+                - "units"
+                - "filters"
+                - "recurring"
+                - "import_status"
+                - "import_columns"
+            excluded_names:
+                - "*TestCase.php"
+                - "*Test.php"
+                - "load_location_location.php"
+                - "form-payment-pricing.php"
+                - "form_billing_*.php"
+                - "form_orderpackage.php"
+                - "BaseCategory.php"
+            excluded_dirs:
+                - "Repository"
+            external_translations_dirs:
+                - "%kernel.root_dir%/../app/Resources/translations"
+            output_format: xliff

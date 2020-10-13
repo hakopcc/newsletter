@@ -1,0 +1,16 @@
+<div class="panel panel-form instant-messenger-integration-plugin">
+    <div class="panel-blocked" data-block="instant_messenger_integration" {% if not blockPanel -%}style="display: none;"{% endif -%}>
+        <img src="/{{ getParameter('alias_sitemgr_module') }}/assets/img/locker-panel.svg" alt="Locker">
+        <p>{{ blockFieldListingLevelText|raw }}</p>
+    </div>
+    <div class="panel-heading">{{"Instant messaging"|trans}}</div>
+    <div class="panel-body">
+{# Modstores Hooks #}
+{% do HookFire("legacy_instant_messaging_panel_body_twig", {
+    "messenger_data": messengerData,
+    "telegram_data": telegramData,
+    "whatsapp_data": whatsappData,
+    "highlight": highlight
+})%}
+   </div>
+</div>

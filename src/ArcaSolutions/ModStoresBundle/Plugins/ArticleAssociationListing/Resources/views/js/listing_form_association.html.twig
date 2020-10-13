@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    function setArticleSelectBox() {
+        $.get("{{ path('articleassociation_getarticle') }}", {
+            accountId: "{{ listing.accountId }}"
+        }).done(function (response) {
+            var articles = response.data;
+            if (articles) {
+                var select = "";
+                var attached_articles = JSON.parse("{{ attached_article|raw }}");
+
+                select += "<select name='article_attached[]' multiple>";
+                for (var i = 0; i < articles.length; i++) {
+                    var selected = attached_articles.indexOf(articles[i].id) > -1 ? "selected='selected'" : '';
+                    select += "<option value='" + articles[i].id + "' " + selected + ">" + articles[i].label + "</option>";
+                }
+                select += "</select>";
+
+                $("#articleSelectBox").html(select);
+                $("#articleSelectBox select").selectize({
+                    placeholder: "{{ 'Select an Article'|trans }}",
+                    allowEmptyOption: true,
+                    plugins: {{ level.field is not empty and level.field > 1 ? '[\'remove_button\']' : '[]' }},
+                    maxItems: {{ level.field is not empty ? level.field : 0 }}
+                });
+
+            } else {
+                $("#articleSelectBox").html("<p class=\"alert alert-info\">{{ 'No article available for association with this Listing. In order to be linked to this Listing, the article should not be associated with other Listing and should belong to the same account.'|trans }}</p>");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        setArticleSelectBox();
+    });
+</script>

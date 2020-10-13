@@ -1,0 +1,8 @@
+<div class="panel-footer">
+{% if footerData.renderSaveButton %}
+    <button type="button" class="btn btn-primary action-save" data-loading-text="{{ footerData.dataLoadingText }}" onclick="{{ footerData.onclick }}">{{ footerData.saveButtonLabel }}</button>
+{% else %}
+    &nbsp;
+{% endif %}
+</div>
+

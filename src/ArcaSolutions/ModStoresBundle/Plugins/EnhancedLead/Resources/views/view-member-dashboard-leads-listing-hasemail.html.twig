@@ -1,0 +1,56 @@
+<br>
+<div class="members-panel" id="leads-list">
+    <div class="panel-header header-spaced">
+        <span id="leads-header-panel">{{ countLeads }} {{ countLeads > 1 ? "Leads"|trans : "Lead"|trans }}</span>
+
+        {% if item_status == "A" %}
+            <div class="panel-share">
+                <a {{ shareFacebook|raw }}><i class="fa fa-facebook-square"></i></a>
+                <a {{ shareTwitter|raw }}><i class="fa fa-twitter-square"></i></a>
+                {{ "Share and get more leads"|trans }}
+            </div>
+        {% endif %}
+
+        <button class="button button-sm is-secondary panel-toggler"><i class="fa fa-minus"></i></button>
+    </div>
+    <div class="panel-body">
+        {% if (show_leadsTables and limit > 0) %}
+            <div class="lead-list-filter">
+                <div class="row custom-content-row">
+                    <div class="col-sm-5">{{ select_month|raw }}</div>
+                    <div class="col-sm-5">{{ select_year|raw }}</div>
+                    <div class="col-sm-2">
+                        <button onclick="filterLeads({{ item_id }});" class="button button-md is-primary" full-width="true">{{ "Filter"|trans }}</button>
+                    </div>
+                </div>
+                {% if show_upgrade_link %}
+                    <br>
+                    <div class="viewmore" id="send_sitemgr_section">
+                        <p id="send_sitemgr_message" style="display:none;">&nbsp;</p>
+                        <div id="send_sitemgr_buttom">
+                            {% if limit > 0 %}
+                                <a id="linkUpdateLeads" href="javascript:" onclick="sendSiteMgrLeadsUpgrade({{ item_id }});">{{ "More leads available, click  here to unlock"|trans }}</a>
+                            {% else %}
+                                <a id="linkUpdateLeads" href="javascript:" onclick="sendSiteMgrLeadsUpgrade({{ item_id }});">{{ "Leads available, click here to unlock"|trans }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="content-list" id="leads_list_section">
+            {% if countLeads > 0 %}
+                {{ leadsHtml|raw }}
+            {% endif %}
+
+            {% if countLead > (maxItems + 1) %}
+                <br>
+                <div class="content-viewmore">
+                    <a href="javascript:" class="button button-md is-secondary text-center" full-width="true" id="linkMoreleads" onclick="showmore('item-lead_', 'linkMoreleads', {{ countLead }}, {{ maxItems }}">{{ "View more"|trans }}</a>
+                    <input type="hidden" id="item-lead_" value="{{ maxItems }}">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

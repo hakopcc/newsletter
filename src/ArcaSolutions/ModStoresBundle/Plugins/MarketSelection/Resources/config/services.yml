@@ -1,0 +1,12 @@
+parameters:
+    market.twig.extension.class: ArcaSolutions\ModStoresBundle\Plugins\MarketSelection\Twig\Extension\MarketSelectionExtension
+
+services:
+    market.twig.extension:
+        class: '%market.twig.extension.class%'
+        public: false
+        arguments:
+            - '@service_container'
+            - '@multi_domain.information'
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-25T17:03:53Z" source-language="en" target-language="tr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="2ca3f4f48a6f37b5a9ebe77195e908cdabac0241" resname="Add menu item">
+        <source>Add menu item</source>
+        <target state="new">Add menu item</target>
+        <jms:reference-file line="870">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1948b8a73d1cd0190740c5b39d682043e8e45d4f" resname="Association">
+        <source>Association</source>
+        <target state="new">Association</target>
+        <jms:reference-file line="861">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0d62d40ffc8548c2cc0e29abbed5271b3824d5c3" resname="Configure navigation menu for your site">
+        <source>Configure navigation menu for your site</source>
+        <target state="new">Configure navigation menu for your site</target>
+        <jms:reference-file line="859">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="74341e3c271df3c784e595b804b1f90be0f80429" resname="Label">
+        <source>Label</source>
+        <target state="new">Label</target>
+        <jms:reference-file line="862">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9a5173d69b2432908eb9126a4bf0d75623506ef6" resname="Links to">
+        <source>Links to</source>
+        <target state="new">Links to</target>
+        <jms:reference-file line="864">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="195f5ed99c508ba26ff9e07781a3245a76bda5b7" resname="Menu with sub menus">
+        <source>Menu with sub menus</source>
+        <target state="new">Menu with sub menus</target>
+        <jms:reference-file line="857">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6609f1691853c760d1ffe0a7fe2cf7d681f7f140" resname="Navigation menu">
+        <source>Navigation menu</source>
+        <target state="new">Navigation menu</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/sitemgr-menu.html.twig</jms:reference-file>
+        <jms:reference-file line="858">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3ac2e4af95c01776c5ef87ca02cd618cc810c1ac" resname="Navigation menu configurations">
+        <source>Navigation menu configurations</source>
+        <target state="new">Navigation menu configurations</target>
+        <jms:reference-file line="855">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1d71e8c2a93eb8e12fd8a810d076170f59504f88" resname="Not associated">
+        <source>Not associated</source>
+        <target state="new">Not associated</target>
+        <jms:reference-file line="25">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="26">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="867">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e963907dac5cd5c017869b4c96c18021c9bd058b" resname="Remove">
+        <source>Remove</source>
+        <target state="new">Remove</target>
+        <jms:reference-file line="50">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0afa6f3764fa97a87b90c0e2ba4907f46889775d" resname="Reset navigation menu">
+        <source>Reset navigation menu</source>
+        <target state="new">Reset navigation menu</target>
+        <jms:reference-file line="860">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0aa8a9156000e18b327f6c80709980f2a3a30cbc" resname="Separate all sub menus">
+        <source>Separate all sub menus</source>
+        <target state="new">Separate all sub menus</target>
+        <jms:reference-file line="25">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="869">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="aca1b6790c589982851b9299372078daf5b7ced7" resname="Separate this sub menu">
+        <source>Separate this sub menu</source>
+        <target state="new">Separate this sub menu</target>
+        <jms:reference-file line="26">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="868">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="159cfac54554659a052eb87282452dd270cf2db6" resname="Unav.">
+        <source>Unav.</source>
+        <target state="new">Unav.</target>
+        <jms:reference-file line="866">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="14de06afd103913c502202beb9aa1cd0666bdc53" resname="Unavailable page">
+        <source>Unavailable page</source>
+        <target state="new">Unavailable page</target>
+        <jms:reference-file line="865">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7d9ff4f0de398581c4640bcbb6e536c355a391be" resname="Visibility">
+        <source>Visibility</source>
+        <target state="new">Visibility</target>
+        <jms:reference-file line="863">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

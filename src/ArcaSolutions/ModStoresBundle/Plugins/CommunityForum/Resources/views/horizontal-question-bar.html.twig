@@ -1,0 +1,45 @@
+{% set user = getUser() %}
+
+<div class="forum-bar" has-gap data-bg="brand">
+    <div class="container">
+        <div class="wrapper">
+            <h2 class="text-center heading h-2">{{ 'Start a new topic'|trans }}</h2>
+{% if user %}
+            <form id="form-ask" name="form-ask" action="{{ path(('forum_savequestion')) }}" method="POST" class="topic-content">
+{% else %}
+            <div class="topic-content">
+{% endif %}
+{% if not user %}
+                <h3 class="text-center heading h-3">
+                    <a href="javascript:" data-modal="login" id="navbar-signin" class="bar-link bar-button">{{'Sign in'|trans({},'widgets')}}</a> {{'to start'|trans({},'widgets') }}
+                </h3>
+{% else %}
+                <input class="input" name="title" id="title" placeholder="{{ "Your topic..."|trans }}" value="{{ app.request.get('title') }}" disabled>
+                <div class="topic-detail {{ (not app.request.get('new') is null ? 'all-disabled' : '' ) | raw }}" {{ (not app.request.get('new') is null ? 'style="display: block;"' : '') | raw}}>
+                    {{ forumCategories() }}
+                    {% set locale = app.request.locale|split('_') %}
+                    <div class="topic-description">
+                        {%  set ckeditorConfigAppendJson =  '{"extraPlugins":"autogrow","autoGrow_minHeight":150,"autoGrow_maxHeight":250,"autoGrow_onStartup":true}' %}
+                        {{renderCKEditor('description', 'description' , 3, 30, 'input' , '' , "Tell me more details"|trans , '' , false , locale|first|lower, true, ckeditorConfigAppendJson)}}
+                    </div>
+                    <div class="topic-action">
+                        <button type="button" id="button-question" class="button button-md is-success sendForumQuestion disabled" disabled>
+                            {{ 'Post'|trans }}
+                        </button>
+                        <button type="button" id="button-question-cancel" class="button button-md is-success cancelSendForumQuestion" {{ (not app.request.get('new') is null ? 'disabled' : '' ) | raw }}>
+                            {{ 'Cancel'|trans }}
+                        </button>
+                    </div>
+                </div>
+
+{% endif %}
+{% if not user %}
+            </div>
+{% else %}
+            </form>
+{% endif %}
+        </div>
+    </div>
+</div>
+{{ addJSTwig("CommunityForumBundle::js/category_selector_js.html.twig") }}
+{{ addJSTwig("CommunityForumBundle::js/horizontal-question-bar_js.html.twig") -}}

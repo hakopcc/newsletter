@@ -1,0 +1,73 @@
+{% set banner = getBanner('square') %}
+{% set data = getRecentQuestionsData() %}
+<div class="blog-sidebar">
+
+{% if app.request.get("_route") == 'forum_detail' %}
+    <div class="blog-card" style="padding: 16px">
+        <div class="card-content" style="margin-top:0">
+            <div class="card-popular">
+                <div class="popular-item" style="justify-content: center">
+    {% if not user %}
+                    <h3 class="text-center heading h-5">
+                        <a href="javascript:" data-modal="login" id="navbar-signin" class="bar-link bar-button">{{'Sign in'|trans({},'widgets')}}</a> {{'to start'|trans({},'widgets') }}
+                    </h3>
+    {% else %}
+                    <a href="{{ path('forum_homepage', {}) }}?new" class="paragraph p-1 item-title" style="text-decoration: none">
+                        {{ 'Start a new topic'|trans }}
+                    </a>
+    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if data.popularQuestions %}
+    <div class="blog-card">
+        <div class="heading h-3 card-header" data-trans="{{ 'Popular topics'|trans({}, 'widgets') }}">{{ content.labelPopularQuestions|trans({}, 'widgets') }}</div>
+        <div class="card-content">
+            <div class="card-popular">
+    {% for question in data.popularQuestions -%}
+                <div class="popular-item">
+                    <div class="item-count">{{ loop.index }}</div>
+                    <div class="item-content">
+                        <a href="{{ path('forum_detail', {'friendlyUrl': question.friendlyUrl, "_format" : "html"}) }}" class="paragraph p-2 item-title">
+                            {{ question.title }}
+                        </a>
+        {% if question.categories %}
+                        <div class="paragraph p-3 item-category">
+                            {{ 'in'|trans({}, 'widgets') }}
+            {% for category in question.categories -%}
+                            <a href="{{ utility_generateSearchUrl(null, "forum", category.friendlyUrl) }}" class="link">{{ category.title }}</a>{{ (not loop.last ? ', ' : '') }}
+            {% endfor -%}
+                        </div>
+        {% endif %}
+                    </div>
+                </div>
+    {% endfor -%}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if data.categoriesFeatured %}
+    <div class="blog-card">
+        <div class="heading h-3 card-header" data-trans="{{ 'Categories'|trans({}, 'widgets') }}">
+            {{ content.labelCategories|trans({}, 'widgets') }}
+        </div>
+        <div class="card-content">
+            <div class="card-categories">
+{% for category in data.categoriesFeatured -%}
+                <a href="{{ utility_generateSearchUrl(null, ['forum'], category.friendlyUrl) }}" class="categories-item" title="{{ category.title }}">
+                    {{ category.title }} <span class="pull-right">{{ category.count }}</span>
+                </a>
+{% endfor -%}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if banner is not empty %}
+    {{ banner|raw }}
+{% endif %}
+</div>

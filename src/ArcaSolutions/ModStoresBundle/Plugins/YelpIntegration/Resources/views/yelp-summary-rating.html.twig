@@ -1,0 +1,23 @@
+{% if yelpData.yelpRating is defined %}
+    <div class="yelp-summary-info">
+        <div class="summary-yelp-logo">
+            <a href="{{ yelpData.yelpUrl }}"
+               rel="noopener noreferrer nofollow"
+               target="_blank">
+                <img src="{{ asset('bundles/yelpintegration/img/Yelp_trademark_RGB_outline.png') }}" alt=""/>
+            </a>
+        </div>
+        {% if itemLevelInfo.hasReview %}
+            <div class="yelp-rating" rating="{{ yelpData.yelpRating }}"></div>
+        {% endif %}
+        <div class="summary-rating">
+            <a href="javascript:"
+               rel="noopener noreferrer nofollow"
+               data-ajax="true"
+               data-id="{{ item.id }}"
+               data-modal="review"
+               class="button button-sm is-outline"
+               full-width="true">{{ 'Review this'|trans }}</a>
+        </div>
+    </div>
+{% endif -%}

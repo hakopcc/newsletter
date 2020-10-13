@@ -1,0 +1,3 @@
+<a href="#overview-reviews" class="link">
+    {{ "{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews"|transchoice(reviewsPaginated.total, {"%count%":reviewsPaginated.total}) }}
+</a>

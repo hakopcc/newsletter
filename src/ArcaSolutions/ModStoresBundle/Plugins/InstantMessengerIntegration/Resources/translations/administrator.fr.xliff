@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-27T15:56:15Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="c1872f32c2e2c4e8890d522d37278d18d348a28f" resname="%start_upgrade% Upgrade your plan %end_upgrade% and get access to this content">
+        <source>%start_upgrade% Upgrade your plan %end_upgrade% and get access to this content</source>
+        <target>%start_upgrade% Mettez à niveau votre plan %end_upgrade% et accédez à ce contenu</target>
+        <jms:reference-file line="1470">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a955885e2492631f36f1f737eeb716362b7df3e4" resname="Content available only for %levels% levels.">
+        <source>Content available only for %levels% levels.</source>
+        <target>{1}Contenu disponible uniquement pour %levels% nivel.|]1,Inf]Contenu disponible uniquement pour %levels% niveaux.</target>
+        <jms:reference-file line="1472">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f79855998e2e4d6c54e9d9217be60dc49a55e1c7" resname="Content not available">
+        <source>Content not available</source>
+        <target state="new">Content not available</target>
+        <jms:reference-file line="1468">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

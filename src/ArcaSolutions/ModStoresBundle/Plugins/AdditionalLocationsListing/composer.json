@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/additionallocationslisting",
+  "description": "Additional Locations for Listing",
+  "version": "1.0.7",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^0.5.3"
+  },
+  "extra": {
+    "bundle-name": "AdditionalLocationsListingBundle"
+  }
+}

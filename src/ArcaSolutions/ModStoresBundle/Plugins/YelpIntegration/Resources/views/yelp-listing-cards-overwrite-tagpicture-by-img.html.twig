@@ -1,0 +1,5 @@
+{% if data is not empty and data.yelpImagePath is not empty %}
+    <div class="picture yelp">
+        <img data-src="{{ data.yelpImagePath }}"  alt="{{ data.altText }}" class="lazy">
+    </div>
+{% endif %}

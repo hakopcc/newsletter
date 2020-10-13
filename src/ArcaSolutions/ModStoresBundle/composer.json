@@ -1,7 +1,7 @@
 {
     "name": "arcasolutions/edirectory-plugins",
     "description": "eDirectory Plugins Core",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "proprietary",
     "require": {
         "arcasolutions/edirectory": "^13.0.00"
@@ -10,3 +10,4 @@
         "bundle-name": "ModStoreBundle"
     }
 }
+

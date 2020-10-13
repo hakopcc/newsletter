@@ -1,0 +1,36 @@
+parameters:
+    instantmessenger.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\InstantMessengerService
+    facebook.instantmessenger.data.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\FacebookMessengerDataService
+    whatsapp.instantmessenger.data.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\WhatsappDataService
+    telegram.instantmessenger.data.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\TelegramDataService
+    setting.instantmessenger.domain.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\InstantMessengerDomainSettingService
+    fb_helper.service.class: ArcaSolutions\ModStoresBundle\Plugins\InstantMessengerIntegration\Services\FacebookHelper
+services:
+    facebook.instantmessenger.data.service:
+        class: "%facebook.instantmessenger.data.service.class%"
+        arguments:
+            - '@translator'
+    whatsapp.instantmessenger.data.service:
+        class: "%whatsapp.instantmessenger.data.service.class%"
+        arguments:
+            - '@translator'
+    telegram.instantmessenger.data.service:
+        class: "%telegram.instantmessenger.data.service.class%"
+        arguments:
+            - '@translator'
+    setting.instantmessenger.domain.service:
+        class: "%setting.instantmessenger.domain.service.class%"
+    instantmessenger.service:
+        class: "%instantmessenger.service.class%"
+        arguments:
+            - '@facebook.instantmessenger.data.service'
+            - '@whatsapp.instantmessenger.data.service'
+            - '@telegram.instantmessenger.data.service'
+            - '@setting.instantmessenger.domain.service'
+            - '@doctrine'
+    fb_helper.service:
+        class: "%fb_helper.service.class%"
+        arguments:
+            - '@request_stack'
+            - '@router'
+            - '@settings'

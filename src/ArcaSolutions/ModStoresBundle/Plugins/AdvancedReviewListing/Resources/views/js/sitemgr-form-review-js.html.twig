@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    $(document).on('click', '.btn-delete', function () {
+
+        $btn = $(this);
+        var formData = {
+            'action': 'remove',
+            'galleryId': $btn.data('id')
+        };
+
+        $.post("{{ path('advancedreviewlisting_galleryitem')|raw }}", formData, function (data) {
+
+            if (data.success) {
+                $btn.parents('.gallery-item').slideUp();
+            }
+
+        });
+
+    });
+
+})
+    ;
+</script>

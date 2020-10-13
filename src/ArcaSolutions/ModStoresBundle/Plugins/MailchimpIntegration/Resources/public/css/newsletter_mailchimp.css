@@ -1,0 +1,3 @@
+.wysiwyg #add-new-widget-modal .modal-lg div.insert-widget > div.row > div > .tab-content > div.tab-pane#tab-newsletter.active {
+    display: block;
+}

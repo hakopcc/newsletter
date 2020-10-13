@@ -1,0 +1,19 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+
+{% if extralocs %}
+    <div class="additional-location" id="extralocation">
+        <h4 class="heading h-4">{{ 'Additional Locations'|trans }}</h4>
+        <div class="additional-location-list">
+            {% for extraloc in extralocs %}
+                <div class="additional-location-item">
+                    {{ Utility.address(null, null, extraloc.address, extraloc.address2, extraloc.zipCode, extLocationsIds[loop.index0], extLocationsRows[loop.index0]) }}
+                    <br>
+                    {% if extraloc.latitude and extraloc.longitude %}
+                        <a href="{{ getDirectionsLink(extraloc) }}" class="link">{{ 'Get directions'|trans }} <i
+                                    class="fa fa-location-arrow"></i></a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

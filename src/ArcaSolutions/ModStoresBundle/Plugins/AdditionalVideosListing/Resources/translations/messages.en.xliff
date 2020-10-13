@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-31T13:50:19Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="8f9f9ae1e5f2bb27e88645b533e21875b29d6719" resname="Add video">
+        <source>Add video</source>
+        <target>Add video</target>
+        <jms:reference-file line="50">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3cbe29a64c2bc9a13ac12c49ba50076906e2ea0d" resname="Brief description of your video.">
+        <source>Brief description of your video.</source>
+        <target>Brief description of your video.</target>
+        <jms:reference-file line="104">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+        <jms:reference-file line="38">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="82e1a48df9f09f4776dc66cc718609ea50d9d9d5" resname="Could not load video. Please check your video URL and try again.">
+        <source>Could not load video. Please check your video URL and try again.</source>
+        <target>Could not load video. Please check your video URL and try again.</target>
+        <jms:reference-file line="26">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+        <jms:reference-file line="98">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a4e1e5a8e62e8a0170e7415abc5c95eb84d988d7" resname="How many videos can an owner add?">
+        <source>How many videos can an owner add?</source>
+        <target>How many videos can an owner add?</target>
+        <jms:reference-file line="132">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/AdditionalVideosListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3623f24d81c8f3e8d1c9328564518bc49fb6d99c" resname="Number of videos">
+        <source>Number of videos</source>
+        <target>Number of videos</target>
+        <jms:reference-file line="131">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/AdditionalVideosListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a99fb35f264cf704036b0c22dae526102cbfbe9e" resname="Paste your video URL here. Ex: http://www.youtube.com/watch?v=xxxx">
+        <source>Paste your video URL here. Ex: http://www.youtube.com/watch?v=xxxx</source>
+        <target>Paste your video URL here. Ex: https://www.youtube.com/watch?v=xxxx</target>
+        <jms:reference-file line="101">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="56b71e89fb1079caaadefd0889e9a22e8b0560e3" resname="Videos">
+        <source>Videos</source>
+        <target>Videos</target>
+        <jms:reference-file line="8">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e77a7124691fbc3ff9851674251ac6f261d53d84" resname="Your item already has the maximum number of videos.">
+        <source>Your item already has the maximum number of videos.</source>
+        <target>Your item already has the maximum number of videos.</target>
+        <jms:reference-file line="112">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videopanel.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,230 @@
+.header-contact > .im-integration.header-contact-item, .navbar-content > .phone-contact > .im-integration.header-contact-item {
+    display: flex;
+    align-items: center;
+    &:not(:last-child){
+        margin-right: 8px;
+        &:after{
+            content: "|";
+            padding-left: 12px;
+        }
+    }
+}
+
+.instant-messenger-icon {
+    svg {
+        fill: customColor(color-white, base);
+        display: block;
+        height: 100%;
+    }
+    &[imtype="messenger"] {
+        svg {
+            height: 88%;
+        }
+    }
+    &[imtype="telegram"] {
+        svg {
+            height: 72%;
+        }
+    }
+}
+
+.summary-contact, .summary-content, .summary-contact-grid{
+    .summary-instant-messenger-link {
+        display: flex;
+        align-items: center;
+        a{
+            color: customColor(neutral, base);
+        }
+        .instant-messenger-icon {
+            margin-right: 8px;
+            svg {
+                fill: customColor(neutral, base);
+            }
+        }
+    }
+}
+
+.item-phone{
+    svg {
+        fill: customColor(neutral, base);
+    }
+    @media screen and (min-width: 992px){
+        svg {
+            fill: customColor(color-white, base);
+        }
+    }
+}
+
+.contactus-content {
+    .contactus-info > .im-integration.info-item {
+        a{
+            color: customColor(neutral, base);
+        }
+        .instant-messenger-icon {
+            svg {
+                fill: customColor(brand, base);
+            }
+        }
+    }
+}
+
+.header{
+    .header-contact > .im-integration.header-contact-item {
+        a{
+            color: customColor(color-white, base);
+        }
+        .instant-messenger-icon {
+            svg {
+                fill: customColor(color-white, base);
+            }
+        }
+    }
+
+    .navbar-mobile > .navbar-content > .phone-contact  > .im-integration.header-contact-item{
+        a{
+            color: customColor(neutral, base);
+        }
+        .instant-messenger-icon {
+            svg {
+                fill: customColor(neutral, base);
+            }
+        }
+    }
+}
+
+.footer {
+    .footer-item-content > .im-integration.footer-info, .footer-contact > .im-integration.footer-info{
+        a{
+            color: customColor(color-white, base);
+        }
+        .instant-messenger-icon {
+            svg {
+                fill: customColor(color-white, base);
+            }
+        }
+    }
+
+    &[is-inverse="true"]{
+        .footer-item-content > .im-integration.footer-info, .footer-contact > .im-integration.footer-info{
+            a{
+                color: customColor(neutral, base);
+            }
+            .instant-messenger-icon {
+                svg {
+                    fill: customColor(neutral, base);
+                }
+            }
+        }
+    }
+    &[data-type="3"] {
+        .footer-contact > .im-integration.footer-info.line-break {
+            flex-basis: 100%;
+            height: 0;
+        }
+        .footer-contact > .im-integration.footer-info{
+            display: flex;
+            margin: 0 8px;
+        }
+    }
+}
+
+[data-bg="brand"] {
+    .instant-messenger-icon {
+        svg {
+            fill: customColor(brand, base);
+        }
+    }
+}
+
+[data-bg="neutral"] {
+    .instant-messenger-icon {
+        svg {
+            fill: customColor(neutral, transp-5);
+        }
+    }
+}
+
+[data-bg="base"] {
+    .instant-messenger-icon {
+        svg {
+            fill: customColor(color-white, base);
+        }
+    }
+}
+
+.instant-messenger-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px;
+    background: #7c7c7c;
+    fill: white;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    text-align: center;
+    position: fixed;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &[imtype="whatsapp"] {
+        background: #4dc247;
+    }
+
+    &[imtype="messenger"] {
+        background: #0078FF;
+
+        svg{
+            width: 34px;
+        }
+    }
+
+    &[imtype="telegram"] {
+        background: #0088cc;
+
+        svg{
+            width: 30px;
+        }
+    }
+
+    &[data-position="top-left"] {
+        top: 20px;
+        left: 20px;
+    }
+
+    &[data-position="top-right"] {
+        top: 20px;
+        right: 20px;
+    }
+
+    &[data-position="bottom-left"] {
+        bottom: 20px;
+        left: 20px;
+    }
+
+    &[data-position="bottom-right"] {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    &:hover{
+        box-shadow: 0 0 6px 4px rgba(0,0,0,0.4);
+    }
+
+    svg{
+        width: 40px;
+        height: 40px;
+        display: block;
+    }
+}
+
+.pd-t .instant-messenger-button {
+    &[data-position="top-left"] {
+        top: 60px;
+    }
+
+    &[data-position="top-right"] {
+        top: 60px;
+    }
+}

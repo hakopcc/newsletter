@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-31T13:11:53Z" source-language="en" target-language="pt" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a6b90f26ef802cbade84e95f82c731007d8fccb3" resname="Add a new Event">
+        <source>Add a new Event</source>
+        <target>Adiconar novo Evento</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="654d7e5942ddc749dabde6867ef627992e7b3e9f" resname="Associate an event to this listing">
+        <source>Associate an event to this listing</source>
+        <target>Associar um evento a este Anúncio</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="02cd94d84990f6fb84d078279cd75372c900d303" resname="Associate an existing Event with this Listing">
+        <source>Associate an existing Event with this Listing</source>
+        <target>Associe um Evento existente a este Anúncio</target>
+        <jms:reference-file line="19">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e8e15b53307f6e5bd3330afd2720d0fab3d20e83" resname="Associate with a Listing">
+        <source>Associate with a Listing</source>
+        <target>Associado a um Anúncio</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-event.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-event.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ad8919ace091b14011c6439cfd5e1707b58f5abd" resname="Event">
+        <source>Event</source>
+        <target>Evento</target>
+        <jms:reference-file line="372">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/EventAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="94722ae6c24c3537617b9817428965aaa74d99c1" resname="Event Association">
+        <source>Event Association</source>
+        <target>Associação de Evento</target>
+        <jms:reference-file line="241">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/EventAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ffadcf9bce638c41c1b5d601bc4ac17a9d5c4520" resname="Event {0} need to have the same owner of the listing.">
+        <source>Event {0} need to have the same owner of the listing.</source>
+        <target>Evento {0} precisa possuir o mesmo dono que o Anúncio.</target>
+        <jms:reference-file line="794">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Services/EventAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c9ce2eb52d7dba177132ddc44c4df4cca0839202" resname="Leave it blank to unlink the Event.">
+        <source>Leave it blank to unlink the Event.</source>
+        <target>Deixe em branco para desassociar o evento.</target>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-event.html.twig</jms:reference-file>
+        <jms:reference-file line="25">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/event_form_association.html.twig</jms:reference-file>
+        <jms:reference-file line="82">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/event_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5308edcdf8ccdd83d9717c885f7fec22437ec589" resname="Listing event association updated successfully.">
+        <source>Listing event association updated successfully.</source>
+        <target>Associação de evento ao Anúncio atualizada com sucesso.</target>
+        <jms:reference-file line="808">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Services/EventAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3e07c79c90f90d74b409ac8badf5e3dace1deb77" resname="No event available for association with this Listing. In order to be linked to this Listing, the event should not be associated with other Listing and should belong to the same account.">
+        <source>No event available for association with this Listing. In order to be linked to this Listing, the event should not be associated with other Listing and should belong to the same account.</source>
+        <target>Nenhum evento disponível para associação a este Anúncio. Para estar vinculado a este anúncio o evento não deve estar associado a outro anúncio e deve pertencer à mesma conta.</target>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/listing_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ecbbdb66e25ebccc812121c053ccc167ae32bde5" resname="No listings available for association with this Event. In order to be linked to this Event, the Listing should not be associated with more than the permitted number of Events and should belong to the same account.">
+        <source>No listings available for association with this Event. In order to be linked to this Event, the Listing should not be associated with more than the permitted number of Events and should belong to the same account.</source>
+        <target>Nenhum Anúncio disponível para associação com este evento. Para que seja associado a este evento, o Anúncio não deve estar associado a um número de eventos maior que o permitido pelo nível, e deve pertencer à mesma conta.</target>
+        <jms:reference-file line="53">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/event_form_association.html.twig</jms:reference-file>
+        <jms:reference-file line="84">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/event_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5f7f89fa6d20f58e612708599af09a740e296473" resname="Number of Events the listing owner is able to associate">
+        <source>Number of Events the listing owner is able to associate</source>
+        <target>Número máximo de eventos que o dono do Anúncio pode associar</target>
+        <jms:reference-file line="242">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/EventAssociationListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="11251c2a67cdc7b448e9f2b31aa0f88a06935ef9" resname="Select an Event">
+        <source>Select an Event</source>
+        <target>Selecione um Evento</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/listing_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e91b7f4e3e7ba96b28965bc6af80a2d18bb376ff" resname="The event is linked from the listing.">
+        <source>The event is linked from the listing.</source>
+        <target>O evento está vinculado ao Anúncio.</target>
+        <jms:reference-file line="44">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d33d59e38bd7033b737c9d1bfa15f0f798f814bb" resname="Type the Listing name for suggestions">
+        <source>Type the Listing name for suggestions</source>
+        <target>Digite o nome do Anúncio para sugestões</target>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/js/event_form_association.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="59cfbe7cb05cfab685fcb6d43204894a40365ada" resname="Unable to acquire available events for association with this Listing due to an internal unexpected behavior.">
+        <source>Unable to acquire available events for association with this Listing due to an internal unexpected behavior.</source>
+        <target>Não foi possível obter os eventos disponíveis para associação a este Anúncio devido a um comportamento interno inesperado.</target>
+        <jms:reference-file line="621">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Services/EventAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2bcd08bf0044f330b755fdbac5f3e4ac32cd2f13" resname="Unexpected error.">
+        <source>Unexpected error.</source>
+        <target>Erro inesperado.</target>
+        <jms:reference-file line="709">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Services/EventAssociationService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" resname="or">
+        <source>or</source>
+        <target>ou</target>
+        <jms:reference-file line="18">/../src/ArcaSolutions/ModStoresBundle/Plugins/EventAssociationListing/Resources/views/form-sitemgr-listing.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

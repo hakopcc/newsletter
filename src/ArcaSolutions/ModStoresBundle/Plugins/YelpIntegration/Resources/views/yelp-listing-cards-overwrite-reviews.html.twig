@@ -1,0 +1,13 @@
+{% if data.yelpRating is defined %}
+    <div class="reviews yelp">
+        <div class="reviews-stars">
+            <div class="yelp-rating" rating="{{ data.yelpRating }}"></div>
+            <div class="yelp-reviews-count">{{ "{0}No Reviews|{1}Based on %count% Review|]1,Inf[Based on %count% Reviews"|transchoice(data.yelpReviewCount, {"%count%":data.yelpReviewCount}) }}</div>
+        </div>
+        <div class="yelp-logo">
+            <a href="{{ data.yelpUrl }}" rel="noopener noreferrer nofollow" target="_blank">
+                <img src="{{ asset('bundles/yelpintegration/img/Yelp_trademark_RGB_outline.png') }}" alt=""/>
+            </a>
+        </div>
+    </div>
+{% endif -%}

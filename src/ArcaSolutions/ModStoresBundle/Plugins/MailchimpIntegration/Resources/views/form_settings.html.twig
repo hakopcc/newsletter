@@ -1,0 +1,37 @@
+<div class="panel panel-default" id="mailchimp-panel">
+
+    <div class="panel-heading">
+        {{ "MailChimp Integration Settings"|trans }}
+    </div>
+
+    <div class="panel-body form-horizontal">
+
+        <div class="form-group row">
+            <div class="control-label col-sm-3">
+                {{ "MailChimp key"|trans }}
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" name="mailchimp_apikey" value="{{ mailchimp_apikey }}">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="control-label col-sm-3">
+                {{ "MailChimp list"|trans }}
+            </div>
+            <div class="col-sm-8">
+                {{ mailchimp_list|raw }}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[mailchimp_integration]" value="1" class="btn btn-primary action-save"
+                data-loading-text="{{ "Please, wait..."|trans }}">
+            {{ "Save changes"|trans }}
+        </button>
+    </div>
+
+</div>

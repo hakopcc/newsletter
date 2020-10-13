@@ -1,0 +1,9 @@
+<div class="review-gallery">
+    {% for photo in gallery -%}
+        {% set url = asset(imagePath(photo.image), 'domain_images') -%}
+        {% set url_filtered = url | imagine_filter('small') -%}
+        <a href="{{ url }}" class="review-gallery-item fancybox">
+            <img src="{{ url_filtered }}">
+        </a>
+    {% endfor -%}
+</div>

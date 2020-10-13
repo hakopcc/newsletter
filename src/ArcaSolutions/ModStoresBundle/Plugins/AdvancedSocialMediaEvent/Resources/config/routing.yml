@@ -1,0 +1,3 @@
+instagram_events:
+    path:     /instagram
+    defaults: { _controller: AdvancedSocialMediaEventBundle:Default:instagram }

@@ -1,0 +1,8 @@
+{% if displayInstantMessagingLinks is defined and displayInstantMessagingLinks == 'on' and instantMessengerDataArray is defined%}
+    {% for instantMessengerData in instantMessengerDataArray -%}
+    <div class="im-integration info-item">
+        <div class="icon icon-md instant-messenger-icon" imtype="{{instantMessengerData.type}}">{{instantMessengerData.iconSvgRawContent|raw}}</div>
+        <a target="_blank" href="{{instantMessengerData.hRef}}">{{instantMessengerData.value}}</a>
+    </div>
+    {% endfor -%}
+{% endif %}

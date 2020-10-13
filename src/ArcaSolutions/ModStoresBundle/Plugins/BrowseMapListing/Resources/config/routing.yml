@@ -1,0 +1,3 @@
+browsemaplisting_data:
+    path:     /plugins/browsemap/data
+    defaults: { _controller: BrowseMapListingBundle:Default:data }

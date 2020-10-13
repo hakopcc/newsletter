@@ -1,0 +1,7 @@
+articleassociation_getlisting:
+    path:     /plugins/articleassociation/listing/list
+    defaults: { _controller: ArticleAssociationListingBundle:Default:listListing }
+
+articleassociation_getarticle:
+    path:     /plugins/articleassociation/article/list
+    defaults: { _controller: ArticleAssociationListingBundle:Default:listArticle }

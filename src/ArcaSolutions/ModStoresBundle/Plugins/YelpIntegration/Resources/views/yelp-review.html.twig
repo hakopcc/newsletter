@@ -1,0 +1,41 @@
+{% if yelpReview is not empty %}
+    {% import "::blocks/utility/detail.html.twig" as UtilityDetail -%}
+
+    {% for review in yelpReview -%}
+        <div class="reviews-item">
+            <div class="review-picture">
+                {% if review.user is not empty %}
+                    <div class="author-picture">
+                        {% if review.user.image_url is not empty %}
+                            <img src="{{ review.user.image_url }}"
+                                 alt="{{ review.user.name }}">
+                        {% else %}
+                            <i class="fa fa-user"></i>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <div class="yelp-logo">
+                    <a target="_blank" href="{{ review.url }}" rel="noopener noreferrer nofollow">
+                        <img src="{{ asset('bundles/yelpintegration/img/yelp-logo.png') }}" alt=""/>
+                    </a>
+                </div>
+            </div>
+            <div class="review-content">
+                <div class="review-author">
+                    {% if review.user is not empty %}
+                        <a rel="noopener noreferrer nofollow" href="{{ review.user.profile_url }}">
+                            {{ review.user.name }}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="review-date">
+                    {{ date(review.time_created)|localized_date('MMMM dd, yyyy') }}
+                    <div class="yelp-rating" rating="{{review.rating}}"></div>
+                </div>
+                <div class="review-description">
+                    {{ review.text }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

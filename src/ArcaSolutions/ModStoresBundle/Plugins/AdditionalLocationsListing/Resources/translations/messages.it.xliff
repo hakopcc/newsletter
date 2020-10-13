@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-27T15:56:50Z" source-language="en" target-language="it" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a408a19568280633ee57be22e417f6266595c54b" resname="-22.3344628">
+        <source>-22.3344628</source>
+        <target state="new">-22.3344628</target>
+        <jms:reference-file line="795">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4786bf14f4b87d2bcc28851a1908d890acd36986" resname="-49.068844">
+        <source>-49.068844</source>
+        <target state="new">-49.068844</target>
+        <jms:reference-file line="796">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5e42ec87299d214e81a2b655fd8226b72a516918" resname="Add Additional Location">
+        <source>Add Additional Location</source>
+        <target>Aggiungi posizione aggiuntiva</target>
+        <jms:reference-file line="1469">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="58c12453b7fbbbb728ae5c46fd11d91b425e86d2" resname="Additional Locations">
+        <source>Additional Locations</source>
+        <target>Posizioni aggiuntive</target>
+        <jms:reference-file line="225">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+        <jms:reference-file line="953">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+        <jms:reference-file line="974">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/Resources/views/multiplelocations-listingdetail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d5b337ccf58db3ad688bd886fc150753e8b44dac" resname="Additional locations limit exceeded">
+        <source>Additional locations limit exceeded</source>
+        <target>Limite di posizioni aggiuntive superato</target>
+        <jms:reference-file line="19">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/Resources/views/js/sitemgr-modules.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d70f93df5e8f9b55be44fbeee9d203972e3383d4" resname="Address">
+        <source>Address</source>
+        <target>Indirizzo</target>
+        <jms:reference-file line="793">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+        <jms:reference-file line="985">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3611c499155db7df0ceac3835dd2da49e05c986a" resname="Address 2">
+        <source>Address 2</source>
+        <target>Indirizzo 2</target>
+        <jms:reference-file line="1008">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3c134f2b71a03bab65cae932b13cd1dbad159130" resname="Allow owners to add additional locations reference to their listings?">
+        <source>Allow owners to add additional locations reference to their listings?</source>
+        <target>Consentire ai proprietari di aggiungere ulteriori posizioni di riferimento ai loro annunci?</target>
+        <jms:reference-file line="226">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a65e95adbc5a8a5901a9a9be3e97d5f1c3bca6f6" resname="Apartment, suite, unit, building, floor, etc.">
+        <source>Apartment, suite, unit, building, floor, etc.</source>
+        <target>Appartamento, suite, unità, edificio, piano, ecc.</target>
+        <jms:reference-file line="1017">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="648d80584d1a53d5ab0a2c56cd5c7fbbe2eac04f" resname="Get directions">
+        <source>Get directions</source>
+        <target>Ottenere direzioni</target>
+        <jms:reference-file line="12">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/Resources/views/multiplelocations-listingdetail.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84245efa36850ffaa8ac8a3589254adbf0973118" resname="See more places">
+        <source>See more places</source>
+        <target>Vedi più posti</target>
+        <jms:reference-file line="1510">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="43c8c2509cf0534ad3a1b085dcb016117e3efd5d" resname="Street Address, P.O. box">
+        <source>Street Address, P.O. box</source>
+        <target>Indirizzo, P.O. scatola</target>
+        <jms:reference-file line="995">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2620d4a5e26f4198cb31e833ac6352de9237535d" resname="Wait, Loading...">
+        <source>Wait, Loading...</source>
+        <target>Aspetta, Caricamento in corso ...</target>
+        <jms:reference-file line="1101">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="35d55624b9812a62c906cad6dd70c1086fc0aff2" resname="Zip Code">
+        <source>Zip Code</source>
+        <target>Cap</target>
+        <jms:reference-file line="1020">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+        <jms:reference-file line="794">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalLocationsListing/AdditionalLocationsListingBundle.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

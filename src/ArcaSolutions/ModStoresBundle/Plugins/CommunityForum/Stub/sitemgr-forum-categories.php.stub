@@ -1,0 +1,179 @@
+<?
+/*
+* # Admin Panel for eDirectory
+* @copyright Copyright 2014 Arca Solutions, Inc.
+* @author Basecode - Arca Solutions, Inc.
+*/
+
+# ----------------------------------------------------------------------------------------------------
+# * FILE: /ed-admin/content/forum/categories/index.php
+# ----------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------
+# LOAD CONFIG
+# ----------------------------------------------------------------------------------------------------
+
+include("../../../../conf/loadconfig.inc.php");
+
+# ----------------------------------------------------------------------------------------------------
+# VALIDATE FEATURE
+# ----------------------------------------------------------------------------------------------------
+/* ModStores Hooks */
+if (!HookExist( "forum_validation" )) {
+    header("Location: ".DEFAULT_URL."/".SITEMGR_ALIAS."/");
+    exit;
+}
+
+# ----------------------------------------------------------------------------------------------------
+# SESSION
+# ----------------------------------------------------------------------------------------------------
+sess_validateSMSession();
+permission_hasSMPerm();
+
+mixpanel_track("Accessed section forum categories");
+
+/** @var \Symfony\Component\DependencyInjection\ContainerInterface $container */
+$container = SymfonyCore::getContainer();
+
+$url_redirect = "".DEFAULT_URL."/".SITEMGR_ALIAS."/content/forum/categories";
+$url_base = "".DEFAULT_URL."/".SITEMGR_ALIAS."";
+$sitemgr = 1;
+$table_category = "QuestionCategory";
+$manageModuleFolder = "forum";
+$message_no_record = LANG_SITEMGR_QUESTION_CATEGORY_NORECORD;
+
+$url_search_params = system_getURLSearchParams((($_POST)?($_POST):($_GET)));
+
+# ----------------------------------------------------------------------------------------------------
+# AUX
+# ----------------------------------------------------------------------------------------------------
+extract($_GET);
+extract($_POST);
+
+$module = 'question';
+$isListingTemplate = false;
+# ----------------------------------------------------------------------------------------------------
+# SUBMIT
+# ----------------------------------------------------------------------------------------------------
+
+//Delete
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //Delete category
+    if ($action == "delete") {
+        $category = new \ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Entity\Internal\QuestionCategory($_POST['id']);
+        $category->delete();
+        $message = 1;
+        header("Location: ".DEFAULT_URL."/".SITEMGR_ALIAS."/content/forum/categories/index.php?message=".$message."&screen=$screen&letter=$letter".(($url_search_params) ? "&$url_search_params" : "")."");
+        exit;
+    }
+}
+
+include(INCLUDES_DIR."/code/add_mult_categories.php");
+
+# ----------------------------------------------------------------------------------------------------
+# PAGE BROWSING
+# ----------------------------------------------------------------------------------------------------
+$isNullSegment = "";
+if (!($category_id > 0)){
+    $isNullSegment = "ISNULL(category_id) OR ";
+}
+$pageObj  = new pageBrowsing("QuestionCategory", $screen, RESULTS_PER_PAGE, "title, id", "title", $letter, $isNullSegment ."category_id = ".db_formatNumber($category_id), "id, `title`, enabled");
+$categories = $pageObj->retrievePage("array");
+
+$paging_url = DEFAULT_URL."/".SITEMGR_ALIAS."/content/forum/categories/index.php?category_id=".$category_id;
+
+# ----------------------------------------------------------------------------------------------------
+# HEADER
+# ----------------------------------------------------------------------------------------------------
+include(SM_EDIRECTORY_ROOT."/layout/header.php");
+?>
+<div id="loading_ajax" class="alert alert-loading alert-loading-fullscreen" style="display: none;">
+    <img src="<?= DEFAULT_URL; ?>/<?= SITEMGR_ALIAS ?>/assets/img/loading-128.gif" class="alert-img-center">
+</div>
+<main class="main-dashboard" id="view-content-list">
+    <nav class="main-sidebar">
+        <?php include(SM_EDIRECTORY_ROOT."/layout/sidebar-dashboard.php"); ?>
+        <div class="sidebar-submenu">
+            <?php include(SM_EDIRECTORY_ROOT . "/layout/sidebar.php"); ?>
+        </div>
+    </nav>
+    <div class="main-wrapper">
+        <?php include(SM_EDIRECTORY_ROOT."/layout/navbar.php"); ?>
+        <?php include(SM_EDIRECTORY_ROOT."/layout/submenu-content.php"); ?>
+        <div class="main-content list-item-content" content-full="true">
+            <?php
+            require(SM_EDIRECTORY_ROOT."/registration.php");
+            require(EDIRECTORY_ROOT."/includes/code/checkregistration.php");
+            ?>
+
+            <? if ($categories) { ?>
+                <div class="list-content" id="manageCategory">
+                    <? include(INCLUDES_DIR."/lists/list-categories.php"); ?>
+
+                    <div class="content-control-bottom pagination-responsive">
+                        <? include(INCLUDES_DIR."/lists/list-pagination.php"); ?>
+                    </div>
+                </div>
+            <? } else {
+                include(SM_EDIRECTORY_ROOT."/layout/norecords.php");?>
+            <? } ?>
+        </div>
+    </div>
+    <input type="hidden" id="module" value="<?=$module?>">
+</main>
+<?php
+include(INCLUDES_DIR."/modals/modal-delete-category.php");
+include(INCLUDES_DIR."/modals/modal-add-mult-categories.php");
+include(INCLUDES_DIR . '/modals/modal-add-category.php');
+
+# ----------------------------------------------------------------------------------------------------
+# FOOTER
+# ----------------------------------------------------------------------------------------------------
+
+$twig = $container->get("twig");
+if($twig!==null) {
+    try {
+        $isOrder = string_strpos($_SERVER['PHP_SELF'], '/order_') !== false;
+
+        $isoLang = 'en';
+        /** @var \ArcaSolutions\CoreBundle\Services\LanguageHandler $languageHandler */
+        $languageHandler = $container->get('languagehandler');
+        if ($languageHandler !== null) {
+            $locale = null;
+            if ($isOrder) {
+                $domainSettings = $container->get('multi_domain.information');
+                $locale = $domainSettings!==null?$domainSettings->getLocale():'en';
+                unset($domainSettings);
+            } else {
+                $mainSettings = $container->get('settings');
+                $locale = $mainSettings!==null?$mainSettings->getSetting('sitemgr_language'):'en';
+                unset($mainSettings);
+            }
+            $isoLang = $languageHandler->getISOLang($locale);
+            unset($locale);
+        }
+        unset($languageHandler);
+
+        $jsParamsArray = array(
+            'locale' => $isoLang,
+            'isOrder' => $isOrder,
+            'isListingTemplate' => $isListingTemplate,
+            'maxCategoryAllowed' => ($module === 'listing') ? LISTING_MAX_CATEGORY_ALLOWED : MAX_CATEGORY_ALLOWED,
+            'domainId' => SELECTED_DOMAIN_ID,
+            'defaultUrl' => DEFAULT_URL
+        );
+        $twig->render('CommunityForumBundle::legacy-sitemgr-content-forum-categories-populate-jshandler.html.twig', array('paramArray' =>$jsParamsArray));
+    } catch (\Exception $e) {
+        $logger = $container->get("logger");
+        if($logger!==null) {
+            $logger->critical('Unexpected error on web/sitemgr/content/forum/categories/index.php', ['exception' => $e]);
+        } else {
+            throw $e;
+        }
+        unset($logger);
+    }
+}
+unset($twig);
+
+include(SM_EDIRECTORY_ROOT."/layout/footer.php");
+?>

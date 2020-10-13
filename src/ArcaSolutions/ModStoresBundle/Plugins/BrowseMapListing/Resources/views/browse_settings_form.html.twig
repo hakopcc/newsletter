@@ -1,0 +1,72 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{ "Browse by Map Settings"|trans }}
+    </div>
+
+    <div class="panel-body">
+        <div class="checkbox">
+            <label for="browsebymap_colorcoded">
+                <input type="checkbox" name="browsebymap_colorcoded" id="browsebymap_colorcoded"
+                       value="y" {{ browsebymap_colorcoded == 'y' ? 'checked': '' }}>
+                {{ "Show map color coded by density of listings. The countries or states that have more listings will have more contrast in their color."|trans }}
+            </label>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-sm-6 selectize">
+                <label for="browsebymap_map">{{ "Map"|trans }}</label>
+                <select name="browsebymap_map" id="browsebymap_map">
+                    {% for key, ground in maps %}
+                        <optgroup label="{{ key }}">
+                            {% for mapKey, mapName in ground %}
+                                <option {{ browsebymap_map == mapKey ? 'selected' : '' }}
+                                        value="{{ mapKey }}">{{ mapName }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <b class="color-box" data-id="browsebymap_mapColor"
+                           style="background-color:#{{ browsebymap_mapColor }}"><span></span></b>
+                        <input type="hidden" id="browsebymap_mapColor" name="browsebymap_mapColor"
+                               value="{{ browsebymap_mapColor }}">
+                    </div>
+                    <label for="col-xs-10 control-label">
+                        {{ "Map Color"|trans }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <b class="color-box" data-id="browsebymap_mapBackgroundColor"
+                           style="background-color:#{{ browsebymap_mapBackgroundColor }}"><span></span></b>
+                        <input type="hidden" id="browsebymap_mapBackgroundColor"
+                               name="browsebymap_mapBackgroundColor"
+                               value="{{ browsebymap_mapBackgroundColor }}">
+                    </div>
+                    <label class="col-xs-10 control-label">
+                        {{ "Map Background Color"|trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <button type="submit" class="btn btn-primary action-save" name="save_plugin[browse_map_listing]" value="1" data-loading-text="{{ "Please, wait..."|trans }}">
+            {{ "Save changes"|trans }}
+        </button>
+    </div>
+
+</div>

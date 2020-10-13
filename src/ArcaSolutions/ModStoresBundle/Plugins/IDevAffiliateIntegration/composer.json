@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/idevaffiliateintegration",
+  "description": "iDevAffiliate Integration",
+  "version": "1.1.2",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^0.5.3"
+  },
+  "extra": {
+    "bundle-name": "IDevAffiliateIntegrationBundle"
+  }
+}

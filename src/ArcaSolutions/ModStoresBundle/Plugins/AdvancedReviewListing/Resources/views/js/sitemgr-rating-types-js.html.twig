@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        let ratingCount = parseInt($('#rating-type-count').attr('value'));
+        let maxItemsAllowed = parseInt($('#rating-type-max-items').attr('value'));
+        let restRatingItems = maxItemsAllowed;
+        let incrementInput = ratingCount;
+
+        let ratingItem = () => {
+            incrementInput++;
+            checkMaxAllowedItems();
+
+            return `
+                <div class="rating-types-item">
+                    <input type="text" name="rating[new][${incrementInput}]" class="form-control" placeholder="Ex: Service" id="rating${incrementInput}">
+                    <button class="rating-types-remove-button" type="button"><i class="fa fa-close"></i></button>
+                </div>
+            `;
+        };
+
+        let checkMaxAllowedItems = () => {
+            if(restRatingItems == 0){
+                $('.rating-types-placeholder').hide();
+            } else {
+                $('.rating-types-placeholder').show();
+            }
+        }
+
+        if(ratingCount === maxItemsAllowed){
+            $('.rating-types-placeholder').hide();
+        }
+
+        $(document).on('click', '.rating-types-placeholder', function(e){
+            e.preventDefault();
+
+            restRatingItems--;
+            $(this).before(ratingItem());
+        });
+
+        $(document).on('click', '.rating-types-remove-button', function(e){
+            e.preventDefault();
+
+            restRatingItems++;
+            incrementInput--;
+            checkMaxAllowedItems();
+            $(this).parent().remove();
+        });
+    });
+</script>

@@ -1,0 +1,7 @@
+<div class="non-yelp">
+    {% if data.reviewsPaginated.total > 0 -%}
+    <div class="reviews-count">{{ "{0}No Reviews|{1}Based on %count% Review|]1,Inf[Based on %count% Reviews"|transchoice(reviewsPaginated.total, {"%count%":reviewsPaginated.total}) }}</div>
+    {% else %}
+    <div class="first-to-write">{{ 'Be the first to '|trans }}<a href="#" class="link" data-modal="review" data-id="{{ data.listingId }}">{{ 'write a %title% review'|trans({'%title%': data.edirectoryTitleForReviews}) }}</a></div>
+    {% endif -%}
+</div>

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        let sendForumAnswerClickHandler = function (event) {
+            event.preventDefault();
+            $(".sendForumAnswer").off("click", sendForumAnswerClickHandler);
+            var info = {
+                destiny: window.location.href
+            };
+
+            $.post("{{ path('forum_saveanswer')|raw }}", info).done(function (response) {
+                if ('login' == response.status) {
+                    var el = $(".modal-sign[is-page!='true']");
+                    el.toggleClass('is-open').fadeToggle(400);
+                    el.find("input[name='action']").val('');
+                    el.find("input[name='item_id']").val('');
+                    moveSelectedArrow(el);
+                    setContentHeight(el);
+                }
+                $(".sendForumAnswer").on("click", sendForumAnswerClickHandler);
+            });
+        };
+
+        $(".sendForumAnswer").on("click", sendForumAnswerClickHandler);
+
+        $('#write-an-answer').fadeIn();
+    });
+</script>

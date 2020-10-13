@@ -1,0 +1,26 @@
+    {% if (table_category == "ListingCategory") -%}
+        <div class="form-group" id="pin">
+            <label for="">{{ "Map Pin"|trans({},'messages',locale) }} ({{ pin_width }}px x {{ pin_height }}px) <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right" title='{{ "This pin will be displayed in tailored map widget in coordinates that a listing that have the category where."|trans({},'messages',locale) }}'></i></label>
+            <div class="image-thumb">
+                <span class="btn btn-sm btn-danger delete pinImageDeleteButton hidden" id="btn-delete-pin" data-id="">
+                    <i class="icon-ion-ios7-trash-outline"></i>
+                </span>
+                <div id="pin-thumb" class="files" style="min-height: 38px;">
+                </div>
+            </div>
+            <div class="drag-file-block" id="category-pin">
+                <input type="file" name="pin-image" class="file-noinput"
+                       onchange="sendCategoryPin('category', '{{ app.request.uri }}', 'uploadPin');">
+                <div class="drag-file-recommended">{{ 'Recommended dimensions' | trans({},'messages',locale) }} {{ pin_width }}x{{ pin_height }}px. {{ "Maximum file size"|trans({},'messages',locale) }} {{ max_size }} MB. {{ "Animated .gif isn't supported." }}</div>
+                <div class="drag-file-recommended"><small>{{ "Download"|trans({},'messages',locale) }}
+                    <a download="pin-marker.png" href="/bundles/tailoredmaplisting/img/example_pin.png">
+                        {{ "Sample Pin Image"|trans({},'messages',locale) }}
+                    </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        {{ addJSTwigWithParams("TailoredMapListingBundle::js/sitemgr-form-category-tailored-js.html.twig", { 'locale': locale, 'defaultUrl': defaultUrl, 'domainId': domainId, 'maximumFileSize': max_size }) }}
+
+    {% endif -%}

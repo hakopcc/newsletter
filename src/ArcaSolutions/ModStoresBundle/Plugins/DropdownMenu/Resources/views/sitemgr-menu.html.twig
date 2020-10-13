@@ -1,0 +1,4 @@
+<a href="/{{ getParameter('alias_sitemgr_module') ~ "/design/site-navigation" }}"
+   class="submenu-link {{ getParameter('alias_sitemgr_module') ~ "/design/site-navigation" in app.request.requestUri ? 'is-active' : '' }}">
+    {{ "Navigation menu"|trans({},'system',lang) }}
+</a>

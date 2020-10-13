@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        {{ "iDev Affiliate Integration Settings"|trans }}
+    </div>
+
+    <div class="panel-body form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <div class="control-label col-sm-3">
+                    {{ "Tracking Duration"|trans }}
+                </div>
+                <div class="col-sm-8">
+                    {{ durationDropdown|raw }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-label col-sm-3">
+                    {{ "Generic Tracking Pixel"|trans }}
+                </div>
+                <div class="col-sm-8">
+                    <textarea id="generic_tracking_pixel" name="generic_tracking_pixel" class="form-control" rows="5"
+                              cols="1"
+                              placeholder="{{ "<img src='https://edirectorty.idevaffiliate.com/sale.php?profile=123456&idev_saleamt=XXX&idev_ordernum=XXX' style='height:0px; width:0px; border:0px;' />" }}">{{ generic_tracking_pixel | raw }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[idevaffiliate_integration]" value="1" class="btn btn-primary action-save"
+                data-loading-text="{{ "Please, wait..."|trans }}">{{ "Save changes"|trans }}</button>
+    </div>
+
+</div>

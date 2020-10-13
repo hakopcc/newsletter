@@ -1,0 +1,45 @@
+<div class="modal fade" id="facebookSelectIdModal" role="dialog">
+    <style>
+        #display-logged-in-fb-user > span.bold {
+            font-weight: bold;
+        }
+        #select-fb-id-form {
+            margin-top:16px;
+            display: none;
+        }
+    </style>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{ 'Choose Facebook ID'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="display-logged-in-fb-user"></div>
+                <script id="display-logged-in-fb-user-template" type="text/x-jsrender">
+                {{ 'Logged in as <span class="bold">{{:name}}</span>. You could click <a href="JavaScript:" id="logOffFacebook">here</a> to logout and login again if you want.'|trans|raw }}
+                </script>
+                <form id="select-fb-id-form" class="needs-validation" role="form" novalidate="">
+                    <div>{{ 'Available pages to be chosen:'|trans }}</div>
+                    <div id="select-fb-id-radiogroup"></div>
+                    <script id="select-fb-id-options-template" type="text/x-jsrender">
+                    {% raw %}
+                    <div class="radio">
+                        <label class="control-label" for="selected-fb-id-{{:id}}">
+                            <input type="hidden" name="selected-fb-caption" id="selected-fb-caption-{{:id}}" value="{{:name}}">
+                            <input type="radio" name="selected-fb-id" id="selected-fb-id-{{:id}}" value="{{:id}}" required>
+                            {{:name}}{{if showLink && link}} (<a target='_blank' href={{:link}}>{{:link}}</a>){{/if}}
+                        </label>
+                    </div>
+                    {% endraw %}
+                    </script>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Cancel'|trans }}</button>
+                <button type="button" class="btn btn-default" id="submit-select-fb-id-form">{{ 'Ok'|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>

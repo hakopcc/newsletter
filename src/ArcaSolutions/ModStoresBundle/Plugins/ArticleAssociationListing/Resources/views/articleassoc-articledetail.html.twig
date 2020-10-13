@@ -1,0 +1,6 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+
+{% if listing -%}
+    <div class="article-offered">{{ 'Offered by'|trans }} <a href="{{ path('listing_detail', {friendlyUrl: listing.friendlyUrl, _format: 'html' }) }}" class="link">{{ listing.title }}</a></div>
+    {{ addJSFile("assets/js/modal/send.email.js") }}
+{% endif -%}

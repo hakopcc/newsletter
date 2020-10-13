@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:46:51Z" source-language="en" target-language="tr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="30f0aebd96b9d4e082b7265079ed768ed68245ce" resname="MailChimp Integration Settings">
+        <source>MailChimp Integration Settings</source>
+        <target state="new">MailChimp Integration Settings</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5afa0437fcf2a4f6bea70c322acde8640947234d" resname="MailChimp key">
+        <source>MailChimp key</source>
+        <target state="new">MailChimp key</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a59514dedfa4596993b3e8f7c21ca3b3a0e90af3" resname="MailChimp list">
+        <source>MailChimp list</source>
+        <target state="new">MailChimp list</target>
+        <jms:reference-file line="21">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Lütfen bekleyin...</target>
+        <jms:reference-file line="32">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="33">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_settings.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="074b26ac2de089b3e83bcea6c5f3accc0cae2eca" resname="Select a list">
+        <source>Select a list</source>
+        <target state="new">Select a list</target>
+        <jms:reference-file line="131">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/MailchimpIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6835a2c3407f099f298c27ff3f89eab07ad2b3ba" resname="Sign up for our Newsletter">
+        <source>Sign up for our Newsletter</source>
+        <target state="new">Sign up for our Newsletter</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Resources/views/form_addaccount_newsletter.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d55fc546a5f1dfd3308315a5b4d98611fe9cbf4e" resname="Subscriptions created successfully">
+        <source>Subscriptions created successfully</source>
+        <target state="new">Subscriptions created successfully</target>
+        <jms:reference-file line="63">/../src/ArcaSolutions/ModStoresBundle/Plugins/MailchimpIntegration/Controller/DefaultController.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

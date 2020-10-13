@@ -1,0 +1,21 @@
+<!-- Popular Posts -->
+{% set recent_question = recentQuestion(4) -%}
+
+
+{% if recent_question is not empty %}
+    <div class="details-default details-blog blog-widget" data-bg="{{ content.backgroundColor }}" has-gap>
+        <div class="detail-body">
+            <div class="container">
+                <div class="detail-body-content">
+                    <div class="blog-content">
+                        {% if recent_question is not empty -%}
+                            {{ recent_question|raw }}
+                        {% endif -%}
+                    </div>
+
+                    {% include 'CommunityForumBundle::blocks/question-sidebar.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

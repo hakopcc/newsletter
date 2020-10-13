@@ -1,0 +1,12 @@
+.tailored-map{
+	#map_canvas{
+		height: 470px !important;
+		width: 100% !important;
+		margin: 0;
+		display: block;
+
+		@media (max-width: 458px){
+			height: 350px;
+		}
+	}
+}

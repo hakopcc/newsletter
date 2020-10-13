@@ -1,0 +1,18 @@
+<div class="members-only-modal">
+    <div class="members-content">
+        <div class="members-header">
+            <h3 class="heading h-3">
+                {% autoescape false %}
+                    {{ customTitle is not empty ? customTitle : 'Join our community\nand never miss a beat!'|trans|nl2br }}
+                {% endautoescape %}
+            </h3>
+        </div>
+        <div class="members-body">
+            {{ customDescription|raw }}
+        </div>
+        <div class="members-footer">
+            <button type="button" id="becomeMember" class="button button-md is-primary">{{ becomeMemberTitle }}</button>
+            <button type="button" id="loginMember" class="button button-md is-primary">{{ "Login"|trans }}</button>
+        </div>
+    </div>
+</div>

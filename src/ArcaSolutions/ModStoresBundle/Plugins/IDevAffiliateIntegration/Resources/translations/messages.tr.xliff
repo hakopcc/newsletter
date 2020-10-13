@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:46:38Z" source-language="en" target-language="tr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="5f53f010bda002b0fb38d1619f76be8dcc25ad13" resname="Generic Tracking Pixel">
+        <source>Generic Tracking Pixel</source>
+        <target state="new">Generic Tracking Pixel</target>
+        <jms:reference-file line="19">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/Resources/views/sitemgr-form-idev.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="652ff97b5e4b0ffe712c9a593e18119d462af576" resname="One day">
+        <source>One day</source>
+        <target state="new">One day</target>
+        <jms:reference-file line="110">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/IDevAffiliateIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="892a61a4793243899c650bd09a4b23bd2f687db5" resname="One month">
+        <source>One month</source>
+        <target state="new">One month</target>
+        <jms:reference-file line="112">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/IDevAffiliateIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ce70ac020e2c1a8258a11c28061a3d3b9a4b9a49" resname="One week">
+        <source>One week</source>
+        <target state="new">One week</target>
+        <jms:reference-file line="111">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/IDevAffiliateIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Lütfen bekleyin...</target>
+        <jms:reference-file line="32">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/Resources/views/sitemgr-form-idev.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="32">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/Resources/views/sitemgr-form-idev.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f7f1997c6cd1aa051279675742272a956e7db628" resname="Session">
+        <source>Session</source>
+        <target state="new">Session</target>
+        <jms:reference-file line="109">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/IDevAffiliateIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="09a7b58ffac328873c8e4ca44eff0424c7ce8285" resname="Tracking Duration">
+        <source>Tracking Duration</source>
+        <target state="new">Tracking Duration</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/Resources/views/sitemgr-form-idev.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6d30020bfb14e712e6d9e7bd1548e29a7f093d14" resname="iDev Affiliate Integration Settings">
+        <source>iDev Affiliate Integration Settings</source>
+        <target state="new">iDev Affiliate Integration Settings</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/IDevAffiliateIntegration/Resources/views/sitemgr-form-idev.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

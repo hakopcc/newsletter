@@ -1,0 +1,11 @@
+<div class="form-group">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="featured_market"
+                   name="featured_market" {{ (featured_market == "on") ? "checked" : "" }}>
+            {{ "Show Market Location"|trans }}
+            <br>
+            <small class="text-muted">({{ "If 'Show Market' is checked, this location will be shown."|trans }})</small>
+        </label>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        let moveSelectedArrow = function(el){
+            var navLeft  = el.find(".modal-nav").offset().left;
+            var linkLeft = el.find(".modal-nav-link.active").offset().left;
+            el.find(".modal-nav .selected-arrow").css("left", Math.round((linkLeft - navLeft)) + 24);
+        };
+
+        let setContentHeight = function(el){
+            let activeItem = el.find(".modal-nav-link.active").data('tab');
+            let itemHeight = el.find("#"+activeItem).height();
+            el.find(".modal-body").height(itemHeight);
+        };
+
+        if ($("#title").val()!==undefined && $("#title").val().length > 0) {
+            $("#button-question").removeClass("disabled").attr("disabled", false);
+        }
+        let sendForumQuestionClickHandler = function (event) {
+            event.preventDefault();
+            $(".sendForumQuestion").off("click",sendForumQuestionClickHandler);
+            $('#button-question').addClass('disabled').prop("disabled", true);
+            $("#button-question-cancel").addClass("disabled").prop("disabled", true);
+
+            let info = {
+                title: $("#title").val(),
+                description: CKEDITOR.instances.description.getData(),
+                category: $("#parent_id").val()
+            };
+
+            $.post("{{ path('forum_savequestion')|raw }}", info).done(function (response) {
+                if ('login' == response.status) {
+                    let el = $(".modal-sign[is-page!='true']");
+                    el.toggleClass('is-open').fadeToggle(400);
+                    el.find("input[name='action']").val('');
+                    el.find("input[name='item_id']").val('');
+                    moveSelectedArrow(el);
+                    setContentHeight(el);
+                    $(".sendForumQuestion").on("click",sendForumQuestionClickHandler);
+                    $("#button-question-cancel").removeClass("disabled").attr("disabled", false);
+                    $("#button-question").removeClass("disabled").attr("disabled", false);
+                } else if ('sendQuestion' == response.status) {
+                    window.location.href = response.url;
+                }
+            });
+        };
+
+        let cancelSendForumQuestionClickHandler = function (event) {
+            event.preventDefault();
+            $(".cancelSendForumQuestion").off("click",cancelSendForumQuestionClickHandler);
+            try {
+                CKEDITOR.instances.description.setData('');
+                $("#title").val('');
+                $("#category").val(null).trigger('change');
+                $(".topic-detail").slideUp();
+            } catch (e) {
+                console.log(e);
+            } finally {
+                $(".cancelSendForumQuestion").on("click",cancelSendForumQuestionClickHandler);
+            }
+        };
+
+        $(".cancelSendForumQuestion").on("click",cancelSendForumQuestionClickHandler);
+        $(".sendForumQuestion").on("click",sendForumQuestionClickHandler);
+
+        let titleKeyDownHandler = function(event) {
+            $("#title").off("keydown", titleKeyDownHandler);
+            try {
+                $(".topic-detail").slideDown();
+                if ($("#title").val().length > 0) {
+                    $("#button-question").removeClass("disabled").attr("disabled", false);
+                }
+
+                if ($("#title").val().length == 0) {
+                    $("#button-question").addClass("disabled").prop("disabled", true);
+                }
+            } catch (e) {
+                console.log(e);
+            } finally {
+                $("#title").on("keydown", titleKeyDownHandler);
+            }
+        };
+
+        $("#title").on("keydown", titleKeyDownHandler);
+
+        function hasUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            let regex = new RegExp('[\\?&]' + name + '(=([^&#]*)|$)');
+            let results = regex.exec(location.href);
+            return results !== null;
+        };
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '(=([^&#]*)|$)');
+            var results = regex.exec(location.href);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, '    '));
+        };
+
+        $("#title[disabled]").attr("disabled", false);
+        if(hasUrlParameter('new')){
+            $("#title").focus();
+            $(".topic-detail.all-disabled *:not(#button-question)[disabled]").attr("disabled", false);
+            $(".topic-detail").removeClass('all-disabled');
+        }
+    });
+</script>

@@ -1,0 +1,56 @@
+{% if items|length > 0 %}
+    {% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+    <div class="cards-default cards-question" card-type="{{ cardType }}" card-module="{{ module }}" data-type="articles" data-bg="{{ content.backgroundColor }}" has-gap>
+        <div class="container">
+            {% if content.widgetTitle is not empty -%}
+                <div class="cards-header">
+                    <h4 class="heading h-4">{{ content.widgetTitle|trans({}, 'widgets') }}</h4>
+                    {% if widgetLink is not empty %}
+                    <a href="{{ widgetLink }}" class="link" data-trans="{{ 'more questions'|trans({},'widgets') }}">
+                        {{ content.widgetLink.label|trans({}, 'widgets') }}
+                    </a>
+                    {% endif %}
+                </div>
+            {% endif -%}
+
+            <div class="cards-wrapper" has-ads="{{ banner is not empty ? 'true' : 'false' }}" banner-type="{{ content.banner }}">
+                <div class="cards-list no-margin cards-betweens" data-align="left">
+                    {% for item in items -%}
+                        {% set itemData = getCardData(item, 'forum') %}
+
+                        <div class="card card-horizontal card-horizontal-full list-horizontal">
+                            <div class="content">
+                                <div class="question-title-header">
+                                    <div class="paragraph p-4 blog-category">{{ date(item.publicationDate)|localized_date('MMM dd, yyyy hh:mm') }}</div>
+                                </div>
+                                <a href="{{ itemData.detailLink }}" class="question-title heading h-5">{{ item.title }}</a>
+                                <div class="question-title-header">
+                                    {% if item.categories -%}
+                                        {{UtilityCards.categories(item.categories, content.module)}}
+                                    {% endif %}
+                                </div>
+
+                                {% if item.description is not empty -%}
+                                    {%- set description = item.description -%}
+                                {% endif -%}
+
+                                {% if description is not empty -%}
+                                    <div class="description">
+                                        <p class="paragraph p-3">{{- description|length > 180 ? description|slice(0,179) ~ '...' : description -}}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor -%}
+                </div>
+
+                {% if banner is not empty %}
+                    <div class="cards-ads">
+                        {{ banner | raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

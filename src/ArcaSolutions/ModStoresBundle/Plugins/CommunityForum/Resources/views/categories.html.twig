@@ -1,0 +1,13 @@
+<div class="categories-list categories-list-block create-categories-modal base-categories" id="modal-create-categories">
+    <div class="categories-list-header">
+        <div class="input-group">
+            <input type="text" class="form-control category-search input" id="modal-category-search" autocomplete="off" data-ref="categories-wrap" data-selectparent="true" placeholder="{{ 'Select your category'|trans }}" value="" {{ (not app.request.get('new') is null ? 'disabled' : '' ) | raw }}>
+            <div class="input-categories-list" id="parentCategory" style="display: none;">
+            </div>
+            <span class="input-group-addon open-create-categories" data-ref="categories-wrap"><i class="fa fa-angle-down"></i></span>
+        </div>
+    </div>
+    <div class="categories-wrap" id="categories-wrap">
+    </div>
+    <input type="hidden" id="parent_id" name="parent_id" value="" />
+</div>

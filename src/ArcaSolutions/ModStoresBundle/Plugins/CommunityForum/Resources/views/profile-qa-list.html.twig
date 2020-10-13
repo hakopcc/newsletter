@@ -1,0 +1,54 @@
+{% if questions is not empty %}
+    <div class="members-panel edit-panel">
+        <div class="panel-header">
+            {{ "Forum topics"|trans }}
+        </div>
+        <div class="panel-body">
+            {% for question in questions %}
+            <div class="favorite-item">
+                <div class="favorite-content">
+                    <a href="{{ path('forum_detail', {'friendlyUrl': question.friendly_url, "_format" : "html"}) }}" class="heading h-4 favorite-name">{{ question.title }}</a>
+                    <div class="paragraph p-3 favorite-address">
+                        <strong>{{ "Published"|trans }}:</strong> {{ question.entered|date(getDateFormat()) }} <br>
+                        <strong>{{ "Updated"|trans }}:</strong> {{ question.updated|date(getDateFormat()) }}
+                    </div>
+                    {% if accountId == sessionId %}
+                        <a href="/profile/forum/question.php?id={{ question.id }}" class="remove-favorite" rel="nofollow"><i class="fa fa-edit"></i></a>
+                    {% endif %}
+                </div>
+                <div class="favorite-footer">
+                    <div class="favorite-phone"><strong>{{ "Answers"|trans }}:</strong> {{ question.answers }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if answers is not empty %}
+    <br>
+    <div class="members-panel edit-panel">
+        <div class="panel-header">
+            {{ "Forum Answers"|trans }}
+        </div>
+        <div class="panel-body">
+            {% for answer in answers %}
+            <div class="favorite-item">
+                <div class="favorite-content">
+                    <a href="{{ path('forum_detail', {'friendlyUrl': answer.question.friendlyUrl, "_format" : "html"}) }}" class="heading h-4 favorite-name">{{ answer.question.title }}</a>
+                    <div class="paragraph p-3 favorite-address">
+                        <p>{{ answer.description|striptags|slice(0, 250)|raw }}</p>
+                        <strong>{{ "Published"|trans }}:</strong> {{ question.entered|date(getDateFormat()) }}
+                    </div>
+                    {% if accountId == sessionId %}
+                        <a href="/profile/forum/answer.php?id={{ answer.id }}" class="remove-favorite" rel="nofollow"><i class="fa fa-edit"></i></a>
+                    {% endif %}
+                </div>
+                <div class="favorite-footer">
+                    <div class="favorite-phone"><strong>{{ "Upvotes"|trans }}:</strong> {{ answer.upvotes }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:47:33Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a3a0dcc031d567ea0cc4b8a52d7273cdd59e0c8b" resname="Apply changes to all pages using this widget.">
+        <source>Apply changes to all pages using this widget.</source>
+        <target>Apply changes to all pages using this widget.</target>
+        <jms:reference-file line="37">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77dfd2135f4db726c47299bb55be26f7f4525a46" resname="Cancel">
+        <source>Cancel</source>
+        <target>Cancel</target>
+        <jms:reference-file line="48">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4f9be057f0ea5d2ba72fd2c810e8d7b9aa98b469" resname="Content">
+        <source>Content</source>
+        <target state="new">Content</target>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e78a098a3ebfc262f290768f03b7e02eed898016" resname="Edit Widget">
+        <source>Edit Widget</source>
+        <target>Edit Widget</target>
+        <jms:reference-file line="8">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Please, wait...</target>
+        <jms:reference-file line="51">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="53">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="768e0c1c69573fb588f61f1308a015c11468e05f" resname="Title">
+        <source>Title</source>
+        <target>Title</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/ModalWidgetPackage/Resources/views/sitemgr-popup-modal.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

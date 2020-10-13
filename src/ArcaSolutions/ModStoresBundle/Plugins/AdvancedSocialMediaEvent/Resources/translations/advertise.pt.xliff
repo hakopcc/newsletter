@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-31T14:16:52Z" source-language="en" target-language="pt" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="9dfc3379dc8e04e73b338bf165ae8ad52f8f9dee" resname="hasFacebook">
+        <source>hasFacebook</source>
+        <target state="new">Feed de notícias do Facebook</target>
+        <jms:reference-file line="26">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="097a95d028cb5bc4122ac8bd4c26c0699c702e3f" resname="hasInstagram">
+        <source>hasInstagram</source>
+        <target state="new">Feed de fotos do Instagram</target>
+        <jms:reference-file line="28">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="324f9bc62ea75440484bdcd3ed96491d1df073b7" resname="hasTwitter">
+        <source>hasTwitter</source>
+        <target state="new">Feed da linha do tempo do Twitter</target>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

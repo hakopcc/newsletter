@@ -1,0 +1,25 @@
+{% if (data.levelHasPhone and data.phone is empty and data.yelpPhone is not empty) or (data.address is empty and data.yelpAddress is not empty) -%}
+<div class="details-contact yelp">
+    {% if data.levelHasPhone and data.phone is empty and data.yelpPhone is not empty -%}
+        <div class="contact-item item-phone">
+            <span class="icon icon-md"><i class="fa fa-phone"></i></span>
+            <div class="contact-item-content">
+                <div class="contact-item-content-value"><a href="tel:{{ data.yelpPhone }}">{{ data.yelpDisplayPhone }}</a><div class="from-yelp">from<br>Yelp</div></div>
+            </div>
+        </div>
+    {% endif -%}
+    {% if data.address is empty and data.yelpAddress is not empty -%}
+    <div class="contact-item item-location">
+        <span class="icon icon-md"><i class="fa fa-map-marker"></i></span>
+        <div class="contact-item-content">
+            <div class="contact-item-content-value">{{ data.yelpAddress }}</div><div class="from-yelp">from<br>Yelp</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="contact-item item-phone">
+        <span class="icon icon-md"><i class="fa fa-yelp"></i></span>
+        <a href="{{ data.yelpUrl }}" target="_blank" rel="noopener noreferrer nofollow">{{ "Visit on Yelp"|trans }}</a>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,15 @@
+<div class="panel panel-form" id="geo-location">
+
+    <div class="panel-heading">
+        {{ "Geo-Targeted Settings"|trans }}
+    </div>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="distance">{{ "Distance"|trans }}</label>
+                <input class="form-control" id="distance" maxlength="100" name="distance" value="{{ distance }}">
+                <p class="help-block small">{{ "Miles Limit = 25000 / Kilometers Limit = 40000"|trans }}</p>
+            </div>
+        </div>

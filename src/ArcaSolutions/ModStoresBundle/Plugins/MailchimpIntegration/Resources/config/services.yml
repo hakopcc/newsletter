@@ -1,0 +1,14 @@
+parameters:
+    mailchimpapi.service.class: ArcaSolutions\ModStoresBundle\Plugins\MailchimpIntegration\Services\MailchimpApiService
+    mailchimp.service.class: ArcaSolutions\ModStoresBundle\Plugins\MailchimpIntegration\Services\MailchimpService
+
+services:
+    mailchimpapi.service:
+        class: "%mailchimpapi.service.class%"
+        arguments:
+            - '@service_container'
+
+    mailchimp.service:
+        class: "%mailchimp.service.class%"
+        arguments:
+            - '@service_container'

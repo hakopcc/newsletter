@@ -1,0 +1,5 @@
+<div data-trans="{{ 'Associated Articles'|trans({},'widgets') }}">
+    {% if articlesAssoc is not empty and isSample is null %}
+        {% include '::/modules/article/blocks/vertical-cards.html.twig' with {items: articlesAssoc, itemsPerRow : 3} -%}
+    {% endif -%}
+</div>

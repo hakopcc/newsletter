@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-27T15:56:23Z" source-language="en" target-language="pt" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="96b98853736ef87cc95b08434ed67c190adba51d" resname="Allow owners to use the Instant Messenger integration?">
+        <source>Allow owners to use the Instant Messenger integration?</source>
+        <target>Permitir os donos da empresa a usarem a integração com comunicadores instantâneos?</target>
+        <jms:reference-file line="1189">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bf52ffbf5b16650e2b716a3d1629c32d5126654a" resname="Available pages to be chosen:">
+        <source>Available pages to be chosen:</source>
+        <target>Páginas disponíveis para uso:</target>
+        <jms:reference-file line="24">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-user-id-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a70fbbacc0a513897a6bc507ebdc02cd674a4185" resname="Can't find the facebook user id? Click here.">
+        <source>Can't find the facebook user id? Click here.</source>
+        <target>Não consegue encontrar o User ID do Facebook? Clique aqui.</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77dfd2135f4db726c47299bb55be26f7f4525a46" resname="Cancel">
+        <source>Cancel</source>
+        <target>Cancelar</target>
+        <jms:reference-file line="40">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-user-id-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="edb61c4042657d275a4c1286c6827c6f4b83e9dc" resname="Choose Facebook ID">
+        <source>Choose Facebook ID</source>
+        <target>Escolha o User ID do Facebook</target>
+        <jms:reference-file line="16">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-user-id-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4d167dc554621336314f5f7346e882a7014e2102" resname="Choose how the widget will include phone/instant messaging information in the widget.">
+        <source>Choose how the widget will include phone/instant messaging information in the widget.</source>
+        <target>Escolher como o widget incluirá número de telefone/comunicador instantâneo.</target>
+        <jms:reference-file line="18">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0b2be5ade8311d6411164dd2c1b6f6cdb8100bdc" resname="Choose which instant messenger will be used to include information in the widget.">
+        <source>Choose which instant messenger will be used to include information in the widget.</source>
+        <target>Escolher qual dos comunicadores instantâneos será utilizado para incluir informação no widget.</target>
+        <jms:reference-file line="33">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a8c878608511e723430b8c85e6f2971a9db6093d" resname="Display available instant messenger clickable links on the widget.">
+        <source>Display available instant messenger clickable links on the widget.</source>
+        <target>Exibir os links clicáveis de comunicadores instantâneos no widget.</target>
+        <jms:reference-file line="9">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-footer-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="337ae5bfc3a5d247234c13422bf0bc8195b62dd8" resname="Display instant messenger floating button on all pages (except results and detail pages)">
+        <source>Display instant messenger floating button on all pages (except results and detail pages)</source>
+        <target>Exibir o botão flutuante de comunicador instantâneo em todas as páginas (exceto nas de resultado de pesquisa e de detalhes)</target>
+        <jms:reference-file line="10">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-settings-instant-messenger-integration-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4f250268cba71b179d8d6ce592fb6a3afdc1c7a5" resname="Display links">
+        <source>Display links</source>
+        <target>Exibir links</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-footer-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4449a161a69f4cc71448e51a20f9e733db845dcb" resname="Do not include the country code in WhatsApp number. Use the select field to define it.">
+        <source>Do not include the country code in WhatsApp number. Use the select field to define it.</source>
+        <target>Não inclua o código de país no número do WhatsApp, ao invés disto utilize o campo de seleção de país.</target>
+        <jms:reference-file line="108">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/WhatsappDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7b95450902a69dd67654fa1741cab66056dbd743" resname="Enable instant Messenger integration">
+        <source>Enable instant Messenger integration</source>
+        <target>Integração com comunicadores instantâneos</target>
+        <jms:reference-file line="1188">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bb7a2a656c936e6625271c12ba952aa4df00370b" resname="Facebook Messenger">
+        <source>Facebook Messenger</source>
+        <target>Facebook Messenger</target>
+        <jms:reference-file line="2363">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7669d64595d83f525fa852a026544309180cf8d2" resname="Floating button IM type">
+        <source>Floating button IM type</source>
+        <target>Tipo de botão flutuante</target>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-settings-instant-messenger-integration-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="76e91f2cab2651d926c5f0609a60ccf91e7aea5d" resname="Floating button position">
+        <source>Floating button position</source>
+        <target>Posição do botão flutuante</target>
+        <jms:reference-file line="21">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-settings-instant-messenger-integration-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e98d13de894a63b2b5ef6a105cd99e9a6ccf4918" resname="Insert WhatsApp phone number">
+        <source>Insert WhatsApp phone number</source>
+        <target>Número do WhatsApp</target>
+        <jms:reference-file line="16">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-whatsapp-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="226c7f128c88df98e899e6df186a81ec484416c1" resname="Insert facebook user id">
+        <source>Insert facebook user id</source>
+        <target>User ID ou página do Facebook</target>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="69c6d188f70bdc40a60c6e150a8ae1a8b7c128fb" resname="Insert link caption">
+        <source>Insert link caption</source>
+        <target>Insira o rótulo do link</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2e3a4c2ca82aef3dbcefd1b7edbfca6c23015ed9" resname="Insert telegram nickname">
+        <source>Insert telegram nickname</source>
+        <target>Apelido (nickname) do Telegram</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-telegram-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2675f2c92f42bb7429c2740e88fc6d57cb9c0641" resname="Instant Messenger Integration Options">
+        <source>Instant Messenger Integration Options</source>
+        <target>Opções da integração com comunicadores instantâneos</target>
+        <jms:reference-file line="1">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-footer-options.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="684018bdf49e28bae193e6ce7a24bc971b3d5194" resname="Instant Messenger Integration Settings">
+        <source>Instant Messenger Integration Settings</source>
+        <target>Configurações da integração com comunicadores instantâneos</target>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-settings-instant-messenger-integration-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="45e39a9afaa85318e5238743fcfc9f5588b2fe55" resname="Instant Messenger only">
+        <source>Instant Messenger only</source>
+        <target>Somente comunicador instantâneo</target>
+        <jms:reference-file line="14">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4c0f1ad746f769a684a0a08ecce163c30f73f602" resname="Instant messaging">
+        <source>Instant messaging</source>
+        <target>Comunicador instantâneo</target>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-with-footer.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4097fd3108d059b21a442b0623fe0c58f6f520f4" resname="Instant messenger type to consider in widget">
+        <source>Instant messenger type to consider in widget</source>
+        <target>Tipo de comunicador instantâneo a considerar</target>
+        <jms:reference-file line="23">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9f4041586a755aeb97480559573b7d4d82fbc629" resname="Invalid Messenger User ID format: Use only letters, numbers, dot character and use at least 5 (five) characters.">
+        <source>Invalid Messenger User ID format: Use only letters, numbers, dot character and use at least 5 (five) characters.</source>
+        <target>Formato do ID de usuário Messenger inválido: Utilize apenas letras, números, ponto, considerando pelo menos 5 (cinco) caracteres.</target>
+        <jms:reference-file line="84">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/FacebookMessengerDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="697f0e2cf98677243e8c2a3b830cc01364bd5fef" resname="Invalid Telegram nickname format: Use only letters, numbers, underscore character and use at least 5 (five) characters.">
+        <source>Invalid Telegram nickname format: Use only letters, numbers, underscore character and use at least 5 (five) characters.</source>
+        <target>Formato de nickname do Telegram inválido: Utilize somente letras, números, caractere de sublinhado, considerando ao menos (cinco) caracteres.</target>
+        <jms:reference-file line="73">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/TelegramDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c6229bb687e4fe6eebd272e249d2156a4998dc2a" resname="Invalid phone format in WhatsApp number.">
+        <source>Invalid phone format in WhatsApp number.</source>
+        <target>Formato de telefone inválido no número do WhatsApp.</target>
+        <jms:reference-file line="104">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/WhatsappDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="82e33d7316431f91deee451f236ab8f3ad53dd71" resname="Logged in as &lt;span class=&quot;bold&quot;&gt;{{:name}}&lt;/span&gt;. You could click &lt;a href=&quot;JavaScript:&quot; id=&quot;logOffFacebook&quot;&gt;here&lt;/a&gt; to logout and login again if you want.">
+        <source><![CDATA[Logged in as <span class="bold">{{:name}}</span>. You could click <a href="JavaScript:" id="logOffFacebook">here</a> to logout and login again if you want.]]></source>
+        <target><![CDATA[Logado como <span class="bold">{{:name}}</span> no Facebook. Você pode clicar <a href="JavaScript:" id="logOffFacebook">aqui</a> para deslogar e logar novamente, se você quiser.]]></target>
+        <jms:reference-file line="21">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-user-id-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b0a98216a32426b9e66a4ac1eb6df2e96e1b495c" resname="Ok">
+        <source>Ok</source>
+        <target>Ok</target>
+        <jms:reference-file line="41">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-messenger-user-id-modal.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6bf5da9c080bee3a8142586c412aa39971137eee" resname="Options">
+        <source>Options</source>
+        <target>Opções</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-settings-instant-messenger-integration-panel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5348a3b64b3e3fbd5d0dbf3fc420e8edac40d9c9" resname="Phone Number and Instant Messenger">
+        <source>Phone Number and Instant Messenger</source>
+        <target>Número telefônico e comunicador instantâneo</target>
+        <jms:reference-file line="15">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b6c04cfe2142570bbb33640b2b06d4539481ec8e" resname="Phone Number only">
+        <source>Phone Number only</source>
+        <target>Somente número telefônico</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="10ed92ea7bbf6f6bbd4bc747f4aacebd6fd6069e" resname="Select WhatsApp phone country code">
+        <source>Select WhatsApp phone country code</source>
+        <target>Código de país</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-whatsapp-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="edbea9ff1a787818a7119cda6ab9799959a5d9fa" resname="Telegram">
+        <source>Telegram</source>
+        <target>Telegram</target>
+        <jms:reference-file line="2362">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-telegram-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7daff7f68fcc82d7e9cd0912377ed0d3fc59fa57" resname="To define a WhatsApp number is mandatory select a country code and provide a phone number (preceded by the area code, when exists). Please provide the phone number.">
+        <source>To define a WhatsApp number is mandatory select a country code and provide a phone number (preceded by the area code, when exists). Please provide the phone number.</source>
+        <target>Para definir um número do WhatsApp é obrigatório selecionar um código de país e informar um número de telefone (precedido por um código de área, quando existente). Favor informar um número de telefone.</target>
+        <jms:reference-file line="99">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/WhatsappDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1ed1fcce85100ba7384b738b3ee3769eb399070b" resname="To define a WhatsApp number is mandatory select a country code and provide a phone number (preceded by the area code, when exists). Please select a country code.">
+        <source>To define a WhatsApp number is mandatory select a country code and provide a phone number (preceded by the area code, when exists). Please select a country code.</source>
+        <target>Para definir um número do WhatsApp é obrigatório selecionar um código de país e informar um número de telefone (precedido por um código de área, quando existente). Favor selecionar um código de país.</target>
+        <jms:reference-file line="95">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Services/WhatsappDataService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e5679abf10e7cacaa19f385b0bcb0835cbc1437c" resname="What will be displayed at right side of header?">
+        <source>What will be displayed at right side of header?</source>
+        <target>O que deverá ser exibido no lado direito do cabeçalho?</target>
+        <jms:reference-file line="8">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-sitemgr-form-design-settings-instant-messenger-header-options.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b336fc558722224b7ffe98607055d55f0fe52450" resname="WhatsApp">
+        <source>WhatsApp</source>
+        <target>WhatsApp</target>
+        <jms:reference-file line="2361">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/Resources/views/legacy-instant-messaging-panel-body-whatsapp-rows.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" resname="and">
+        <source>and</source>
+        <target>e</target>
+        <jms:reference-file line="1463">/../src/ArcaSolutions/ModStoresBundle/Plugins/InstantMessengerIntegration/InstantMessengerIntegrationBundle.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

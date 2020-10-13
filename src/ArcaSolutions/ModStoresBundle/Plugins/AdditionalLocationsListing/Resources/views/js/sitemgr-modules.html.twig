@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    {% if google_map_status == 'on' %}
+        $(document).ready(function () {
+            {% for i in 1..(totalExtraLocCoords + 1) %}
+                loadMap(document.listing, true, {{ i }});
+            {% endfor %}
+        });
+    {% endif %}
+
+    function loadExtraLocBlock() {
+        var totalBlocks = {{ levelMaxExtraLocations is not empty ? levelMaxExtraLocations : "0" }};
+        var countActiveBlocks = $("[class*=extraLocation][id^=box_]:visible").length;
+        var currentBlock = countActiveBlocks + 1;
+
+        if (countActiveBlocks == totalBlocks) {
+            var loadExtraLocBlocks = $("#loadExtraLocBlocks");
+            loadExtraLocBlocks.find('.btn').addClass('disabled');
+
+            loadExtraLocBlocks.append("<p class='alert alert-warning text-center'> {{ "Additional locations limit exceeded"|trans }}</p>");
+            loadExtraLocBlocks.find('.alert').fadeOut(6000, function() {
+                $(this).remove();
+                loadExtraLocBlocks.find('.btn').removeClass('disabled');
+            });
+
+        } else {
+            $("#box_" + currentBlock).css('display', 'block');
+        }
+    }
+
+    function removeExtraLocBlock(el) {
+        var block = $(el).parent(".extraLocation");
+        var fist_non_default = $("[name=location_fist_non_default]").val();
+
+        block.find(':input:not([disabled])').each(function () {
+            switch (this.type) {
+                case 'select-one':
+                case 'text':
+                    $(this).val('');
+                    break;
+            }
+        });
+
+        block.find("[id*=tableMapTuning]").each(function () {
+            $(this).css('display', 'none');
+        });
+
+        for (var i = 1; i <= 5; i++) {
+            if (i != fist_non_default) {
+                block.find('div[id*=div_location_' + i + ']').each(function () {
+                    $(this).css('display', 'none');
+                });
+            }
+        }
+
+        block.css('display', 'none');
+    }
+</script>
+

@@ -1,0 +1,8 @@
+parameters:
+    browsemaplisting.service.class: ArcaSolutions\ModStoresBundle\Plugins\BrowseMapListing\Services\BrowseMapListingService
+
+services:
+    browsemaplisting.service:
+        class: '%browsemaplisting.service.class%'
+        arguments:
+            - '@service_container'

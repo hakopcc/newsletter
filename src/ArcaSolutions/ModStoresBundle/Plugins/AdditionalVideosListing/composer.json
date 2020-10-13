@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/additionalvideoslisting",
+  "description": "Additional Videos for Listing",
+  "version": "1.0.4",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^1.0.0"
+  },
+  "extra": {
+    "bundle-name": "AdditionalVideosListingBundle"
+  }
+}

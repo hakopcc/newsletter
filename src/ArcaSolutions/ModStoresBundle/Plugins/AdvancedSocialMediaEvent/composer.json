@@ -1,0 +1,13 @@
+{
+  "name": "arcasolutions/advancedsocialmediaevent",
+  "description": "Advanced Social Media for Event",
+  "version": "1.2.2",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^1.0.0",
+    "arcasolutions/edirectory": "^12.2.00"
+  },
+  "extra": {
+    "bundle-name": "AdvancedSocialMediaEventBundle"
+  }
+}

@@ -1,0 +1,7 @@
+{% if reviewsPaginated.total > 0 -%}
+    <div class="reviews-count">{{ "{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews"|transchoice(reviewsPaginated.total, {"%count%":reviewsPaginated.total}) }}</div>
+{% else %}
+    <div class="first-to-write">
+        {{ 'Be the first to'|trans }} <a href="#" class="link" data-modal="review" data-id="{{ item.id }}">{{ 'write a review'|trans }}</a>
+    </div>
+{% endif -%}

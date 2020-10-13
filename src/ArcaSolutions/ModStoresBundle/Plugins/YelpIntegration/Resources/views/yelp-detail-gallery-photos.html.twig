@@ -1,0 +1,9 @@
+{% for photo in yelpBusiness['photos'] %}
+    <a href="{{ photo }}" rel="noopener noreferrer nofollow" class="photos-item fancybox" data-fancybox="details-photos" data-options='{"caption" : "{{ item.title }}"}'>
+        <img data-src="{{ photo }}" alt="{{ item.title }}" class="lazy">
+        <div class="photos-caption">
+            <i class="fa fa-camera"></i>
+            {{ 'View photo'|trans }}
+        </div>
+    </a>
+{% endfor %}

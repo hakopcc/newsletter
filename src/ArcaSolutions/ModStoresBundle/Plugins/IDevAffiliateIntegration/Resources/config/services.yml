@@ -1,0 +1,9 @@
+parameters:
+    idevaffiliate.service.class: ArcaSolutions\ModStoresBundle\Plugins\IDevAffiliateIntegration\Services\IDevAffiliateService
+
+services:
+    idevaffiliate.service:
+        class: '%idevaffiliate.service.class%'
+        arguments:
+            - '@service_container'
+  

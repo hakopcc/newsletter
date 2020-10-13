@@ -1,0 +1,56 @@
+.market-box {
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  top: 50%;
+  left: -250px;
+  transition: .2s ease-in-out;
+  z-index: 50000;
+
+  &.is-open {
+    left: 0;
+  }
+
+  .market-content {
+    width: 250px;
+    min-height: 200px;
+    background: #eee;
+    padding: 8px 24px;
+    border-bottom-right-radius: $border-radius-input;
+  }
+
+  .market-button {
+    background: #eee;
+    line-height: 1;
+    padding: 8px;
+    border-top-right-radius: $border-radius-input;
+    border-bottom-right-radius: $border-radius-input;
+    color: black;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .market-selected {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .martket-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: -8px;
+    max-height: 225px;
+    overflow: scroll;
+
+    .market-item {
+      color: customColor(neutral, base);
+      text-decoration: none;
+      width: 100%;
+      padding: 4px;
+      text-align: left;
+      background: transparentize($color: black, $amount: .95);
+      margin-top: 8px;
+    }
+  }
+}

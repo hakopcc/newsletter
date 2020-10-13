@@ -1,0 +1,11 @@
+{% if yelpData.yelpImageUrl is defined %}
+    {% if itemLevelInfo.hasDetail -%}
+        <a href="{{ detailURL }}" class="summary-picture">
+            <img src="{{ yelpData.yelpImageUrl }}" alt="{{ title }}">
+        </a>
+    {% else %}
+        <div class="summary-picture">
+            <img src="{{ yelpData.yelpImageUrl }}" alt="{{ title }}">
+        </div>
+    {% endif %}
+{% endif %}

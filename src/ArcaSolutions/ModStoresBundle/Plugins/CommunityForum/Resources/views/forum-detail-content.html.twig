@@ -1,0 +1,111 @@
+{% import "::blocks/utility/profile.html.twig" as Profile -%}
+{% set module = getModule() -%}
+{% set moduleSearch = getModuleSearch() -%}
+{{ addJSTwigParameter("searchBoxModule", moduleSearch) }}
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+{% import "::blocks/utility/detail.html.twig" as UtilityDetail -%}
+
+{% set user = getUser() %}
+
+{% set format_date = getDateFormat() %}
+
+{% if format_date == 'm/d/Y' %}
+    {% set format_date = 'MMMM d, y' %}
+{% else %}
+    {% set format_date = 'd MMMM, y' %}
+{% endif %}
+
+<div class="details-default details-blog">
+    <div class="detail-body">
+        <div class="container">
+            <div class="detail-body-content">
+                <div class="blog-content">
+                    <div class="paragraph p-2 blog-category">
+                        {{ 'Authored by'|trans({}, 'widgets') }}
+{% if item.account.friendlyUrl is not empty %}
+                        <a href="{{ absolute_url('/profile/') ~ item.account.friendlyUrl }}" class="link">{{ item.account.firstName }} {{ item.account.lastName }}</a>
+{% else %}
+                        {{ item.account.firstName }} {{ item.account.lastName }}
+{% endif %}
+                        {{ 'on'|trans({}, 'widgets') }}
+                        {{ item.entered|localized_date('MMMM dd, yyyy') }}
+                    </div>
+                    <h2 class="heading">{{ item.title }}</h2>
+                    <div class="blog-text" id="overview">
+                        {{ item.description|raw }}
+                    </div>
+{% if categories -%}
+                    <div class="blog-categories">
+    {% for category in categories if 'y' == category.enabled -%}
+                        <a href="{{ utility_generateSearchUrl(null, "forum", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>
+    {% endfor -%}
+                    </div>
+{% endif -%}
+                    <div class="blog-share">
+                        <div class="share-dropdown">
+                            <div class="facebook"><i class="fa fa-facebook"></i></div>
+                            <div class="twitter"><i class="fa fa-twitter"></i></div>
+                            {% if getSetting('disable_whatsapp_share_button') != 'y' %}
+                                <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="heading h-4">{{ 'Answers and comments'|trans }}:</h4>
+                    <br>
+{% if item.answers is not empty %}
+                    <div class="forum-answere" id="reviews">
+    {% for answer in item.answers %}
+                        <div class="answere-item">
+                            <div class="answere-author">
+        {% if answer.account is not null %}
+            {% if answer.account.hasProfile == 'y' and getSetting('socialnetwork_feature') == 'on' %}
+                                <a href="{{ Profile.friendlyUrl(answer.account) }}" rel="nofollow">
+                                    {{ Profile.photo(answer.account) }}
+                                    <span class="author-name">{{ answer.account.firstName }} {{ answer.account.lastName }}</span>
+                                </a>
+            {% else %}
+                                <div>{{ Profile.photo(answer.account) }}</div>
+                                <span class="author-name">{{ answer.account.firstName }} {{ answer.account.lastName }}</span>
+            {% endif %}
+        {% endif %}
+                                <div class="answere-date">{{ answer.entered|localized_date(format_date) }}</div>
+                            </div>
+                            <div class="answere-description">
+                                {{ answer.description|raw }}
+                            </div>
+                        </div>
+    {% endfor %}
+                    </div>
+{% else %}
+                    <h3 class="heading-h3">{{ "Be the first to answer this topic!"|trans }}</h3>
+                    <br>
+{% endif %}
+{% if user %}
+                    <div id="write-an-answer" style="display: none;">
+                        <form id="form-answer" action="{{ path('forum_saveanswer') }}" method="POST">
+                            {% set locale = app.request.locale|split('_') %}
+                            {{ renderCKEditor('answer', 'answer', 3, 30, 'answer', '', '', app.request.get('answer'), false, locale|first|lower, true) }}
+                            <div class="text-right">
+                                <br>
+                                <button type="submit" class="button button-md is-primary" onclick="$('#a-sending').show(); $(this).hide();">{{ "Send"|trans }}</button>
+                                <buttom id="a-sending" disabled class="button button-md is-primary" style="display: none;">{{ "Sending..."|trans }}</buttom>
+                            </div>
+                            <input type="hidden" id="question" name="question" value="{{ item.id }}"/>
+                        </form>
+                    </div>
+{% else %}
+                    <div class="text-center">
+                        <button class="button button-md is-primary sendForumAnswer"> {{ "Sign in to answer this topic"|trans }} </button>
+                </div>
+{% endif %}
+                </div>
+{% include 'CommunityForumBundle::blocks/question-sidebar.html.twig' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ addJSFile("assets/js/lib/social-likes.min.js") }}
+{{ addJSFile("assets/js/modules/socialbuttons.js") }}
+{{ addJSTwig("CommunityForumBundle::js/forum-detail-content_js.html.twig") -}}

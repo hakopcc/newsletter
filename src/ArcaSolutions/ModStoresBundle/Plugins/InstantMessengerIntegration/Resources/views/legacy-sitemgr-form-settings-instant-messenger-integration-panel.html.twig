@@ -1,0 +1,71 @@
+<div class="panel panel-default instant-messenger-integration-plugin settings">
+    <div class="panel-heading">{{"Instant Messenger Integration Settings"|trans}}</div>
+    <div class="panel-body form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-3 control-label">{{ "Options"|trans }}</div>
+            <div class="col-sm-9 checkbox">
+                <label for="plugin_display_instant_messenger_floating_button">
+                    <input type="checkbox" id="plugin_display_instant_messenger_floating_button"
+                         name="plugin[instant_messenger_integration][display_floating_button]"
+                         value="on" {{ instantMessengerIntegrationSettings.displayFloatingButtonOption == "on" ? "checked" : "" }}> {{"Display instant messenger floating button on all pages (except results and detail pages)"|trans}}
+                </label>
+            </div>
+        </div>
+
+{% if floatingButtonPositionData.options is not empty %}
+    {% set firstFloatingButtonPositionValue = (((floatingButtonPositionData.options|keys)|first) is not empty)?((floatingButtonPositionData.options|keys)|first):'' %}
+    {% set floatingButtonPositionDefaultValue = (floatingButtonPositionData.defaultOption is not empty)?floatingButtonPositionData.defaultOption:firstFloatingButtonPositionValue %}
+    {% set selectedFloatingButtonPositionValue = (instantMessengerIntegrationSettings.floatingButtonPosition is empty or instantMessengerIntegrationSettings.floatingButtonPosition not in floatingButtonPositionData.options|keys )?floatingButtonPositionDefaultValue:instantMessengerIntegrationSettings.floatingButtonPosition %}
+    {% if floatingButtonPositionData.options|length > 1 %}
+        <div class="form-group">
+            <div class="col-sm-3 control-label"><label for="plugin_instant_messenger_floating_button_position">{{"Floating button position"|trans}}</label></div>
+            <div class="col-sm-4 selectize">
+                <select name="plugin[instant_messenger_integration][floating_button_position]"
+                        id="plugin_instant_messenger_floating_button_position" class="form-control">
+        {% for floatingButtonPositionOptionValue, floatingButtonPositionOptionLabel in floatingButtonPositionData.options -%}
+                    <option value="{{ floatingButtonPositionOptionValue }}" {{ (floatingButtonPositionOptionValue == selectedFloatingButtonPositionValue) ? 'selected' : '' }}>{{ ((floatingButtonPositionOptionLabel is not empty)?floatingButtonPositionOptionLabel:floatingButtonPositionOptionValue)|trans }}</option>
+        {% endfor %}
+                </select>
+            </div>
+        </div>
+    {% else %}
+        <input type="hidden" id="plugin_instant_messenger_floating_button_position"
+               name="plugin[instant_messenger_integration][floating_button_position]"
+               class="form-control" value="{{selectedFloatingButtonPositionValue}}">
+    {% endif %}
+{% else %}
+        <input type="hidden" id="plugin_instant_messenger_floating_button_position"
+               name="plugin[instant_messenger_integration][floating_button_position]"
+               class="form-control" value="{{(floatingButtonPositionData.defaultOption is not empty)?floatingButtonPositionData.defaultOption:'' }}">
+{% endif %}
+{% if floatingButtonInstantMessengerTypeData.options is not empty %}
+    {% set firstFloatingButtonInstantMessengerTypeValue = (((floatingButtonInstantMessengerTypeData.options|keys)|first) is not empty)?((floatingButtonInstantMessengerTypeData.options|keys)|first):'' %}
+    {% set floatingButtonInstantMessengerTypeDefaultValue = (floatingButtonInstantMessengerTypeData.defaultOption is not empty)?floatingButtonInstantMessengerTypeData.defaultOption:firstFloatingButtonInstantMessengerTypeValue %}
+    {% set selectedFloatingButtonInstantMessengerTypeValue = (instantMessengerIntegrationSettings.floatingButtonInstantMessengerType is empty or instantMessengerIntegrationSettings.floatingButtonInstantMessengerType not in floatingButtonInstantMessengerTypeData.options|keys )?floatingButtonInstantMessengerTypeDefaultValue:instantMessengerIntegrationSettings.floatingButtonInstantMessengerType %}
+    {% if floatingButtonInstantMessengerTypeData.options|length > 1 %}
+        <div class="form-group">
+            <div class="col-sm-3 control-label"><label for="plugin_instant_messenger_floating_button_type">{{"Floating button IM type"|trans}}</label></div>
+            <div class="col-sm-4 selectize">
+                <select name="plugin[instant_messenger_integration][floating_button_type]"
+                    id="plugin_instant_messenger_floating_button_type" class="form-control">
+        {% for floatingButtonInstantMessengerTypeOptionValue, floatingButtonInstantMessengerTypeOptionLabel in floatingButtonInstantMessengerTypeData.options -%}
+                    <option value="{{ floatingButtonInstantMessengerTypeOptionValue }}" {{ (floatingButtonInstantMessengerTypeOptionValue == selectedFloatingButtonInstantMessengerTypeValue) ? 'selected' : '' }}>{{ ((floatingButtonInstantMessengerTypeOptionLabel is not empty)?floatingButtonInstantMessengerTypeOptionLabel:floatingButtonInstantMessengerTypeOptionValue)|trans }}</option>
+        {% endfor %}
+                </select>
+            </div>
+        </div>
+    {% else %}
+        <input type="hidden" id="plugin_instant_messenger_floating_button_type"
+               name="plugin[instant_messenger_integration][floating_button_type]"
+               class="form-control" value="{{selectedFloatingButtonInstantMessengerTypeValue}}">
+    {% endif %}
+{% else %}
+        <input type="hidden" id="plugin_instant_messenger_floating_button_type"
+               name="plugin[instant_messenger_integration][floating_button_type]"
+               class="form-control" value="{{(floatingButtonInstantMessengerTypeData.defaultOption is not empty)?floatingButtonInstantMessengerTypeData.defaultOption:'' }}">
+{% endif %}
+    </div>
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[instant_messenger_integration]" value="1" class="btn btn-primary action-save" data-loading-text="{{ saveButtonData.dataLoadingText }}">{{ saveButtonData.label }}</button>
+    </div>
+</div>

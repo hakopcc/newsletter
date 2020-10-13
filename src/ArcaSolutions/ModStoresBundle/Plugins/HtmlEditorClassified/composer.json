@@ -1,0 +1,13 @@
+{
+    "name": "arcasolutions/htmleditorclassified",
+    "description": "HTML Editor for Classified",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "require": {
+        "arcasolutions/edirectory-plugins": "^1.0.0",
+        "arcasolutions/edirectory": "^13.0.00"
+    },
+    "extra": {
+        "bundle-name": "HtmlEditorClassifiedBundle"
+    }
+}

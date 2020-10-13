@@ -1,0 +1,16 @@
+.mailchimp-newsletter {
+  .row {
+    > div {
+      @media (min-width: 768px) {
+        padding: 0;
+        &:first-child {
+          padding-left: 16px;
+        }
+
+        &:last-child {
+          padding-right: 16px;
+        }
+      }
+    }
+  }
+}

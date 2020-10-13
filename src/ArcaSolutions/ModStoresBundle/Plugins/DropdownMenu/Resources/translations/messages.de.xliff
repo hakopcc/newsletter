@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-25T17:03:34Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="5aee96737456fc4b6343c8c84655dd6b54ef7763" resname="'Not associated' menu label is not allowed. The last valid value has been restored.">
+        <source>'Not associated' menu label is not allowed. The last valid value has been restored.</source>
+        <target state="new">'Not associated' menu label is not allowed. The last valid value has been restored.</target>
+        <jms:reference-file line="844">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7f21f150391dff809c1a0bab0d09e66ae86b2fe5" resname="Are you sure you would like to remove this menu item, including all sub menus related to it: ">
+        <source>Are you sure you would like to remove this menu item, including all sub menus related to it: </source>
+        <target state="new">Are you sure you would like to remove this menu item, including all sub menus related to it: </target>
+        <jms:reference-file line="854">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d457d3093f118d1a6c0f9b41a26ac4d30aae764a" resname="Configure below your site navigation menu. You can change or delete actual ones, add new ones, reorder then and also create sub-menus.">
+        <source>Configure below your site navigation menu. You can change or delete actual ones, add new ones, reorder then and also create sub-menus.</source>
+        <target state="new">Configure below your site navigation menu. You can change or delete actual ones, add new ones, reorder then and also create sub-menus.</target>
+        <jms:reference-file line="856">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e51b0e958683f22ddb28a65b366eba72719be97e" resname="Empty menu label is not allowed. The last valid value has been restored.">
+        <source>Empty menu label is not allowed. The last valid value has been restored.</source>
+        <target state="new">Empty menu label is not allowed. The last valid value has been restored.</target>
+        <jms:reference-file line="843">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e7887f103b134779b55e396f1741b04a5f6c039c" resname="Menu item appears on front-end">
+        <source>Menu item appears on front-end</source>
+        <target state="new">Menu item appears on front-end</target>
+        <jms:reference-file line="853">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b84fec75bd8b5af7100a951a75d4f8ad460aef71" resname="Menu item hidden on front-end">
+        <source>Menu item hidden on front-end</source>
+        <target state="new">Menu item hidden on front-end</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-design-sitenavigation-item-template.html.twig</jms:reference-file>
+        <jms:reference-file line="852">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cf03cf2e9cdf95a20af09137dfb9071db0c31bf2" resname="Navigation">
+        <source>Navigation</source>
+        <target state="new">Navigation</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Resources/views/legacy-includes-modals-widget-editheader_navigation-edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="612fda297a3ae5ecc82577528247c9fe2b2f6b6d" resname="New menu">
+        <source>New menu</source>
+        <target state="new">New menu</target>
+        <jms:reference-file line="845">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7f799e0d8d7af3a48081b57c9a13b526d5febc03" resname="Reloading previous saved navigation.">
+        <source>Reloading previous saved navigation.</source>
+        <target state="new">Reloading previous saved navigation.</target>
+        <jms:reference-file line="848">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c2095a4534af50871fcca8c139c481494def8075" resname="Unable to display navigation edit form due to an unexpected behavior.">
+        <source>Unable to display navigation edit form due to an unexpected behavior.</source>
+        <target state="new">Unable to display navigation edit form due to an unexpected behavior.</target>
+        <jms:reference-file line="851">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0fee70a620554477e754291d196a4221066084f6" resname="Unexpected error on after rebuild navigation due to an empty navigation data.">
+        <source>Unexpected error on after rebuild navigation due to an empty navigation data.</source>
+        <target state="new">Unexpected error on after rebuild navigation due to an empty navigation data.</target>
+        <jms:reference-file line="850">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bc805cb79638affaea03f8e6d21e16be7c05e72b" resname="Unexpected error on load navigation.">
+        <source>Unexpected error on load navigation.</source>
+        <target state="new">Unexpected error on load navigation.</target>
+        <jms:reference-file line="849">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b76cdedfd030b393b33f206be38fb7377f9b7542" resname="Unexpected error on reset navigation.">
+        <source>Unexpected error on reset navigation.</source>
+        <target state="new">Unexpected error on reset navigation.</target>
+        <jms:reference-file line="846">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9376d183ad9884e41e906607c430a9b31cadc6d6" resname="Unexpected error on save navigation.">
+        <source>Unexpected error on save navigation.</source>
+        <target state="new">Unexpected error on save navigation.</target>
+        <jms:reference-file line="847">/../src/ArcaSolutions/ModStoresBundle/Plugins/DropdownMenu/Services/NavigationDropdownMenuService.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

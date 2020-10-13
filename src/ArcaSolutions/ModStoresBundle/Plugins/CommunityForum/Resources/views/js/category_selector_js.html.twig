@@ -1,0 +1,400 @@
+<script type="text/javascript">
+    let categoryModule = 'forum';
+    let typingTimer;
+    let doneTypingInterval = 500;
+    let lastSearchedCategoryTerm = null;
+    let xhrSearchCategoryByTerm = null;
+    let xhrSearchCategoryByTermAfterDoneFunction = null;
+    let xhrLoadCategory = null;
+    let xhrLoadCategoryAfterDoneFunction = null;
+    let xhrLoadCategoryTitle = null;
+
+    function abortCategoryRelatedXhr(){
+        if (xhrSearchCategoryByTerm !== null || xhrLoadCategory !== null) {
+            if (xhrSearchCategoryByTerm !== null) {
+                xhrSearchCategoryByTerm.abort();
+                xhrSearchCategoryByTerm = null;
+                $('#loading-item').remove();
+                runSearchCategoryByTermAfterDoneFunction();
+            }
+            if (xhrLoadCategory !== null) {
+                xhrLoadCategory.abort();
+                $('#loading-item').remove();
+                runLoadCategoryAfterDoneFunction();
+            }
+        }
+    }
+
+    function runSearchCategoryByTermAfterDoneFunction(){
+        //check if xhrSearchCategoryByTermAfterDoneFunction is not empty and if is a function object and if is call then
+        if(xhrSearchCategoryByTermAfterDoneFunction !== null && {}.toString.call(xhrSearchCategoryByTermAfterDoneFunction) === '[object Function]'){
+            xhrSearchCategoryByTermAfterDoneFunction();
+            xhrSearchCategoryByTermAfterDoneFunction = null;
+        }
+    }
+
+    function runLoadCategoryAfterDoneFunction(){
+        //check if xhrLoadCategoryAfterDoneFunction is not empty and if is a function object and if is call then
+        if (xhrLoadCategoryAfterDoneFunction !== null && {}.toString.call(xhrLoadCategoryAfterDoneFunction) === '[object Function]') {
+            xhrLoadCategoryAfterDoneFunction();
+            xhrLoadCategoryAfterDoneFunction = null;
+        }
+    }
+
+    function searchCategoryByTerm(categoriesContainer, val, selectParent,executeAfterSearchCategoryByTermDone=null) {
+        abortCategoryRelatedXhr();
+        //check if executeAfterSearchCategoryByTermDone is not empty and if is a function object and if is set as xhrSearchCategoryByTermAfterDoneFunction value
+        if(executeAfterSearchCategoryByTermDone!==null && {}.toString.call(executeAfterSearchCategoryByTermDone) === '[object Function]') {
+            xhrSearchCategoryByTermAfterDoneFunction = executeAfterSearchCategoryByTermDone;
+        }
+        $(categoriesContainer).append('<div class="categories-item" id="loading-item">' +
+            '          <div class="categories-block" is-loading="true">' +
+            '              <img src="/sitemgr/assets/img/loading-32.gif">' +
+            '          </div>' +
+            '      </div>');
+        let categories = [];
+
+        if(selectParent) {
+            categories.push($('.base-categories>#parent_id').val());
+        } else if($('input[name="return_categories"]').val()) {
+            categories = $('input[name="return_categories"]').val().split(',');
+        }
+
+        let data = {
+            module: categoryModule,
+            action: 'search',
+            term: val,
+            categories: categories,
+            selectParent: (selectParent!==null&&selectParent)?'true':'false'
+        };
+
+        xhrSearchCategoryByTerm = $.post('{{path("forum_category_load",{})|raw}}', data).done(function (data) {
+            xhrSearchCategoryByTerm=null;
+            $('#loading-item').remove();
+            lastSearchedCategoryTerm = val;
+
+            if (data.success === 'true') {
+                $(categoriesContainer).append(data.template);
+
+                $(categoriesContainer).addClass('loaded');
+
+                let categoriesWrapAddCategory = $('#categories-wrap .addCategory');
+                categoriesWrapAddCategory.off('click', modalAddCategoryEvent);
+                categoriesWrapAddCategory.on('click', modalAddCategoryEvent);
+            }
+
+            runSearchCategoryByTermAfterDoneFunction();
+        });
+    }
+
+    function loadParentCategories(categoriesContainer, selectParent = false, onlyParents = false, executeAfterLoadCategoryDone = null) {
+        if(!$(categoriesContainer).hasClass('loaded')) {
+            abortCategoryRelatedXhr();
+            //check if executeAfterLoadCategoryDone is not empty and if is a function object and if is set as xhrLoadCategoryAfterDoneFunction value
+            if (executeAfterLoadCategoryDone !== null && {}.toString.call(executeAfterLoadCategoryDone) === '[object Function]') {
+                xhrLoadCategoryAfterDoneFunction = executeAfterLoadCategoryDone;
+            }
+
+            $(categoriesContainer).append('<div class="categories-item" id="loading-item">' +
+                '          <div class="categories-block" is-loading="true">' +
+                '              <img src="/sitemgr/assets/img/loading-32.gif">' +
+                '          </div>' +
+                '      </div>');
+
+            let categories = [];
+
+            if (selectParent || onlyParents) {
+                categories.push($('.base-categories>#parent_id').val());
+            } else if ($('input[name="return_categories"]').val()) {
+                categories = $('input[name="return_categories"]').val().split(',');
+            }
+
+            let data = {
+                module: categoryModule,
+                action: 'load',
+                categories: categories,
+                selectParent: (selectParent !== null && selectParent) ? 'true' : 'false',
+                onlyParents: (onlyParents !== null && onlyParents) ? 'true' : 'false'
+            };
+
+            xhrLoadCategory = $.post('{{ path("forum_category_load",{})|raw }}', data).done(function (data) {
+                xhrLoadCategory=null;
+                $('#loading-item').remove();
+                if (data.success === 'true') {
+                    $(categoriesContainer).append(data.template);
+                    $(categoriesContainer).addClass('loaded');
+                    registerEvents();
+                }
+
+                runLoadCategoryAfterDoneFunction();
+            });
+        } else {
+            //check if executeAfterLoadCategoryDone is not empty and if is a function object and if is run it
+            if (executeAfterLoadCategoryDone !== null && {}.toString.call(executeAfterLoadCategoryDone) === '[object Function]') {
+                executeAfterLoadCategoryDone();
+            }
+        }
+    }
+
+    let loadParentCategoriesModalEvent = function() {
+        let categorySearch = $('.category-search:visible');
+        let categoryTermValue = categorySearch.val();
+
+        const ref = $(this).data('ref');
+
+        $(this).toggleClass('is-open');
+        $('#'+ref).slideToggle();
+
+        if($(this).hasClass('is-open')) {
+            let categoriesContainer = $('#categories-wrap');
+            if(categoryTermValue!=null&&categoryTermValue){
+                if(lastSearchedCategoryTerm!==categoryTermValue) {
+                    categoriesContainer.empty();
+                    categoriesContainer.removeClass('loaded');
+                    searchCategoryByTerm(categoriesContainer, categoryTermValue, true);
+                }
+            } else {
+                lastSearchedCategoryTerm = null;
+                loadParentCategories(categoriesContainer, true);
+            }
+        } else {
+            abortCategoryRelatedXhr();
+        }
+    };
+
+    $('.open-create-categories').on('click', loadParentCategoriesModalEvent);
+
+    let loadParentCategoriesEvent = function() {
+        $('.button-browse-categories').off('click', loadParentCategoriesEvent);
+
+        $('.categories-list-block').fadeToggle();
+
+        let categoriesContainer = $('#categories-container');
+
+        let onlyParents = $(this).data('onlyparents');
+
+        let executeAfterLoadCategoryDoneFunction = null;
+
+        if(onlyParents) {
+            executeAfterLoadCategoryDoneFunction = function(){
+                $('.button-browse-categories').on('click', loadParentCategoriesEvent);
+            };
+        } else {
+            executeAfterLoadCategoryDoneFunction = function(){
+                $('.open-create-categories').on('click', loadParentCategoriesModalEvent);
+            };
+        }
+
+        loadParentCategories(categoriesContainer, onlyParents, onlyParents, executeAfterLoadCategoryDoneFunction);
+    };
+
+    function doneTyping(val, reference, selectParent) {
+
+        let categoriesContainer = $('#' + reference);
+
+        categoriesContainer.empty();
+
+        categoriesContainer.removeClass('loaded');
+
+        if(reference === 'categories-wrap' && !categoriesContainer.is(":visible")) {
+            categoriesContainer.slideToggle();
+        }
+
+        if(val === '') {
+            loadParentCategories(categoriesContainer, selectParent, false);
+        } else {
+            searchCategoryByTerm(categoriesContainer, val, selectParent);
+        }
+    }
+
+    let doneTypingEvent = function () {
+        abortCategoryRelatedXhr();
+        clearTimeout(typingTimer);
+        let categorySearch = $('.category-search:visible');
+        let value = categorySearch.val();
+        let reference = categorySearch.data('ref');
+        let selectParent = categorySearch.data('selectparent');
+
+        typingTimer = setTimeout(function () {
+            doneTyping(value, reference, selectParent);
+        }, doneTypingInterval);
+    };
+
+    $('.category-search').on('keyup', doneTypingEvent);
+
+    function loadSubCategories(el, elParent, selectParent, executeAfterLoadCategoryDone = null) {
+        if (!el.hasClass('loaded')) {
+            abortCategoryRelatedXhr();
+            //check if executeAfterLoadCategoryDone is not empty and if is a function object and if is set as xhrLoadCategoryAfterDoneFunction value
+            if (executeAfterLoadCategoryDone!==null && {}.toString.call(executeAfterLoadCategoryDone) === '[object Function]') {
+                xhrLoadCategoryAfterDoneFunction = executeAfterLoadCategoryDone;
+            }
+
+            $(elParent).after('<div class="categories-sub-block" is-active="true"></div>');
+
+            $(elParent).next('.categories-sub-block').append('<div class="categories-block" is-loading="true" id="loading-item">' +
+                '                     <img src="/sitemgr/assets/img/loading-32.gif">' +
+                '                 </div>');
+
+            let categories;
+
+            if (selectParent) {
+                categories = [];
+                categories.push($('.base-categories>#parent_id').val());
+            } else if ($('input[name="return_categories"]').val()) {
+                categories = $('input[name="return_categories"]').val().split(',');
+            } else {
+                categories = [];
+            }
+
+            let data = {
+                module: categoryModule,
+                action: 'load',
+                level: (parseInt(elParent.attr('tree')) + 1),
+                id: elParent.data('id'),
+                categories: categories,
+                selectParent: (selectParent!==null && selectParent) ? 'true' : 'false'
+            };
+
+            xhrLoadCategory = $.post('{{ path("forum_category_load",{})|raw }}', data).done(function (data) {
+                xhrLoadCategory = null;
+                $('#loading-item').remove();
+
+                if (data.success === 'true') {
+                    $(elParent).next('.categories-sub-block').append(data.template);
+                    el.addClass('loaded');
+
+                    registerEvents();
+                }
+
+                runLoadCategoryAfterDoneFunction();
+            });
+        } else {
+            //check if executeAfterLoadCategoryDone is not empty and if is a function object and if is run it
+            if (executeAfterLoadCategoryDone!==null && {}.toString.call(executeAfterLoadCategoryDone) === '[object Function]') {
+                executeAfterLoadCategoryDone();
+            }
+        }
+    }
+
+    let loadSubCategoriesEvent = function() {
+        let el = $(this);
+        let elParent = el.parent();
+
+        let categorieBlock = el.closest('.categories-block');
+        let subCategorie = categorieBlock.next('.categories-sub-block');
+        let selectParent = elParent.data('selectparent');
+
+        subCategorie.slideToggle();
+        el.toggleClass('is-active');
+        if(el.hasClass('is-active')) {
+            loadSubCategories(el, elParent, selectParent);
+        }
+    };
+
+    $('.categories-block:not(.is-last) .categories-name').on('click', loadSubCategoriesEvent);
+
+    let modalRemoveCategoryEvent = function() {
+        let itemId = $(this).data('id');
+
+        if(itemId !== undefined) {
+            let parentId = $('.base-categories>#parent_id');
+
+            parentId.val('');
+        }
+
+        $('.open-create-categories[data-ref="categories-wrap"]').removeClass('is-open').addClass('is-disabled');
+
+        let categoriesContainer = $('#categories-wrap');
+
+        if(categoriesContainer.is(':visible')) {
+            categoriesContainer.slideToggle();
+            categoriesContainer.empty();
+            categoriesContainer.removeClass('loaded');
+        }
+
+        $('.remove-categories-item[data-id="' + itemId + '"]').parent().remove();
+
+        $('#parentCategory').hide();
+        let modalCategorySearch = $('#modal-category-search');
+        modalCategorySearch.val('');
+        modalCategorySearch.show();
+
+        $('.open-create-categories[data-ref="categories-wrap"]').removeClass('is-disabled');
+    };
+
+    let modalAddCategoryEvent = function() {
+        let elParent = $(this).parent();
+
+        let itemText = elParent.text().trim();
+        let itemId = elParent.data('id');
+
+        $('#modal-category-search').hide();
+
+        $('#parentCategory').empty().show().append('<div class="input-categories-item">' + itemText +
+            ' <span class="remove-categories-item" data-id="' + itemId+ '">' +
+            '<i class="fa fa-close">' +
+            '</i>' +
+            '</span>' +
+            '</div>');
+
+        $('.open-create-categories[data-ref="categories-wrap"]').removeClass('is-open').addClass('is-disabled');
+
+        let categoriesContainer = $('#categories-wrap');
+        categoriesContainer.empty();
+        categoriesContainer.removeClass('loaded');
+        categoriesContainer.slideToggle();
+        $('.base-categories>#parent_id').val(itemId);
+
+        $('#parentCategory .remove-categories-item').on('click', modalRemoveCategoryEvent);
+    };
+
+    $('#modal-create-categories .addCategory').on('click', modalAddCategoryEvent);
+
+    function registerEvents() {
+        //Load sub categories event
+        let categoriesName = $('.categories-block:not(.is-last) .categories-name');
+        categoriesName.off('click', loadSubCategoriesEvent);
+        categoriesName.on('click', loadSubCategoriesEvent);
+
+        //Add category events
+        let modalCreateCategoriesAddCategory = $('#modal-create-categories .addCategory');
+        modalCreateCategoriesAddCategory.off('click', modalAddCategoryEvent);
+        modalCreateCategoriesAddCategory.on('click', modalAddCategoryEvent);
+
+        //Remove category events
+        let modalRemoveCategory = $('#categories-wrap .removeCategory');
+        modalRemoveCategory.off('click', modalRemoveCategoryEvent);
+        modalRemoveCategory.on('click', modalRemoveCategoryEvent);
+    }
+
+    let initialSelectedCategory = $('.base-categories>#parent_id').val();
+    if(initialSelectedCategory!==null&&initialSelectedCategory){
+        $('.open-create-categories[data-ref="categories-wrap"]').addClass('is-disabled');
+        $('#modal-category-search').hide();
+        $('#parentCategory').empty().show().append('<div class="input-categories-item">{{ 'Loading selected category'|trans }}</div>');
+        let data = {
+            module: categoryModule,
+            action: 'get_title',
+            id: initialSelectedCategory
+        };
+
+        xhrLoadCategoryTitle = $.post('{{path("forum_category_load",{})|raw}}', data).done(function (data) {
+            xhrLoadCategoryTitle=null;
+
+            if (data.success === 'true') {
+                $('#parentCategory').empty().show().append('<div class="input-categories-item">' + data.title +
+                    ' <span class="remove-categories-item" data-id="' + initialSelectedCategory + '">' +
+                    '<i class="fa fa-close">' +
+                    '</i>' +
+                    '</span>' +
+                    '</div>');
+                $('#parentCategory .remove-categories-item').on('click', modalRemoveCategoryEvent);
+            } else {
+                $('.open-create-categories[data-ref="categories-wrap"]').removeClass('is-disabled');
+                $('#modal-category-search').show();
+                $('#parentCategory').empty().hide();
+            }
+        });
+    }
+</script>

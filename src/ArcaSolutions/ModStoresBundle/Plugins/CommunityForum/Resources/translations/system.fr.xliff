@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-10-08T11:56:34Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a733b809d2f1233496ab516eed0f3ef75cf3791a" resname="Active">
+        <source>Active</source>
+        <target>Active</target>
+        <jms:reference-file line="2582">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b52b36b7269fbfc58ec24bb724691951a3decbe8" resname="Back">
+        <source>Back</source>
+        <target>Retour</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="103">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77dfd2135f4db726c47299bb55be26f7f4525a46" resname="Cancel">
+        <source>Cancel</source>
+        <target>Annuler</target>
+        <jms:reference-file line="23">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="61">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="46">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+        <jms:reference-file line="85">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eb9a4bc1c0c153e4e4b042a79113b815b7e3021d" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+        <jms:reference-file line="36">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f6fdbe48dc54dd86f63097a03bd24094dedd713a" resname="Delete">
+        <source>Delete</source>
+        <target>Effacer</target>
+        <jms:reference-file line="2567">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2570">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7c9a7c0610c1bc20abb9c9d07094daa33576a8f8" resname="Detail">
+        <source>Detail</source>
+        <target>Détail</target>
+        <jms:reference-file line="42">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+        <jms:reference-file line="60">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5301648dcf6b53cefc9ed52999aaa92d4603cae0" resname="Edit">
+        <source>Edit</source>
+        <target>Éditer</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="709a23220f2c3d64d1e1d6d18c4d5280f8d82fca" resname="Name">
+        <source>Name</source>
+        <target>Nom</target>
+        <jms:reference-file line="29">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ca1dd39379254ab3f3c73dbffb0d03d628b27d20" resname="Not">
+        <source>Not</source>
+        <target>Non</target>
+        <jms:reference-file line="2582">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e88abfdfcc8c6d48fe1789050eac893042ef7856" resname="Report Chart">
+        <source>Report Chart</source>
+        <target>Graphique de rapport</target>
+        <jms:reference-file line="67">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bae7d5be70820ed56467bd9a63744e23b47bd711" resname="Status">
+        <source>Status</source>
+        <target>État</target>
+        <jms:reference-file line="31">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="12b71c3e0fe5f7c0b8d17cc03186e281412da4a8" resname="Summary">
+        <source>Summary</source>
+        <target>Sommaire</target>
+        <jms:reference-file line="39">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+        <jms:reference-file line="59">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

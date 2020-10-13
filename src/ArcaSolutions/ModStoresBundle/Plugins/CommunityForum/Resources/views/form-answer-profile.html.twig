@@ -1,0 +1,28 @@
+<div class="members-page profile-page">
+    <form role="form" name="answer" id="answer" action="/profile/forum/answer.php" method="post" enctype="multipart/form-data" class="container">
+        <div class="members-panel edit-panel">
+            <div class="panel-header">
+                {{ "Edit"|trans({},"system") }} <strong>"{{ question.title }}"</strong> {{ "answer"|trans }}
+            </div>
+            <div class="panel-body">
+                <div class="custom-edit-content">
+                    <input type="hidden" name="sitemgr" id="sitemgr" value="1">
+                    <input type="hidden" name="return_categories" id="return_categories" value="">
+                    <input type="hidden" name="id" id="id" value="{{ answer.id }}">
+
+                    <div class="form-group">
+                        <label for="description">{{ "Content" }}</label>
+                        {% set locale = app.request.locale|split('_') %}
+                        {{renderCKEditor('description', 'description' , 3, 30, '' , '' , '' , answer.description , false , locale|first|lower, true)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <button class="button button-md is-outline" type="button" onclick="window.history.back();">{{ "Cancel"|trans({},"system") }}</button>
+            <button class="button button-md is-success" type="submit">{{ "Save changes"|trans }}</button>
+        </div>
+    </form>
+</div>
+{{ addJSTwig("CommunityForumBundle::js/category_selector_js.html.twig") }}

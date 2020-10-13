@@ -1,0 +1,3 @@
+modstore_newsletter:
+    path:      /newsletter
+    defaults: { _controller: MailchimpIntegrationBundle:Default:newsletter }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-31T14:16:48Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a6678174d553ccd07b35650f7b61b2f4cb85751b" resname="Allow owners to add Facebook feed to their events?">
+        <source>Allow owners to add Facebook feed to their events?</source>
+        <target state="new">Autoriser les propriétaires à ajouter un fil Facebook à leurs événements?</target>
+        <jms:reference-file line="193">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9be1828c0cbe58f65855d4d1ab2dc7aed4d78b44" resname="Allow owners to add Instagram feed to their events?">
+        <source>Allow owners to add Instagram feed to their events?</source>
+        <target state="new">Autoriser les propriétaires à ajouter un flux Instagram à leurs événements?</target>
+        <jms:reference-file line="205">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d0ba8afc04f5b990c05071f61c6e2bab0db2bc92" resname="Allow owners to add Twitter timeline feed to their events?">
+        <source>Allow owners to add Twitter timeline feed to their events?</source>
+        <target state="new">Autoriser les propriétaires à ajouter une chronologie Twitter à leurs événements?</target>
+        <jms:reference-file line="199">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7c642fd3cc80bb51082da134457530fbf98a1156" resname="Facebook feed">
+        <source>Facebook feed</source>
+        <target state="new">Flux Facebook</target>
+        <jms:reference-file line="192">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="21f54347d9798507b212134681c661bc9c6a2dda" resname="Facebook page">
+        <source>Facebook page</source>
+        <target state="new">Page Facebook</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/Resources/views/sitemgr-form-social.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="13d61b201cc5b057595e2331d3d89b4141d1ca23" resname="Instagram feed">
+        <source>Instagram feed</source>
+        <target state="new">Flux Instagram</target>
+        <jms:reference-file line="204">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8c140432919ab54e3437974ba639999fe62f23e4" resname="Instagram profile">
+        <source>Instagram profile</source>
+        <target state="new">Profil Instagram</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/Resources/views/sitemgr-form-social.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8139295521e2d4509fac3e7323b51130579dd3f9" resname="Tweets by">
+        <source>Tweets by</source>
+        <target state="new">Tweets de</target>
+        <jms:reference-file line="54">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/Resources/views/socialpanel.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="15aaec72e915770c53c6ee15512d96d919183ab1" resname="Twitter page">
+        <source>Twitter page</source>
+        <target state="new">Page Twitter</target>
+        <jms:reference-file line="21">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/Resources/views/sitemgr-form-social.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="abd3f6aefc5e3ffe13523819a9e907482632a7d4" resname="Twitter timeline feed">
+        <source>Twitter timeline feed</source>
+        <target state="new">Flux de chronologie Twitter</target>
+        <jms:reference-file line="198">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="072671b3bfe56d4f87fd60527639ae18d5135501" resname="Wrong format on instagram value, please use the format '@name'">
+        <source>Wrong format on instagram value, please use the format '@name'</source>
+        <target state="new">Mauvais format sur la valeur instagram, veuillez utiliser le format '@nom'</target>
+        <jms:reference-file line="372">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdvancedSocialMediaEvent/AdvancedSocialMediaEventBundle.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

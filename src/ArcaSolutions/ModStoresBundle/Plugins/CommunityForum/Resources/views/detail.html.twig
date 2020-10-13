@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' -%}
+
+{% block SEO %}
+    {{ generateQuestionSEO( item ) }}
+{% endblock -%}
+
+{# enables autocomplete in phpstorm -#}
+{# @var item \ArcaSolutions\ModStoresBundle\Plugins\CommunityForum\Entity\Question -#}
+{% block body -%}
+    {{ renderPage(pageId) }}
+{% endblock -%}

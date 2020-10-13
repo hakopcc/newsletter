@@ -1,0 +1,6 @@
+{% for instantMessengerData in instantMessengerDataArray -%}
+<div class="contact-item item-phone">
+    <div class="icon icon-md instant-messenger-icon" imtype="{{instantMessengerData.type}}">{{instantMessengerData.iconSvgRawContent|raw}}</div>
+    <a target="_blank" href="{{instantMessengerData.hRef}}">{{instantMessengerData.value}}</a>
+</div>
+{% endfor -%}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:14:23Z" source-language="en" target-language="tr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="ad394677d881a1d0817f1265de9311a5f724cab3" resname="Browse by Map">
+        <source>Browse by Map</source>
+        <target state="new">Browse by Map</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_by_map_content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8a53a077ae4d333f6b016c55abd5927cc70d2166" resname="Browse by Map Settings">
+        <source>Browse by Map Settings</source>
+        <target state="new">Browse by Map Settings</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ab478f3efc840eebab919dff1b9512286f70c10c" resname="Map">
+        <source>Map</source>
+        <target>Harita</target>
+        <jms:reference-file line="19">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="80220ed0d5e964998af0e24e441e4f7a9512d113" resname="Map Background Color">
+        <source>Map Background Color</source>
+        <target state="new">Map Background Color</target>
+        <jms:reference-file line="59">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eb1253d1a6f634d4922a2e6d11ef3fb4103b781b" resname="Map Color">
+        <source>Map Color</source>
+        <target state="new">Map Color</target>
+        <jms:reference-file line="45">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Lütfen bekleyin...</target>
+        <jms:reference-file line="67">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="68">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6f10c3831d214cf93d040ae4dbe81cff5006dafa" resname="Show map color coded by density of listings. The countries or states that have more listings will have more contrast in their color.">
+        <source>Show map color coded by density of listings. The countries or states that have more listings will have more contrast in their color.</source>
+        <target state="new">Show map color coded by density of listings. The countries or states that have more listings will have more contrast in their color.</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/BrowseMapListing/Resources/views/browse_settings_form.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

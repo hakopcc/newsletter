@@ -1,0 +1,12 @@
+<div class="modal-rate modal-rate-advanced">
+    {% for rating in ratings %}
+        <div class="rating-item">
+            <div class="paragraph">{{ rating.label }}</div>
+            <div class="rate select-rating" data-typeid="{{ rating.id }}">
+                {% for rate in range(-5,-1) %}
+                    <span data-rating="{{ -rate }}"></span>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

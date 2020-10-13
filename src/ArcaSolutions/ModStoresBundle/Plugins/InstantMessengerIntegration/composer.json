@@ -1,0 +1,12 @@
+{
+    "name": "arcasolutions/instantmessengerintegration",
+    "description": "Instant Messenger Integration",
+    "version": "1.0.5",
+    "license": "proprietary",
+    "require": {
+        "arcasolutions/edirectory-plugins": "^1.0.0"
+    },
+    "extra": {
+        "bundle-name": "InstantMessengerIntegrationBundle"
+    }
+}

@@ -1,0 +1,72 @@
+<form role="form" name="answer" id="answer" action="/sitemgr/content/forum/answers/answer.php" method="post"
+      enctype="multipart/form-data">
+
+    <input type="hidden" name="sitemgr" id="sitemgr" value="1">
+    <input type="hidden" name="return_categories" id="return_categories" value="">
+    <input type="hidden" name="id" id="id" value="{{ answer.id }}">
+
+    <section class="row heading">
+
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="back-navigation">
+                    <a href="javascript:" onclick="window.history.go(-1);"><span>«</span>{{ "Back"|trans({},'system') }}</a>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h1>{{ "Edit"|trans({},"system") }} "{{ question.title }}" {{ "answer"|trans }}</h1>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="row tab-options">
+
+        <div class="container">
+            <div class="pull-right top-actions">
+                <a href="/sitemgr/content/forum/answers/" class="btn btn-default btn-xs">{{ "Cancel"|trans({},"system") }}</a>
+                <span class="separator"> {{ "or"|trans }}  </span>
+                <button type="button" name="submit_button" value="Submit" class="btn btn-primary action-save"
+                        data-loading-text="{{ "Please, wait..."|trans }}"
+                        onclick="JS_submit();">{{ "Save changes"|trans }}
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="container">
+
+                    <div class="col-md-7">
+
+                        <div class="form-group">
+                            <label for="name">{{ "Content" }}</label>
+                            {% set locale = app.request.locale|split('_') %}
+                            {{renderCKEditor('description', 'description' , 3, 30, 'description' , '' , '' , answer.description , false , locale|first|lower, true)}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="row footer-action">
+
+        <div class="container">
+            <div class="col-xs-12 text-right">
+                <a href="/sitemgr/content/forum/answers/" class="btn btn-default btn-xs">{{ "Cancel"|trans({},"system") }}</a>
+                <span class="separator"> {{ "or"|trans }} </span>
+                <button type="button" name="submit_button" value="Submit" class="btn btn-primary action-save"
+                        data-loading-text="{{ "Please, wait..." }}" onclick="JS_submit();">{{ "Save changes"|trans }}
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+</form>
+{{ addJSTwig("CommunityForumBundle::js/category_selector_js.html.twig") }}

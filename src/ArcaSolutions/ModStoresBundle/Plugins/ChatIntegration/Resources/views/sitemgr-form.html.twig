@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ "Chat Integration Settings"|trans }}</div>
+    <div class="panel-body form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <div class="control-label col-sm-3">
+                    {{ "Embed"|trans }}
+                </div>
+                <div class="checkbox col-sm-8">
+                    <textarea class="form-control" name="chatintegration_embed" rows="8">{{ embed }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[chat_integration]" value="1" class="btn btn-primary action-save"
+                data-loading-text="{{ "Please, wait..."|trans }}">{{ "Save changes"|trans }}</button>
+    </div>
+</div>

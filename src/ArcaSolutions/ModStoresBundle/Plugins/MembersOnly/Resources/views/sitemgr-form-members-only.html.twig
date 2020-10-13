@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ "Members Only Settings"|trans }}</div>
+
+    <div class="panel-body form-horizontal">
+
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                {{ "Options"|trans }}
+            </div>
+            <div class="col-sm-9 checkbox">
+                <label>
+                    <input type="checkbox" name="blockUsersOnlyCheckbox"
+                           value="on" {{ blockUsersOnlyCheckbox == "on" ? "checked" : "" }}>
+                    {{ "Active Members Only website locker"|trans }}
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                {{ "Access Level"|trans }}
+            </div>
+            <div class="col-sm-4 selectize">
+                {{ blockUsersOnlyDropdown|raw }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-sm-3">
+                {{ "Modal title"|trans }}
+            </div>
+
+            <div class="checkbox col-sm-8">
+                <input class="form-control" name="blockUsersOnlyTitle" value="{{ blockUsersOnlyTitle }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-sm-3">
+                {{ "Modal content"|trans }}
+            </div>
+            <div class="checkbox col-sm-8">
+                {{ blockUsersOnlyDescription|raw }}
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[members_only]" value="1" class="btn btn-primary action-save"
+                data-loading-text="{{ "Please, wait..."|trans }}">{{ "Save changes"|trans }}</button>
+    </div>
+</div>

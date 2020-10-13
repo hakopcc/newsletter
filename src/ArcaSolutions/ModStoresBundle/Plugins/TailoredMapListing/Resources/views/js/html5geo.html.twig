@@ -1,0 +1,77 @@
+<script>
+    $(window).on('load', function () {
+        if (Cookies.get('edirectory_geolocation_coordinates') === undefined) {
+            startWatch();
+        }
+    });
+
+    function startWatch() {
+        if (navigator.geolocation) {
+
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            watchId = navigator.geolocation.getCurrentPosition(function (position) {
+
+                var reload = false;
+                if (Cookies.get('edirectory_geolocation_coordinates') === undefined) {
+                    reload = true;
+                }
+
+                Cookies.set("edirectory_geolocation_coordinates", position.coords.latitude + "," + position.coords.longitude);
+
+                if (reload) {
+                    window.location.reload();
+                }
+
+                $.get("/getGeoIP.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude).done(function (response) {
+
+                    if (!response || response.length == 0) {
+                        return Cookies.set('location_geoip_failed', 1);
+                    }
+
+                    if (response) {
+                        Cookies.set('location_geoip', response);
+                        Cookies.set(eDirectory.Search.whereCookieName + "_typed", response);
+                        Cookies.set(eDirectory.Search.whereCookieName + "_internal", JSON.stringify({
+                            setBy: "user",
+                            friendlyUrl: response.toLowerCase(),
+                            itemType: ""
+                        }));
+                    }
+
+                    console.log("Working Geolocation");
+
+                });
+            }, showError, options);
+
+        } else {
+            console.log("Geolocation is not supported in your Browser");
+        }
+    }
+
+    function showError(error) {
+
+        if (error.message !== undefined) {
+            console.log(error.message)
+        } else {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("Location Information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    console.log("The request to get user location timed out.");
+                    break;
+                default:
+                    console.log("An Unknow Error Occurred.");
+                    break;
+            }
+        }
+    }
+</script>

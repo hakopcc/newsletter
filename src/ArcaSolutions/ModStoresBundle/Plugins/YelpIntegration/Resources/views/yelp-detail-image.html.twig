@@ -1,0 +1,10 @@
+{% if yelpBusiness['image_url'] is not empty %}
+    <div class="picture">
+        <a href="{{ yelpBusiness['image_url'] }}" rel="noopener noreferrer nofollow" class="fancybox">
+            <img data-src="{{ yelpBusiness['image_url'] }}" alt="{{ item.title }}" class="lazy">
+        </a>
+        {% if yelpBusiness['photos'] is not empty %}
+            <a href="#photos" id="view-photos" class="button button-md">{{ 'View all photos'|trans }}</a>
+        {% endif -%}
+    </div>
+{% endif -%}

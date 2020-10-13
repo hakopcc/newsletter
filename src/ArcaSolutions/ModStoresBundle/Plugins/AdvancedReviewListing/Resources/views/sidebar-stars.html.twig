@@ -1,0 +1,20 @@
+{% for rating in ratings %}
+    <div class="details-advanced-reviews-item">
+        <div class="advanced-reviews review-additional-title">{{ rating.label }}</div>
+        <div class="advances-reviews-content">
+            <div class="advanced-reviews reviews-rating">{{ rating.value|number_format(1, 'decimal.separator'|trans({},'units')) }}</div>
+            <div class="advanced-reviews reviews-stars">
+                {% for i in 0..4 %}
+                    {% if (i < (rating.value b-or 0)) %}
+                        {% set star = 'fa-star' %}
+                    {% elseif ((rating.value - i) > 0 and (rating.value - i) < 1) %}
+                        {% set star = 'fa-star-half-o' %}
+                    {% else %}
+                        {% set star = 'fa-star-o' %}
+                    {% endif %}
+                    <i class="advanced-reviews fa {{star}}"></i>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}

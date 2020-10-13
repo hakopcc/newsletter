@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-10-08T11:52:26Z" source-language="en" target-language="it" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="da39a3ee5e6b4b0d3255bfef95601890afd80709" resname="">
+        <source></source>
+        <target></target>
+        <jms:reference-file line="1394">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1516">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1593">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b83d818a79c2d58512f980ed6153e568841cad34" resname="%pageTitle% | %directoryTitle%">
+        <source>%pageTitle% | %directoryTitle%</source>
+        <target>%pageTitle% | %directoryTitle%</target>
+        <jms:reference-file line="52">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Twig/Extension/SeoExtension.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9c4eb09e8cd2c4b3a1b96c67f1aeb0a182ef912b" resname="Add Category">
+        <source>Add Category</source>
+        <target>Aggiungi categoria</target>
+        <jms:reference-file line="1124">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6a72085653e4c5be8c7640c868ef787cbcf063d1" resname="All">
+        <source>All</source>
+        <target>Tutto</target>
+        <jms:reference-file line="628">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a16a4eda7cb2c8e91d7edd25e809ae9d392c7498" resname="Answer">
+        <source>Answer</source>
+        <target>Risposta/Commento</target>
+        <jms:reference-file line="1284">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2570">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="625778d10ddb79db288c8c05f4d903cf6f709336" resname="Answer sent by user.">
+        <source>Answer sent by user.</source>
+        <target>Risposta/commento inviato dall'utente.</target>
+        <jms:reference-file line="2197">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="378eb8dc47fa978b5d79cf3df7f7355106285417" resname="Answer successfully deleted!">
+        <source>Answer successfully deleted!</source>
+        <target>Risposta/commento cancellato con successo!</target>
+        <jms:reference-file line="1942">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2133">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="304697f471e130a10709c725ef19c2e0435d1841" resname="Answer successfully updated">
+        <source>Answer successfully updated</source>
+        <target>Risposta/commento aggiornato con successo</target>
+        <jms:reference-file line="1941">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2132">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b12fcedc7bf1f597e5ad2703f34f510c39410a64" resname="Answers">
+        <source>Answers</source>
+        <target>Risposte/Commenti</target>
+        <jms:reference-file line="1261">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="59d87675b9d7f648b2d7ac0d077f88ec0b92cbbe" resname="Answers and comments">
+        <source>Answers and comments</source>
+        <target>Risposte e commenti</target>
+        <jms:reference-file line="54">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/forum-detail-content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="410bf23a3f080def9c7a976a16305bcde7943ed1" resname="Are you sure?">
+        <source>Are you sure?</source>
+        <target>Sei sicuro?</target>
+        <jms:reference-file line="2568">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2571">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b52b36b7269fbfc58ec24bb724691951a3decbe8" resname="Back">
+        <source>Back</source>
+        <target>Retro</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7fd4a9229794171e334e4944d6366f5ac6eebc6a" resname="Be the first to answer this topic!">
+        <source>Be the first to answer this topic!</source>
+        <target>Sii il primo a rispondere/commentare in questo argomento!</target>
+        <jms:reference-file line="81">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/forum-detail-content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77dfd2135f4db726c47299bb55be26f7f4525a46" resname="Cancel">
+        <source>Cancel</source>
+        <target>Annulla</target>
+        <jms:reference-file line="30">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/horizontal-question-bar.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="29d30ddd1202023bae1820445deea4311c465a50" resname="Category cannot be deleted because itself or any of its subcategories are still being used by a Topic.">
+        <source>Category cannot be deleted because itself or any of its subcategories are still being used by a Topic.</source>
+        <target>La categoria non può essere eliminata perché essa stessa o una delle sue sottocategorie sono ancora utilizzate da un argomento.</target>
+        <jms:reference-file line="543">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b7630532ee9324eaa19b17474ade9f4f36cf46d8" resname="Change Category">
+        <source>Change Category</source>
+        <target>Cambia categoria</target>
+        <jms:reference-file line="1056">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d8560c4c916c7d7e2db8558cffcfcbd1a8212e4f" resname="Edit topic">
+        <source>Edit topic</source>
+        <target>Modifica argomento</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="29a8cebacfb134f1fdbab9edc71a9440ddfb08b7" resname="Email sent to the user when receives a new topic answer">
+        <source>Email sent to the user when receives a new topic answer</source>
+        <target>Email inviata all'utente quando riceve una nuova risposta/commento sull'argomento</target>
+        <jms:reference-file line="2174">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cf1d2c9702ec3c2c9c19d4853cd487b92618fb0c" resname="Forum">
+        <source>Forum</source>
+        <target>Forum</target>
+        <jms:reference-file line="1313">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1977">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1982">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/sitemgr-menu.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="06df4b46facc80a7e7eeec85b2170d244e77889a" resname="Forum Answers">
+        <source>Forum Answers</source>
+        <target>Risposte/commenti del forum</target>
+        <jms:reference-file line="32">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4e87c6e99b1a507558b227a02898015f266694dd" resname="Forum answer edit">
+        <source>Forum answer edit</source>
+        <target>Modifica risposta/commento al forum</target>
+        <jms:reference-file line="974">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0c2f895ecf7ecbd39f35384323b33fff482e6572" resname="Forum topic edit">
+        <source>Forum topic edit</source>
+        <target>Modifica argomento del forum</target>
+        <jms:reference-file line="973">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5332023067cfa92adb32aa28f7174a783c15988c" resname="Forum topics">
+        <source>Forum topics</source>
+        <target>Argomenti del forum</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="742c64bad3ba5c847a3a37bef4660d5c4f577810" resname="Loading selected category">
+        <source>Loading selected category</source>
+        <target>Caricamento della categoria selezionata</target>
+        <jms:reference-file line="375">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/category_selector_js.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="93f46530c2ae86ceb90f52fafd24fa698e63020f" resname="Maximum file size: 5MB">
+        <source>Maximum file size: 5MB</source>
+        <target>Dimensione massima del file: 5 MB</target>
+        <jms:reference-file line="1258">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+        <jms:reference-file line="1304">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="66686cce10d2dd13a58455723ca24d2e659bbb74" resname="New topic answer">
+        <source>New topic answer</source>
+        <target>Nuova risposta / commento sull'argomento</target>
+        <jms:reference-file line="2173">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="12fab5fc6ca1c47de7dda045376d17ce9d5c3a30" resname="No Reports available">
+        <source>No Reports available</source>
+        <target>Nessun rapporto disponibile</target>
+        <jms:reference-file line="91">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6ab65952ab887c8eef26a8b768902a16b51b2100" resname="No forum topic categories.">
+        <source>No forum topic categories.</source>
+        <target>Nessuna categoria di argomenti del forum.</target>
+        <jms:reference-file line="2171">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1e2db9bc2cd3e7ab08a64c80ed791ac4506cc45a" resname="Placeholder for search by keyword field">
+        <source>Placeholder for search by keyword field</source>
+        <target>Segnaposto per la ricerca per campo di parole chiave</target>
+        <jms:reference-file line="369">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Migrations/Domain/VersionCommunityForum7.php</jms:reference-file>
+        <jms:reference-file line="468">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Migrations/Domain/VersionCommunityForum7.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target>Attendere prego...</target>
+        <jms:reference-file line="30">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="30">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7858ac3ff63354f37161bd349efe11edd13b89cb" resname="Post">
+        <source>Post</source>
+        <target>Inviare</target>
+        <jms:reference-file line="27">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/horizontal-question-bar.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b98285ea14f84c6f21f5aa31402b6f41dc3ef46c" resname="Profile url: (&quot;profile&quot;).">
+        <source>Profile url: ("profile").</source>
+        <target>URL del profilo: ("profile").</target>
+        <jms:reference-file line="2198">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="483bf2075c12023a5e849d12a42027be89c5e94b" resname="Published">
+        <source>Published</source>
+        <target>Pubblicato</target>
+        <jms:reference-file line="12">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+        <jms:reference-file line="41">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a7f3c274374cf59f0ec0a454cf3bd5624d791f9a" resname="Read full topic">
+        <source>Read full topic</source>
+        <target>Leggi l'intero argomento</target>
+        <jms:reference-file line="49">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/summary.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target>Salvare le modifiche</target>
+        <jms:reference-file line="24">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="64">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+        <jms:reference-file line="88">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2cbddce527f53216ccde33b89d17a945dd75b1bc" resname="Select topic category">
+        <source>Select topic category</source>
+        <target>Seleziona la categoria dell'argomento</target>
+        <jms:reference-file line="2533">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="be8e6f8b271e8b1d374d41006cee129147b76ece" resname="Select your category">
+        <source>Select your category</source>
+        <target>Seleziona la tua categoria</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/categories.html.twig</jms:reference-file>
+        <jms:reference-file line="23">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="55">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9bc2575c3930437e80555f78757b783c842e8e66" resname="Send">
+        <source>Send</source>
+        <target>Spedire</target>
+        <jms:reference-file line="91">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/forum-detail-content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c338c191ab1e9319ba354d56467b938e0ba4e119" resname="Sending...">
+        <source>Sending...</source>
+        <target>Invio ...</target>
+        <jms:reference-file line="92">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/forum-detail-content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eb213ec3eebee6e1a05a4c10e6086b42fa2b3e88" resname="Sign in to answer this topic">
+        <source>Sign in to answer this topic</source>
+        <target>Accedi per rispondere/commentare questo argomento</target>
+        <jms:reference-file line="99">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/forum-detail-content.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ab77fbbf910986bfe1cb9de9153c32aedc92ebf7" resname="Start a new topic">
+        <source>Start a new topic</source>
+        <target>Inizia un nuovo argomento</target>
+        <jms:reference-file line="16">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/blocks/question-sidebar.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/horizontal-question-bar.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="75b8b79795d755ed0bac22936fadb9a21d1ad29d" resname="Tell me more details">
+        <source>Tell me more details</source>
+        <target>Dimmi più dettagli</target>
+        <jms:reference-file line="23">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/horizontal-question-bar.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="86ee39c2bdd7f79f91c1a7aff732e84758b08057" resname="The following topics exceeded the maximum number of categories:">
+        <source>The following topics exceeded the maximum number of categories:</source>
+        <target>I seguenti argomenti hanno superato il numero massimo di categorie:</target>
+        <jms:reference-file line="2172">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7e13bd176f89a12f0b614b55ffc19c14515ef920" resname="Topic">
+        <source>Topic</source>
+        <target>Argomento</target>
+        <jms:reference-file line="1277">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2567">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7f5e5dcbc4928ce9e21abeb07d99916a76f25f6e" resname="Topic category">
+        <source>Topic category</source>
+        <target>Categoria dell'argomento</target>
+        <jms:reference-file line="21">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="53">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b01839cf2e1ea9c8b71ab18d7dc1d81bdb2fa541" resname="Topic successfully deleted!">
+        <source>Topic successfully deleted!</source>
+        <target>Argomento eliminato con successo!</target>
+        <jms:reference-file line="1934">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2127">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b256faf8739175f107822f23beefd4dff016e0f9" resname="Topic successfully updated">
+        <source>Topic successfully updated</source>
+        <target>Argomento aggiornato con successo</target>
+        <jms:reference-file line="1933">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="2126">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="76069203f3b9725e747b5c6e836c8a2a5b4742b1" resname="Topic title">
+        <source>Topic title</source>
+        <target>Titolo del topic</target>
+        <jms:reference-file line="14">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="43">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="07e4f9c27860c8f452d481954e498a807cd27a98" resname="Topics">
+        <source>Topics</source>
+        <target>Temi</target>
+        <jms:reference-file line="1116">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1121">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+        <jms:reference-file line="1130">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/CommunityForumBundle.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d445635304162c4f10f90db5a9e5b5c5890cf617" resname="Traffic Report">
+        <source>Traffic Report</source>
+        <target>Rapporto sul traffico</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-report.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4f61ca4a0c7a66cebafdd0624fd341f073add387" resname="Type your topic title here.">
+        <source>Type your topic title here.</source>
+        <target>Digita qui il titolo dell'argomento.</target>
+        <jms:reference-file line="15">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="46">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="831b916850bbfe9943ac6b5b1e90dbf2fb1292f1" resname="Unexpected error">
+        <source>Unexpected error</source>
+        <target>Errore inaspettato</target>
+        <jms:reference-file line="104">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+        <jms:reference-file line="334">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+        <jms:reference-file line="362">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+        <jms:reference-file line="495">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+        <jms:reference-file line="57">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/js/legacy-sitemgr-content-forum-categories_js.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f2f8570ddd7b1e7b571311bbf9159efb02571e07" resname="Updated">
+        <source>Updated</source>
+        <target>Aggiornato</target>
+        <jms:reference-file line="13">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d96bff7da346528b50fe657edd7919e825fa3874" resname="Upvotes">
+        <source>Upvotes</source>
+        <target>Upvotes</target>
+        <jms:reference-file line="48">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/profile-qa-list.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c7b1db9f7653992cc5fb0739abb1ac21466a8c80" resname="Your topic...">
+        <source>Your topic...</source>
+        <target>Il tuo argomento ...</target>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/horizontal-question-bar.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="25dc282b5a3dcba62a9a777a856c65dd8a4ae8c4" resname="answer">
+        <source>answer</source>
+        <target>risposta/commento</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer-profile.html.twig</jms:reference-file>
+        <jms:reference-file line="17">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="db3d405b10675998c030223177d42e71b4e7a312" resname="on">
+        <source>on</source>
+        <target>su</target>
+        <jms:reference-file line="47">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/summary.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" resname="or">
+        <source>or</source>
+        <target>o</target>
+        <jms:reference-file line="28">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="62">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-answer.html.twig</jms:reference-file>
+        <jms:reference-file line="28">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+        <jms:reference-file line="86">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Resources/views/form-question.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="59a5c610074c286a10825ef707f885904486b0d0" resname="read more">
+        <source>read more</source>
+        <target>leggi di più</target>
+        <jms:reference-file line="474">/../src/ArcaSolutions/ModStoresBundle/Plugins/CommunityForum/Controller/DefaultController.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,14 @@
+{% if (error is not empty) or (success is not empty) %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function () {
+        {% if error is not empty %}
+            notify.error('{{ error }}', '', {fadeOut: 0});
+        {% endif %}
+        {% if success is not empty %}
+            notify.success('{{ success }}');
+        {% endif %}
+        });
+    });
+</script>
+{% endif %}

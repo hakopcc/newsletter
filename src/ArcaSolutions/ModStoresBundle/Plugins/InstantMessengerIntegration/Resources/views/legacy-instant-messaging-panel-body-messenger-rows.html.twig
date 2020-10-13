@@ -1,0 +1,20 @@
+<div class="form-group row custom-content-row">
+    <div class="col-sm-6">
+        <label for="plugin_messenger_user_id">{{ "Facebook Messenger"|trans }}</label>
+        {% if facebookIdHelperEnabled %}
+            <a id="startFbValidation" href="JavaScript:"><i class="form-tip icon-help10" title="{{ "Can't find the facebook user id? Click here."|trans }}"></i></a>
+        {% endif %}
+        <input type="text" name="plugin[instant_messenger_integration][messenger][user_id]" value="{{ messengerData.user_id }}" placeholder="{{"Insert facebook user id"|trans}}" class="form-control{{(highlight == 'additional' and not messengerData.user_id)?' highlight':''}}" id="plugin_messenger_user_id" />
+    </div>
+    <div class="col-sm-6">
+        <label for="plugin_messenger_user_id">&nbsp;</label>
+        <input type="text" name="plugin[instant_messenger_integration][messenger][caption]" value="{{ messengerData.caption }}" placeholder="{{"Insert link caption"|trans}}" class="form-control{{(highlight == 'additional' and not messengerData.caption)?' highlight':''}}" id="plugin_messenger_caption" />
+    </div>
+</div>
+<div id="fb-root"></div>
+{% if facebookIdHelperEnabled %}
+{{ addJSTwigWithParam("InstantMessengerIntegrationBundle::js/legacy-instant-messaging-panel-body-messenger-rows-js.html.twig",'facebookInitParamsEncodedJson',facebookInitParamsEncodedJson) }}
+{{ addJSTwigWithParam("InstantMessengerIntegrationBundle::js/legacy-facebook-sdk-js.html.twig", 'lang', lang) }}
+{{ addJSTwig("InstantMessengerIntegrationBundle::js/legacy-jsrender-js.html.twig") }}
+{% endif %}
+

@@ -1,0 +1,127 @@
+{% if max_videos > 0 %}
+
+    {% set num_video = 0 %}
+
+    <div class="panel panel-form-media additional-videos">
+
+        <div class="panel-heading">
+            {{ "Videos"|trans }}
+        </div>
+
+        <div class="panel-body form-group">
+            <div class="center-block text-center">
+
+                <div id="videosBody">
+                    {% for i in range(0, max_videos) if (videos[i].video_snippet or i == 0) %}
+
+                        <div id="video{{ i }}">
+                            <div class="clearfix">
+                                <button id="delete_video_{{ i }}" class="btn btn-danger delete-button pull-right"
+                                        onclick="deleteVideo({{ i }})">
+                                    <i class="icon-ion-ios7-trash-outline"></i>
+                                </button>
+                            </div>
+                            <i id="icon_{{ i }}" class="icon-movie"></i>
+                            <div id="videoMsg_{{ i }}" class="alert alert-warning fade in hidden" role="alert">
+                                <small>{{ "Could not load video. Please check your video URL and try again."|trans }}</small>
+                            </div>
+                            <div id="video_frame_{{ i }}" style="display:none; padding-top: 5px;"></div>
+                            <input type="url" name="video_url[]" id="video_{{ i }}" value="{{ videos[i].video_url }}"
+                                   class="videos form-control"
+                                   placeholder="{{ "Paste your video URL here. Ex: http://www.youtube.com/watch?v=xxxx"| trans }}"
+                                   onchange="autoEmbedVideoMultiple({{ i }});">
+                            <input type="hidden" id="video_snippet_{{ i }}" name="video_snippet[]"
+                                   value="{{ videos[i].video_snippet }}">
+                            <br>
+                            <input type="text" id="video_description_{{ i }}" name="video_description[]"
+                                   value="{{ videos[i].video_description }}" class="form-control" maxlength="250"
+                                   placeholder="{{ "Brief description of your video."| trans }}">
+
+                            {% set num_video = num_video + 1 %}
+                            <br>
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+                <div class="row-fluid text-center">
+                    <label id="action-videos" class="btn btn-primary btn-sm input-button-form" tabindex="75"
+                           onclick="addVideo()">
+                        <span class="glyphicon glyphicon-plus"></span> {{ "Add video"|trans }} </label>
+                </div>
+                <div id="alertvideo"></div>
+
+            </div>
+        </div>
+    </div>
+
+    {{ addJSTwigParameter("num_video", num_video) }}
+    {{ addJSTwigParameter("max_videos", max_videos) }}
+
+    <script type="text/javascript">
+
+        var totalCount = {{ num_video }};
+
+        function autoEmbedVideoMultiple(id) {
+            var videoURL = $("#video_" + id).val();
+
+            if (videoURL) {
+                $.post("" + window.location.protocol + "//" + window.location.hostname + "/includes/code/get_video.php", {
+                    video: videoURL
+                }, function (response) {
+                    if (response == "error") {
+                        $("#videoMsg_" + id).removeClass("hidden");
+                    } else {
+                        $("#videoMsg_" + id).addClass("hidden");
+                        $("#icon_" + id).css("display", "none");
+                        $("#video_frame_" + id).html(response);
+                        $("#video_snippet_" + id).attr("value", response);
+                        $("#video_frame_" + id).fadeIn();
+                    }
+                });
+            } else {
+                $("#video_snippet_" + id).attr("value", "");
+            }
+        }
+
+        function addVideo() {
+
+            if (totalCount < {{ max_videos }}) {
+                $("#videosBody").append("<div id=\"video" + totalCount + "\">" +
+                    "<div class=\"clearfix\" >" +
+                    "<button id=\"delete_video_" + totalCount + "\" class=\"btn btn-danger delete-button pull-right\" onclick=\"deleteVideo(" + totalCount + ")\">" +
+                    "<i class=\"icon-ion-ios7-trash-outline\"></i>" +
+                    "</button>" +
+                    "</div>" +
+                    "<i id=\"icon_" + totalCount + "\" class=\"icon-movie\"></i>" +
+                    "<div id=\"videoMsg_" + totalCount + "\" class=\"alert alert-warning fade in hidden\" role=\"alert\">" +
+                    "<small>" + "{{ "Could not load video. Please check your video URL and try again."|trans }}" + "</small>" +
+                    "</div>" +
+                    "<div id=\"video_frame_" + totalCount + "\" style=\"display:none; padding-top: 5px;\"></div>" +
+                    "<input type=\"url\" name=\"video_url[]\" id=\"video_" + totalCount + "\" value=\"\" class=\"videos form-control\" placeholder=\"" + "{{ "Paste your video URL here. Ex: http://www.youtube.com/watch?v=xxxx"| trans }}" + "\" onchange=\"autoEmbedVideoMultiple(" + totalCount + ");\">" +
+                    "<input type=\"hidden\" id=\"video_snippet_" + totalCount + "\" name=\"video_snippet[]\" value=\"\">" +
+                    "<br>" +
+                    "<input type=\"text\" id=\"video_description_" + totalCount + "\" name=\"video_description[]\" value=\"\" class=\"form-control\" maxlength=\"250\" placeholder=\"" + "{{ "Brief description of your video."| trans }}" + "\">" +
+                    "<br>" +
+                    "</div>"
+                );
+            }
+
+            if (totalCount >= {{ max_videos }}) {
+                $("#action-videos").css("display", "none");
+                $("#alertvideo").append("<p class='alert alert-warning'>{{ 'Your item already has the maximum number of videos.'|trans }}</p>");
+            } else {
+                totalCount++;
+            }
+        }
+
+        function deleteVideo(id) {
+            $("#alertvideo p").remove();
+            $("#video" + id).remove();
+            $("#action-videos").css("display", "");
+            totalCount--;
+        }
+
+    </script>
+
+{% endif %}

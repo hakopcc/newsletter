@@ -1,0 +1,21 @@
+{% if gallery is not empty %}
+    <div class="review-gallery">
+        <div class="form-group">
+            <label>{{ "Gallery"|trans }}</label>
+            {% for photo in gallery -%}
+                <div class="row gallery-item">
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <img src="{{ asset(imagePath(photo.image), 'domain_images') }}"
+                                 class="embed-responsive-item">
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-xs-6">
+                        <span class="btn btn-sm btn-danger btn-iconic btn-delete pull-right" data-id="{{ photo.id }}"><i
+                                    class="icon-ion-ios7-trash-outline"></i></span>
+                    </div>
+                </div>
+            {% endfor -%}
+        </div>
+    </div>
+{% endif %}

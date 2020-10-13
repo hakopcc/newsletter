@@ -1,0 +1,52 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+
+{#      Description:                                                            -#}
+{# This page renders the Article summary block which appears during searches    -#}
+
+{#      Resources:                                                              -#}
+
+{# item \Elastica\Result                                                        -#}
+{#      The elastica result object                                              -#}
+
+{# levelFeatures array                                                          -#}
+{#      Contains information about every level of a certain module              -#}
+
+{% set data           = extractDataFromResult(item) -%}
+
+{% set detailURL      = path('forum_detail', {'friendlyUrl': data.friendlyUrl, "_format" : "html"}) -%}
+
+{% set itemCategories = ( data.categoryId is not empty ? data.categoryId|split(" ") : null ) -%}
+
+{% set format_date = getDateFormat() %}
+
+{% if format_date == 'm/d/Y' %}
+    {% set format_date = 'MMMM d, y' %}
+{% else %}
+    {% set format_date = 'd MMMM, y' %}
+{% endif %}
+
+<div class="summary-item" data-type="forum" data-id="{{ item.id }}">
+
+    {{ Utility.shareLinksMobile() }}
+
+    <div class="summary-content">
+        <div class="paragraph p-3 summary-categories-grid no-categories">
+            <div class="summary-grid-actions">
+                {{ Utility.shareLinksResults(item.id) }}
+            </div>
+        </div>
+        <div class="summary-info">
+            <div class="summary-title">
+                <a href="{{ detailURL }}" class="heading h-4 title">{{ data.title }}</a>
+
+                <div class="actions">
+                    {{ Utility.shareLinksResults(item.id) }}
+                </div>
+            </div>
+            <div class="paragraph p-3 summary-categories">
+                <strong>{{ 'on'|trans }}</strong> <time datetime="{{ data.entered|date("Y-m-d H:i:s") }}">{{ date(data.entered)|localized_date(format_date) }}</time>
+            </div>
+            <div class="summary-description">{{ data.description|striptags|raw|slice(0,200) }}... <a href="{{ detailURL }}" class="link">{{ "Read full topic"|trans }}</a></div>
+        </div>
+    </div>
+</div>

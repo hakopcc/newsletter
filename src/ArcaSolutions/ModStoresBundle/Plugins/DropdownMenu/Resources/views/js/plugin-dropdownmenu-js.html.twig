@@ -1,0 +1,194 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        if ($.isFunction(window.menuMoreOnResizeFunction)) {
+            $(window).off('resize', window.menuMoreOnResizeFunction);
+        }
+
+        let MenuMoreDdmPlugin = function() {
+            this.navBar = undefined;
+            this.navBarItems = [];
+            this.navBarMore = undefined;
+            this.navBarMoreLabel = undefined;
+            this.navBarMoreContent = undefined;
+            this.navBarItemsWidth = undefined;
+
+            this.init = function (navBar) {
+                let obj = this;
+                this.navBar = navBar;
+                this.navBarItems = [];
+                this.navBar.children('.plugin-dropdown-menu.navbar-link,.plugin-dropdown-menu.plugin-navbar-dropdown').each(function(index, item){
+                    obj.navBarItems.push({
+                        width: $(item).outerWidth(true),
+                        name: $(item).html(),
+                        link: $(item).attr('href'),
+                        index: index,
+                        isDropdown: $(item).hasClass('plugin-navbar-dropdown'),
+                        ref: $(item)
+                    });
+                });
+
+                this.navBarMore = this.navBar.children('.navbar-more').first();
+                this.navBarMoreLabel = this.navBarMore.children('.more-label');
+                this.navBarMoreContent = this.navBarMore.children('.more-content');
+                this.navBarMore.removeClass('has-more');
+                this.navBarMoreLabel.removeClass("is-open");
+                this.navBarMoreContent.hide();
+            };
+
+            this.measure = function() {
+                this.setNavBarMoreItems([]);
+                this.invalidateVisibleItems([],[]);
+                if (this.hasMore()) {
+                    let exceedItems = this.getNavBarMoreItems();
+                    let visibleItems = this.getNavBarVisibleItems();
+                    this.setNavBarMoreItems(exceedItems);
+                    this.invalidateVisibleItems(visibleItems, exceedItems);
+                    this.navBarMore.addClass('has-more');
+                    this.navBarMoreContent.css("right", (-this.navBarMore.outerWidth(true)) - 12);
+                } else {
+                    this.navBarMore.removeClass('has-more');
+                    this.navBarMoreLabel.removeClass("is-open");
+                }
+            };
+
+            this.invalidateVisibleItems = function(visibleItems, invisibleItems){
+                invisibleItems.forEach(function(invisibleItem) {
+                    invisibleItem.ref.hide();
+                });
+                visibleItems.forEach(function(visibleItem){
+                    visibleItem.ref.show();
+                });
+            };
+
+            this.setNavBarMoreItems = function(items){
+                this.navBarMoreContent.empty();
+                let navBarMoreContent = this.navBarMoreContent;
+                let fromTop = 0;
+                items.forEach(function(item){
+                    let clonedItem = item.ref.clone(true);
+                    clonedItem.show();
+                    fromTop += clonedItem.outerHeight(true);
+                    if(item.isDropdown){
+                        let dropdownLabelSelector = clonedItem.children('.dropdown-label').first();
+                        let dropdownLabelArrowIconSelector = dropdownLabelSelector.children('i').first();
+                        dropdownLabelArrowIconSelector.remove();
+                    }
+                    navBarMoreContent.append(clonedItem);
+                })
+            };
+
+            this.getNavBarMoreItemsStartIndex = function() {
+                if (this.navBarItems.length === 0) return 0;
+                if (this.hasMore()) {
+                    let navBarWidth = this.getNavBarWidth();
+                    let width = 0;
+                    let itensFitInNavBar = this.navBarItems.filter(function(item){
+                        width += item.width;
+                        return width <= navBarWidth;
+                    });
+                    return itensFitInNavBar.length - 1;
+                }
+                return this.navBarItems.length - 1;
+            };
+
+            this.getNavBarVisibleItems = function() {
+                if(this.navBarItems.length === 0) return [];
+                return this.navBarItems.slice(0, this.getNavBarMoreItemsStartIndex());
+            };
+
+            this.getNavBarMoreItems = function() {
+                if(this.navBarItems.length === 0) return [];
+                return this.navBarItems.slice(this.getNavBarMoreItemsStartIndex());
+            };
+
+            this.hasMore = function(){
+                return Math.floor(this.getNavBarItemsWidth()) > Math.floor(this.getNavBarWidth())
+            };
+
+            this.getNavBarItemsWidth = function() {
+                if (this.navBarItems.length === 0) return 0;
+                if(this.navBarItemsWidth===undefined) {
+                    this.navBarItemsWidth = this.navBarItems.reduce(function(acc, act){ return (acc + act.width) }, 0);
+                }
+                return this.navBarItemsWidth;
+            };
+
+            this.getNavBarWidth = function(){
+                return this.navBar.width()
+            };
+        };
+        $('.more-label').on('click', function () {
+            let ddContentVisible = $('.dropdown-content:visible');
+            if(ddContentVisible.length>0) {
+                ddContentVisible.removeClass('dropdown-content-shown');
+                ddContentVisible.siblings('.dropdown-label').removeClass('is-open');
+            }
+        });
+        $('.dropdown-label').on('click', function () {
+            let el = $(this);
+
+            if(!el.parent().parent().hasClass('more-content')) {
+                let moreContentVisible = $('.more-content:visible');
+                if (moreContentVisible.length > 0) {
+                    let moreContentVisibleVisibleElContent = moreContentVisible.find('.dropdown-content.dropdown-content-shown');
+                    if(moreContentVisibleVisibleElContent.length>0) {
+                        moreContentVisibleVisibleElContent.siblings('.dropdown-label').removeClass('is-open');
+                        moreContentVisibleVisibleElContent.removeClass('dropdown-content-shown');
+                    }
+                    moreContentVisible.siblings('.more-label').removeClass('is-open');
+                    moreContentVisible.fadeToggle(400);
+                }
+            }
+
+            let elContent = el.siblings('.dropdown-content');
+            if(!elContent.hasClass('dropdown-content-shown')) {
+                let ddContent = $('.dropdown-label').siblings('.dropdown-content.dropdown-content-shown');
+                if(ddContent.length>0) {
+                    ddContent.siblings('.more-label.is-open').removeClass('is-open');
+                    ddContent.removeClass('dropdown-content-shown');
+                }
+            }
+            el.toggleClass('is-open');
+            let adjustTopIfNecessary = function(thisContent){
+                let thisLabel = thisContent.siblings('.dropdown-label');
+                if(thisContent.parent().parent().hasClass('more-content')) {
+                    thisContent.css('top', '-' + (thisContent.outerHeight() / 2 - (thisLabel.outerHeight() / 2)) + 'px');
+                }
+            }
+            elContent.toggleClass('dropdown-content-shown');
+            if(elContent.hasClass('dropdown-content-shown')) {
+                adjustTopIfNecessary(elContent);
+            }
+        });
+
+        if($(window).width() >= 992){
+            if ($.isFunction(MenuMoreDdmPlugin)) {
+                window.menuMore = new MenuMoreDdmPlugin();
+                if ($('.header-navbar').length > 0){
+                    if ($.isFunction(window.menuMore.init) && $.isFunction(window.menuMore.measure)) {
+                        let navBar = $('.header-navbar');
+                        window.menuMore.init(navBar);
+                        window.menuMore.measure();
+                    } else {
+                        console.error('MenuMoreDdmPlugin instance not found or with unexpected content.');
+                    }
+                }
+
+            } else {
+                console.error('MenuMoreDdmPlugin function not found.');
+            }
+        }
+
+        window.MenuMoreDdmPluginOnResizeFunction = function () {
+            if (window.menuMore !== undefined && $.isFunction(window.menuMore.measure)) {
+                if ($(window).width() >= 992 && $('.header-navbar').length > 0) {
+                    window.menuMore.measure();
+                }
+            } else {
+                console.error('MenuMore instance not found or with unexpected content.');
+            }
+        };
+
+        $(window).on('resize', window.MenuMoreDdmPluginOnResizeFunction);
+    });
+</script>

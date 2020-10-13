@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        {{ "Geo-Targeted Banner Settings"|trans }}
+    </div>
+
+    <div class="panel-body form-horizontal">
+        <div class="form-group row">
+            <div class="control-label col-sm-3">
+                {{ "Distance unity"|trans }}
+            </div>
+            <div class="col-sm-8">
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" name="distance_type"
+                               value="miles" {{ distance_type == 'miles' or distance_type is empty ? 'checked="checked"' : '' }}>
+                        {{ "Miles"|trans }}
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" name="distance_type"
+                               value="kilometers" {{ distance_type == 'kilometers' ? 'checked="checked"' : '' }}>
+                        {{ "Kilometers"|trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="control-label col-sm-3">
+                {{ "Distance"|trans }}
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" isso name="miles" id="miles" value="{{ miles }}" maxlength="50">
+                <small class="help-block">{{ "Miles Limit = 25000 / Kilometers Limit = 40000"|trans }}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <button type="submit" name="save_plugin[geo_targeted_banner]" value="1" class="btn btn-primary action-save"
+                data-loading-text=" {{ "Please, wait..."|trans }}">
+            {{ "Save changes"|trans }}
+        </button>
+    </div>
+
+</div>

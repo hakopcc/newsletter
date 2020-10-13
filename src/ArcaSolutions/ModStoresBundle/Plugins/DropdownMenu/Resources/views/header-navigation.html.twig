@@ -1,0 +1,18 @@
+{% for item in items -%}
+    {% if item.area == "header_dropdown" and item.children is not empty %}
+        <div class="plugin-dropdown-menu plugin-navbar-dropdown">
+            <div class="dropdown-label">{{ item.label }} <i class="fa fa-angle-down"></i></div>
+            {% if item.children is not empty %}
+            <div class="dropdown-content">
+                {% for subitem in item.children -%}
+                    <a href="{{ subitem.custom ? subitem.link : subitem.pageUrl }}"
+                       class="more-link">{{ subitem.label }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <a href="{{ item.pageUrl }}" id="navigation-item-{{ loop.index }}"
+           class="plugin-dropdown-menu navbar-link {{ item.pageUrl|trim('/') == app.request.uri|trim('/') ? 'is-active' : '' }}">{{ item.label }}</a>
+    {% endif %}
+{% endfor -%}

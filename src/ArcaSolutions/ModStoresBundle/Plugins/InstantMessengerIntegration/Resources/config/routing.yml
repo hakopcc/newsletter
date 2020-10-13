@@ -1,0 +1,5 @@
+facebook_helper_login_auth_return:
+    path: /_edir_plugins/instantmessengerintegration/fb_auth
+    defaults: { _controller: InstantMessengerIntegrationBundle:Default:returnFbAuth }
+    options:
+        expose: true

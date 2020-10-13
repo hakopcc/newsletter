@@ -1,0 +1,42 @@
+parameters:
+    tailoredplacement.twig.extension.class: ArcaSolutions\ModStoresBundle\Plugins\TailoredMapListing\Twig\Extension\TailoredPlacementExtension
+    tailoredplacement.map.class: ArcaSolutions\ModStoresBundle\Plugins\TailoredMapListing\Services\TailoredMapListingService
+    tailoredplacement.search.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\TailoredMapListing\Search\TailoredMapListingConfiguration
+    tailoredplacement.filter.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\TailoredMapListing\Entity\Filters\TailoredMapFilter
+    tailoredplacement.sorter.configuration.class: ArcaSolutions\ModStoresBundle\Plugins\TailoredMapListing\Entity\Sorters\TailoredMapSorter
+
+services:
+    tailoredplacement.twig.extension:
+        class: '%tailoredplacement.twig.extension.class%'
+        public: false
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: twig.extension }
+
+    tailoredplacement.map:
+        class: "%tailoredplacement.map.class%"
+        arguments:
+            - '@service_container'
+
+    tailoredplacement.search:
+        class: "%tailoredplacement.search.configuration.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    tailoredplacement.filter:
+        class: "%tailoredplacement.filter.configuration.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    tailoredplacement.sorter:
+        class: "%tailoredplacement.sorter.configuration.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_subscriber }
+  

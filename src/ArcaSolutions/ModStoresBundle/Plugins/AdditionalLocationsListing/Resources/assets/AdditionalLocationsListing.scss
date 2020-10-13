@@ -1,0 +1,15 @@
+.additional-location {
+  margin-top: 24px;
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+
+  .additional-location-list {
+    margin-top: 16px;
+
+    .additional-location-item {
+      &:not(:first-child) {
+        margin-top: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "arcasolutions/modalwidgetpackage",
+  "description": "Modal Widget Package",
+  "version": "1.4.1",
+  "license": "proprietary",
+  "require": {
+    "arcasolutions/edirectory-plugins": "^0.5.3"
+  },
+  "extra": {
+    "bundle-name": "ModalWidgetPackageBundle"
+  }
+}

@@ -1,0 +1,25 @@
+<div class="header-contact">
+    {% if displayInstantMessengerLinkAndPhone=='phone' or displayInstantMessengerLinkAndPhone=='both' %}
+        {% if phone is defined and phone is not null %}
+    <div class="im-integration header-contact-item">
+        <div class="icon icon-md">
+            <i class="fa fa-phone"></i>
+        </div>
+        <a href="tel:{{ phone }}">{{ phone }}</a>
+    </div>
+        {% endif %}
+    {% endif %}
+    {% if displayInstantMessengerLinkAndPhone=='instant_messenger' or displayInstantMessengerLinkAndPhone=='both' %}
+        {% if instantMessengerData is defined and instantMessengerData is not null %}
+            {% if instantMessengerData.type is defined and instantMessengerData.type is not null and
+                instantMessengerData.iconSvgRawContent is defined and instantMessengerData.iconSvgRawContent is not null and
+                instantMessengerData.hRef is defined and instantMessengerData.hRef is not null and
+                instantMessengerData.value is defined and instantMessengerData.value is not null %}
+    <div class="im-integration header-contact-item">
+        <div class="icon icon-md instant-messenger-icon" imtype="{{instantMessengerData.type}}">{{instantMessengerData.iconSvgRawContent|raw}}</div>
+        <a target="_blank" href="{{instantMessengerData.hRef}}">{{instantMessengerData.value}}</a>
+    </div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</div>

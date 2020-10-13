@@ -1,0 +1,47 @@
+<div class="content-item" data-id="{{ each_lead.id }}" is-new="{{ each_lead.new == 'y' ? 'true' : 'false' }}" id="item-lead_{{ each_lead.id }}" style="{{ countLead > maxItems ? 'display: none' : '' }}">
+    <div class="content-header no-flex">
+        <h4 class="heading h-4 content-title">{{ each_lead.first_name ~ ' ' ~ each_lead.last_name }} - <time>{{ (each_lead.entered ? each_lead.entered|date('m/d/Y') : "N/A"|trans) }}</time></h4>
+        <h5 class="heading h-5 content-author" style="margin-top: 8px"><strong>{{ each_lead.subject }}</strong></h5>
+        <div class="content-from">
+            {{ "From"|trans }}
+            <strong>{{ each_lead.first_name }} {{ each_lead.last_name }}</strong>
+        </div>
+        <button class="button button-sm is-primary button-edit-reply"
+                data-text='["{{ 'Reply'|trans }}", "{{ 'Cancel'|trans }}"]'
+                data-ref="{{ each_lead.id }}">Reply</button>
+    </div>
+    <div class="content-body">
+        <div class="reply-block">
+            <blockquote class="content-reply">
+                <div class="reply-text">
+                    {{ each_lead.message|nl2br }}
+                </div>
+            </blockquote>
+        </div>
+        <form name="formLead{{ each_lead.id }}" action="javascript:" method="post" class="reply-form" data-action="lead" id="formLead{{ each_lead.id }}">
+            <div class="reply-message" id="msgLeadS{{ each_lead.id }}" data-type="success">{{ "Replied"|trans }}</div>
+            <div class="reply-message" id="msgLeadE{{ each_lead.id }}" data-type="error"></div>
+
+            <input type="hidden" name="item_id" value="{{ item_id }}">
+            <input type="hidden" name="item_type" value="{{ item_type }}">
+            <input type="hidden" name="type" value="{{ item_type }}">
+            <input type="hidden" name="idLead" value="{{ each_lead.id }}">
+            <input type="hidden" name="action" value="reply">
+            <input type="hidden" name="ajax_type" value="lead_reply">
+
+            <div class="form-group">
+                <label for="lead-mail{{ each_lead.id }}">{{ "To" }}: </label>
+                <input id="lead-mail" class="input" type="email" name="to" value="{{ (to and action == "reply" and idLead == each_lead.id ? to : each_lead.email) }}">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="lead-message{{ each_lead.id }}">{{ "Message"|trans }}:</label>
+                <textarea id="lead-message{{ each_lead.id }}" class="input" name="message" rows="5"></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="button button-md is-primary" name="submit" id="submitLead{{ each_lead.id }}" onclick="saveLead({{ each_lead.id }});">{{ "Submit"|trans }}</button>
+            </div>
+        </form>
+    </div>
+</div>

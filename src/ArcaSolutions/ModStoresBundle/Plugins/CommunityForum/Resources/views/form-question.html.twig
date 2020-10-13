@@ -1,0 +1,96 @@
+<form role="form" name="question" id="question" action="/sitemgr/content/forum/question.php" method="post"
+      enctype="multipart/form-data">
+
+    <input type="hidden" name="sitemgr" id="sitemgr" value="1">
+    <input type="hidden" name="return_categories" id="return_categories" value="">
+    <input type="hidden" name="id" id="id" value="{{ question.id }}">
+
+    <section class="row heading">
+
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="back-navigation">
+                    <a href="javascript:" onclick="window.history.go(-1);"><span>«</span>{{ "Back"|trans }}</a>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h1>{{ "Edit topic"|trans }} "{{ question.title }}"</h1>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="row tab-options">
+
+        <div class="container">
+            <div class="pull-right top-actions">
+                <a href="/sitemgr/content/forum/" class="btn btn-default btn-xs">{{ "Cancel"|trans({},"system") }}</a>
+                <span class="separator"> {{ "or"|trans }}  </span>
+                <button type="button" name="submit_button" value="Submit" class="btn btn-primary action-save"
+                        data-loading-text="{{ "Please, wait..."|trans }}"
+                        onclick="JS_submit();">{{ "Save changes"|trans }}
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="container">
+
+                    <div class="col-md-7">
+
+                        <div class="form-group">
+                            <label for="name" class="label-lg">{{ "Topic title"|trans }}</label>
+                            <input type="text" class="form-control input-lg" name="title" id="title"
+                                   value="{{ question.title }}"
+                                   maxlength="100" placeholder="{{ "Type your topic title here."|trans }}"
+                                   required="">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="categories-list categories-list-block create-categories-modal base-categories" id="modal-create-categories">
+                                <div class="categories-list-header">
+                                    <label for="modal-category-search">{{ "Topic category"|trans }}</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control category-search input" id="modal-category-search" autocomplete="off" data-ref="categories-wrap" data-selectparent="true" placeholder="{{ 'Select your category'|trans }}" value="" {{ (not app.request.get('new') is null ? 'disabled' : '' ) | raw }}>
+                                        <div class="input-categories-list" id="parentCategory" style="display: none;">
+                                        </div>
+                                        <span class="input-group-addon open-create-categories" data-ref="categories-wrap"><i class="fa fa-angle-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="categories-wrap" id="categories-wrap">
+                                </div>
+                                <input type="hidden" id="parent_id" name="parent_id" value="{{ question.category_id }}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">{{ "Content" }}</label>
+                            {% set locale = app.request.locale|split('_') %}
+                            {{renderCKEditor('description', 'description' , 3, 30, 'description' , '' , '' , question.description , false , locale|first|lower, true)}}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="row footer-action">
+
+        <div class="container">
+            <div class="col-xs-12 text-right">
+                <a href="/sitemgr/content/forum/" class="btn btn-default btn-xs">{{ "Cancel"|trans({},"system") }}</a>
+                <span class="separator"> {{ "or"|trans }} </span>
+                <button type="button" name="submit_button" value="Submit" class="btn btn-primary action-save"
+                        data-loading-text="{{ "Please, wait..." }}" onclick="JS_submit();">{{ "Save changes"|trans }}
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+</form>
+{{ addJSTwig("CommunityForumBundle::js/category_selector_js.html.twig") }}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-07-29T21:48:07Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="47acd2028cf81b5da88ddeedb2aea4eca4b71fbd" resname="API Key">
+        <source>API Key</source>
+        <target>API Key</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c58f9dd44450cbe30c84e7d0ab4fae8de9a5405a" resname="Be the first to ">
+        <source>Be the first to </source>
+        <target state="new">Be the first to </target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-reviewstarsmacro-overwrite-reviewcount.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="88d86b7721d587644e9c4cf33a084202cb3b0ff0" resname="Closed">
+        <source>Closed</source>
+        <target>Closed</target>
+        <jms:reference-file line="134">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Services/YelpService.php</jms:reference-file>
+        <jms:reference-file line="191">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Services/YelpService.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="af542871c9dd7fd1a9e24013ec31c6dccddf0d52" resname="Closed Now">
+        <source>Closed Now</source>
+        <target state="new">Closed Now</target>
+        <jms:reference-file line="48">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Twig/Extension/BlocksExtension.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="97f2464f1065d50b7ca8114aa69f717f89244b9d" resname="Invalid Yelp Key.">
+        <source>Invalid Yelp Key.</source>
+        <target>Invalid Yelp Key.</target>
+        <jms:reference-file line="14">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/js/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c902a1cda0cfbe1b6f1ee36a5b52e2d9d6c92103" resname="Open Now">
+        <source>Open Now</source>
+        <target state="new">Open Now</target>
+        <jms:reference-file line="60">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Twig/Extension/BlocksExtension.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="89e944f8eb377852ecb003a3915c7e6b11d4bde6" resname="Please wait...">
+        <source>Please wait...</source>
+        <target>Please wait...</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/js/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c419c9a3825c3e4584b67049513fdc6899fbc16c" resname="Please, wait...">
+        <source>Please, wait...</source>
+        <target state="new">Please, wait...</target>
+        <jms:reference-file line="34">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0886439f60030f130f3035a8f28d2a3e0275c046" resname="Review this">
+        <source>Review this</source>
+        <target state="new">Review this</target>
+        <jms:reference-file line="20">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-summary-rating.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="179359b39edbd0bf0cdf3bb6b7dfb4223f663af2" resname="Save changes">
+        <source>Save changes</source>
+        <target state="new">Save changes</target>
+        <jms:reference-file line="35">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1537b4490c7dcf9f5b6997e682cfd8fb73d88c41" resname="There's no review in this language">
+        <source>There's no review in this language</source>
+        <target state="new">There's no review in this language</target>
+        <jms:reference-file line="1">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-noreviewsforlanguage.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b520a3d5c5b7d2548c204c191da5fc2fde864e2" resname="Validate Yelp Key">
+        <source>Validate Yelp Key</source>
+        <target state="new">Validate Yelp Key</target>
+        <jms:reference-file line="12">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/js/sitemgr-form-yelp.html.twig</jms:reference-file>
+        <jms:reference-file line="18">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/js/sitemgr-form-yelp.html.twig</jms:reference-file>
+        <jms:reference-file line="24">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fb01164fc7cbf835256cb566e019ef79f979bc58" resname="View all Yelp reviews">
+        <source>View all Yelp reviews</source>
+        <target>View all Yelp reviews</target>
+        <jms:reference-file line="1">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-viewreview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="58113aead6f8b544153cfd6b1384785de7fc8df9" resname="View all photos">
+        <source>View all photos</source>
+        <target>View all photos</target>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-image.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7e125c438411da1ea1695b0e4cb7a006cc1b5cdf" resname="View photo">
+        <source>View photo</source>
+        <target>View photo</target>
+        <jms:reference-file line="6">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-gallery-photos.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5974dd455f769613eed9d261ce23415a71c79090" resname="Visit on Yelp">
+        <source>Visit on Yelp</source>
+        <target state="new">Visit on Yelp</target>
+        <jms:reference-file line="22">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-detailscontactmacro-before-contact.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6b81004f026a19f1c7ee41554a39fb4aae3abdbf" resname="Yelp Integration Settings">
+        <source>Yelp Integration Settings</source>
+        <target>Yelp Integration Settings</target>
+        <jms:reference-file line="4">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="349ef71483a1a956e40f8e237ebe88db51698d59" resname="Yelp key successfully validated.">
+        <source>Yelp key successfully validated.</source>
+        <target>Yelp key successfully validated.</target>
+        <jms:reference-file line="8">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/js/sitemgr-form-yelp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="73ae4dd4de029d41c708e062bf8a5ca3348e3038" resname="write a %title% review">
+        <source>write a %title% review</source>
+        <target state="new">write a %title% review</target>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-reviewstarsmacro-overwrite-reviewcount.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="841aee4975919095522f445b64737b2b7ffca148" resname="{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews">
+        <source>{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews</source>
+        <target state="new">{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews</target>
+        <jms:reference-file line="2">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-review-link.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3dd055eccb556ace68e0d1b75fbd4fc5dc782817" resname="{0}No Reviews|{1}Based on %count% Review|]1,Inf[Based on %count% Reviews">
+        <source>{0}No Reviews|{1}Based on %count% Review|]1,Inf[Based on %count% Reviews</source>
+        <target state="new">{0}No Reviews|{1}Based on %count% Review|]1,Inf[Based on %count% Reviews</target>
+        <jms:reference-file line="3">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-reviewstarsmacro-overwrite-reviewcount.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-listing-cards-overwrite-reviews.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ee1e147f64e379bd8aa4430f9b19a3a0d80c4a5d" resname="{0}No Yelp Reviews|{1}Based on %count% Yelp Review|]1,Inf[Based on %count% Yelp Reviews">
+        <source>{0}No Yelp Reviews|{1}Based on %count% Yelp Review|]1,Inf[Based on %count% Yelp Reviews</source>
+        <target state="new">{0}No Yelp Reviews|{1}Based on %count% Yelp Review|]1,Inf[Based on %count% Yelp Reviews</target>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/YelpIntegration/Resources/views/yelp-detail-reviewstarsmacro-before-reviews.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

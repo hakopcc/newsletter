@@ -1,0 +1,106 @@
+<section class="section-heading">
+    <div class="section-heading-content">
+        <a href="{{ redirectUrl }}" class="heading-back-button"><i class="fa fa-angle-left"></i>{{ "Forum"|trans({},'messages',lang) }}</a>
+        <h1 class="section-heading-title">{{ "Traffic Report"|trans({},'messages',lang) }} - {{ questionTitle }}</h1>
+    </div>
+</section>
+
+<section class="row tab-options">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="container">
+                <div class="col-md-12 form-horizontal">
+                    <div class="table-responsive">
+{% if reports|length > 0 %}
+                        <style type="text/css">
+                            .dataTR     { background-color: #FFF; cursor: pointer; }
+                            .dataOver   { background-color: #EEE; cursor: pointer; }
+                            .dataActive { background-color: #CCC; cursor: pointer; }
+                        </style>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td  colspan="7">
+                                    <div id="reportChart" style="widht:700px; height:200px; background: #FFF url({{ defaultUrl }}/assets/images/structure/img_loading.gif) 50% 50% no-repeat;">&nbsp;</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th  class="table-report" colspan="3">
+                                    {{ "Name"|trans({},'system',lang) }}: <span title="{{ questionTitle }}">{{ questionTitle[:35] }}</span>
+                                    <br />
+                                    {{ "Status"|trans({},'system',lang) }}: {{ statusName }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <td width="160">
+                                    <b>{{ "Date"|trans({},'system',lang) }}</b>
+                                </td>
+                                <td width="270">
+                                    <b style="color: #CE9C52;">{{ "Summary"|trans({},'system',lang) }}</b>
+                                </td>
+                                <td width="270">
+                                    <b style="color: #D3CD83;">{{ "Detail"|trans({},'system',lang) }}</b>
+                                </td>
+                            </tr>
+    {% for key, report in reports %}
+        {% set splitedDatePart = key|split('-') %}
+        {% set year = splitedDatePart|length > 0 ? splitedDatePart[0] : "" %}
+        {% set month = splitedDatePart|length > 1 ? splitedDatePart[1] : "" %}
+                            <tr id="dataTR{{ loop.index }}" class="{{ loop.index == 1 ? "dataActive" : "dataTR" }}" onmouseover="dataTRMouseOver({{ loop.index }})" onmouseout="dataTRMouseOut({{ loop.index }})" onclick="deactivateAll();changeChart({{ loop.index }}, {{ (report.summary is empty) ? 0 : report.summary }}, {{ (report.detail is empty) ? 0 : report.detail }});">
+                                <td>{{ (year ~ "-" ~ month ~ "-1")|date("F / Y") }}</td>
+                                <td>{{ (report.summary is empty) ? 0 : report.summary }}</td>
+                                <td>{{ (report.detail is empty) ? 0 : report.detail }}</td>
+                            </tr>
+    {% endfor %}
+                        </table>
+
+                        <script type="text/javascript">
+                            function changeChart(idx, value1, value2) {
+                                let label1 = '{{ "Summary"|trans({},'system',lang) }}: ' + value1;
+                                let label2 = '{{ "Detail"|trans({},'system',lang) }}: ' + value2;
+
+                                let total = value1 + value2;
+                                value1 = ((value1 * 100) / total);
+                                value2 = ((value2 * 100) / total);
+
+                                document.getElementById('dataTR'+idx).className = "dataActive";
+                                document.getElementById("reportChart").innerHTML = "<img src='https://chart.googleapis.com/chart?chs=630x200&amp;chf=bg,s,ffffff|c,s,ffffff&amp;chxt=x,y&amp;chxl=1:||0:|||&amp;cht=bhg&amp;chd=t:"+value1+"|"+value2+"&amp;chdl="+label1+"|"+label2+"&amp;chco=ce9c52,d3cd83&amp;chbh=25' alt='{{ "Report Chart"|trans({},'system',lang) }}'/>";
+                            }
+
+                            function dataTRMouseOver(idx) {
+                                if(document.getElementById('dataTR'+idx).className !== 'dataActive') {
+                                    document.getElementById('dataTR'+idx).className === 'dataOver';
+                                }
+                            }
+
+                            function dataTRMouseOut(idx) {
+                                if(document.getElementById('dataTR'+idx).className !== 'dataActive')
+                                    document.getElementById('dataTR'+idx).className ==='dataTR';
+                            }
+
+                            function deactivateAll() {
+    {% for report in reports %}
+                                document.getElementById('dataTR{{ loop.index }}').className = "dataTR";
+    {% endfor %}
+                            }
+
+                            document.getElementById('dataTR1').onclick(undefined);
+
+                        </script>
+{% else %}
+                        <p class="alert alert-info">{{ "No Reports available"|trans({},'messages',lang) }}</p>
+{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row footer-action">
+    <div class="container">
+        <div class="col-xs-12 text-right">
+            <a href="{{ redirectUrl }}" class="btn btn-default btn-xs">{{ "Back"|trans({},'system',lang) }}</a>
+        </div>
+    </div>
+</section>

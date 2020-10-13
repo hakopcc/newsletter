@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-08-27T15:57:10Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="f05617cb686e5c50cad488704ceae323a3e9ac99" resname="Video Gallery">
+        <source>Video Gallery</source>
+        <target>Galeria de Videos</target>
+        <jms:reference-file line="11">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videodetail.html.twig</jms:reference-file>
+        <jms:reference-file line="7">/../src/ArcaSolutions/ModStoresBundle/Plugins/AdditionalVideosListing/Resources/views/videodetail.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
