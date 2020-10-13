@@ -1,0 +1,50 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+
+{#      Description:                                                               #}
+{# This page renders the Listing summary block which appears during searches       #}
+
+{#      Resources:                                                                 #}
+
+{# item \Elastica\Result                                                           #}
+{#      The elastica result object                                                 #}
+
+{# pagination \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination             #}
+{#      Contains data about the current search page                                #}
+
+{# levelFeatures \ArcaSolutions\ListingBundle\Entity\Internal\ListingLevelFeatures #}
+{#      Contains information about every level of a certain module                 #}
+
+{# ModStores Hooks #}
+{% if HookExist("listingsummary_before_extract_data") -%}
+    {% set extensionReturn = HookFire("listingsummary_before_extract_data", {"item": item}, true) %}
+    {% if extensionReturn %}
+        {% set item = extensionReturn %}
+    {% endif %}
+{% endif -%}
+
+{% set data           = extractDataFromResult(item) -%}
+
+{# ModStores Hooks #}
+{% if HookExist("listingsummary_after_extract_data") -%}
+    {% set extensionReturn = HookFire("listingsummary_after_extract_data", {"data": data}, true) %}
+    {% if extensionReturn %}
+        {% set data = extensionReturn %}
+    {% endif %}
+{% endif -%}
+
+{# itemLevelInfo \ArcaSolutions\ListingBundle\Entity\Internal\ListingLevelFeatures #}
+{% set itemLevelInfo  = levelFeatures['listing'][data.level] -%}
+
+{% set detailURL      = url('listing_detail', {'friendlyUrl': data.friendlyUrl, "_format" : "html"}) -%}
+
+{% set itemCategories = ( data.categoryId is not empty ? data.categoryId|split(" ") : null ) -%}
+{% set itemLocations  = ( data.locationId is not empty ? data.locationId|split(" ")|sort|reverse : null ) -%}
+{% set itemBadges     = ( data.badgeId is not empty ? data.badgeId|split(" ") : null ) -%}
+
+{% set sectionAnchor  = ( data.friendlyUrl ? data.friendlyUrl  : item.id ) ~ "listing" -%}
+
+{% set flags = 0 -%}
+{% if itemLevelInfo.hasBadges and itemBadges -%} {% set flags = flags + 1 -%} {% endif -%}
+{% if itemLevelInfo.imageCount > 0 and data.thumbnail is defined and data.thumbnail is not empty -%} {% set flags = flags + 2 -%} {% endif -%}
+
+{{ summaryTemplate(item,data,pageCategories,itemLevelInfo,detailURL,itemCategories,itemLocations,itemBadges,flags,pageLocations,pageBadges) }}

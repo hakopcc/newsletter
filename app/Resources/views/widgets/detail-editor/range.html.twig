@@ -1,0 +1,21 @@
+{% if values is not empty and listingFields[0].id in level.customFields['listingTField'] %}
+    <div class="tab-item tab-item-range">
+        {% if content.hideTitle != 'true' %}
+            <div class="tab-item-heading">
+                <h4 class="heading h-4" data-trans="{{ 'Range'|trans({},'widgets') }}">{{ content.fieldTitle }}</h4>
+            </div>
+        {% endif %}
+
+        <div class="tab-item-content">
+            <div class="range-item">
+                {% for i in 1..attributes.maxRange %}
+                    {% if isSample %}
+                        <i class="fa {{ content.icon }} {{ i <= values|first ? 'is-active' : '' }}"></i>
+                    {% else %}
+                        <i class="fa {{ content.icon }} {{ i <= values|first.value ? 'is-active' : '' }}"></i>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

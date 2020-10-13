@@ -1,0 +1,35 @@
+{% if gallery is not empty or HookFire("detaileditor-photogallery_will_renderphotos", {"item":item, "level": level}, true) -%}
+    <div class="tab-item tab-item-photos">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Photo Gallery'|trans({},'widgets') }}">{{ 'Photos'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            <div class="photos-list">
+                {# ModStores Hooks #}
+                {% do HookFire("detaileditor-photogallery_before_renderphotos", {"item":item, "gallery": gallery, "level": level}, true) -%}
+                {% for photo in gallery %}
+                    {% if isSample -%}
+                        {% set url = photo.image.url -%}
+                    {% else -%}
+                        {% set url = asset(imagePath(photo.image), 'domain_images') -%}
+                    {% endif -%}
+
+                    <a href="{{ url }}" class="photos-item fancybox" data-fancybox="details-photos" data-options='{"caption" : "{{photo.imageCaption}}"}'>
+                        {% if isSample -%}
+                            <img data-src="{{ url }}" alt="{{ photo.imageCaption ? 'Photos'|trans : item.title }}" class="lazy">
+                        {% else -%}
+                            {{ tagPicture(url, photo.imageCaption ? photo.imageCaption : item.title) }}
+                        {% endif -%}
+
+                        {% if isSample or file_exists(url[1:]) -%}
+                            <div class="photos-caption">
+                                <i class="fa fa-camera"></i>
+                                {{ 'View photo'|trans }}
+                            </div>
+                        {% endif -%}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

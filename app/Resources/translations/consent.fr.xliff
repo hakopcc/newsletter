@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2020-05-22T18:55:16Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="fd8bbf49d5fcfe13f3c8e0481977a2c7c4da2327" resname="I understand that information I choose to enter into this website, including my name,&#10;                                    email, phone number and location may be stored and publicly available on this website. I&#10;                                    understand that I have the ability to change or remove this information at any time.">
+        <source xml:space="preserve">I understand that information I choose to enter into this website, including my name,
+                                    email, phone number and location may be stored and publicly available on this website. I
+                                    understand that I have the ability to change or remove this information at any time.</source>
+        <target>Je comprends que les informations que je choisis d'entrer sur ce site Web, y compris mon nom, mon adresse e-mail, mon numéro de téléphone et mon emplacement, peuvent être stockées et mises à la disposition du public sur ce site Web. Je comprends que j'ai la possibilité de modifier ou de supprimer ces informations à tout moment.</target>
+        <jms:reference-file line="102">/../src/ArcaSolutions/WebBundle/Resources/views/modal-login.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d59b206889ee4079b29af922bd52d812e87ba431" resname="I understand that the name and email I enter will be stored by the website, shared and securely stored with a 3rd party newsletter processor. I understand that I may be contacted by the Admin of the website at this email.">
+        <source>I understand that the name and email I enter will be stored by the website, shared and securely stored with a 3rd party newsletter processor. I understand that I may be contacted by the Admin of the website at this email.</source>
+        <target xml:space="preserve">Je comprends que le nom et l'e-mail que je saisis seront stockés par le site Web, partagés et stockés en toute sécurité avec un processeur de newsletter tiers. Je comprends que je peux être contacté par l'administrateur du site Web à cet e-mail.
+</target>
+        <jms:reference-file line="46">/Resources/views/widgets/page-editor/navigation/footer-type4.html.twig</jms:reference-file>
+        <jms:reference-file line="48">/Resources/views/widgets/page-editor/newsletter/signup-for-our-newsletter.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b48f71e7cb2fd3005ba7c95f279f2f784d513844" resname="You must agree to the consent terms.">
+        <source>You must agree to the consent terms.</source>
+        <target xml:space="preserve">Vous devez accepter les conditions du consentement.
+</target>
+        <jms:reference-file line="320">/../src/ArcaSolutions/WebBundle/Form/Builder/JsonFormBuilder.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

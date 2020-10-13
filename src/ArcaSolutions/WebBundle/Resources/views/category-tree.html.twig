@@ -1,0 +1,49 @@
+<div class="categories-block{{ (category.isLastChild or onlyParents) or (not manageCategories and (category.getChildCategories(true)|length==0))? ' is-last' : ''}} {{ category.enabled == 'y' ? '' : 'is-disabled' }}" tree="{{ categoryLevel }}" data-selectparent="{{ selectParent }}" data-id="{{ category.id }}" data-managecategories="{{ manageCategories }}">
+    <a href="javascript:void(0)" class="categories-name">
+        {% if category.isLastChild or onlyParents %}
+            {{ category.title }}
+            {% if category.enabled != 'y' -%}
+                <span class="disabled-attr">({{ 'disabled'|trans }})</span>
+            {% endif -%}
+        {% else %}
+            {% if ((manageCategories == true) or (category.getChildCategories(true)|length>0)) -%}
+                <i class="fa fa-angle-down"></i>
+                <span>{{ category.title }}</span>
+            {% else %}
+                {{ category.title }}
+            {% endif -%}
+
+            {% if category.enabled != 'y' -%}
+                <span class="disabled-attr">({{ 'disabled'|trans }})</span>
+            {% endif -%}
+        {% endif %}
+    </a>
+
+    {% if isSelected %}
+        <a href="javascript:void(0)" class="removeCategory" data-id="{{ category.id }}">
+            <i class="fa fa-minus"></i>
+        </a>
+    {% else %}
+        {% if (((selectParent) or category.isLastChild) and not (selectParent and categoryLevel == '4') and not manageCategories) or (not manageCategories and (category.getChildCategories(true)|length==0))%}
+            <a href="javascript:void(0)" class="addCategory">
+                <i class="fa fa-plus"></i>
+            </a>
+        {% endif %}
+    {% endif %}
+
+    {% if manageCategories %}
+        <div class="categories-action">
+            {% if categoryLevel != '4' %}
+                <a href="javascript:void(0)" class="btn btn-edit addSubCategory" data-id="{{ category.id }}" data-title="{{ category.title }}">
+                    <i class="fa fa-plus"></i>
+                </a>
+            {% endif %}
+            <a href="javascript:void(0)" class="btn btn-edit editCategory" data-id="{{ category.id }}" data-tree="{{ categoryLevel }}">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <a href="javascript:void(0)" class="btn btn-remove deleteModal" data-id="{{ category.id }}" >
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+    {% endif %}
+</div>

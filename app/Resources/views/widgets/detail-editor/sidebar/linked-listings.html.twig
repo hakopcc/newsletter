@@ -1,0 +1,5 @@
+{% set items = getLinkedListings(item, listingFields, isSample, level) %}
+
+{% if items is not empty %}
+    {% include ':modules/listing/blocks:sidebar-card.html.twig' with {items: items, itemsPerRow: 3, content: content} -%}
+{% endif %}

@@ -1,0 +1,19 @@
+{% if ckeditor.includeCdnScriptTag -%}
+    {{ addJSTwig("::blocks/utility/ckeditor/ckeditorcdn.html.twig") }}
+{% endif %}
+{% if ckeditor.includeDtdScriptTag -%}
+    {{ addJSTwig("::blocks/utility/ckeditor/ckeditordtd.html.twig") }}
+{% endif %}
+<textarea
+    id="{{ ckeditor.textAreaId }}"
+    name="{{ ckeditor.textAreaName }}"
+    rows="{{ ckeditor.textAreaRows }}"
+    cols="{{ ckeditor.textAreaCols }}"
+    class="{{ ckeditor.textAreaCssClass }}"
+    placeholder="{{ ckeditor.textAreaPlaceHolder }}"
+    style="{{ ckeditor.textAreaCssStyle }}">{{ ckeditor.textAreaContent }}</textarea>
+{% if ckeditor.includeLoadScriptTag -%}
+    {{ addUniqueJSTwigWithParam("::blocks/utility/ckeditor/ckeditorload.html.twig", ckeditor.textAreaId, "ckeditor", ckeditor) }}
+{% endif %}
+
+

@@ -1,0 +1,35 @@
+{% if (level.hasHoursOfWork and hoursWork is not empty) %}
+    <div class="tab-item tab-item-hours">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Hours'|trans({},'widgets') }}">{{ 'Hours'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            {% set statusTime = statusTimeText(hoursWork) %}
+            <div class="hours-heading first-hours" data-status-time="{{ statusTime['class'] }}">
+                <i class="fa fa-clock-o"></i>{{ statusTime['text']|raw }}
+                <i class="fa fa-angle-down"></i>
+            </div>
+            <div class="hours-content">
+                <div class="hours-more">
+                    {% for dayWeek, hourWork in hoursWork %}
+                        <div class="hours-item">
+                            <strong>{{ 'week.days'|transchoice((dayWeek + 1), [], 'units')|capitalize }}:</strong>
+                            {% if hourWork is not empty %}
+                                {% for hour in hourWork %}
+                                    {% if hour.hours_start == hour.hours_end %}
+                                        {{ 'Open 24h'|trans }}
+                                    {% else %}
+                                        {% if not loop.first -%} / {% endif -%}
+                                        {{ hour.hours_start|date(getTimeFormat()) }} - {{ hour.hours_end|date(getTimeFormat()) }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {{ 'Closed'|trans }}
+                            {% endif -%}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

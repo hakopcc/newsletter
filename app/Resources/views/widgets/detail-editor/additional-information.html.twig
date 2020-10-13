@@ -1,0 +1,19 @@
+{% if level.hasAdditionalFiles and item.attachmentFile is not empty -%}
+    <div class="tab-item tab-item-additional tab-item-others">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Additional Information'|trans({},'widgets') }}">{{ 'Additional information'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            {% if level.hasAdditionalFiles and item.attachmentFile is not empty -%}
+                {% if isSample -%}
+                    {% set link = 'javascript:void(0);' -%}
+                {% else -%}
+                    {% set link = asset(item.attachmentFile, 'domain_extrafiles') -%}
+                {% endif -%}
+                <div class="additional-item">
+                    <a href="{{ link ~ '?' ~  'now' | date('U') }}" class="other-name" download><i class="fa fa-file"></i>{{ item.attachmentCaption ? item.attachmentCaption : 'Click here to see more info!'|trans }}</a>
+                </div>
+            {% endif -%}
+        </div>
+    </div>
+{% endif %}

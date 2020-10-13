@@ -1,0 +1,4 @@
+<div class="{{ members ? 'form-group' : 'col-sm-6' }}">
+    <label for="field-{{ field['id'] }}">{{ field['label'] }}</label>
+    <input type="text" class="form-control" name="listingField[{{ field['id'] }}]" id="field-{{ field['id'] }}" value="{{ listingField[field['id']] }}" placeholder="{{ field['placeholder'] }}">
+</div>

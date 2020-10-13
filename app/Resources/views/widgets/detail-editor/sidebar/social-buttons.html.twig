@@ -1,0 +1,18 @@
+{% if level.hasSocialNetworking and item.socialNetwork is not empty -%}
+    <div class="tab-item tab-item-social">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Social Buttons'|trans({},'widgets') }}">{{ 'Follow Us'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            {% if item.socialNetwork.facebook is not empty -%}
+                <a href="{{ item.socialNetwork.facebook }}" rel="noopener noreferrer" target="_blank" class="social-item"><i class="fa fa-facebook"></i></a>
+            {% endif -%}
+            {% if item.socialNetwork.instagram is not empty -%}
+                <a href="{{ item.socialNetwork.instagram }}" rel="noopener noreferrer" target="_blank" class="social-item"><i class="fa fa-instagram"></i></a>
+            {% endif -%}
+            {% if item.socialNetwork.twitter is not empty -%}
+                <a href="{{ item.socialNetwork.twitter }}" rel="noopener noreferrer" target="_blank" class="social-item"><i class="fa fa-twitter"></i></a>
+            {% endif -%}
+        </div>
+    </div>
+{% endif -%}

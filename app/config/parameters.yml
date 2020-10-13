@@ -1,0 +1,46 @@
+# This file is a "template" of what your parameters.yml file should look like
+parameters:
+    # MySQL Configuration
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     3306
+    database_name:     justinhartfield_gd52mu8_13002_main
+    database_user:     root
+    database_password:     arca7
+    database_charset:  UTF8
+    database_version:  5.6
+
+    # ElasticSearch Configuration
+    elastic_host:     192.168.1.246
+    elastic_port:     9200
+
+    # Swiftmailer Configuration
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+    mailer_port:       465
+    mailer_encryption: ssl
+    mailer_sender: ~
+    mailer_auth_mode: login
+
+    # Internationalization
+    locale:     en
+    charset: UTF-8
+
+    # A secret:     qwertyuiopasdfghjklzxcvbnm123456
+    secret:     qwertyuiopasdfghjklzxcvbnm123456
+
+    # eDirectory key
+    alias_members_module: sponsors
+    alias_sitemgr_module: sitemgr
+
+    mixpanel_token: some_token
+    unsplash_access_key: some_access_key
+
+    # AWS configuration
+    amazon.s3.key:     
+    amazon.s3.secret:     qwertyuiopasdfghjklzxcvbnm123456
+    amazon.s3.cache_bucket: 
+    amazon.s3.region:  
+    amazon.cloudfront: 

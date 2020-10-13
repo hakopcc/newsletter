@@ -1,0 +1,14 @@
+{# ModStores Hooks #}
+{% if not HookFire("listingdetail_overwrite_socialnetworking", {"listing": item, "level": level }) -%}
+    {% if level.hasSocialNetworking and item.socialNetwork.facebook -%}
+        <div class="tab-item tab-item-facebook" data-trans="{{ 'Facebook Feed'|trans({},'widgets') }}">
+            <div class="tab-item-content">
+                {% if isSample -%}
+                    <img src="{{ asset("assets/images/preview-facebook.png") }}" alt="{{ 'Preview Facebook'|trans }}">
+                {% else -%}
+                    {{ facebookFanPage(item.socialNetwork.facebook) }}
+                {% endif -%}
+            </div>
+        </div>
+    {% endif -%}
+{% endif -%}

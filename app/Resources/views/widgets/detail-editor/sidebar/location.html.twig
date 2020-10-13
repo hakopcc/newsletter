@@ -1,0 +1,38 @@
+{% if address|trim is not empty or map is not null or (level.hasLocationReference and item.locations is not empty) -%}
+    <div class="tab-item tab-item-location">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Location'|trans({},'widgets') }}">{{ 'Location'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            {% if map is not null -%}
+                {{ googleMaps(map) }}
+            {% endif %}
+
+            {# ModStores Hooks #}
+            {% do HookFire("listingdetail_before_render_location", {"item": item, "level": level }) -%}
+
+            {% if (address|trim is not empty) or (level.hasLocationReference and item.locations is not empty) -%}
+                <div class="location-address">
+                    {% if address|trim is not empty %}
+                        {{ address }}
+                    {% endif %}
+
+                    {% if level.hasLocationReference and item.locations is not empty %}
+                        {% if address|trim is not empty %}
+                            <br>
+                        {% endif %}
+
+                        {{ item.locations }}
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if item.latitude and item.longitude %}
+                <a href="{{ getDirectionsLink(item) }}" target="_blank" rel="noopener noreferrer" class="button is-primary"><i class="fa fa-location-arrow"></i> {{ 'Get directions'|trans }}</a>
+            {% endif %}
+
+            {# ModStores Hooks #}
+            {% do HookFire("listing_detail_multiplelocations") %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,123 @@
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+<div class="cards-default" card-type="{{ cardType }}" card-module="{{ module }}" data-type="business" scrollable="false" mobile-columns="false" data-bg="{{ content.backgroundColor }}" has-gap>
+    <div class="container" data-trans="{{ '2 Columns Horizontal Cards'|trans({}, 'widgets') }}">
+        <div class="cards-header">
+            <h2 class="heading h-4">{{ content.widgetTitle|trans({}, 'widgets') }}</h2>
+            {% if widgetLink is not empty %}
+                <a href="{{ widgetLink }}" class="link" data-trans="{{ 'more listings'|trans({},'widgets') }}">
+                    {{ content.widgetLink.label|trans({}, 'widgets') }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="card-wrapper card-two-columns-horizontal">
+            {% for item in items -%}
+                {% set itemData = getCardData(item, 'listing') %}
+
+                {% if loop.first %}
+                    <div class="card-wrapper-left">
+                        <div class="cards-list">
+                            <div class="card card-horizontal">
+                                <div class="picture">
+                                    {% if hasDeal(item.id, item.level) -%}
+                                        <a href="{{ itemData.detailLink }}#deal" class="badge">{{ 'Offers deals'|trans }}</a>
+                                    {% endif %}
+                                    <a href="{{ itemData.detailLink }}" class="picture-link">
+                                        {% if not HookFire('views-listing-blocks-2-columns-horizontal-cards_overwrite_cardtagpicture', {"item": item,"item_data": itemData, "first": true}, true) %}
+                                        {{ tagPicture(itemData.imagePath, item.title) }}
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+                                    {% if item.categories -%}
+                                        {{UtilityCards.categories(item.categories, content.module)}}
+                                    {% endif %}
+
+                                    {# description -#}
+                                    {% set description = item.longDescription -%}
+
+                                    {% if item.description is not empty -%}
+                                        {% set description = item.description -%}
+                                    {% endif -%}
+
+                                    {% if description is not empty -%}
+                                        <div class="description">
+                                            <p class="paragraph">{{ description|length > 180 ? description|slice(0,179) ~ '...' : description }}</p>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if (item.averageReview is defined or HookFire('views-listing-blocks-2-columns-horizontal-cards_willrender_reviews', {"item": item,"item_data": itemData, "first": true}, true)) and getSetting("review_listing_enabled") %}
+                                        {% if not HookFire('views-listing-blocks-2-columns-horizontal-cards_overwrite_reviews', {"item": item,"item_data": itemData, "first": true}, true) %}
+                                            <div class="reviews">
+                                                <div class="reviews-stars">
+                                                    {% for i in 0..4 %}
+                                                        <i class="fa fa-star{{ i < item.averageReview ? '' : '-o' }}"></i>
+                                                    {% endfor %}
+                                                </div>
+                                                {% if item.reviewTotal != 0 -%}
+                                                    <div class="reviews-count">{{ "{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews"|transchoice(item.reviewTotal, {"%count%":item.reviewTotal}) }}</div>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper-right">
+                        <div class="cards-list">
+                {% else %}
+                    <div class="card card-horizontal">
+                        <div class="picture">
+                            {% if hasDeal(item.id, item.level) -%}
+                                <a href="{{ itemData.detailLink }}#deal" class="badge">{{ 'Offers deals'|trans }}</a>
+                            {% endif %}
+                            <a href="{{ itemData.detailLink }}" class="picture-link">
+                                {% if not HookFire('views-listing-blocks-2-columns-horizontal-cards_overwrite_cardtagpicture', {"item": item,"item_data": itemData, "first": false}, true) %}
+                                {{ tagPicture(itemData.imagePath, item.title) }}
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="content">
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+                            {% if item.categories -%}
+                                {{UtilityCards.categories(item.categories, content.module)}}
+                            {% endif %}
+
+                            {# description -#}
+                            {% set description = item.longDescription -%}
+
+                            {% if item.description is not empty -%}
+                                {% set description = item.description -%}
+                            {% endif -%}
+
+                            {% if description is not empty -%}
+                                <div class="description">
+                                    <p class="paragraph">{{ description|length > 60 ? description|slice(0,59) ~ '...' : description }}</p>
+                                </div>
+                            {% endif %}
+
+                            {% if (item.averageReview is defined or HookFire('views-listing-blocks-2-columns-horizontal-cards_willrender_reviews', {"item": item,"item_data": itemData, "first": false}, true)) and getSetting("review_listing_enabled") %}
+                                {% if not HookFire('views-listing-blocks-2-columns-horizontal-cards_overwrite_reviews', {"item": item,"item_data": itemData, "first": false}, true) %}
+                                <div class="reviews">
+                                    <div class="reviews-stars">
+                                        {% for i in 0..4 %}
+                                            <i class="fa fa-star{{ i < item.averageReview ? '' : '-o' }}"></i>
+                                        {% endfor %}
+                                    </div>
+                                    {% if item.reviewTotal != 0 -%}
+                                        <div class="reviews-count">{{ "{0}No Reviews|{1}%count% Review|]1,Inf[%count% Reviews"|transchoice(item.reviewTotal, {"%count%":item.reviewTotal}) }}</div>
+                                    {% endif -%}
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{% if values is not empty and listingFields[0].id in level.customFields['listingTField'] and values|first.value is not empty%}
+    {% if isSample -%}
+        {% set title = values|first['label'] -%}
+        {% set value = values|first['value'] -%}
+    {% else -%}
+        {% set title = values|first.listingTField.label -%}
+        {% set value = values|first.value -%}
+    {% endif -%}
+
+    <div class="tab-item tab-item-specialties" data-trans="{{ 'Specialties'|trans({},'widgets') }}">
+        <div class="tab-item-content">
+            <div class="specialties-item">
+                <strong>{{title}}:</strong>
+                {{value}}
+            </div>
+        </div>
+    </div>
+{% endif %}

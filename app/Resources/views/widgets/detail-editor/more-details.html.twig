@@ -1,0 +1,40 @@
+{% set flag = false %}
+{% if isSample  %}
+    {% set flag = true %}
+{% else %}
+    {% set break = false %}
+    {% for value in values if not break%}
+        {% if value.value is not empty %}
+            {% set flag = true %}
+            {% set break = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% if values is not empty and listingFieldGroups[0].id in level.customFields['listingTFieldGroup'] and  flag%}
+    <div class="tab-item tab-item-more-details" data-section="{{ section }}">
+        {% if content.hideTitle is empty %}
+            <div class="tab-item-heading">
+                <h4 class="heading h-4" data-trans="{{ 'More details'|trans({},'widgets') }}">{{ content.fieldTitle }}</h4>
+            </div>
+        {% endif %}
+        <div class="tab-item-content">
+            <div class="more-details-list">
+                {% for value in values %}
+                        {% if isSample %}
+                            <div class="more-details-item">
+                                <strong class="details-title">{{ value['label'] }}</strong>
+                                <span class="details-value">{{ value['value'] }}</span>
+                            </div>
+                        {% else %}
+                            {% if value.value is not empty %}
+                                <div class="more-details-item">
+                                    <strong class="details-title">{{ value.listingtfield.label }}</strong>
+                                    <span class="details-value">{{ value.value }}</span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

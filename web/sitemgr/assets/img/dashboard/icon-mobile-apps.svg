@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.308" height="25" viewBox="0 0 17.308 25">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Caminho_1505" data-name="Caminho 1505" d="M184.865-157.644a1.2,1.2,0,0,1-1.2,1.2H171.644a1.2,1.2,0,0,1-1.2-1.2v-19.712a1.2,1.2,0,0,1,1.2-1.2h12.019a1.2,1.2,0,0,1,1.2,1.2ZM183.663-180H171.644A2.646,2.646,0,0,0,169-177.356v19.712A2.646,2.646,0,0,0,171.644-155h12.019a2.646,2.646,0,0,0,2.644-2.644v-19.712A2.646,2.646,0,0,0,183.663-180Z" transform="translate(-169 180)" fill="none" clip-rule="evenodd"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Caminho_1504" data-name="Caminho 1504" d="M162-152.231h30.769V-183H162Z" transform="translate(-162 183)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="Caminho_1511" data-name="Caminho 1511" d="M179.5-158h-3a.75.75,0,0,0-.75.75.75.75,0,0,0,.75.75h3a.75.75,0,0,0,.75-.75.75.75,0,0,0-.75-.75" transform="translate(-175.75 158)" fill="none" clip-rule="evenodd"/>
+    </clipPath>
+    <clipPath id="clip-path-4">
+      <path id="Caminho_1510" data-name="Caminho 1510" d="M162-151h32v-32H162Z" transform="translate(-162 183)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Mobile" transform="translate(4759 -518)">
+    <g id="Grupo_1137" data-name="Grupo 1137" transform="translate(-4759 518)" clip-path="url(#clip-path)">
+      <g id="Grupo_1136" data-name="Grupo 1136" transform="translate(-6.731 -2.885)" clip-path="url(#clip-path-2)">
+        <path id="Caminho_1503" data-name="Caminho 1503" d="M164-150.385h26.923V-185H164Z" transform="translate(-162.077 183.077)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Grupo_1141" data-name="Grupo 1141" transform="translate(-4752.596 538)" clip-path="url(#clip-path-3)">
+      <g id="Grupo_1140" data-name="Grupo 1140" transform="translate(-13.75 -25)" clip-path="url(#clip-path-4)">
+        <path id="Caminho_1509" data-name="Caminho 1509" d="M170.75-151.5h14.5V-163h-14.5Z" transform="translate(-162 183)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

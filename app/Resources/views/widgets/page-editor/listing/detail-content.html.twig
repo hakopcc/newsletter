@@ -1,0 +1,75 @@
+{% set content = listingContent(item, level, reviewsPaginated, address, map, listingWidgets, isSample) %}
+
+<div class="details-default details-listing">
+
+    {% if content.listingWidgets['listingWidgets']['header'] is not empty %}
+        {% for header in content.listingWidgets['listingWidgets']['header'] -%}
+            {{ renderListingHeader(header) }}
+        {% endfor %}
+    {% endif %}
+
+    {% if (content.hasContent or isSample) %}
+        {% if content.listingWidgets['listingWidgets']['tabs'] is not empty %}
+            <div class="detail-body" id="detail-body" data-trans="{{ 'Listing Detail'|trans({}, 'widgets') }}">
+                <div class="detail-body-content">
+                    <div class="container">
+                        {% for key, tab in content.listingWidgets['listingWidgets']['tabs'] -%}
+                            <div class="tab-content {{ tab.sidebar is not empty ? 'has-sidebar' : '' }}" id="tab-{{ content.listingWidgets['listingTabs'][key].id }}">
+                                {% if tab.main is not empty %}
+                                    <div class="tab-left">
+                                        {{ renderListingWidgetBySection('main', tab.main, item, isSample) }}
+                                    </div>
+                                {% endif %}
+                                {% if tab.sidebar is not empty %}
+                                    <div class="tab-right">
+                                        {{ renderListingWidgetBySection('sidebar', tab.sidebar, item, isSample) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% do HookFire("listingdetail_after_render_article") %}
+                    {% do HookFire("listingdetail_after_render_event") %}
+                </div>
+            </div>
+        {% else %}
+            <div class="detail-body" id="detail-body">
+                <div class="detail-body-content">
+                    <div class="container">
+                        <div class="tab-content {{ content.listingWidgets['listingWidgets']['sidebar'] is not empty ? 'has-sidebar' : '' }} is-active">
+                            {% if content.listingWidgets['listingWidgets']['main'] is not empty %}
+                                <div class="tab-left">
+                                    {{ renderListingWidgetBySection('main', content.listingWidgets['listingWidgets']['main'], item, isSample) }}
+                                </div>
+                            {% endif %}
+                            {% if content.listingWidgets['listingWidgets']['sidebar'] is not empty %}
+                                <div class="tab-right">
+                                    {{ renderListingWidgetBySection('sidebar', content.listingWidgets['listingWidgets']['sidebar'], item, isSample) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% do HookFire("listingdetail_after_render_article") %}
+                    {% do HookFire("listingdetail_after_render_event") %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if not isSample and formSendMail -%}
+        {% include ':blocks/modals:modal-send-email.html.twig' with {form: formSendMail, item: item, level: level} %}
+    {% endif -%}
+    {% if not isSample and formReview -%}
+        {% include '@Web/modal-review.html.twig' with {form: formReview, item: item, level: level} %}
+    {% endif -%}
+</div>
+
+{# Adding requirements #}
+{{ addJSFile("assets/js/lib/jquery.fancybox.min.js") }}
+{{ addJSFile("assets/js/lib/social-likes.min.js") }}
+{{ addJSTwig("::modules/listing/js/summary.js.twig") }}
+{{ addJSFile("assets/js/search/report.click.js") }}
+{{ addJSFile("assets/js/widgets/details/listing.js") }}
+{% if not HookFire("listingdetail_overwrite_reviewjs") -%}
+    {{ addJSFile("assets/js/review/review.js") }}
+{% endif %}
+{{ addJSFile("assets/js/modules/socialbuttons.js") }}

@@ -1,0 +1,93 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+<div class="summary-card" summary-type="4" data-id="{{ item.id }}">
+    {% if not HookFire('listingsummary_before_render_thumbnail', {"data": data, 'itemLevelInfo': itemLevelInfo, 'detailURL': detailURL, 'flags': flags}, true) %}
+        {% if not (flags < 2 and not HookFire('summary_check_noimage', {}, true))  %}
+            {% set image = data.thumbnail -%}
+        {% else -%}
+            {% set image = utility_getNoImagePath(data.title)|imagine_filter('noImage_large') -%}
+        {% endif -%}
+
+        {% if itemLevelInfo.hasDetail -%}
+            <a href="{{ detailURL }}" class="summary-picture">
+                {{ tagPicture(image, data.title) }}
+            </a>
+        {% else -%}
+            <div class="summary-picture">
+                {{ tagPicture(image, data.title) }}
+            </div>
+        {% endif -%}
+    {% endif -%}
+
+    <div class="summary-content">
+        <div class="summary-content-left">
+            <div class="summary-heading hidden-grid-view">
+                {#title#}
+                {% if itemLevelInfo.hasDetail -%}
+                    <a href="{{ detailURL }}" class="summary-title">{{ data.title }}</a>
+                {% else %}
+                    <div class="summary-title">{{ data.title }}</div>
+                {% endif %}
+                {#end title#}
+                {#actions #}
+                {{ Utility.actions(itemLevelInfo,item,data,detailURL) }}
+                {#end actions #}
+            </div>
+            <div class="summary-title-content hidden-list-view">
+                {#title#}
+                {% if itemLevelInfo.hasDetail -%}
+                    <a href="{{ detailURL }}" class="summary-title">{{ data.title }}</a>
+                {% else %}
+                    <div class="summary-title">{{ data.title }}</div>
+                {% endif %}
+                {#end title#}
+                {% if data.claim -%}
+                    {% set claimLabel = getSetting('claim_textlink') %}
+                    <a href="{{ path("listing_claim", { "friendlyUrl" : data.friendlyUrl }) }}" class="button button-sm is-outline summary-claim">{{ claimLabel ?: "Is this your listing?"|trans }}</a>
+                {% endif %}
+            </div>
+            {#address#}
+            {%  if ((verifyAddress(data.address.street, data.address.complement, data.address.zipcode, itemLocations, pageLocations)) and not(HookFire('listingsummary_before_render_location', {"data": data, 'itemLocations': itemLocations, 'item': item}, true))) %}
+                <div class="summary-address">
+                    {{Utility.address( null, null, data.address.street, data.address.complement, data.address.zipcode, itemLocations, pageLocations) }}
+                    {% if data.distance and data.distance < 40000 %}
+                        <div class="summary-distance">
+                            {{ parseDistanceUnit(data.distance, isDistanceSorterEnabled, summaryTitle)|raw }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif -%}
+            {#end address#}
+            {% if (itemLevelInfo.hasPhone and ((data.phone is not empty) or HookFire('summary_overwrite_phone'))) or (itemLevelInfo.hasAdditionalPhone and data.additionalPhone is not empty) %}
+                <div class="summary-info hidden-list-view">
+                    {{ Utility.infoAdditionalPhone(itemLevelInfo,data,item) }}
+                </div>
+            {% endif -%}
+            {% if itemLevelInfo.hasSummaryDescription and data.description is not empty -%}
+                <div class="summary-description">
+                    {{ data.description }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="summary-content-right hidden-grid-view">
+            {% if itemLevelInfo.hasReview and getSetting("review_listing_enabled") -%}
+                {{ Utility.stars(data) }}
+                {{ Utility.review(item) }}
+            {% endif %}
+            {% if (itemLevelInfo.hasPhone and ((data.phone is not empty) or HookFire('summary_overwrite_phone'))) or (itemLevelInfo.hasAdditionalPhone and data.additionalPhone is not empty) %}
+                <div class="summary-info">
+                    {{ Utility.infoAdditionalPhone(itemLevelInfo,data,item) }}
+                </div>
+            {% endif %}
+            {% if itemLevelInfo.hasBadges and itemBadges -%}
+                {{ Utility.badgesNewSummary(itemBadges, pageBadges) }}
+            {% endif %}
+            {% if data.claim -%}
+                {% set claimLabel = getSetting('claim_textlink') %}
+                <a href="{{ path("listing_claim", { "friendlyUrl" : data.friendlyUrl }) }}" class="button button-sm is-outline summary-claim">{{ claimLabel ?: "Is this your listing?"|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="summary-footer hidden-list-view">
+        {{ Utility.actions(itemLevelInfo,item,data,detailURL) }}
+    </div>
+</div>

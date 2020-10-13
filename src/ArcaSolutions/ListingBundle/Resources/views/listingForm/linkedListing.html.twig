@@ -1,0 +1,9 @@
+<div class="list-item">
+    {{ listing.title }}
+    <a href="javascript:void(0)" class="addListing" data-id="{{ listing.id }}" data-title="{{ listing.title }}" {{ not addedListing ? '' : 'style="display: none;"' }}>
+        <i class="fa fa-plus"></i>
+    </a>
+    <a href="javascript:void(0)" class="removeListing" data-id="{{ listing.id }}" {{ addedListing ? '' : 'style="display: none;"' }}>
+        <i class="fa fa-minus"></i>
+    </a>
+</div>

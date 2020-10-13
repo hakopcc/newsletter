@@ -1,0 +1,36 @@
+<div class="panel panel-form">
+    <div class="panel-blocked" data-block="field-{{ field['id'] }}" {{ showField ? 'style="display: none;"' : '' }}>
+        <img src="/sitemgr/assets/img/locker-panel.svg" alt="Locker">
+        {% if blockMessage is not empty %}
+            <p>{{ blockMessage|raw }}</p>
+        {% endif %}
+    </div>
+
+    <div class="panel-heading">
+        {{ field['label'] }}
+    </div>
+
+    <div class="panel-body">
+        <div class="range-form-group" id="range-widget-{{ field['id'] }}">
+            <div class="rage-icons">
+                {% for i in attributes['minRange']..attributes['maxRange'] -%}
+                    <i class="range-icon fa {{ attributes['icon'] }}" data-item="range-{{ i }}" {{ i > 0 and i <= listingField[field['id']] ? 'style="opacity: 1;"' : '' }}></i>
+                {% endfor -%}
+            </div>
+            <div class="range-input-group">
+                <span class="range-amount min-amount">{{ attributes['minRange'] }}</span>
+                <input type="range" class="range-slider" name="listingField[{{ field['id'] }}]" value="{{ listingField[field['id']] is defined ? listingField[field['id']] : attributes['minRange'] }}" min="{{ attributes['minRange'] }}" max="{{ attributes['maxRange'] }}" data-ref="range-widget-{{ field['id'] }}" autocomplete="off">
+                <span class="range-amount max-amount">{{ attributes['maxRange'] }}</span>
+            </div>
+            <div class="range-indicators">
+                {% for i in attributes['minRange']..attributes['maxRange'] -%}
+                    <span class="range-indicator"></span>
+                {% endfor -%}
+            </div>
+            {% if attributes['minRange'] == 0 %}
+                <p class="help-block small">{{ 'Pick 0 if you don\'t want to show this information in your listing.'|trans({}, 'administrator') }}</p>
+            {% endif %}
+        </div>
+        <div id="slider"></div>
+    </div>
+</div>

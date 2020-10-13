@@ -1,0 +1,8 @@
+<div class="col-sm-12">
+    <label>
+        <input type="checkbox" name="listingField[{{ field['id'] }}]" value="{{ field['label'] }}" {{ listingField[field['id']] is not empty ? 'checked' : ''}}> {{ field['label'] }}
+        {% if field['placeholder'] is not empty %}
+            <small>({{ field['placeholder'] }})</small>
+        {% endif %}
+    </label>
+</div>

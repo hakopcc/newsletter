@@ -1,0 +1,27 @@
+{% import "::blocks/utility/detail.html.twig" as UtilityDetail -%}
+
+{% if (level.hasReview and reviews_active) and (reviewsPaginated.reviews is not empty or HookFire('detailcontent_validate_review', {}, true)) -%}
+    <div class="tab-item tab-item-reviews" id="overview-reviews" data-trans="{{ 'Recent Reviews'|trans({}, 'widgets') }}">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Recent Reviews'|trans({},'widgets') }}">{{ 'Reviews'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            <div class="reviews-header">
+                {# ModStores Hooks #}
+                {{ UtilityDetail.reviewStars(level, reviews_active, reviewsPaginated, item, false) }}
+                <div class="reviews-action">
+                    {% if not HookFire('detailcontent_overwrite_reviewbutton', {}, true) %}
+                        <a href="#" class="button button-md is-primary" data-modal="review" data-id="{{ item.id }}">{{ 'Write a review'|trans }}</a>
+                        {% if not isSample %}
+                            <a href="{{ path('listing_review', {friendlyUrl: friendlyUrl}) }}" class="button button-md is-secondary">{{ 'View all reviews'|trans }}</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="reviews-list">
+                {{ UtilityDetail.reviews(reviewsPaginated.reviews|slice(0, 3), 'true') }}
+                {% do HookFire('detailcontent_after_renderreview', {'review': reviewsPaginated.reviews|slice(0, 3), 'overview': 'true'}) %}
+            </div>
+        </div>
+    </div>
+{% endif %}

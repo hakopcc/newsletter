@@ -1,0 +1,9 @@
+<style scoped>
+    {% for source in sources %}
+        @media screen and {{ source.media }}{
+            {{ source.url matches '/.webp/' ? '.webp' : '.no-webp' }} #{{itemId}}{
+                background-image: url({{ source.url }});
+            }
+        }
+    {% endfor %}
+</style>

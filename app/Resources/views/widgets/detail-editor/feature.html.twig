@@ -1,0 +1,17 @@
+{% if level.hasFeatureInformation and features is not empty %}
+    <div class="tab-item tab-item-features">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'Features'|trans({},'widgets') }}">{{ 'Features'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+            {% for feature in features -%}
+                {% if feature.title is not empty %}
+                    <div class="item-features">
+                        <span class="icon icon-md"><i class="fa {{ feature.icon }}"></i></span>
+                        {{ feature.title }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

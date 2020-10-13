@@ -1,0 +1,20 @@
+<div class="panel panel-form">
+    <div class="panel-blocked" data-block="field-{{ field['id'] }}" {{ showField ? 'style="display: none;"' : '' }}>
+        <img src="/sitemgr/assets/img/locker-panel.svg" alt="Locker">
+        {% if blockMessage is not empty %}
+            <p>{{ blockMessage|raw }}</p>
+        {% endif %}
+    </div>
+
+    <div class="panel-heading">
+        {{ field['label'] }}
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <textarea name="listingField[{{ field['id'] }}]"
+                      class="{{ descriptionType != 'long'?"textarea-counter":"" }} form-control" rows="{{ descriptionType == 'long' ? '5' : '3' }}" data-chars="{{ descriptionType == 'long' ? '500' : '140' }}" data-msg="{{ msgCharsLeft }}"
+            placeholder="{{ field['placeholder'] }}">{{ listingField[field['id']] }}</textarea>
+        </div>
+    </div>
+</div>

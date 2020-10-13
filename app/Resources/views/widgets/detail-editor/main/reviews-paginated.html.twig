@@ -1,0 +1,17 @@
+{% import "::blocks/utility/detail.html.twig" as UtilityDetail -%}
+
+{% if (level.hasReview and reviews_active) and reviewsPaginated.reviews is not empty -%}
+    <div class="tab-item tab-item-reviews" data-trans="{{ 'Reviews Paginated'|trans({},'widgets') }}">
+        <div class="tab-item-content">
+            <div class="reviews-header">
+                {{ UtilityDetail.reviewStars(level, reviews_active, reviewsPaginated, item, true) }}
+            </div>
+            <div id="review-content">
+                <div class="reviews-list">
+                    {{ UtilityDetail.reviews(reviewsPaginated.reviews, 'true') }}
+                </div>
+                {% include 'blocks/pagination/review-pagination.html.twig' with {pageCount: reviewsPaginated.pageCount, friendlyUrl: item.friendlyUrl, current: 1} %}
+            </div>
+        </div>
+    </div>
+{% endif %}

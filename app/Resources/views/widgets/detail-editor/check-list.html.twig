@@ -1,0 +1,24 @@
+{% if values is not empty and listingFieldGroups[0].id in level.customFields['listingTFieldGroup'] %}
+    <div class="tab-item tab-item-check-list">
+        {% if content.hideTitle is empty and listingFieldGroups[0].id in level.customFields['listingTFieldGroup'] %}
+            <div class="tab-item-heading">
+                <h4 class="heading h-4" data-trans="{{ 'Check List'|trans({},'widgets') }}">{{ content.fieldTitle }}</h4>
+            </div>
+        {% endif %}
+        <div class="tab-item-content">
+            <ul class="check-list">
+                {% for value in values %}
+                    <li class="check-item"><i class="fa {{ content.icon }} check-icon"></i>
+                        <span class="check-title">
+                            {% if isSample %}
+                                {{ value }}
+                            {% else %}
+                                {{ value.listingTField.label }}
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

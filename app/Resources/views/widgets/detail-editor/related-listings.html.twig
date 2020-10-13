@@ -1,0 +1,8 @@
+{% if listingFields[0].id in level.customFields['listingTField'] %}
+    {% set contentCards = contentCards(content, null, null, false, item, section) -%}
+
+    {% if contentCards is not empty -%}
+        {{ contentCards|raw }}
+    {% endif -%}
+    <span data-trans="{{ 'Related Listings'|trans({},'widgets') }}"></span>
+{% endif %}

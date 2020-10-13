@@ -1,0 +1,380 @@
+liip_theme:
+    themes:
+        - default
+        - doctor
+        - restaurant
+        - wedding
+    active_theme: default
+    assetic_integration: true
+    load_controllers: false
+    path_patterns:
+        app_resource:
+            - '%%app_path%%/custom/%%current_theme%%/%%template%%'
+        bundle_resource:
+            - '%%bundle_path%%/custom/%%current_theme%%/%%bundle_name%%/%%template%%'
+        bundle_resource_dir:
+            - '%%dir%%/custom/%%current_theme%%/%%bundle_name%%/%%template%%'
+
+# Thumbnails Configuration
+liip_imagine:
+    controller:
+        filter_action: web_liip_imagine_filter
+    #    cache: amazon_s3
+    resolvers:
+        default:
+            custom_web_path:
+                web_root: '%kernel.root_dir%/../web'
+    filter_sets:
+        cache: null
+
+        small:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 560
+                        - 420
+                thumbnail:
+                    size:
+                        - 560
+                        - 420
+                    mode: outbound
+
+        noImage_small:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 280
+                        - 210
+                    mode: inset
+                background:
+                    size:
+                        - 560
+                        - 420
+                    color: '#EAEAEA'
+
+        medium:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 690
+                        - 518
+                thumbnail:
+                    size:
+                        - 690
+                        - 518
+                    mode: outbound
+
+        noImage_medium:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 345
+                        - 259
+                    mode: inset
+                background:
+                    size:
+                        - 690
+                        - 518
+                    color: '#EAEAEA'
+
+        large:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 770
+                        - 578
+                thumbnail:
+                    size:
+                        - 770
+                        - 578
+                    mode: outbound
+
+        noImage_large:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 385
+                        - 289
+                    mode: inset
+                background:
+                    size:
+                        - 770
+                        - 578
+                    color: '#EAEAEA'
+
+        logo:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 250
+                        - 200
+                    mode: inset
+
+        noImage_logo:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 125
+                        - 100
+                    mode: inset
+                background:
+                    size:
+                        - 250
+                        - 200
+                    color: '#EAEAEA'
+
+        logo_icon:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 48
+                        - 48
+                thumbnail:
+                    size:
+                        - 48
+                        - 48
+                    mode: inset
+
+        noImage_logo_icon:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 24
+                        - 24
+                    mode: inset
+                background:
+                    size:
+                        - 48
+                        - 48
+                    color: '#EAEAEA'
+
+        logo_icon_2:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 80
+                        - 80
+                thumbnail:
+                    size:
+                        - 80
+                        - 80
+                    mode: inset
+
+        noImage_logo_icon_2:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 40
+                        - 40
+                    mode: inset
+                background:
+                    size:
+                        - 80
+                        - 80
+                    color: '#EAEAEA'
+
+        logo_icon_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 96
+                        - 96
+                thumbnail:
+                    size:
+                        - 96
+                        - 96
+                    mode: inset
+
+        noImage_logo_icon_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 48
+                        - 48
+                    mode: inset
+                background:
+                    size:
+                        - 96
+                        - 96
+                    color: '#EAEAEA'
+
+        logo_summary_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 150
+                        - 150
+                thumbnail:
+                    size:
+                        - 150
+                        - 150
+                    mode: inset
+
+        noImage_logo_summary_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 75
+                        - 75
+                    mode: inset
+                background:
+                    size:
+                        - 150
+                        - 150
+                    color: '#EAEAEA'
+
+        cover_image_summary_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                upscale:
+                    min:
+                        - 320
+                        - 240
+                thumbnail:
+                    size:
+                        - 320
+                        - 240
+                    mode: outbound
+
+        noImage_cover_image_summary_3:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 160
+                        - 120
+                    mode: inset
+                background:
+                    size:
+                        - 320
+                        - 240
+                    color: '#EAEAEA'
+
+        leaderboard:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 728
+                        - 90
+                    mode: inset
+                background:
+                    size:
+                        - 728
+                        - 90
+                    color: '#EAEAEA'
+
+        largebanner:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 320
+                        - 100
+                    mode: inset
+                background:
+                    size:
+                        - 320
+                        - 100
+                    color: '#EAEAEA'
+
+        square:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 250
+                        - 250
+                    mode: inset
+                background:
+                    size:
+                        - 250
+                        - 250
+                    color: '#EAEAEA'
+
+        skyscraper:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 160
+                        - 600
+                    mode: inset
+                background:
+                    size:
+                        - 160
+                        - 600
+                    color: '#EAEAEA'
+
+        logo_share:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 600
+                        - 315
+                    mode: inset
+                background:
+                    size:
+                        - 600
+                        - 315
+                    color: '#FFFFFF'
+
+        slider_image:
+            quality: 100
+            png_compression_level: 8
+
+        noImage_slider_image:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 960
+                        - 290
+                    mode: inset
+                background:
+                    size:
+                        - 1920
+                        - 580
+                    color: '#EAEAEA'
+

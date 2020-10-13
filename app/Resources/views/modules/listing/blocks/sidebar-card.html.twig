@@ -1,0 +1,37 @@
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+{% if content.widgetTitle is not empty %}
+    {% set widgetReference =  content.widgetTitle|replace({' ': ''}) -%}
+    {% set title = content.widgetTitle -%}
+{% else %}
+    {% set widgetReference =  content.fieldTitle|replace({' ': ''}) -%}
+    {% set title = content.fieldTitle -%}
+{% endif %}
+
+<div class="tab-item sidebar-cards" data-trans="{{ 'Linked Listings'|trans({},'widgets') }}" id="widget-sidebar-card-{{ widgetReference }}">
+    <div class="sidebar-cards-heading">{{ title }}</div>
+    <div class="cards-list">
+        {% for item in items %}
+            {% set itemData = getCardData(item, 'listing') %}
+
+            <div class="card-sidebar">
+                <a href="{{ (not isSample)?itemData.detailLink:'javascript:void(0);' }}" class="picture-link">
+                    {{ tagPicture(itemData.imagePath, item.title) }}
+                </a>
+                <a href="{{ (not isSample)?itemData.detailLink:'javascript:void(0);' }}" class="card-title">{{ item.title }}</a>
+                {% if item.categories -%}
+                    {{UtilityCards.categories(item.categories, content.module,'', isSample)}}
+                {% endif %}
+
+                {% if item.averageReview is defined and getSetting("review_listing_enabled") %}
+                    <div class="cards-reviews">
+                        {% for i in 0..4 %}
+                            <i class="fa fa-star{{ i < item.averageReview ? '' : '-o' }}"></i>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <button class="sidebar-cards-nav" nav-direction="left" data-ref="widget-sidebar-card-{{ widgetReference }}"><i class="fa fa-angle-left"></i></button>
+    <button class="sidebar-cards-nav" nav-direction="right" data-ref="widget-sidebar-card-{{ widgetReference }}"><i class="fa fa-angle-right"></i></button>
+</div>

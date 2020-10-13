@@ -1,0 +1,7 @@
+{% set items = getLinkedListings(item, listingFields, isSample, level) %}
+
+{% if items is not empty %}
+    <div data-trans="{{ 'Linked Listings'|trans({},'widgets') }}">
+         {% include '::/modules/listing/blocks/vertical-cards.html.twig' with {items: items, itemsPerRow: 3, content: content} -%}
+    </div>
+{% endif %}

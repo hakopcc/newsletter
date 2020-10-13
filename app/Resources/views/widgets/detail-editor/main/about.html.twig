@@ -1,0 +1,56 @@
+{% if (gallery is not empty and 'y' == gallery[0].imageDefault or HookExist("detaileditor-about_before_render_descriptionimage"))
+    or (level.hasSummaryDescription and item.description)
+    or (level.hasLongDescription and item.longDescription) -%}
+    <div class="tab-item tab-item-about">
+        <div class="tab-item-heading">
+            <h4 class="heading h-4" data-trans="{{ 'About'|trans({},'widgets') }}">{{ 'About'|trans }}</h4>
+        </div>
+        <div class="tab-item-content">
+
+            {# ModStores Hooks #}
+            {% do HookFire("detaileditor-about_before_render_descriptionimage", {"item":item, "gallery": gallery, "level": level}) -%}
+
+            {% if gallery is not empty and 'y' == gallery[0].imageDefault -%}
+                {% if isSample -%}
+                    {% set url = gallery[0].image.url -%}
+                {% else -%}
+                    {% set url = asset(imagePath(gallery[0].image), 'domain_images') -%}
+                {% endif -%}
+
+                <div class="picture">
+                    <a href="{{ url }}" class="fancybox">
+                        {% if isSample -%}
+                            <img data-src="{{ url }}" alt="{{ item.title }}" class="lazy">
+                        {% else -%}
+                            {{ tagPicture(url, item.title, {'tablet': 'medium'}) }}
+                        {% endif -%}
+                    </a>
+                </div>
+            {% endif %}
+            {% if level.hasSummaryDescription and item.description -%}
+                <div class="description">
+                    <p class="summary-description">{{ item.description|nl2br }}</p>
+                </div>
+            {% elseif (gallery is not empty and 'y' == gallery[0].imageDefault) and level.hasLongDescription and item.longDescription %}
+                <div class="description">
+                    {% if not HookFire("detaileditor-about_overwrite_longdescription", {"item": item}) -%}
+                        {% if item.longDescription|length > 520 %}
+                            <p>{{ item.longDescription|slice(0,519) ~ '...'|nl2br }}</p>
+                        {% else %}
+                            <p>{{ item.longDescription|nl2br }}</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif -%}
+        </div>
+        {% if level.hasLongDescription and item.longDescription -%}
+            <div class="tab-item-content{{ gallery is empty and (item.description is empty or not level.hasSummaryDescription) ? ' display' : '' }}" id="long-description">
+                <div class="description">
+                {% if not HookFire("detaileditor-about_overwrite_longdescription", {"item": item}) -%}
+                    <p>{{ item.longDescription|nl2br }}</p>
+                {% endif -%}
+                </div>
+            </div>
+        {% endif -%}
+    </div>
+{% endif %}

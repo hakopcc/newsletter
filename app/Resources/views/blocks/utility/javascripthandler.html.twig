@@ -1,0 +1,19 @@
+{# handler \ArcaSolutions\CoreBundle\Services\JavaScriptHandler -#}
+
+{% autoescape false -%}
+    {% for file in handler.externalFiles -%}
+        <link rel="preload" href="{{ asset(file) }}" as="script"/>
+        <script src="{{ asset(file) }}"></script>
+    {% endfor -%}
+
+    {% for blockWithParam in handler.blocksWithParams -%}
+        {% include blockWithParam.block with blockWithParam.params -%}
+    {% endfor -%}
+
+    {% for blockWithIdentifiedParams in handler.blocksWithIdentifiedParams -%}
+        {% for indentifiedParams in blockWithIdentifiedParams.identifiers  -%}
+            {% include blockWithIdentifiedParams.block with indentifiedParams -%}
+        {% endfor -%}
+    {% endfor -%}
+
+{% endautoescape -%}

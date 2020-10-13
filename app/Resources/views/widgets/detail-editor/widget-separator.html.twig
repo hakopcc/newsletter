@@ -1,0 +1,21 @@
+{#
+    * Attribute separator-style could have two values to change the style of separator line
+        * solid - this will set a continous line at the separator widget
+        * dashed - this will set a line dashed at the separator widget
+
+    * Attribute separator-color could have two values to change the color of the separator line
+        * neutral - this will set the neutral color with 25% of opacity
+        * brand - this will set the brand color
+
+    * Attribute separator-space could have three values to change the space at separator widget
+        * small - this will set space of 24px at top and bottom
+        * medium - this will set space of 32px at top and bottom
+        * large - this will set space of 40px at top and bottom
+
+    * Attribute separator-thickness could have three values to change the thickness of the separator line
+        * small - this will set the thickness to 1px
+        * medium - this will set the thickness to 2px
+        * large - this will set the thickness to 3px
+#}
+
+<div class="widget-separator" data-trans="{{ 'Separator'|trans({},'widgets') }}" separator-style="solid" separator-color="neutral" separator-space="medium" separator-thickness="small"></div>

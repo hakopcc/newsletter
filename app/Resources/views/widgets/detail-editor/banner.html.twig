@@ -1,0 +1,7 @@
+{%- set module = getModuleBanner() -%}
+{%- set bannersInfo = renderImageBanner(module, content.banners|cast_to_array, bannerCategories) -%}
+{%- if bannersInfo.banners -%}
+    <div class="banner" type="{{ content.bannerType }}" is-wide="{{ content.isWide }}" data-bg="{{ content.backgroundColor }}" data-section="{{ section }}" data-count="{{ bannersInfo.counter }}" data-trans="{{ 'Square Banner'|trans({},'widgets') }}" data-trans="{{ 'Wide Skyscraper Banner'|trans({},'widgets') }}" has-gap>
+        {{ bannersInfo.banners|raw }}
+    </div>
+{%- endif -%}

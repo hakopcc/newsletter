@@ -1,0 +1,29 @@
+{#
+    /*
+    * Attribute button-space could have four values to change the space at call to action widget
+    * none - this will remove all spaces from the top and bottom
+    * small - this will set space of 24px at top and bottom
+    * medium - this will set space of 40px at top and bottom
+    * large - this will set space of 56px at top and bottom
+    */
+
+    /*
+    * Attribute button-align could have three values to change the alignment of call to action widget
+    * left - this will align the button to the left side
+    * center - this will align the button to the center side
+    * right - this will align the button to the right side
+    */
+
+    /*
+    * If button is set as extend option, set the attribute full-width to true
+    */
+
+    /*
+    * If button is set as outline option, change the class is-primary to is-outline
+    */
+#}
+{% if values is not empty and listingFields[0].id in level.customFields['listingTField'] and (isSample or values|first.value is not empty)%}
+    <div class="tab-item tab-item-action-button" button-space="small" button-align="{{ content.alignment }}" data-trans="{{ 'Call to Action'|trans({},'widgets') }}">
+        <a href="{{ not isSample ?values|first.value:"javascript:void(0)" }}" target="{{ not isSample ? '_blank':''}}" rel="noopener noreferrer nofollow" class="button button-bg {{ content.buttonStyle == 'outline' ? 'is-outline' : 'is-primary'}}" full-width="{{ content.alignment == 'extended' ? 'true' : 'false' }}">{{ content.buttonLabel }}</a>
+    </div>
+{% endif %}

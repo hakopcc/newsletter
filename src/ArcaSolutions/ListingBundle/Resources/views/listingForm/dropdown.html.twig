@@ -1,0 +1,27 @@
+<div class="panel panel-form">
+    <div class="panel-blocked" data-block="field-{{ field['id'] }}" {{ showField ? 'style="display: none;"' : '' }}>
+        <img src="/sitemgr/assets/img/locker-panel.svg" alt="Locker">
+        {% if blockMessage is not empty %}
+            <p>{{ blockMessage|raw }}</p>
+        {% endif %}
+    </div>
+
+    <div class="panel-heading">
+        {{ field['label'] }}
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row custom-content-row">
+                <div class="col-sm-12 selectize">
+                    <select id="field-{{ field['id'] }}" name="listingField[{{ field['id'] }}]" class="form-control">
+                        <option value="" disabled selected>{{ field.placeholder }}</option>
+                        {% for option in dropdownOptions %}
+                            <option value="{{ option['value'] }}" {{ listingField[field['id']] == option['value'] ? 'selected' : '' }}>{{ option['value'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

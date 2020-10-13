@@ -1,0 +1,105 @@
+parameters:
+    badge.search.configuration.class: ArcaSolutions\ListingBundle\Search\BadgeConfiguration
+    badge.synchronization.configuration.class: ArcaSolutions\ListingBundle\Services\Synchronization\BadgeSynchronizable
+
+    listing.search.configuration.class: ArcaSolutions\ListingBundle\Search\ListingConfiguration
+    listing.synchronization.configuration.class: ArcaSolutions\ListingBundle\Services\Synchronization\ListingSynchronizable
+    listing.category.synchronization.configuration.class: ArcaSolutions\ListingBundle\Services\Synchronization\ListingCategorySynchronizable
+
+    listing.service.class: ArcaSolutions\ListingBundle\Services\ListingService
+    listing.level.service.class: ArcaSolutions\ListingBundle\Services\ListingLevelService
+    listing.level.field.service.class: ArcaSolutions\ListingBundle\Services\ListingLevelFieldService
+    listing.template.field.service.class: ArcaSolutions\ListingBundle\Services\ListingTFieldService
+    listing.category.service.class: ArcaSolutions\ListingBundle\Services\ListingCategoryService
+    listing.field.value.service.class: ArcaSolutions\ListingBundle\Services\ListingFieldValueService
+    listingtemplate.service.class: ArcaSolutions\ListingBundle\Services\ListingTemplateService
+
+    # twig extension
+    listing.blocks.twig.extension.class: ArcaSolutions\ListingBundle\Twig\Extension\BlocksExtension
+    listing.detail.twig.extension.class: ArcaSolutions\ListingBundle\Twig\Extension\DetailExtension
+    listing.seo.twig.extension.class: ArcaSolutions\ListingBundle\Twig\Extension\SeoExtension
+
+services:
+    badge.search:
+        class: "%badge.search.configuration.class%"
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    badge.synchronization:
+        class: "%badge.synchronization.configuration.class%"
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    listing.search:
+        class: "%listing.search.configuration.class%"
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    listing.blocks:
+        class: "%listing.blocks.twig.extension.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: twig.extension }
+
+    listing.detail:
+        class: "%listing.detail.twig.extension.class%"
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: twig.extension }
+
+    seo.listing:
+        class: "%listing.seo.twig.extension.class%"
+        arguments:
+            - "@service_container"
+            - "@settings"
+        tags:
+            - { name: twig.extension }
+
+    listing.synchronization:
+        class: "%listing.synchronization.configuration.class%"
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    listing.category.synchronization:
+        class: "%listing.category.synchronization.configuration.class%"
+        arguments: ["@service_container"]
+        tags: [{ name: kernel.event_subscriber }]
+
+    listing.service:
+        class: '%listing.service.class%'
+        arguments:
+            - "@service_container"
+            - "@doctrine"
+
+    listinglevel.service:
+        class: '%listing.level.service.class%'
+        arguments:
+            - "@service_container"
+
+    listinglevelfield.service:
+        class: '%listing.level.field.service.class%'
+        arguments:
+            - "@service_container"
+
+    listingtemplatefield.service:
+        class: '%listing.template.field.service.class%'
+        arguments:
+            - "@service_container"
+
+    listing.category.service:
+        class: '%listing.category.service.class%'
+        arguments:
+            - "@service_container"
+
+    listingtemplate.service:
+        class: '%listingtemplate.service.class%'
+        arguments:
+            - "@service_container"
+
+    listingfieldvalue.service:
+        class: '%listing.field.value.service.class%'
+        arguments:
+            - "@service_container"
+

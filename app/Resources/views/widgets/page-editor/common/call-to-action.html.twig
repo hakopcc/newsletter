@@ -1,0 +1,26 @@
+{% set backgroundImage = backgroundImage(content.unsplash, content.imageId, 'call-to-action-' ~ content.imageId, content.placeholderTitle.value, 'slider_image') %}
+
+<div class="hero-default" data-type="1" data-align="{{ content.dataAlignment }}" {{ content.imageId is not empty ? 'id=call-to-action-' ~ content.imageId : '' }}
+     style="{{ (content.unsplash is not empty ? 'background-image:url(' ~ content.unsplash|raw ~ ')' : '' ) }}">
+    <div class="container">
+        <div class="wrapper">
+            <div class="hero-header">
+                <h1 class="heading" data-trans="{{ 'Title'|trans({},'widgets') }}">
+                    {{ content.placeholderTitle.value|trans({}, 'widgets') }}
+                </h1>
+                <p class="paragraph p-1" data-trans="{{ 'Description'|trans({},'widgets') }}">
+                    {{ content.placeholderDescription.value|trans({}, 'widgets') }}
+                </p>
+                {% if content.placeholderLink.value is not empty and content.placeholderCallToAction.value is not empty %}
+                    <a data-trans="{{ 'Button Text'|trans({},'widgets') }}" data-trans="{{ 'Button Link'|trans({},'widgets') }}" href="{{ generateLink(content.placeholderLink) }}" target="{{ (content.placeholderLink.openWindow == 'true' ? '_blank' : '_self') }}" class="button button-bg is-primary">
+                        {{ content.placeholderCallToAction.value }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if backgroundImage %}
+    {{ backgroundImage|raw }}
+{% endif %}

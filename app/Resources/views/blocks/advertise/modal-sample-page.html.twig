@@ -1,0 +1,15 @@
+{% set listingTemplate = getListingTemplate() %}
+{% set payment_currency_symbol = getPaymentCurrencySymbol()  %}
+<div class="sample-page-modal">
+    <div class="sample-page-container">
+        <button class="close-sample-page-modal"><i class="fa fa-close"></i></button>
+        <div class="modal-heading">{{ 'Preview a listing'|trans }}</div>
+        <div class="modal-description">{{' What type of listing would you like to preview?'|trans }}</div>
+        <select name="" id="myselect" class="form-control">
+            {% for template in listingTemplate %}
+                <option value="{{ template.id }}">{{ template.title }} {{ template.price>0?"(+"~ payment_currency_symbol ~ template.price~")"}}</option>
+            {% endfor %}
+        </select>
+        <a href="javascript:void(0);" class="button button-bg is-primary advanceListing" data-ref="" full-width="true">{{ 'Preview'|trans }} <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>

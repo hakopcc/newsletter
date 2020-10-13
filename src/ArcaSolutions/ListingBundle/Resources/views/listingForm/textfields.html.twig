@@ -1,0 +1,18 @@
+<div class="panel panel-form" custom-widget="more-detail">
+    <div class="panel-blocked" data-block="group-{{ group.id }}" {{ showField ? 'style="display: none;"' : '' }}>
+        <img src="/sitemgr/assets/img/locker-panel.svg" alt="Locker">
+        {% if blockMessage is not empty %}
+            <p>{{ blockMessage|raw }}</p>
+        {% endif %}
+    </div>
+
+    <div class="panel-heading">
+        {{ group.label }}
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal form-group custom-form-group">
+            {{ textFieldBlock|raw }}
+        </div>
+    </div>
+</div>

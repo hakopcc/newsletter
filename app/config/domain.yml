@@ -1,0 +1,16 @@
+# MultiDomain Configuration
+parameters:
+    api_tokens:
+    api_pin:
+
+multi_domain:
+    hosts:
+        justinhartfield_gd52mu8_13002.arcasolutions.com:
+            id: 1
+            path: custom/domain_1/
+            template: default
+            locale: en_us
+            database: justinhartfield_gd52mu8_13002_domain_1
+            elastic: justinhartfield_gd52mu8_13002_domain_1
+            title: justinhartfield_gd52mu8_13002
+            branded: on

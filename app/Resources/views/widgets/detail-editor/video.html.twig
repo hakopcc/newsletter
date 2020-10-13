@@ -1,0 +1,22 @@
+{# ModStores Hooks #}
+{% if not HookFire("listingdetail_overwrite_video", {"item": item, "level": level}) -%}
+    {% if level.hasVideo and item.videoSnippet -%}
+        <div class="tab-item tab-item-video">
+            <div class="tab-item-heading">
+                <h4 class="heading h-4" data-trans="{{ 'Video'|trans({},'widgets') }}">{{ 'Video'|trans }}</h4>
+            </div>
+            <div class="tab-item-content">
+                {% if isSample -%}
+                    <img src="{{ asset("assets/images/preview-video.png") }}" alt="{{ 'Preview Video'|trans }}">
+                {% else -%}
+                    {{ item.videoSnippet|replace({"http://": "https://"})|raw }}
+                {% endif -%}
+                {% if item.videoDescription -%}
+                    <div class="description">
+                        {{ item.videoDescription }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endif -%}

@@ -1,0 +1,19 @@
+{% if values|first is not empty and listingFields[0].id in level.customFields['listingTField'] and (isSample or values|first.value is not empty)%}
+    <div class="tab-item tab-item-description">
+        {% if content.hideTitle != 'true' %}
+            <div class="tab-item-heading">
+                <h4 class="heading h-4" data-trans="{{ 'Description'|trans({},'widgets') }}">{{ content.fieldTitle }}</h4>
+            </div>
+        {% endif %}
+
+        <div class="tab-item-content">
+            <div class="item-description">
+                {% if isSample %}
+                    {{ (values|first)|nl2br }}
+                {% else %}
+                    {{ (values|first.value)|nl2br }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

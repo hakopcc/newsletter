@@ -1,0 +1,29 @@
+<div class="categories-item">
+    <div class="categories-block is-last" tree="0" data-selectparent="{{ selectParent }}" data-id="{{ category.id }}">
+        <a href="javascript:void(0)" class="categories-name">
+            {{ category.title }}
+            {% if parentArray is not empty -%}
+                ({% for parent in parentArray -%}
+                    {{ parent.title -}}
+                    {% if not loop.last -%}
+                        {{ ' > ' }}
+                    {%- endif -%}
+                {%- endfor -%})
+            {% endif %}
+        </a>
+
+        {% if isSelected %}
+            {% if category.isLastChild %}
+                <a href="javascript:void(0)" class="removeCategory" data-id="{{ category.id }}">
+                    <i class="fa fa-minus"></i>
+                </a>
+            {% endif %}
+        {% else %}
+            {% if ((selectParent == 'true') or category.isLastChild) and not (selectParent == 'true' and categoryLevel == '4') %}
+                <a href="javascript:void(0)" class="addCategory">
+                    <i class="fa fa-plus"></i>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

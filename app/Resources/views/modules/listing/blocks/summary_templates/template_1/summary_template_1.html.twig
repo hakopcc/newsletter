@@ -1,0 +1,72 @@
+{% import "::blocks/utility/summary.html.twig" as Utility -%}
+
+<div class="summary-card" summary-type="1" data-id="{{ item.id }}">
+    {% if not HookFire('listingsummary_before_render_thumbnail', {"data": data, 'itemLevelInfo': itemLevelInfo, 'detailURL': detailURL, 'flags': flags}, true) %}
+        {% if not (flags < 2 and not HookFire('summary_check_noimage', {}, true))  %}
+            {% set image = data.thumbnail -%}
+        {% else -%}
+            {% set image = utility_getNoImagePath(data.title)|imagine_filter('noImage_large') -%}
+        {% endif -%}
+
+        {% if itemLevelInfo.hasDetail -%}
+            <a href="{{ detailURL }}" class="summary-picture">
+                {{ tagPicture(image, item.title) }}
+                {% if itemLevelInfo.hasReview and getSetting("review_listing_enabled") -%}
+                    <div class="badge-review hidden-list-view">{{ data.averageReview }} <i class="fa fa-star"></i></div>
+                {% endif %}
+            </a>
+        {% else %}
+            <div class="summary-picture">
+                {{ tagPicture(image, item.title) }}
+                {% if itemLevelInfo.hasReview and getSetting("review_listing_enabled") -%}
+                    <div class="badge-review hidden-list-view">{{ data.averageReview }} <i class="fa fa-star"></i></div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif -%}
+
+    <div class="summary-content">
+        <div class="section-heading hidden-grid-view">
+            {% if itemLevelInfo.hasReview and getSetting("review_listing_enabled") -%}
+                <div class="section-content-left">
+                    <div class="badge-review">{{ data.averageReview }} <i class="fa fa-star"></i></div>
+                    {{ Utility.review(item) }}
+                </div>
+            {% endif %}
+            {{ Utility.actions(itemLevelInfo,item,data,detailURL) }}
+        </div>
+        {#title#}
+        {% if itemLevelInfo.hasDetail -%}
+            <a href="{{ detailURL }}" class="summary-title">{{ data.title }}</a>
+        {% else %}
+            <div class="summary-title">{{ data.title }}</div>
+        {% endif %}
+        {#end title#}
+        {#categories#}
+        {% if itemCategories is not empty -%}
+            {{ Utility.category(itemCategories, pageCategories, "listing") }}
+        {% endif %}
+        {#end categorie#}
+        {#information contact#}
+        {{ Utility.info(itemLevelInfo,data,item) }}
+        {#end information contact#}
+        {#address#}
+        {% if (verifyAddress(data.address.street, data.address.complement, data.address.zipcode, itemLocations, pageLocations)) and not(HookFire('listingsummary_before_render_location', {"data": data, 'itemLocations': itemLocations, 'item': item}, true)) -%}
+            <div class="summary-address hidden-grid-view">
+                <div class="summary-address-icon"><i class="fa fa-map-marker"></i></div>
+                <div class="summar-address-content">
+                    {{ Utility.address( null, null, data.address.street, data.address.complement, data.address.zipcode, itemLocations, pageLocations)}}
+                    {% if data.distance and data.distance < 40000 %}
+                        <div class="summary-distance">
+                            {{ parseDistanceUnit(data.distance, isDistanceSorterEnabled, summaryTitle)|raw }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif -%}
+        {#end address#}
+    </div>
+    <div class="summary-footer hidden-list-view">
+        {{ Utility.actions(itemLevelInfo,item,data,detailURL) }}
+    </div>
+</div>
