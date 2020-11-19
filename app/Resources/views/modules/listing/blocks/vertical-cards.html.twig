@@ -33,10 +33,12 @@
                             </a>
                         </div>
                         <div class="content">
-                            <a href="{{ (not isSample)? itemData.detailLink:'javascript:void(0);' }}" class="title heading h-4">{{ item.title }}</a>
+                            
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module,'', isSample)}}
                             {% endif %}
+
+                            <a href="{{ (not isSample)? itemData.detailLink:'javascript:void(0);' }}" class="title heading h-4">{{ item.title }}</a>
 
                             {# description -#}
                             {% set description = item.longDescription -%}

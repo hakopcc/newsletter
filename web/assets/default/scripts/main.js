@@ -17856,7 +17856,7 @@ S2.define('jquery.select2',[
   return select2;
 }));
 
-/*! JsRender v1.0.7: http://jsviews.com/#jsrender */
+/*! JsRender v1.0.8: http://jsviews.com/#jsrender */
 /*! **VERSION FOR WEB** (For NODE.JS see http://jsviews.com/download/jsrender-node.js) */
 /*
  * Best-of-breed templating in browser or on Node.js.
@@ -17902,7 +17902,7 @@ var setGlobals = $ === false; // Only set globals if script block in browser (no
 
 $ = $ && $.fn ? $ : global.jQuery; // $ is jQuery passed in by CommonJS loader (Browserify), or global jQuery.
 
-var versionNumber = "v1.0.7",
+var versionNumber = "v1.0.8",
 	jsvStoreName, rTag, rTmplString, topView, $views, $expando,
 	_ocp = "_ocp",      // Observable contextual parameter
 
@@ -18475,8 +18475,8 @@ function convertArgs(tagElse, bound) { // tag.cvtArgs() or tag.cvtArgs(tagElse?,
 		}
 		bindFrom = bindFrom || [0];
 		l = bindFrom.length;
-		if (!$isArray(converter) || converter.length !== l) {
-			converter = [converter];
+		if (!$isArray(converter) || (converter.arg0 !== false && (l === 1 || converter.length !== l || converter.arg0))) {
+			converter = [converter]; // Returning converter as first arg, even if converter value is an array
 			bindFrom = [0];
 			l = 1;
 		}
@@ -18866,7 +18866,7 @@ View.prototype = {
 		if ($subSettings._cchCt > this.cache._ct) {
 			this.cache = {_ct: $subSettings._cchCt};
 		}
-		return this.cache[key] || (this.cache[key] = cpFnStore[key](this.data, this, $sub));
+		return this.cache[key] !== undefined ? this.cache[key] : (this.cache[key] = cpFnStore[key](this.data, this, $sub));
 	},
 	_is: "view"
 };
@@ -22444,7 +22444,7 @@ $(document).ready(function() {
         $(this).toggleClass('is-open');
         $(this).find('.user-content').fadeToggle(400);
     });
-
+    
     $('.navbar-toggler').on('click', function () {
         $('.search-mobile').slideUp(400);
         $('.navbar-mobile').slideToggle(400, function () {

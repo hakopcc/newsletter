@@ -57,7 +57,6 @@
         </div>
         {% endif %}
         <div class="summary-info">
-            <div class="paragraph p-3 summary-categories">{{ date(data.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
             <div class="summary-title">
                 <a href="{{ detailURL }}" class="heading h-4 title">{{ data.title|raw }}</a>
 
@@ -65,7 +64,10 @@
                     {{ Utility.shareLinksResults(item.id,detailURL) }}
                 </div>
             </div>
-            <div class="summary-description">{{ (data.content[:200]|striptags|raw) }}... <a href="{{ detailURL }}" class="link">{{ "(more)"|trans }}</a></div>
+
+            <div class="summary-date">{{ date(data.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
+            <div class="summary-description">{{ (data.content[:200]|striptags|raw) }}... <a href="{{ detailURL }}" class="link">{{ "Read full Post"|trans }}</a></div>
         </div>
     </div>
 </div>

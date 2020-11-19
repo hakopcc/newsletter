@@ -11,6 +11,9 @@
                     </div>
                 {% endif %}
                 <div class="details-info">
+
+                    {{ UtilityDetail.categories(item.categories, 'listing') }}
+                    
                     <div class="details-title">
                         <h1 class="heading h-4" id="listing-title">{{ item.title }}</h1>
                         <div class="details-share">
@@ -19,7 +22,7 @@
                             {{ Utility.shareLinks() }}
                         </div>
                     </div>
-                    {{ UtilityDetail.categories(item.categories, 'listing') }}
+                    
                     {{ UtilityDetail.reviewStars(level, reviews_active, reviewsPaginated, item) }}
                     <div class="details-actions">
                         {% if (level.hasReview and reviews_active) and (HookFire('detaileditor-header_validate_review', {}, true) or not HookExist("detaileditor-header_validate_review")) -%}

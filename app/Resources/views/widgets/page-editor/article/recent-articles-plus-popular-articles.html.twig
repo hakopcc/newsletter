@@ -18,13 +18,17 @@
                             <div class="content">
                                 {% if article.categories %}
                                     <div class="categories">
-                                        {{ 'in'|trans({}, 'widgets') }}
+                                        {# {{ 'in'|trans({}, 'widgets') }} #}
                                         {% for category in article.categories -%}
-                                            <a href="{{ utility_generateSearchUrl(null, "article", category.friendlyUrl) }}" class="link">{{ category.title }}</a>{{ (not loop.last ? ', ' : '') }}
+                                            <a href="{{ utility_generateSearchUrl(null, "article", category.friendlyUrl) }}" class="link link-main">{{ category.title }}</a>{# {{ (not loop.last ? ', ' : '') }} #}
                                         {% endfor -%}
                                     </div>
                                 {% endif %}
+
                                 <a href="{{ link }}" class="title heading">{{ article.title }}</a>
+
+                                <div class="date">{{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
                                 {% if article.abstract is not empty -%}
                                     <div class="description">
                                         <p class="paragraph">{{ (article.abstract[:120]|striptags|raw) }}...</p>
@@ -38,7 +42,6 @@
                                 {% endif -%}
                             </div>
                             <a href="{{ link }}" class="picture">
-                                <div class="badge">{{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
                                 {% if article.thumbnail is defined and article.thumbnail is not empty -%}
                                     {% set image = asset(article.thumbnail, 'domain_images') -%}
                                 {% else -%}
@@ -64,6 +67,7 @@
                                     <a href="{{ path('article_detail', {'friendlyUrl': article.friendlyUrl, "_format" : "html"}) }}" class="title heading">
                                         {{ article.title }}
                                     </a>
+                                    
                                     {% if article.profile is not empty -%}
                                         {{ Utility.accountLink(article.profile) }}
                                     {% elseif article.author.name -%}

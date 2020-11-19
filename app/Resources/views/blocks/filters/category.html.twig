@@ -74,12 +74,12 @@
 {#          resultCount   :(int) The amount of results within this category                           -#}
 {#      }                                                                                             -#}
 
-<div class="sidebar-item">
+<div class="sidebar-item" data-filter="category">
     <div class="item-header sidebar-toggler">
         <span class="paragraph p-2 item-title">
             {{ "Categories"|trans }}
         </span>
-        <i class="fa fa-minus"></i>
+        {# <i class="fa fa-minus"></i> #}
     </div>
     <div class="item-body">
         {% for category in categoryTree -%}

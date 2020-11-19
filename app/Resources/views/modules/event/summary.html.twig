@@ -91,11 +91,6 @@
             </div>
         </div>
         <div class="summary-info">
-            {% if itemCategories %}
-            <div class="paragraph p-3 summary-categories">
-                {{ "in"|trans }} {{ Utility.categories( itemCategories, pageCategories, "event" ) }}
-            </div>
-            {% endif %}
             <div class="summary-title">
                 {% if itemLevelInfo.hasDetail -%}
                     <a href="{{ detailURL }}" class="heading h-4 title">
@@ -134,6 +129,13 @@
             </div>
             {% if itemLevelInfo.hasSummaryDescription and data.description is not empty -%}
                 <div class="summary-description">{{ data.description }}</div>
+            {% endif %}
+
+            {% if itemCategories %}
+                <br />
+                <div class="paragraph p-2 summary-categories">
+                    {{ "in"|trans }} {{ Utility.categories( itemCategories, pageCategories, "event" ) }}
+                </div>
             {% endif %}
         </div>
     </div>

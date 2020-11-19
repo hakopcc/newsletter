@@ -1,5 +1,5 @@
 {% import "::blocks/utility/summary.html.twig" as Utility -%}
-<div class="summary-card" summary-type="3" data-id="{{ item.id }}">
+<div class="summary-card" data-type="listing" summary-type="3" data-id="{{ item.id }}">
     <div class="summary-picture"  {{ itemLevelInfo.hasCoverImage and coverImage ? 'style=background-image:url(' ~ coverImage ~ ')' : '' }}>
         <div class="summary-picture-content {{ data.claim ? 'has-review' : '' }}">
             {% if data.claim -%}

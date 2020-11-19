@@ -30,11 +30,11 @@
                         {{ tagPicture(itemData.imagePath, item.title, {}, 'background', 'centralized-classified-' ~ itemData.itemId) }}
 
                         <div class="content">
-                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
-
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                             {% endif %}
+
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
 
                             {% if price != 0 -%}
                                 <div class="heading h-3 price">{{ price|localized_currency }}</div>
@@ -54,10 +54,11 @@
                         {{ tagPicture(itemData.imagePath, item.title, {'tablet': 'medium'}, 'background', 'centralized-classified-' ~ itemData.itemId) }}
 
                         <div class="content">
-                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                             {% endif %}
+
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
 
                             {# description -#}
                             {% set description = item.description -%}

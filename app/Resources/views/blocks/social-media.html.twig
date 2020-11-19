@@ -9,6 +9,12 @@
 
 {% if flags b-and 1984 %}
     <div class="{{ view }}-social">
+        {% if flags b-and 512 -%}
+            <a href="{{ instagram }}" target="_blank" rel="noopener noreferrer" class="social-{{ view == 'footer' ? 'link' : 'item' }}">
+                <i class="fa fa-instagram"></i>
+            </a>
+        {%- endif %}
+
         {% if flags b-and 64 -%}
             <a href="{{ facebook }}" target="_blank" rel="noopener noreferrer" class="social-{{ view == 'footer' ? 'link' : 'item' }}">
                 <i class="fa fa-facebook"></i>
@@ -22,11 +28,6 @@
         {% if flags b-and 256 -%}
             <a href="{{ twitter }}" target="_blank" rel="noopener noreferrer" class="social-{{ view == 'footer' ? 'link' : 'item' }}">
                 <i class="fa fa-twitter"></i>
-            </a>
-        {%- endif %}
-        {% if flags b-and 512 -%}
-            <a href="{{ instagram }}" target="_blank" rel="noopener noreferrer" class="social-{{ view == 'footer' ? 'link' : 'item' }}">
-                <i class="fa fa-instagram"></i>
             </a>
         {%- endif %}
         {% if flags b-and 1024 -%}

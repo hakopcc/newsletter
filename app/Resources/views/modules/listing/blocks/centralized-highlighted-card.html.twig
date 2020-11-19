@@ -22,11 +22,12 @@
                                 {{ tagPicture(itemData.imagePath, item.title, {}, 'background', 'centralized-listing-' ~ itemData.itemId) }}
                                 {% endif %}
                                 <div class="content">
-                                    <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
-
+                                    
                                     {% if item.categories -%}
                                         {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                                     {% endif %}
+
+                                    <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
 
                                     {% if (HookFire('views-listing-blocks-centralized-highlighted-card_willrender_reviews', {"item": item,"item_data": itemData, "highlighted": false}, true) or item.averageReview is defined) and getSetting("review_listing_enabled") %}
                                         {% if not HookFire('views-listing-blocks-centralized-highlighted-card_overwrite_reviews', {"item": item,"item_data": itemData, "highlighted": false}, true) %}
@@ -50,10 +51,12 @@
                                 {{ tagPicture(itemData.imagePath, item.title, {'tablet': 'medium'}, 'background', 'centralized-listing-' ~ itemData.itemId) }}
                                 {% endif %}
                                 <div class="content">
-                                    <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+                                    
                                     {% if item.categories -%}
                                         {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                                     {% endif %}
+
+                                    <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
 
                                     {# description -#}
                                     {% set description = item.longDescription -%}

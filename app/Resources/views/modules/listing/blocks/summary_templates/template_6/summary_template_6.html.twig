@@ -1,5 +1,5 @@
 {% import "::blocks/utility/summary.html.twig" as Utility -%}
-<div class="summary-card" summary-type="6" data-id="{{ item.id }}">
+<div class="summary-card" data-type="listing" summary-type="6" data-id="{{ item.id }}">
     <div class="summary-picture">
         {% if not HookFire('listingsummary_before_render_thumbnail', {"data": data, 'itemLevelInfo': itemLevelInfo, 'detailURL': detailURL, 'flags': flags}, true) %}
             {% if not (flags < 2 and not HookFire('summary_check_noimage', {}, true))  %}

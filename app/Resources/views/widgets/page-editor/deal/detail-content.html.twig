@@ -26,13 +26,16 @@
             <div class="details-header-content">
                 <div class="details-general">
                     <div class="details-info">
+
+                        {{ UtilityDetail.categories(item.listing.categories, 'deal') }}
+                        
                         <div class="details-title">
                             <h1 class="heading h-4">{{ item.name }}</h1>
                             <div class="details-share">
                                 {{ Utility.shareLinks() }}
                             </div>
                         </div>
-                        {{ UtilityDetail.categories(item.listing.categories, 'deal') }}
+                        
                         <div class="details-old-price">{{ item.realvalue|localized_currency|raw }}</div>
                         {% if item.dealvalue > 0 %}
                             <h2 class="heading h-2 details-price">{{ item.dealvalue|localized_currency|raw }}</h2>

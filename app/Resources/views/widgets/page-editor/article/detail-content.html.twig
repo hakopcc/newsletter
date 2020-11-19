@@ -16,8 +16,22 @@
         <div class="container">
             <div class="details-header-content">
                 <div class="article-header">
-                    <div class="article-date">{{ item.publicationDate|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
+                    <div class="details-categories">
+                        {% for category in categories if 'y' == category.enabled -%}
+                            {% if isSample -%}
+                                {% set link = 'javascript:void(0);' -%}
+                            {% else -%}
+                                {% set link = utility_generateSearchUrl(null, "article", category.friendlyUrl) -%}
+                            {% endif -%}
+                            <a href="{{ link }}" class="categorie-item">{{ category.title }}</a>
+                        {% endfor %}
+                    </div>
+                   
                     <h1 class="heading h-2 article-title">{{ item.title }}</h1>
+
+                    <div class="article-date">{{ item.publicationDate|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
                     {# ModStores Hooks #}
                     {% do HookFire("articledetail_after_render_overview", {"item": item, "level": level, "isSample": isSample}) %}
                     <div class="article-actions">
@@ -40,73 +54,139 @@
         <div class="container">
             <div class="detail-body-content">
                 <div class="tab-content">
-                    {% if item.author is not empty -%}
-                        <div class="article-author">
-                            <div class="article-picture">
-                                {% if item.authorImage is not empty %}
-                                    {{ tagPicture(asset(imagePath(item.authorImage), 'domain_images'), item.author, {'desktop': 'logo_icon', 'laptop': 'logo_icon', 'tablet': 'logo_icon', 'mobile': 'logo_icon'}) }}
-                                {% else %}
-                                    <i class="fa fa-user"></i>
-                                {% endif %}
+                    <div class="tab-left">
+                        {% if item.author is not empty -%}
+                            <div class="article-author">
+                                <div class="article-picture">
+                                    {% if item.authorImage is not empty %}
+                                        {{ tagPicture(asset(imagePath(item.authorImage), 'domain_images'), item.author, {'desktop': 'logo_icon', 'laptop': 'logo_icon', 'tablet': 'logo_icon', 'mobile': 'logo_icon'}) }}
+                                    {% else %}
+                                        <i class="fa fa-user"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="article-content">
+                                    {{ 'Article by'|trans}}: <br>
+                                    <a href="{{ item.authorUrl }}" class="heading h-6 author-name">{{ item.author }}</a>
+                                </div>
                             </div>
-                            <div class="article-content">
-                                {{ 'Article by'|trans}}: <br>
-                                <a href="{{ item.authorUrl }}" class="heading h-6 author-name">{{ item.author }}</a>
+                        {% endif %}
+
+                        {% if gallery is not empty and 'y' == gallery[0].imageDefault -%}
+                            <br>
+                            <div class="detail-gallery-main-image">
+                                {{ UtilityDetail.mainImage(gallery[0], isSample, {'desktop': 'large', 'laptop': 'medium', 'tablet': 'medium'}) }}
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif -%}
 
-                    {% if gallery is not empty and 'y' == gallery[0].imageDefault -%}
-                        <br>
-                        <div class="detail-gallery-main-image">
-                            {{ UtilityDetail.mainImage(gallery[0], isSample, {'desktop': 'large', 'laptop': 'medium', 'tablet': 'medium'}) }}
+                        <div class="article-description">
+                            {{ item.content|raw }}
                         </div>
-                    {% endif -%}
 
-                    <div class="article-description">
-                        {{ item.content|raw }}
+                        {% if gallery is not empty %}
+                            <div class="detail-gallery-thumb-images">
+                                {{ UtilityDetail.galleryImage(gallery, isSample) }}
+                            </div>
+                        {% endif %}
+
+                        {# ModStores Hooks #}
+                        {% do HookFire("articledetail_after_render_gallery", {"item": item, "level": level, "isSample": isSample}) %}
+
+                        {% if item.author is not empty -%}
+                            <div class="article-author-full">
+                                <div class="author-full-picture">
+                                    {% if item.authorImage is not empty %}
+                                        {{ tagPicture(asset(imagePath(item.authorImage), 'domain_images'), item.author, {'desktop': 'logo_icon_2', 'laptop': 'logo_icon_2', 'tablet': 'logo_icon_2', 'mobile': 'logo_icon_2'}) }}
+                                    {% else %}
+                                        <i class="fa fa-user"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="author-full-about">
+                                    <strong>{{ item.author }}</strong>
+                                    {% if item.authorAbout is not empty %}
+                                        {{ item.authorAbout|raw }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        <section>
+                            {{ facebookComments() }}
+                        </section>
                     </div>
 
-                    {% if gallery is not empty %}
-                        <div class="detail-gallery-thumb-images">
-                            {{ UtilityDetail.galleryImage(gallery, isSample) }}
-                        </div>
-                    {% endif %}
+                    <div class="tab-right">
 
-                    {# ModStores Hooks #}
-                    {% do HookFire("articledetail_after_render_gallery", {"item": item, "level": level, "isSample": isSample}) %}
+                        <!-- Recent Articles -->
+                        {% set recent_article = recentArticle(4) -%}
+                        {% set popular_article = popularArticle(4) -%}
 
-                    {% if item.author is not empty -%}
-                        <div class="article-author-full">
-                            <div class="author-full-picture">
-                                {% if item.authorImage is not empty %}
-                                    {{ tagPicture(asset(imagePath(item.authorImage), 'domain_images'), item.author, {'desktop': 'logo_icon_2', 'laptop': 'logo_icon_2', 'tablet': 'logo_icon_2', 'mobile': 'logo_icon_2'}) }}
-                                {% else %}
-                                    <i class="fa fa-user"></i>
-                                {% endif %}
+                        {% import '::blocks/utility/utility.html.twig' as Utility %}
+                        {% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+                        {% if recent_article is not empty -%}
+                        <div class="cards-default" data-type="articles">
+                            <div class="cards-header">
+                                <h2 class="heading h-4">Latest Articles</h2>
                             </div>
-                            <div class="author-full-about">
-                                <strong>{{ item.author }}</strong>
-                                {% if item.authorAbout is not empty %}
-                                    {{ item.authorAbout|raw }}
-                                {% endif %}
+                            
+                            <div class="cards-list no-margin" data-align="">
+                                {% for article in recent_article -%}
+                                    {% set link = path('article_detail', {friendlyUrl: article.friendlyUrl, _format: 'html'}) -%}
+                                    <div class="card card-horizontal card-horizontal-full">
+                                        <div class="content">
+                                            <a href="{{ link }}" class="title heading">{{ article.title }}</a>
+
+                                            <div class="date">{{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                        </div>
+
+                                        <a href="{{ link }}" class="picture">
+                                            {% if article.thumbnail is defined and article.thumbnail is not empty -%}
+                                                {% set image = asset(article.thumbnail, 'domain_images') -%}
+                                            {% else -%}
+                                                {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                            {% endif -%}
+                                            {{ tagPicture(image, article.title) }}
+                                        </a>
+                                    </div>
+                                {% endfor -%}
                             </div>
                         </div>
-                    {% endif %}
+                        {% endif -%}
 
-                    <div class="article-categories">
-                        {% for category in categories if 'y' == category.enabled -%}
-                            {% if isSample -%}
-                                {% set link = 'javascript:void(0);' -%}
-                            {% else -%}
-                                {% set link = utility_generateSearchUrl(null, "article", category.friendlyUrl) -%}
-                            {% endif -%}
-                            <a href="{{ link }}" class="categorie-item">{{ category.title }}</a>
-                        {% endfor %}
+                        {% if popular_article %}
+                        <div class="cards-default" data-type="articles">
+                            <div class="cards-header">
+                                <h2 class="heading h-4">LA Weekly Favorites</h2>
+                            </div>
+                            <div class="cards-list no-margin" data-align="">
+                                {% for article in popular_article -%}
+                                    {% set link = path('article_detail', {friendlyUrl: article.friendlyUrl, _format: 'html'}) -%}
+                                    <div class="card card-horizontal card-horizontal-full">
+                                        <div class="content">
+                                            <a href="{{ link }}" class="title heading">{{ article.title }}</a>
+
+                                            <div class="date">{{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                        </div>
+
+                                        <a href="{{ link }}" class="picture">
+                                            {% if article.thumbnail is defined and article.thumbnail is not empty -%}
+                                                {% set image = asset(article.thumbnail, 'domain_images') -%}
+                                            {% else -%}
+                                                {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                            {% endif -%}
+                                            {{ tagPicture(image, article.title) }}
+                                        </a>
+                                    </div>
+                                {% endfor -%}
+                            </div>
+                        </div>
+                        {% endif -%}
+
+                        {% set banner = getBanner('square') %}
+                        {% if banner is not empty %}
+                            {{ banner|raw }}
+                        {% endif %}
                     </div>
-                    <section>
-                        {{ facebookComments() }}
-                    </section>
                 </div>
             </div>
         </div>

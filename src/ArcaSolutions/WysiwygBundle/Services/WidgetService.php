@@ -72,16 +72,19 @@ class WidgetService
             Widget::HEADER_WITH_CONTACT_PHONE,
             Widget::NAVIGATION_WITH_CENTERED_LOGO,
             Widget::NAVIGATION_WITH_LEFT_LOGO_PLUS_SOCIAL_MEDIA,
+            Widget::HEADER_WITH_SEARCH,
         ],
         'footer'            => [
             Widget::FOOTER,
             Widget::FOOTER_WITH_NEWSLETTER,
             Widget::FOOTER_WITH_SOCIAL_MEDIA,
             Widget::FOOTER_WITH_LOGO,
+            Widget::FOOTER_WITH_NEWSLETTER_TYPE_2,
         ],
         'search'            => [
             Widget::SEARCH_BOX,
             Widget::SEARCH_BAR,
+            Widget::HEADER_WITH_SEARCH,
         ],
         'result'            => [
             Widget::RESULTS,
@@ -1399,6 +1402,61 @@ class WidgetService
                    'modal'    => 'edit-generic-modal',
                 ],
             */
+            [
+                'title'    => Widget::FOOTER_WITH_NEWSLETTER_TYPE_2,
+                'twigFile' => '/navigation/footer-type5.html.twig',
+                'type'     => Widget::FOOTER_TYPE,
+                'content'  => [
+                    'labelContactUs'         => 'Contact Us',
+                    'labelCopyrightText'     => '',
+                    'datainfoSignupFor'      => 'Sign up for our newsletter',
+                    'datainfoNewsletterDesc' => 'Sign up for our monthly newsletter. No spams, just product updates.',
+                    'hasDesign'              => 'true',
+                    'backgroundColor'        => 'brand',
+                ],
+                'modal'    => 'edit-footer-type4-modal',
+            ],
+            [
+                'title'    => Widget::HEADER_WITH_SEARCH,
+                'twigFile' => '/navigation/header-type5.html.twig',
+                'type'     => Widget::HEADER_TYPE,
+                'content'  => [
+                    'labelDashboard'   => 'Dashboard',
+                    'labelProfile'     => 'Profile',
+                    'labelFaq'         => 'Faq',
+                    'labelAccountPref' => 'Settings',
+                    'labelLogOff'      => 'Log Off',
+                    'labelListWithUs'  => 'List with Us',
+                    'labelSignIn'      => 'Sign In',
+                    'labelMore'        => 'More',
+                    'hasDesign'        => 'true',
+                    'isTransparent'    => 'false',
+                    'stickyMenu'       => 'false',
+                    'backgroundColor'  => 'brand',
+                ],
+                'modal'    => 'edit-header-modal',
+            ],
+            [
+                'title'    => Widget::FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3,
+                'twigFile' => '/category/browse-by-category-featured-type3.html.twig',
+                'type'     => Widget::COMMON_TYPE,
+                'content'  => [
+                    'labelFeaturedCategories' => 'Featured categories',
+                    'labelAllCategories'      => 'All categories',
+                    'hasDesign'               => 'true',
+                    'backgroundColor'         => 'brand',
+                    'hasCounter'              => 'true',
+                    'enableCounter'           => 'true',
+                ],
+                'modal'    => 'edit-generic-modal',
+            ],
+            [
+                'title'    => Widget::RECENT_ARTICLES_SLIDER,
+                'twigFile' => '/article/recent-articles-slider.html.twig',
+                'type'     => Widget::ARTICLE_TYPE,
+                'content'  => [],
+                'modal'    => '',
+            ],
         ];
 
         return $standardWidgets;

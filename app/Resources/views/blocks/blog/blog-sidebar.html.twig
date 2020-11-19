@@ -5,8 +5,10 @@
 <div class="blog-sidebar">
     {% if data.categoriesFeatured %}
         <div class="blog-card">
-            <div class="heading h-3 card-header" data-trans="{{ 'Categories'|trans({}, 'widgets') }}">
-                {{ content.labelCategories|trans({}, 'widgets') }}
+            <div class="card-header">
+                <div class="heading h-3" data-trans="{{ 'Categories'|trans({}, 'widgets') }}">
+                    {{ content.labelCategories|trans({}, 'widgets') }}
+                </div>
             </div>
             <div class="card-content">
                 <div class="card-categories">
@@ -22,7 +24,9 @@
 
     {% if data.popularPosts %}
         <div class="blog-card">
-            <div class="heading h-3 card-header" data-trans="{{ 'Popular Posts'|trans({}, 'widgets') }}">{{ content.labelPopularPosts|trans({}, 'widgets') }}</div>
+            <div class="card-header">
+                <div class="heading h-3" data-trans="{{ 'Popular Posts'|trans({}, 'widgets') }}">{{ content.labelPopularPosts|trans({}, 'widgets') }}</div>
+            </div>
             <div class="card-content">
                 <div class="card-popular">
                     {% for post in data.popularPosts -%}

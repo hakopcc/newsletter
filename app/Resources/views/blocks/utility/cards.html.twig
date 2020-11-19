@@ -1,7 +1,7 @@
 {% macro categories(categories, module, class = '', isSample = false) -%}
     {% if categories is not empty -%}
         <div class="categories" data-trans="{{ 'Custom Content'|trans({}, 'widgets') }}">
-            {{ 'in'|trans }}
+            {# {{ 'in'|trans }} #}
             {% for category in categories -%}
                 {% if category.category is not empty %}
                     {# the last validation checks if it is rendered by elastic data or DB #}
@@ -12,7 +12,7 @@
                 {% if category.enabled is not defined or category.enabled == 'y' %}
 
                     {% if loop.index < 6 %}
-                        <a href="{{ (not isSample) ? utility_generateSearchUrl(null, [module], category.friendlyUrl):'javascript:void(0);' }}" class="link">{{ category.title }}</a> {%- if not loop.last -%}, {% endif -%}
+                        <a href="{{ (not isSample) ? utility_generateSearchUrl(null, [module], category.friendlyUrl):'javascript:void(0);' }}" class="link link-main">{{ category.title }}</a> {# {%- if not loop.last -%}, {% endif -%} #}
                     {% endif -%}
 
                     {% if loop.index == 6 -%}

@@ -45,10 +45,12 @@
                             {{ tagPicture(itemData.imagePath, item.title, {'tablet': 'medium'}, 'background', 'centralized-event-' ~ itemData.itemId) }}
 
                             <div class="content">
-                                <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+                                
                                 {% if item.categories -%}
                                     {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                                 {% endif %}
+
+                                <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
 
                                 {# description -#}
                                 {% set description = item.longDescription -%}

@@ -17,16 +17,18 @@
 
                     <div class="card" data-columns="{{ itemsPerRow }}">
                         <a href="{{ itemData.detailLink }}" class="picture">
-                            <div class="badge">
-                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
-                            </div>
                             {{ tagPicture(itemData.imagePath, item.title) }}
                         </a>
                         <div class="content">
-                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module)}}
                             {% endif %}
+
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+
+                            <div class="date">
+                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                            </div>
 
                             {% if item.content is not empty -%}
                                 {%- set description = item.content|striptags -%}

@@ -1,0 +1,57 @@
+
+{% set recent_article = recentArticle(4) -%}
+
+{% import '::blocks/utility/utility.html.twig' as Utility %}
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+<div class="cards-default" data-type="articles" is-slider="true" has-gap>
+    <div class="wrapper">
+        <div class="cards-list" data-align="">
+            {% if recent_article is not empty -%}
+                {% for article in recent_article -%}
+
+                    {% set link = path('article_detail', {friendlyUrl: article.friendlyUrl, _format: 'html'}) -%}
+
+                    <div class="card" data-columns="4">
+                        <a href="{{ link }}" class="picture">
+                            {% if article.thumbnail is defined and article.thumbnail is not empty -%}
+                                {% set image = asset(article.thumbnail, 'domain_images') -%}
+                            {% else -%}
+                                {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                            {% endif -%}
+                            {{ tagPicture(image, article.title) }}
+                        </a>
+
+                        <div class="content">
+                            {% if article.categories %}
+                                <div class="categories">
+                                    {# {{ 'in'|trans({}, 'widgets') }} #}
+                                    {% for category in article.categories -%}
+                                        <a href="{{ utility_generateSearchUrl(null, "article", category.friendlyUrl) }}" class="link link-main">{{ category.title }}</a>{# {{ (not loop.last ? ', ' : '') }} #}
+                                    {% endfor -%}
+                                </div>
+                            {% endif %}
+
+                            <a href="{{ link }}" class="title heading">{{ article.title }}</a>
+
+                            <div class="card-info">
+                                {% if article.profile is not empty -%}
+                                    {{ Utility.accountLink(article.profile) }}
+                                {% elseif article.author.name -%}
+                                    {{ Utility.authorLink(article) }}
+                                {% endif -%}
+
+                                <div class="date">
+                                    {{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor -%}
+            {% endif -%}
+
+        </div>
+    </div>
+</div>
+
+

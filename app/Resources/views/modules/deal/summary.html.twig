@@ -81,9 +81,6 @@
             </div>
         </div>
         <div class="summary-info">
-            {% if listinglink is not empty -%}
-                <div class="paragraph p-3 summary-categories">{{ "Offered by"|trans }} {{ listinglink|raw }}</div>
-            {% endif %}
             <div class="summary-title">
                 {% if itemLevelInfo.hasDetail -%}
                     <a href="{{ detailURL }}" class="heading h-4 title">
@@ -106,6 +103,11 @@
                 <div class="summary-distance">
                     {{ parseDistanceUnit(data.distance, isDistanceSorterEnabled, summaryTitle)|raw }}
                 </div>
+            {% endif %}
+
+            {% if listinglink is not empty -%}
+                <br />
+                <div class="paragraph p-2 summary-categories">{{ "Offered by"|trans }} {{ listinglink|raw }}</div>
             {% endif %}
         </div>
     </div>

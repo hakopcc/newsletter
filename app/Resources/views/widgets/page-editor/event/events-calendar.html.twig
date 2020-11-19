@@ -36,13 +36,13 @@
                         <%:picture%>
                     </a>
                     <div class="content-info">
-                        <a href="<%:link%>" class="title heading h-4"><%:title%></a>
                         <%if categories.length > 0 %>
-                            <div class="categories">{{ 'in'|trans }}
-                            <%for categories %><%if #index >= 1%>,<%/if%>
+                            <div class="categories">
+                            <%for categories %>
                             <a href="<%>link%>" class="link"><%>title%></a><%/for%>
                             </div>
                         <%/if%>
+                        <a href="<%:link%>" class="title heading h-4"><%:title%></a>
                     </div>
                 </div>
             <%/for%>

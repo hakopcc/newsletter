@@ -111,6 +111,11 @@ class Widget
     const THREE_VERTICAL_CARDS                               = 'Three vertical cards';
     const LIST_OF_HORIZONTAL_CARDS                           = 'List of horizontal cards';
 
+    const FOOTER_WITH_NEWSLETTER_TYPE_2                      = 'Footer with Newsletter (Type 2)';
+    const HEADER_WITH_SEARCH                                 = 'Header with Search';
+    const FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3             = 'Featured articles categories';
+    const RECENT_ARTICLES_SLIDER                             = 'Recent articles slider';
+
     /**
      * @var integer
      *

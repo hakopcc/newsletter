@@ -23,16 +23,16 @@
 
                         {{ tagPicture(itemData.imagePath, item.title, {}, 'background', 'centralized-article-' ~ itemData.itemId) }}
 
-                        <div class="badge">
-                            {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
-                        </div>
-
                         <div class="content">
-                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
-
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                             {% endif %}
+
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+
+                            <div class="date">
+                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                            </div>
 
                             {% if item.author.name %}
                                 <div class="author">
@@ -68,15 +68,16 @@
 
                         {{ tagPicture(itemData.imagePath, item.title, {'tablet': 'medium'}, 'background', 'centralized-article-' ~ itemData.itemId) }}
 
-                        <div class="badge">
-                            {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
-                        </div>
-
                         <div class="content">
-                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
                             {% if item.categories -%}
                                 {{UtilityCards.categories(item.categories, content.module, 'centralized-dropdown-toggle')}}
                             {% endif %}
+
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+
+                            <div class="date">
+                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                            </div>
 
                             {% if item.abstract is not empty -%}
                                 {% set description = item.abstract -%}

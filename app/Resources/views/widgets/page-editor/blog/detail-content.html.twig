@@ -15,16 +15,19 @@
         <div class="container">
             <div class="detail-body-content">
                 <div class="blog-content">
+
                     {% if categories %}
-                        <div class="paragraph p-3 blog-category">
-                            {{ 'in'|trans({}, 'widgets') }}
+                        <div class="details-categories">
+                            {# {{ 'in'|trans({}, 'widgets') }} #}
                             {% for category in categories -%}
-                                <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="link">{{ category.title }}</a>{{ (not loop.last ? ', ' : '') }}
+                                <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>{{ (not loop.last ? ', ' : '') }}
                             {% endfor -%}
                         </div>
                     {% endif %}
 
                     <h1 class="heading blog-title">{{ item.title }}</h1>
+
+                    <div class="paragraph p-1 blog-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                     {% if coverImage -%}
                         <div class="blog-picture">
@@ -35,27 +38,27 @@
                             {% elseif item.coverImage is not empty -%}
                                 {{ tagPicture(asset(imagePath(item.coverImage), 'domain_images'), item.title, {'desktop': 'medium', 'tablet': 'medium'}) }}
                             {% endif -%}
-                            <div class="calendar-sm">
+                            {# <div class="calendar-sm">
                                 <div class="month">{{ item.entered|localized_date('MMM') }}</div>
                                 <div class="heading day">{{ item.entered|localized_date('dd') }}</div>
                                 <div class="day-abbr">{{ item.entered|localized_date('EE')|capitalize }}</div>
-                            </div>
+                            </div> #}
                         </div>
                     {% else -%}
-                        <div class="paragraph p-1 blog-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                        {# <div class="paragraph p-1 blog-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div> #}
                     {% endif -%}
 
                     <div class="blog-text">
                         {{ item.content|raw }}
                     </div>
 
-                    {% if categories -%}
+                    {# {% if categories -%}
                         <div class="blog-categories">
                             {% for category in categories if 'y' == category.enabled -%}
                                 <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>
                             {% endfor -%}
                         </div>
-                    {% endif -%}
+                    {% endif -%} #}
 
                     <div class="blog-share">
                         <div class="share-dropdown">

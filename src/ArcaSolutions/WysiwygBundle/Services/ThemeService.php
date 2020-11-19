@@ -142,6 +142,11 @@ class ThemeService
              * to remove it from here and add at the right function below
              */
             /* $trans->trans('Widget test', [], 'widgets', 'en'), */
+
+            Widget::FOOTER_WITH_NEWSLETTER_TYPE_2,
+            Widget::HEADER_WITH_SEARCH,
+            Widget::FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3,
+            Widget::RECENT_ARTICLES_SLIDER,
         ];
 
         /* ModStores Hooks */

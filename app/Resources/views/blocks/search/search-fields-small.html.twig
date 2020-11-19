@@ -1,0 +1,53 @@
+{# dateFilter \ArcaSolutions\SearchBundle\Entity\Filters\DateFilter #}
+
+<div class="searchbar-header">
+    <a class="toggle" href="#popup1"><i class="fa fa-search"></i></a>
+
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <div class="container">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <form id="headerSearchForm" class="content-form content-search-form" data-search-title="Search">
+                        <div class="input-group">
+                            <input data-prefill="0" id="searchKeyword" type="text" class="input" placeholder="Search here...">
+                        </div>
+
+                        {% if module == 'event' %}
+                            {% set dateFilter = getDateFilter() %}
+                            <div class="input-group">
+                                <input data-trans="{{ 'Placeholder for search by keyword field'|trans({},'widgets') }}"
+                                       data-trans="{{ 'Placeholder for search by location field'|trans({},'widgets') }}"
+                                       data-trans="{{ 'Placeholder for search by date field'|trans({},'widgets') }}"
+                                       data-trans="{{ 'This field will be shown only when used on Events Pages'|trans({},'widgets') }}" data-prefill="0" id="searchCalendar" type="text" autocomplete="off" class="input input-date" placeholder="{{ content.placeholderSearchDate.value|trans({},'widgets') }}">
+                            </div>
+                        {% endif %}
+
+                        <div class="input-group-action">
+                            <button class="button button-bg" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Adding requirements -#}
+{% if dateFilter %}
+    {# Parameters #}
+    {{ addJSTwigParameter("Header.dateFilter", dateFilter) }}
+
+    {{ addJSFile("assets/js/lib/datepicker/bootstrap-datepicker.min.js") }}
+    {% if dateFilter.bootstrapDatepickerLanguage != "en" %}
+        {{ addJSFile("assets/js/lib/datepicker/locales/bootstrap-datepicker."~ dateFilter.bootstrapDatepickerLanguage ~".min.js") }}
+    {% endif %}
+{% endif %}
+
+{# Files #}
+{{ addJSFile("assets/js/lib/typeahead.bundle.min.js") }}
+{{ addJSFile("assets/js/search/utility.js") }}
+{{ addJSFile("assets/js/search/suggest.js") }}
+{{ addJSTwig("::js/blocks/searchbox.html.twig") }}

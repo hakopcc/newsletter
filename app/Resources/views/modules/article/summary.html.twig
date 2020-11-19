@@ -72,27 +72,31 @@
             </div>
         {% endif %}
         <div class="summary-info">
-            <div class="paragraph p-3 summary-categories">
-                {% if data.author.name or data.author.url -%}
-                    {{"by"|trans}}
-                    {% if data.author.url -%}
-                        <a href="{{ data.author.url }}" class="link">{{ data.author.name ? data.author.name : "View author's website"|trans }}</a>
-                    {% elseif data.author.name -%}
-                        {{ data.author.name }}
-                    {% endif -%}
-                {% endif -%}
-                <strong>{{ 'on'|trans }}</strong> {{ date(data.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
-            </div>
             <div class="summary-title">
                 <a href="{{ detailURL }}" class="heading h-4 title">{{ data.title }}</a>
-
                 <div class="actions">
                     {{ bookmarkLink(item, 'article') }}
 
                     {{ Utility.shareLinksResults(item.id,detailURL) }}
                 </div>
             </div>
+
+            <div class="summary-date">{{ date(data.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
             <div class="summary-description">{{data.abstract}}... <a href="{{ detailURL }}" class="link">{{ "Read full article"|trans }}</a></div>
+
+            {% if data.author.name or data.author.url -%}
+                <div class="summary-author">
+                    <div class="author-name">
+                        {{"by"|trans}}
+                        {% if data.author.url -%}
+                            <a href="{{ data.author.url }}" class="link">{{ data.author.name ? data.author.name : "View author's website"|trans }}</a>
+                        {% elseif data.author.name -%}
+                            {{ data.author.name }}
+                        {% endif -%}
+                    </div>
+                </div>
+            {% endif -%}
         </div>
     </div>
 </div>

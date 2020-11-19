@@ -23,6 +23,8 @@
             <div class="details-header-content">
                 <div class="details-general">
                     <div class="details-info">
+                        {{ UtilityDetail.categories(categories, 'event') }}
+                    
                         <div class="details-title">
                             <h1 class="heading h-4">{{ item.title }}</h1>
                             <div class="details-share">
@@ -30,7 +32,7 @@
                                 {{ Utility.shareLinks() }}
                             </div>
                         </div>
-                        {{ UtilityDetail.categories(categories, 'event') }}
+                        
                         {{ UtilityDetail.EventDate(item, level, nextOcurrence) }}
                         <div class="details-actions">
                             {% if level.hasEmail and item.email is not empty -%}

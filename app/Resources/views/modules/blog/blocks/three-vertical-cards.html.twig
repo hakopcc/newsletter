@@ -18,7 +18,6 @@
                     {% if loop.index == 1 %}
                         <div class="card" data-columns="2">
                             <a href="{{ itemData.detailLink }}" class="picture">
-                                <div class="badge">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
                                 {% if item.thumbnail is defined and item.thumbnail is not empty -%}
                                     {% set image = asset(item.thumbnail, 'domain_images') %}
                                 {% else -%}
@@ -27,11 +26,13 @@
                                 {{ tagPicture(image, item.title) }}
                             </a>
                             <div class="content">
-                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
-
                                 {% if item.categories -%}
                                     {{UtilityCards.categories(item.categories, content.module)}}
                                 {% endif %}
+
+                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
+
+                                <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                                 {% if item.content is not empty -%}
                                     {%- set description = item.content|striptags -%}
@@ -47,7 +48,6 @@
                     {% else %}
                         <div class="card" data-columns="4">
                             <a href="{{ itemData.detailLink }}" class="picture">
-                                <div class="badge">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
                                 {% if item.thumbnail is defined and item.thumbnail is not empty -%}
                                     {% set image = asset(item.thumbnail, 'domain_images') -%}
                                 {% else -%}
@@ -56,11 +56,13 @@
                                 {{ tagPicture(image, item.title) }}
                             </a>
                             <div class="content">
-                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
-
                                 {% if item.categories -%}
                                     {{UtilityCards.categories(item.categories, content.module)}}
                                 {% endif %}
+
+                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
+
+                                <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                                 {% if item.abstract is not empty -%}
                                     {% set description = item.abstract -%}

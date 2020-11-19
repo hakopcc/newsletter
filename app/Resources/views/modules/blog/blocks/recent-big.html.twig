@@ -9,7 +9,6 @@
             <div class="cards-list">
                 <div class="card" data-columns="1">
                     <a href="{{ link }}" class="picture">
-                        <div class="badge">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
                         {% if item.thumbnail is defined and item.thumbnail is not empty -%}
                             {% set image = asset(item.thumbnail, 'domain_images') %}
                         {% else -%}
@@ -23,6 +22,8 @@
                         {% endif %}
 
                         <a href="{{ link }}" class="title heading h-4">{{ title }}</a>
+
+                        <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                         {% if item.content is not empty -%}
                             <div class="description">
@@ -44,7 +45,6 @@
     {% if not loop.first %}
         <div class="card" data-columns="2">
             <a href="{{ link }}" class="picture">
-                <div class="badge">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
                 {% if item.thumbnail is defined and item.thumbnail is not empty -%}
                     {% set image = asset(item.thumbnail, 'domain_images') -%}
                 {% else -%}
@@ -53,10 +53,14 @@
                 {{ tagPicture(image, title) }}
             </a>
             <div class="content">
-                <a href="{{ link }}" class="title heading h-4">{{ title }}</a>
+                
                 {% if item.categories -%}
                     {{UtilityCards.categories(item.categories, content.module)}}
                 {% endif %}
+
+                <a href="{{ link }}" class="title heading h-4">{{ title }}</a>
+
+                 <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                 {% if item.content is not empty -%}
                     <div class="description">

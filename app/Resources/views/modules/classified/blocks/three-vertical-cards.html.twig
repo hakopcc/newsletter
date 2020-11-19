@@ -26,11 +26,12 @@
                                 {{ tagPicture(image, item.title) }}
                             </a>
                             <div class="content">
-                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
-
+                                
                                 {% if item.categories -%}
                                     {{UtilityCards.categories(item.categories, content.module)}}
                                 {% endif %}
+
+                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
 
                                 {# description -#}
                                 {% set description = item.description -%}
@@ -63,11 +64,11 @@
                                 {{ tagPicture(image, item.title) }}
                             </a>
                             <div class="content">
-                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
-
                                 {% if item.categories -%}
                                     {{UtilityCards.categories(item.categories, content.module)}}
                                 {% endif %}
+
+                                <a href="{{ itemData.detailLink }}" class="title heading">{{ item.title }}</a>
 
                                 {# description -#}
                                 {% set description = item.description -%}
