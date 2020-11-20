@@ -33,6 +33,10 @@ class BlocksExtension extends \Twig_Extension
                 'popularArticle',
                 [$this, 'popularArticle']
             ),
+            new \Twig_SimpleFunction(
+                'relatedArticle',
+                [$this, 'relatedArticle']
+            ),
         ];
     }
 
@@ -72,6 +76,21 @@ class BlocksExtension extends \Twig_Extension
         }
 
         return $popularArticles;
+    }
+
+    public function relatedArticle($quantity = 1,$categories)
+    {
+        $content = new \stdClass();
+        $content->custom = new \stdClass();
+        $content->custom->order1 = 'popular';
+        $content->custom->order2 = 'random';
+        $relatedArticles = $this->container->get('search.block')->getCardsByCategory(ParameterHandler::MODULE_ARTICLE, $quantity, $categories, $content);
+
+        if (!$relatedArticles) {
+            return [];
+        }
+
+        return $relatedArticles;
     }
 
     /**

@@ -152,6 +152,18 @@ class ArticleConfiguration extends BaseConfiguration
             "searchEvent" => &$searchEvent,
         ]);
 
+        if (!empty($options)) {
+            $cats = [];
+            foreach ($options as $option) {
+                if (is_string($option) && strpos($option,'A:') !== false) {
+                    $cats[] = $option;
+                }
+            }
+            if (!empty($cats)) {
+                $filter->addMust($qb->filter()->terms('categoryId', $cats));
+            }
+        }
+
         if(empty($options['items'])) {
             if (!empty($options['custom']->level)) {
                 $filter->addMust($qb->filter()->terms()->setTerms('level', (array)$options['custom']->level));

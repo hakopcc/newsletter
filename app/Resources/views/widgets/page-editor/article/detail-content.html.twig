@@ -119,16 +119,47 @@
                         <!-- Recent Articles -->
                         {% set recent_article = recentArticle(4) -%}
                         {% set popular_article = popularArticle(4) -%}
+                        {% set related_article = relatedArticle(1, categories) %}
 
                         {% import '::blocks/utility/utility.html.twig' as Utility %}
                         {% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+                        {% if related_article is not empty -%}
+                        <div class="cards-default" data-type="articles">
+                            <div class="cards-header">
+                                <h2 class="heading h-4">Related Articles</h2>
+                            </div>
+                            
+                            <div class="cards-list no-margin" data-align="">
+                                {% for article in related_article -%}
+                                    {% set link = path('article_detail', {friendlyUrl: article.friendlyUrl, _format: 'html'}) -%}
+                                    <div class="card card-horizontal card-horizontal-full">
+                                        <div class="content">
+                                            <a href="{{ link }}" class="title heading">{{ article.title }}</a>
+
+                                            <div class="date">{{ date(article.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                        </div>
+
+                                        <a href="{{ link }}" class="picture">
+                                            {% if article.thumbnail is defined and article.thumbnail is not empty -%}
+                                                {% set image = asset(article.thumbnail, 'domain_images') -%}
+                                            {% else -%}
+                                                {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                            {% endif -%}
+                                            {{ tagPicture(image, article.title) }}
+                                        </a>
+                                    </div>
+                                {% endfor -%}
+                            </div>
+                        </div>
+                        {% endif -%}
 
                         {% if recent_article is not empty -%}
                         <div class="cards-default" data-type="articles">
                             <div class="cards-header">
                                 <h2 class="heading h-4">Latest Articles</h2>
                             </div>
-                            
+
                             <div class="cards-list no-margin" data-align="">
                                 {% for article in recent_article -%}
                                     {% set link = path('article_detail', {friendlyUrl: article.friendlyUrl, _format: 'html'}) -%}

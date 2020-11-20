@@ -130,6 +130,70 @@ final class SearchBlock
         return $result;
     }
 
+    /**
+     * @param string $module
+     * @param int $size
+     * @param \stdClass $content
+     *
+     * @return \Elastica\Result[]
+     */
+    public function getCardsByCategory($module, $size, $categories, $content)
+    {
+        $parameterInfo = $this->container->get('search.parameters');
+        $isRandom = true;
+
+        $cats = (array)$content;
+        if ($categories) {
+            foreach ($categories as $catObj) {
+                $cats['A:'.$catObj->getId()] = 'A:'.$catObj->getId();
+            }
+        }
+
+
+        $searchEvent = new SearchEvent('keyword', $isRandom, $cats);
+
+        $this->container->get('event_dispatcher')->dispatch($module.'.card', $searchEvent);
+
+        /* ModStores Hooks */
+        HookFire("searchblock_before_setup_featuredsearch", [
+            "that"        => &$this,
+            "module"      => &$module,
+            "size"        => &$size,
+            "searchEvent" => &$searchEvent,
+        ]);
+
+        $search = $this->container->get('search.engine')->search($searchEvent, $size);
+        //dump(json_encode($search->getQuery()->toArray()));exit;
+
+        /* gets results */
+        $result = $search->search()->getResults();
+
+
+        /* adds item's id to exclude after */
+        array_map(function ($item) {
+            /* @var $item Result */
+            self::$previousItems[$item->getType()][] = $item->getId();
+        }, $result);
+
+        $this->getCategories($result);
+
+        if ('article' == $module) {
+            $this->getAccount($result);
+        }
+
+        $parameterInfo->clearAllParameters();
+
+        /* ModStores Hooks */
+        HookFire("searchblock_before_return_featuredresult", [
+            "that"   => &$this,
+            "module" => &$module,
+            "size"   => &$size,
+            "result" => &$result,
+        ]);
+
+        return $result;
+    }
+
 	/**
 	 * Internally changes the items param, adding categories in each item
 	 *
