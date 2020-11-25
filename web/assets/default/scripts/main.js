@@ -22444,7 +22444,7 @@ $(document).ready(function() {
         $(this).toggleClass('is-open');
         $(this).find('.user-content').fadeToggle(400);
     });
-    
+
     $('.navbar-toggler').on('click', function () {
         $('.search-mobile').slideUp(400);
         $('.navbar-mobile').slideToggle(400, function () {

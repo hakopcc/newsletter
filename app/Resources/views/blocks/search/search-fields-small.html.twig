@@ -1,12 +1,12 @@
 {# dateFilter \ArcaSolutions\SearchBundle\Entity\Filters\DateFilter #}
 
 <div class="searchbar-header">
-    <a class="toggle" href="#popup1"><i class="fa fa-search"></i></a>
+    <a class="toggle" href="#sbh-content"><i class="fa fa-search"></i></a>
 
-    <div id="popup1" class="overlay">
+    <div id="sbh-content" class="overlay">
         <div class="popup">
             <div class="container">
-                <a class="close" href="#">&times;</a>
+                <a class="close" href="#"><i class="fa fa-close"></i></a>
                 <div class="content">
                     <form id="headerSearchForm" class="content-form content-search-form" data-search-title="Search">
                         <div class="input-group">
@@ -19,7 +19,7 @@
                                 <input data-trans="{{ 'Placeholder for search by keyword field'|trans({},'widgets') }}"
                                        data-trans="{{ 'Placeholder for search by location field'|trans({},'widgets') }}"
                                        data-trans="{{ 'Placeholder for search by date field'|trans({},'widgets') }}"
-                                       data-trans="{{ 'This field will be shown only when used on Events Pages'|trans({},'widgets') }}" data-prefill="0" id="searchCalendar" type="text" autocomplete="off" class="input input-date" placeholder="{{ content.placeholderSearchDate.value|trans({},'widgets') }}">
+                                       data-trans="{{ 'This field will be shown only when used on Events Pages'|trans({},'widgets') }}" data-prefill="0" id="searchCalendar" type="text" autocomplete="off" class="input input-date" placeholder="Date">
                             </div>
                         {% endif %}
 
