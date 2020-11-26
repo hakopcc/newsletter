@@ -1,14 +1,14 @@
 {% import '::blocks/utility/utility.html.twig' as Utility %}
 {% import '::blocks/utility/cards.html.twig' as UtilityCards %}
 
-{% set module = getModule() -%}
-{% set categories = getCategoriesByModule('article', content.limit, 'featured') -%}
+{% set module = 'article' -%}
+{% set categories = getCategoriesByModule(module, content.limit, 'featured') -%}
 
 {% if categories.featured %}
 
     {% set all = module ~ '_allcategories' -%}
 
-    <div class="cards-default" data-type="categories" data-module="article" scrollable="false" data-bg="{{ content.backgroundColor }}" has-gap>
+    <div class="cards-default" data-type="categories" data-module="{{ module }}" scrollable="false" data-bg="{{ content.backgroundColor }}" has-gap>
         <div class="container" data-trans="{{ 'Featured categories with images (Type 2)'|trans({},'widgets') }}">
             <div class="cards-header">
                 <h2 class="heading h-4"
@@ -30,7 +30,7 @@
 
                     {{ tagPicture(image, category.title, {'tablet': 'medium'}, 'background', 'category-' ~ category.id|replace(':', '-')) }}
 
-                    <a href="{{ utility_generateSearchUrl(null, [module], category.friendlyUrl) }}" id="category-{{ category.id|replace(':', '-') }}" class="card has-bg" data-columns="4" data-title="{{ category.title }}">
+                    <a href="{{ utility_generateSearchUrl(null, module, category.friendlyUrl) }}" id="category-{{ category.id|replace(':', '-') }}" class="card has-bg" data-columns="4" data-title="{{ category.title }}">
                         <div class="content">
                             <div class="categories">
                                 <div class="link">
