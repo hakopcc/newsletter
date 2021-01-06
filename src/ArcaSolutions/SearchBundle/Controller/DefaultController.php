@@ -48,6 +48,37 @@ class DefaultController extends Controller
      */
     public function searchAction($page)
     {
+        // If the keyword and where parameters are empty, we'll check if the request URI
+        // is a Blog URL or a Event URL.
+        $request = $this->container->get('request_stack')->getCurrentRequest()->getRequestUri();
+        $requestUri = explode("/", $request);
+
+        // Blog Url contains only the blog URL
+        if (count($requestUri) == 2) {
+            $blogObj = $this->container->get('doctrine')
+                ->getRepository("BlogBundle:Post")
+                ->findOneBy(['friendlyUrl' => $requestUri[1]]);
+
+            if (!is_null($blogObj)) {
+                return $this->redirectToRoute('blog_detail', [
+                    'friendlyUrl' => $requestUri[1],
+                    '_format'     => 'html',
+                ]);
+            }
+        // Events URL contains events/url
+        } else if (count($requestUri) == 3) {
+            $eventObj = $this->container->get('doctrine')
+                ->getRepository("EventBundle:Event")
+                ->findOneBy(['friendlyUrl' => $requestUri[2]]);
+
+            if (!is_null($eventObj)) {
+                return $this->redirectToRoute('event_detail', [
+                    'friendlyUrl' => $requestUri[2],
+                    '_format'     => 'html',
+                ]);
+            }
+        }
+
         $searchEngine = $this->get('search.engine');
         $parameterHandler = $this->get('search.parameters');
         $reportHandler = $this->get('reporthandler');
