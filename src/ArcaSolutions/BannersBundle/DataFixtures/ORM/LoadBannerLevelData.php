@@ -76,6 +76,17 @@ class LoadBannerLevelData extends AbstractFixture implements OrderedFixtureInter
                 'displayName' => 'wide skyscraper',
             ],
             [
+                'value' => 5,
+                'name' => 'billboardbanner',
+                'defaultLevel' => 'n',
+                'price' => 40.00,
+                'width' => 1170,
+                'height' => 350,
+                'active' => 'y',
+                'popular' => 'n',
+                'displayName' => 'billboardbanner',
+            ],
+            [
                 'value' => 50,
                 'name' => 'sponsored links',
                 'defaultLevel' => 'n',

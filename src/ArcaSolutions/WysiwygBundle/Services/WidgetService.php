@@ -1457,6 +1457,21 @@ class WidgetService
                 'content'  => [],
                 'modal'    => '',
             ],
+            [
+                'title'    => Widget::BILLBOARD_AD_BAR,
+                'twigFile' => '/banners/banner.html.twig',
+                'type'     => Widget::BANNER_TYPE,
+                'content'  => [
+                    'bannerType'      => 'billboardbanner',
+                    'isWide'          => 'false',
+                    'banners'         => [
+                        1 => 'billboardbanner'
+                    ],
+                    'hasDesign'       => 'true',
+                    'backgroundColor' => 'brand',
+                ],
+                'modal'    => 'edit-generic-modal',
+            ],
         ];
 
         return $standardWidgets;

@@ -147,6 +147,7 @@ class ThemeService
             Widget::HEADER_WITH_SEARCH,
             Widget::FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3,
             Widget::RECENT_ARTICLES_SLIDER,
+            Widget::BILLBOARD_AD_BAR,
         ];
 
         /* ModStores Hooks */

@@ -115,6 +115,7 @@ class Widget
     const HEADER_WITH_SEARCH                                 = 'Header with Search';
     const FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3             = 'Featured articles categories';
     const RECENT_ARTICLES_SLIDER                             = 'Recent articles slider';
+    const BILLBOARD_AD_BAR                                   = 'Billboard ad bar (1170x350)';
 
     /**
      * @var integer

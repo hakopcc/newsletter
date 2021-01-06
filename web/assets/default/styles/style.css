@@ -10694,6 +10694,19 @@ body.has-shadow:before {
     max-width: 728px;
     max-height: 90px; }
 
+.banner[type="billboardbanner"] {
+  display: none; }
+  @media screen and (min-width: 768px) {
+    .banner[type="billboardbanner"] {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; } }
+  .banner[type="billboardbanner"] .banner-link {
+    max-width: 1170px;
+    max-height: 350px; }
+    .banner[type="billboardbanner"] .banner-link img {
+      max-width: 100%; }
+
 .banner[type="large-mobile"][data-count="3"] .container {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -23630,35 +23643,35 @@ body {
     .cards-default[data-type="categories"][data-module="article"] .cards-list .card {
       min-height: 145px;
       width: calc(calc(100% / 5) - (16px * 2)); } }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="news"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="NEWS"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="News"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="NEWS"] {
     -webkit-order: 1;
         -ms-flex-order: 1;
             order: 1; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="food"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="FOOD"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Food"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="FOOD"] {
     -webkit-order: 2;
         -ms-flex-order: 2;
             order: 2; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="music"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="MUSIC"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Music"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="MUSIC"] {
     -webkit-order: 3;
         -ms-flex-order: 3;
             order: 3; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="entertainment"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="ENTERTAINMENT"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Entertainment"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="ENTERTAINMENT"] {
     -webkit-order: 4;
         -ms-flex-order: 4;
             order: 4; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="arts"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="ARTS"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Arts"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="ARTS"] {
     -webkit-order: 5;
         -ms-flex-order: 5;
             order: 5; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="culture"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CULTURE"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Culture"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CULTURE"] {
     -webkit-order: 6;
         -ms-flex-order: 6;
             order: 6; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="podcast"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="PODCAST"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Podcast"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="PODCAST"] {
     -webkit-order: 7;
         -ms-flex-order: 7;
             order: 7; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="cannabis"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CANNABIS"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Cannabis"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CANNABIS"] {
     -webkit-order: 8;
         -ms-flex-order: 8;
             order: 8; }
@@ -23666,7 +23679,7 @@ body {
     -webkit-order: 9;
         -ms-flex-order: 9;
             order: 9; }
-  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="calendar"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CALENDAR"] {
+  .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="Calendar"], .cards-default[data-type="categories"][data-module="article"] .cards-list .card[data-title="CALENDAR"] {
     -webkit-order: 10;
         -ms-flex-order: 10;
             order: 10; }
@@ -24593,3 +24606,39 @@ html {
                 transform: translateY(-3px); }
       .footer > .footer-content .arrow-up #scrollToTopBtn:focus {
         outline: none; }
+
+.details-default.details-articles .tab-content .article-description img {
+  margin-right: auto;
+  margin-left: auto; }
+
+.details-default.details-articles .tab-content .article-description [id*="caption"] {
+  font-style: italic;
+  text-align: center;
+  font-size: 90%; }
+
+.cards-default[card-module="article"][card-type="three-vertical-cards"] + .cards-default[card-module="article"][card-type="vertical-cards"] .cards-header {
+  display: none; }
+
+.header[data-type="2"][is-inverse="true"] > .header-content .plugin-dropdown-menu.plugin-navbar-dropdown .dropdown-label {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--highlight-base, #137df7) !important; }
+
+.custom-content .eedition-item {
+  margin: 32px 0 0; }
+
+.custom-content .eedition-item img {
+  margin-bottom: 12px;
+  height: 280px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%; }
+
+.admin-bar .admin-bar-link {
+  font-weight: 600; }
+
+.searchbar-header .popup .content {
+  overflow: inherit; }

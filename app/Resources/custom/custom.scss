@@ -623,42 +623,42 @@ body {
 	    				width: calc(calc(100% / 5) - (16px * 2));
 					}
 
-					&[data-title="news"],
+					&[data-title="News"],
 					&[data-title="NEWS"] {
 						order: 1;
 					}
 
-					&[data-title="food"],
+					&[data-title="Food"],
 					&[data-title="FOOD"] {
 						order: 2;
 					}
 
-					&[data-title="music"],
+					&[data-title="Music"],
 					&[data-title="MUSIC"] {
 						order: 3;
 					}
 
-					&[data-title="entertainment"],
+					&[data-title="Entertainment"],
 					&[data-title="ENTERTAINMENT"] {
 						order: 4;
 					}
 
-					&[data-title="arts"],
+					&[data-title="Arts"],
 					&[data-title="ARTS"] {
 						order: 5;
 					}
 
-					&[data-title="culture"],
+					&[data-title="Culture"],
 					&[data-title="CULTURE"] {
 						order: 6;
 					}
 
-					&[data-title="podcast"],
+					&[data-title="Podcast"],
 					&[data-title="PODCAST"] {
 						order: 7;
 					}
 
-					&[data-title="cannabis"],
+					&[data-title="Cannabis"],
 					&[data-title="CANNABIS"] {
 						order: 8;
 					}
@@ -668,7 +668,7 @@ body {
 						order: 9;
 					}
 
-					&[data-title="calendar"],
+					&[data-title="Calendar"],
 					&[data-title="CALENDAR"] {
 						order: 10;
 					}
@@ -2125,3 +2125,29 @@ html {
 		}
 	}
 }
+
+
+//CSS Editor
+.details-default.details-articles .tab-content .article-description img {
+  margin-right: auto; margin-left: auto; }
+  
+.details-default.details-articles .tab-content .article-description [id*="caption"] {
+  font-style: italic; text-align: center; font-size: 90%; }
+  
+.cards-default[card-module="article"][card-type="three-vertical-cards"] + .cards-default[card-module="article"][card-type="vertical-cards"] .cards-header {
+  display: none; }  
+  
+.header[data-type="2"][is-inverse=true]>.header-content .plugin-dropdown-menu.plugin-navbar-dropdown .dropdown-label {
+  text-transform: uppercase; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-decoration: none; color: var(--highlight-base,#137df7)!important; }
+
+.custom-content .eedition-item {
+  margin: 32px 0 0; }
+    
+.custom-content .eedition-item img {
+  margin-bottom: 12px; height: 280px; object-fit: contain; width: 100%; } 
+  
+.admin-bar .admin-bar-link {
+  font-weight: 600; } 
+  
+.searchbar-header .popup .content {
+  overflow: inherit; } 

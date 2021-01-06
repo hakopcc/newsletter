@@ -1069,6 +1069,18 @@ class ArcraftService
                         'backgroundColor' => 'base',
                     ]
                 ]
+            ],
+            6 => [
+                '::widgets/page-editor/banners/banner.html.twig' => [
+                    'content' => [
+                        'bannerType' => 'billboardbanner',
+                        'isWide' => 'false',
+                        'banners' => [
+                            1 => 'billboardbanner'
+                        ],
+                        'backgroundColor' => 'base',
+                    ]
+                ]
             ]
         ];
 

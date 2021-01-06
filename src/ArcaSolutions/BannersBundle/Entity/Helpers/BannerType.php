@@ -9,7 +9,8 @@ class BannerType
         'largebanner'     => 2,
         'square'          => 3,
         'skyscraper'      => 4,
-        'sponsor-links'   => 50
+        'billboardbanner' => 5,
+        'sponsor-links'   => 50,
     ];
 
     const TARGET_REDIRECT = 1;

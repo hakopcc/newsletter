@@ -314,6 +314,21 @@ liip_imagine:
                         - 100
                     color: '#EAEAEA'
 
+        billboardbanner:
+            quality: 100
+            png_compression_level: 8
+            filters:
+                thumbnail:
+                    size:
+                        - 1170
+                        - 350
+                    mode: inset
+                background:
+                    size:
+                        - 1170
+                        - 350
+                    color: '#EAEAEA'
+
         square:
             quality: 100
             png_compression_level: 8
