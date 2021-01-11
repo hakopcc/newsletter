@@ -189,6 +189,13 @@ class Post
     private $detailUrl;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255, nullable=true)
+     */
+    private $author;
+
+    /**
      * Get id
      *
      * @return integer
@@ -701,4 +708,19 @@ class Post
         $this->detailUrl = $detailUrl;
     }
 
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
 }

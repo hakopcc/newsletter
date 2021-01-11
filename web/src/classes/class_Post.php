@@ -49,6 +49,7 @@ class Post extends Handle
     var $status;
     var $number_views;
     var $data_in_array;
+    var $author;
 
     /**
      * <code>
@@ -118,6 +119,7 @@ class Post extends Handle
         $this->status = ($row["status"]) ? $row["status"] : "A";
         $this->number_views = ($row["number_views"]) ? $row["number_views"] : ($this->number_views ? $this->number_views : 0);
         $this->data_in_array = $row;
+        $this->author = $row['author'] ? : '';
     }
 
     /**
@@ -177,7 +179,8 @@ class Post extends Handle
                 . " seo_keywords  = $this->seo_keywords,"
                 . " seo_abstract  = $this->seo_abstract,"
                 . " status        = $this->status,"
-                . " number_views  = $this->number_views"
+                . " number_views  = $this->number_views,"
+                . " author  = $this->author"
                 . " WHERE id      = $this->id";
 
             $dbObj->query($sql);
@@ -200,7 +203,8 @@ class Post extends Handle
                 . " seo_abstract,"
                 . " fulltextsearch_keyword,"
                 . " status,"
-                . " number_views)"
+                . " number_views,"
+                . " author)"
                 . " VALUES"
                 . " ($this->image_id,"
                 . " $this->cover_id,"
@@ -217,7 +221,8 @@ class Post extends Handle
                 . " $this->seo_abstract,"
                 . " '',"
                 . " $this->status,"
-                . " $this->number_views)";
+                . " $this->number_views,"
+                . " $this->author)";
 
             $dbObj->query($sql);
             $this->id = ((is_null($___mysqli_res = mysqli_insert_id($dbObj->link_id))) ? false : $___mysqli_res);

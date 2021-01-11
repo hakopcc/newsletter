@@ -72,6 +72,20 @@ class Image
     private $url;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="wp_event_id", type="integer", nullable=true)
+     */
+    private $wpEventId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="wp_post_id", type="integer", nullable=true)
+     */
+    private $wpPostId;
+
+    /**
      * Get id
      *
      * @return integer
@@ -205,5 +219,37 @@ class Image
         $this->url = $url;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWpEventId()
+    {
+        return $this->wpEventId;
+    }
+
+    /**
+     * @param int $wpEventId
+     */
+    public function setWpEventId($wpEventId)
+    {
+        $this->wpEventId = $wpEventId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWpPostId()
+    {
+        return $this->wpPostId;
+    }
+
+    /**
+     * @param int $wpPostId
+     */
+    public function setWpPostId($wpPostId)
+    {
+        $this->wpPostId = $wpPostId;
     }
 }

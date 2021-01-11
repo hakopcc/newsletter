@@ -58,6 +58,7 @@ class Event extends Handle
     public $domain_id;
     public $package_id;
     public $package_price;
+    public $wp_event_id;
 
     /**
      * <code>
@@ -182,6 +183,7 @@ class Event extends Handle
         $this->data_in_array = $row;
         $this->package_id = $row['package_id'] ?: ($this->package_id ?: 0);
         $this->package_price = $row['package_price'] ?: ($this->package_price ?: 0);
+        $this->wp_event_id = $row['wp_event_id'] ?: 0;
 
         //video_url added on v10.4. This will get the url for existing videos (iframe)
         if ($this->video_snippet && !$this->video_url) {
@@ -303,7 +305,8 @@ class Event extends Handle
                 . " longitude         = $this->longitude,"
                 . " map_zoom          = $this->map_zoom,"
                 . " package_id        = $this->package_id,"
-                . " package_price     = $this->package_price"
+                . " package_price     = $this->package_price,"
+                . " wp_event_id        = $this->wp_event_id"
                 . " WHERE id          = $this->id";
 
             /* ModStores Hooks */
@@ -390,7 +393,8 @@ class Event extends Handle
                 .' longitude,'
                 .' map_zoom,'
                 .' package_id,'
-                .' package_price)'
+                .' package_price,'
+                .' wp_event_id)'
                 .' VALUES'
                 . " ($this->account_id,"
                 . " $this->title,"
@@ -442,7 +446,8 @@ class Event extends Handle
                 . " $this->longitude,"
                 . " $this->map_zoom,"
                 . " $this->package_id,"
-                . " $this->package_price)";
+                . " $this->package_price,"
+                . " $this->wp_event_id)";
 
             /* ModStores Hooks */
             HookFire('classevent_before_insertquery', [

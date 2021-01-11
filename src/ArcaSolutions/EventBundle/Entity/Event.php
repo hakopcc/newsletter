@@ -708,6 +708,13 @@ class Event
     private $recurringEventDay;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="wp_event_id", type="integer", nullable=true)
+     */
+    private $wpEventId;
+
+    /**
      * @var string
      * @Serializer\Groups({"eventDetail"})
      */
@@ -2824,5 +2831,21 @@ class Event
         $this->entered = $entered;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWpEventId()
+    {
+        return $this->wpEventId;
+    }
+
+    /**
+     * @param int $wpEventId
+     */
+    public function setWpEventId($wpEventId)
+    {
+        $this->wpEventId = $wpEventId;
     }
 }
