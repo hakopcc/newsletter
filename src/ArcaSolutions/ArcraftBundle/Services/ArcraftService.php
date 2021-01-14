@@ -1505,7 +1505,7 @@ class ArcraftService
                                 'level'      => [],
                                 'order1'     => 'random',
                                 'order2'     => 'random',
-                                'quantity'   => 3,
+                                'quantity'   => 6,
                                 'categories' => [],
                                 'locations'  => [
                                     'location_1' => '',

@@ -1492,7 +1492,7 @@ class WidgetService
                         'level' => [], //10, 30, 50, 70
                         'order1' => '', //level, alphabetical, average reviews (for listings and articles only), recently added, recently updated, most viewed, upcoming (for events only), random
                         'order2' => '', //level, alphabetical, average reviews (for listings and articles only), recently added, recently updated, most viewed, upcoming (for events only), random
-                        'quantity' => 3,
+                        'quantity' => 6,
                         'categories' => [], //categories IDs
                         'locations' => [ //locations IDs
                             'location_1' => '',
