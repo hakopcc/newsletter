@@ -38,7 +38,8 @@ class CardService
         Widget::VERTICAL_CARD_PLUS_HORIZONTAL_CARDS,
         Widget::ONE_HORIZONTAL_CARD,
         Widget::THREE_VERTICAL_CARDS,
-        Widget::CENTRALIZED_HIGHLIGHTED_CARD
+        Widget::CENTRALIZED_HIGHLIGHTED_CARD,
+        Widget::VERTICAL_CARDS_WITH_PREVIEW,
     ];
 
     /** @var TranslatorInterface */

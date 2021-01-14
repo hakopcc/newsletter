@@ -1,0 +1,87 @@
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+<div class="cards-default" card-type="{{ cardType }}" card-module="{{ module }}" data-type="articles" scrollable="false" mobile-columns="false" data-bg="{{ content.backgroundColor }}" has-gap>
+    <div class="container">
+        <div class="cards-header">
+            <h2 class="heading h-4">{{ content.widgetTitle|trans({}, 'widgets') }}</h2>
+            {% if widgetLink is not empty %}
+                <a href="{{ widgetLink }}" class="link" data-trans="{{ 'more posts'|trans({},'widgets') }}">
+                    {{ content.widgetLink.label|trans({}, 'widgets') }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="cards-wrapper" has-ads="{{ banner is not empty ? 'true' : 'false' }}" banner-type="{{content.banner}}">
+            <div class="cards-list">
+                {% for item in items -%}
+                    {% set itemData = getCardData(item, 'blog') %}
+
+                    <div class="card" data-columns="{{ itemsPerRow }}">
+                        <div class="card-header">
+                            <a href="{{ itemData.detailLink }}" class="picture">
+                                {{ tagPicture(itemData.imagePath, item.title) }}
+                            </a>
+
+                            <div class="preview">
+                                <label for="qpreview-modal-{{item.type}}{{item.id}}">{{ "Quick View"|trans }}</label>
+                            </div>
+
+                            <input class="modal-qpreview-state" id="qpreview-modal-{{item.type}}{{item.id}}" type="checkbox" />
+                            <div class="modal-qpreview">
+                                <label class="overlay" for="qpreview-modal-{{item.type}}{{item.id}}"></label>
+                                <div class="content">
+                                    <label class="close" for="qpreview-modal-{{item.type}}{{item.id}}"></label>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-3">
+                                            <div class="picture">
+                                                {{ tagPicture(itemData.imagePath, item.title) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-9">
+                                            {% if item.categories -%}
+                                                {{UtilityCards.categories(item.categories, content.module)}}
+                                            {% endif %}
+
+                                            <div class="title heading h-4">{{ item.title }}</div>
+
+                                            <div class="date">
+                                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                                            </div>
+
+                                            {% if item.content is not empty -%}
+                                                {%- set description = item.content|striptags -%}
+                                            {% endif -%}
+
+                                            {% if description is not empty -%}
+                                                <div class="description">
+                                                    <p class="paragraph">{{- (description|length > 320 ? description|slice(0,319) ~ '...' : description)|raw -}}</p>
+                                                </div>
+                                            {% endif %}
+
+                                            <a href="{{ itemData.detailLink }}" class="button button-md is-secondary">
+                                                {{ "View more"|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <a href="{{ itemData.detailLink }}" class="title heading h-4">{{ item.title }}</a>
+
+                            <div class="date">
+                                {{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if banner is not empty %}
+                <div class="cards-ads">
+                    {{banner | raw}}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

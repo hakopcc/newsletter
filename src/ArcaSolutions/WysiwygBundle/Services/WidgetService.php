@@ -1472,6 +1472,41 @@ class WidgetService
                 ],
                 'modal'    => 'edit-generic-modal',
             ],
+            [
+                'title'    => Widget::VERTICAL_CARDS_WITH_PREVIEW,
+                'twigFile' => '/cards/cards.html.twig',
+                'type'     => Widget::CARDS_TYPE,
+                'content'  => [
+                    'cardType' => Widget::VERTICAL_CARDS_WITH_PREVIEW_TYPE,
+                    'widgetTitle' => '', //Ex: "Featured Listing"
+                    'widgetLink' => [
+                        'label' => '', //Ex: "view more"
+                        'page_id' => '',
+                        'link' => '', //Ex: "/listing"
+                    ],
+                    'module' => '', //listing, event, classified, article, deal, blog
+                    'banner' => false,
+                    'columns' => 3,
+                    'items' => [], //items id
+                    'custom'  => [
+                        'level' => [], //10, 30, 50, 70
+                        'order1' => '', //level, alphabetical, average reviews (for listings and articles only), recently added, recently updated, most viewed, upcoming (for events only), random
+                        'order2' => '', //level, alphabetical, average reviews (for listings and articles only), recently added, recently updated, most viewed, upcoming (for events only), random
+                        'quantity' => 3,
+                        'categories' => [], //categories IDs
+                        'locations' => [ //locations IDs
+                            'location_1' => '',
+                            'location_2' => '',
+                            'location_3' => '',
+                            'location_4' => '',
+                            'location_5' => '',
+                        ],
+                    ],
+                    'hasDesign'       => 'true',
+                    'backgroundColor' => 'brand',
+                ],
+                'modal'    => 'edit-cards-modal',
+            ],
         ];
 
         return $standardWidgets;

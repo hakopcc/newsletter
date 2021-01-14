@@ -43,6 +43,7 @@ class Widget
     const THREE_VERTICAL_CARDS_TYPE           = 'three-vertical-cards';
     const LIST_OF_HORIZONTAL_CARDS_TYPE       = 'list-of-horizontal-cards';
     const SIDEBAR_CARDS_TYPE                  = 'sidebar-card';
+    const VERTICAL_CARDS_WITH_PREVIEW_TYPE    = 'vertical-cards-with-preview';
 
     /**
      * Widget Titles
@@ -116,6 +117,7 @@ class Widget
     const FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3             = 'Featured articles categories';
     const RECENT_ARTICLES_SLIDER                             = 'Recent articles slider';
     const BILLBOARD_AD_BAR                                   = 'Billboard ad bar (1170x350)';
+    const VERTICAL_CARDS_WITH_PREVIEW                        = 'Vertical Cards with preview';
 
     /**
      * @var integer

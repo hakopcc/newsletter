@@ -1486,6 +1486,41 @@ class ArcraftService
                     ]);
                 }
                 break;
+            case 'vertical-cards-with-preview':
+                foreach ($modules as $module) {
+                    $template .= $this->container->get('templating')->render('::widgets/page-editor/cards/cards.html.twig', [
+                        'content' => [
+                            'cardType'        => Widget::VERTICAL_CARDS_WITH_PREVIEW,
+                            'widgetTitle'     => 'List of Horizontal - '.$module,
+                            'widgetLink'      => [
+                                'label'   => '',
+                                'page_id' => '',
+                                'link'    => '',
+                            ],
+                            'module'          => $module,
+                            'banner'          => '',
+                            'columns'         => 3,
+                            'items'           => [],
+                            'custom'          => [
+                                'level'      => [],
+                                'order1'     => 'random',
+                                'order2'     => 'random',
+                                'quantity'   => 3,
+                                'categories' => [],
+                                'locations'  => [
+                                    'location_1' => '',
+                                    'location_2' => '',
+                                    'location_3' => '',
+                                    'location_4' => '',
+                                    'location_5' => '',
+                                ],
+                            ],
+                            'hasDesign'       => 'true',
+                            'backgroundColor' => 'base',
+                        ],
+                    ]);
+                }
+                break;
             case 'list-of-horizontal-cards':
                 foreach ($modules as $module) {
                     $template .= $this->container->get('templating')->render('::widgets/page-editor/cards/cards.html.twig', [

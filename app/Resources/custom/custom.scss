@@ -2127,27 +2127,286 @@ html {
 }
 
 
-//CSS Editor
-.details-default.details-articles .tab-content .article-description img {
-  margin-right: auto; margin-left: auto; }
-  
-.details-default.details-articles .tab-content .article-description [id*="caption"] {
-  font-style: italic; text-align: center; font-size: 90%; }
-  
-.cards-default[card-module="article"][card-type="three-vertical-cards"] + .cards-default[card-module="article"][card-type="vertical-cards"] .cards-header {
-  display: none; }  
-  
-.header[data-type="2"][is-inverse=true]>.header-content .plugin-dropdown-menu.plugin-navbar-dropdown .dropdown-label {
-  text-transform: uppercase; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-decoration: none; color: var(--highlight-base,#137df7)!important; }
+//#11: Design changes on Classifieds Cards
+.cards-default {
+	&[card-type="vertical-cards-with-preview"] {
+		.cards-list {
+			.card {
+				.card-header {
+					position: relative;
+					overflow: hidden;
 
-.custom-content .eedition-item {
-  margin: 32px 0 0; }
-    
-.custom-content .eedition-item img {
-  margin-bottom: 12px; height: 280px; object-fit: contain; width: 100%; } 
+					.picture {
+						img {
+						    transform: none;
+						}
+					}
+
+					.preview {
+						background: customColor(neutral, transp-75);
+					    position: absolute;
+					    bottom: 0;
+					    width: 100%;
+					    text-align: center;
+					    padding: 18px;
+					    font-weight: 600;
+					    text-transform: uppercase;
+
+					    transition: transform 0.2s;
+					    transform: translateY(100%);
+
+					    label {
+					    	color: white;
+					    	text-decoration: none;
+					    	margin: 0;
+					    	cursor: pointer;
+					    }
+					}
+				}
+
+				.content {
+					text-align: center;
+
+					.title {
+						margin: 0 auto;
+					}
+
+					.price {
+						margin-top: 9px;
+						font-family: $paragraph-font;
+						font-weight: 500;
+						font-size: 16px;
+						color: customColor(neutral, transp-50);
+					}
+
+					.reviews {
+						justify-content: center;
+					}
+				}
+
+				&:hover {
+					.card-header {
+						.preview {
+							transform: translateY(0);
+						}
+					}
+				}
+
+				.modal-qpreview {
+					opacity: 0;
+					visibility: hidden;
+					position: fixed;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					text-align: left;
+
+					z-index: 10;
+					height: 100%;
+					transition: opacity .25s ease;
+					display: flex;
+				    align-items: center;
+				    justify-content: center;
+
+					.overlay {
+						background: customColor(neutral, transp-75);
+						position: absolute;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						left: 0;
+					}
+
+					.close {
+						position: absolute;
+						right: 24px;
+						top: 24px;
+						width: 1.1em;
+						height: 1.1em;
+						cursor: pointer;
+						z-index: 100;
+
+						@media (max-width: 768px) {
+					    	right: 12px;
+							top: 12px;
+					    }
+
+						&:after,
+						&:before {
+							content: '';
+							position: absolute;
+							width: 2px;
+							height: 1.5em;
+							background: #ccc;
+							display: block;
+							transform: rotate(45deg);
+							left: 50%;
+							margin: -3px 0 0 -1px;
+							top: 0;
+						}
+
+						&:hover:after,
+						&:hover:before {
+							background: #aaa;
+						}
+
+						&:before {
+							transform: rotate(-45deg);
+						}
+					}
+
+					.content {
+						transition: top .25s ease;
+						position: absolute;
+						top: -20%;
+						right: 0;
+						bottom: 0;
+						left: 0;
+						margin: auto;
+						overflow: auto;
+						background: #fff;
+					    padding: 48px;
+					    width: 960px;
+					    max-width: 90%;
+					    max-height: 100%;
+					    overflow-x: hidden;
+					    overflow-y: auto;
+					    margin: 0 auto;
+					    position: relative;
+					    text-align: left;
+
+					    @media (max-width: 768px) {
+					    	padding: 24px;
+					    }
+
+
+						@media screen and (max-width: 768px) {
+							width: 90%;
+							height: 90%;
+							box-sizing: border-box;
+						}
+
+						.title {
+							font-size: 28px;
+							color: customColor(brand, base);
+							margin: 0;
+						}
+
+						.description {
+							border-top: 1px solid customColor(neutral, transp-5);
+						    padding-top: 18px;
+						    margin-top: 18px;
+						}
+
+						.reviews {
+							justify-content: flex-start;
+						}
+
+						.button.is-secondary {
+							margin-top: 16px;
+						}
+
+						.col-xs-3 {
+							@media (max-width: 768px) {
+							    flex: 0 0 30%;
+							    max-width: 30%;
+							}
+						}
+
+						.col-xs-9 {
+							@media (max-width: 768px) {
+							    flex: 0 0 70%;
+							    max-width: 70%;
+							}
+						}
+					}
+				}
+
+				.modal-qpreview-state {
+					display: none;
+
+					&:checked + .modal-qpreview {
+						opacity: 1;
+						visibility: visible;
+
+						.content {
+							top: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+//CSS Editor
+.details-default {
+	&.details-articles {
+		.tab-content {
+			.article-description {
+				img {
+  					margin-right: auto; 
+  					margin-left: auto; 
+  				}
+
+  				[id*="caption"] {
+  					font-style: italic; 
+  					text-align: center; 
+  					font-size: 90%;
+  				}
+  			}
+  		}
+  	}
+}
   
+.cards-default[card-module="article"][card-type="three-vertical-cards"] {
+	+ .cards-default[card-module="article"][card-type="vertical-cards"] {
+		.cards-header {
+  			display: none; 
+  		}
+  	}
+}  
+  
+.header[data-type="2"][is-inverse=true] {
+	>.header-content {
+		.plugin-dropdown-menu.plugin-navbar-dropdown {
+			.dropdown-label {
+  				text-transform: uppercase; 
+  				font-weight: 700; 
+  				font-size: 12px; 
+  				letter-spacing: 1px; 
+  				text-decoration: none; 
+  				color: customColor(highlight, base)!important; 
+  			}
+  		}
+  	}
+}
+
+.custom-content {
+	.eedition-item {
+  		margin: 32px 0 0; 
+
+  		img {
+  			margin-bottom: 12px; 
+  			height: 280px; 
+  			object-fit: contain; 
+  			width: 100%; 
+  		} 
+  	}
+}
+      
 .admin-bar .admin-bar-link {
   font-weight: 600; } 
   
 .searchbar-header .popup .content {
   overflow: inherit; } 
+
+
+
+
+
