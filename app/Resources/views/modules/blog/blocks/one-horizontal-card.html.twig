@@ -37,6 +37,7 @@
                         </div>
                     {% endif %}
 
+                    {% include 'blocks/blog/blog-share.html.twig' %}
                 </div>
                 <a href="{{ itemData.detailLink }}" class="picture">
                     {{ tagPicture(itemData.imagePath, item.title, {'desktop': 'medium', 'tablet': 'medium'}) }}

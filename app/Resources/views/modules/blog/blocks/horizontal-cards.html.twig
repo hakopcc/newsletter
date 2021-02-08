@@ -39,6 +39,8 @@
                                     <p class="paragraph">{{- (description|length > 230 ? description|slice(0,229) ~ '...' : description)|raw -}}</p>
                                 </div>
                             {% endif %}
+
+                            {% include 'blocks/blog/blog-share.html.twig' %}
                         </div>
                     </div>
                 {% endfor %}

@@ -43,6 +43,8 @@
                                         <p class="paragraph">{{- (description|length > 180 ? description|slice(0,179) ~ '...' : description)|raw -}}</p>
                                     </div>
                                 {% endif %}
+
+                                {% include 'blocks/blog/blog-share.html.twig' %}
                             </div>
                         </div>
                     {% else %}
@@ -77,6 +79,8 @@
                                         <p class="paragraph">{{- (description|length > 250 ? description|slice(0,249) ~ '...' : description)|raw -}}</p>
                                     </div>
                                 {% endif %}
+
+                                {% include 'blocks/blog/blog-share.html.twig' %}
                             </div>
                         </div>
                     {% endif %}

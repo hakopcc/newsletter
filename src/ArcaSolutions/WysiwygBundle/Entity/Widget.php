@@ -118,6 +118,7 @@ class Widget
     const RECENT_ARTICLES_SLIDER                             = 'Recent articles slider';
     const BILLBOARD_AD_BAR                                   = 'Billboard ad bar (1170x350)';
     const VERTICAL_CARDS_WITH_PREVIEW                        = 'Vertical Cards with preview';
+    const RECENT_BLOGS_SLIDER                             = 'Recent blogs slider';
 
     /**
      * @var integer

@@ -3132,58 +3132,6 @@
                             width: 100%;
                         }
                     }
-
-                    .blog-share{
-                        margin-top: 16px;
-
-                        .share-dropdown{
-                            line-height: 1;
-                            margin: 0;
-                            min-height: auto;
-                            display: flex;
-                            width: 100%;
-                        }
-
-                        .social-likes__widget{
-                            margin: 0;
-
-                            &:not(:first-child){
-                                margin-left: 8px;
-                            }
-                        }
-
-                        .social-likes__button{
-                            padding: 0;
-                            width: 30px;
-                            height: 30px;
-                            line-height: 30px;
-                            font-size: 16px;
-                            text-align: center;
-
-                            .social-likes__icon{
-                                display: none;
-                            }
-
-                            .social-likes__icon_whatsapp{
-                                display: none;
-                            }
-                        }
-
-                        .social-likes__button_whatsapp{
-                            &:hover{
-                                background: #65BC54;
-                                color: white;
-                            }
-                        }
-
-                        .social-likes__widget_whatsapp{
-                            display: block;
-
-                            @media screen and (min-width: 992px){
-                                display: none;
-                            }
-                        }
-                    }
                 }
 
                 .blog-sidebar{
@@ -3344,6 +3292,58 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.blog-share{
+    margin-top: 16px;
+
+    .share-dropdown{
+        line-height: 1;
+        margin: 0;
+        min-height: auto;
+        display: flex;
+        width: 100%;
+    }
+
+    .social-likes__widget{
+        margin: 0;
+
+        &:not(:first-child){
+            margin-left: 8px;
+        }
+    }
+
+    .social-likes__button{
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        text-align: center;
+
+        .social-likes__icon{
+            display: none;
+        }
+
+        .social-likes__icon_whatsapp{
+            display: none;
+        }
+    }
+
+    .social-likes__button_whatsapp{
+        &:hover{
+            background: #65BC54;
+            color: white;
+        }
+    }
+
+    .social-likes__widget_whatsapp{
+        display: block;
+
+        @media screen and (min-width: 992px){
+            display: none;
         }
     }
 }

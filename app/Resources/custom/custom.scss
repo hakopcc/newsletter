@@ -513,6 +513,7 @@ body {
     			.description {
     				.paragraph {
     					font-weight: 500;
+    					font-size: 1em;
     				}
     			}
 
@@ -1720,6 +1721,14 @@ body {
 				p {
 				    font-size: 1.15em;
 				    font-weight: 400;
+
+				    + h1, + h2 {
+				    	margin-top: 32px;
+				    }
+
+				    + h3, + h4, + h5 {
+				    	margin-top: 24px;
+				    }
 				}
 
 				img {
@@ -2407,6 +2416,4 @@ html {
   overflow: inherit; } 
 
 
-
-
-
+//#13: Sticky header

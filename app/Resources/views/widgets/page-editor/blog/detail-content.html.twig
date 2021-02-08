@@ -10,72 +10,166 @@
     {% set coverImage = asset(imagePath(item.coverImage), 'domain_images') -%}
 {% endif -%}
 
-<div class="details-default details-blog" data-trans="{{ 'Blog Detail'|trans({}, 'widgets') }}">
-    <div class="detail-body">
+<div class="details-default details-articles" data-trans="{{ 'Blog Detail'|trans({}, 'widgets') }}">
+    <div class="details-header" {{ coverImage ? 'style=background-image:url(' ~ coverImage ~ ')' : 'cover-image=false' }}>
         <div class="container">
-            <div class="detail-body-content">
-                <div class="blog-content">
+            <div class="details-header-content">
+                <div class="article-header">
 
-                    {% if categories %}
-                        <div class="details-categories">
-                            {# {{ 'in'|trans({}, 'widgets') }} #}
-                            {% for category in categories -%}
-                                <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>{{ (not loop.last ? ', ' : '') }}
-                            {% endfor -%}
-                        </div>
-                    {% endif %}
-
-                    <h1 class="heading blog-title">{{ item.title }}</h1>
-
-                    <div class="paragraph p-1 blog-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
-
-                    {% if coverImage -%}
-                        <div class="blog-picture">
+                    {% if categories -%}
+                    <div class="details-categories">
+                        {% for category in categories if 'y' == category.enabled -%}
                             {% if isSample -%}
-                                <img data-src="{{ asset('assets/images/placeholders/1024x768.jpg') }}" alt="{{ item.title }}" class="lazy">
-                            {% elseif item.coverImage.unsplash is not empty -%}
-                                <img data-src="{{ item.coverImage.unsplash|raw }}" alt="{{ item.title }}" class="lazy">
-                            {% elseif item.coverImage is not empty -%}
-                                {{ tagPicture(asset(imagePath(item.coverImage), 'domain_images'), item.title, {'desktop': 'medium', 'tablet': 'medium'}) }}
+                                {% set link = 'javascript:void(0);' -%}
+                            {% else -%}
+                                {% set link = utility_generateSearchUrl(null, "article", category.friendlyUrl) -%}
                             {% endif -%}
-                            {# <div class="calendar-sm">
-                                <div class="month">{{ item.entered|localized_date('MMM') }}</div>
-                                <div class="heading day">{{ item.entered|localized_date('dd') }}</div>
-                                <div class="day-abbr">{{ item.entered|localized_date('EE')|capitalize }}</div>
-                            </div> #}
-                        </div>
-                    {% else -%}
-                        {# <div class="paragraph p-1 blog-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div> #}
+                            <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>
+                        {% endfor %}
+                    </div>
                     {% endif -%}
+                   
+                    <h1 class="heading h-2 article-title">{{ item.title }}</h1>
 
-                    <div class="blog-text">
-                        {{ item.content|raw }}
-                    </div>
+                    <div class="article-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
-                    {# {% if categories -%}
-                        <div class="blog-categories">
-                            {% for category in categories if 'y' == category.enabled -%}
-                                <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>
-                            {% endfor -%}
+                    {# ModStores Hooks #}
+                    <div class="article-actions">
+                        {{ bookmarkButton(item, 'article') }}
+
+                        <div class="icon icon-md share-icon">
+                            <i class="fa fa-share-alt"></i>
+                            <div class="share-dropdown">
+                                <div class="facebook"><i class="fa fa-facebook"></i></div>
+                                <div class="twitter"><i class="fa fa-twitter"></i></div>
+                                {% if getSetting('disable_whatsapp_share_button') != 'y' %}
+                                <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
+                                {% endif %}
+                            </div>
                         </div>
-                    {% endif -%} #}
-
-                    <div class="blog-share">
-                        <div class="share-dropdown">
-                            <div class="facebook"><i class="fa fa-facebook"></i></div>
-                            <div class="twitter"><i class="fa fa-twitter"></i></div>
-                            {% if getSetting('disable_whatsapp_share_button') != 'y' %}
-                            <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="blog-facebook-comment">
-                        {{ facebookComments() }}
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                {% include 'blocks/blog/blog-sidebar.html.twig' %}
+    <div class="detail-body" id="detail-body">
+        <div class="container">
+            <div class="detail-body-content">
+                <div class="tab-content">
+                    <div class="tab-left">
+                        {% if coverImage -%}
+                            <div class="detail-gallery-main-image">
+                                {% if isSample -%}
+                                    <img data-src="{{ asset('assets/images/placeholders/1024x768.jpg') }}" alt="{{ item.title }}" class="lazy">
+                                {% elseif item.coverImage.unsplash is not empty -%}
+                                    <img data-src="{{ item.coverImage.unsplash|raw }}" alt="{{ item.title }}" class="lazy">
+                                {% elseif item.coverImage is not empty -%}
+                                    {{ tagPicture(asset(imagePath(item.coverImage), 'domain_images'), item.title, {'desktop': 'medium', 'tablet': 'medium'}) }}
+                                {% endif -%}
+                            </div>
+                        {% endif -%}
+
+                        <div class="article-description">
+                            {{ item.content|raw }}
+                        </div>
+
+                        <div class="blog-share">
+                            <div class="share-dropdown">
+                                <div class="facebook"><i class="fa fa-facebook"></i></div>
+                                <div class="twitter"><i class="fa fa-twitter"></i></div>
+                                {% if getSetting('disable_whatsapp_share_button') != 'y' %}
+                                <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <section>
+                            {{ facebookComments() }}
+                        </section>
+                    </div>
+
+                    <div class="tab-right">
+
+                        {# Related Articles #}
+                        <div class="cards-default" data-type="articles">
+                            <div class="cards-header">
+                                <h2 class="heading h-4">Related Articles</h2>
+                            </div>
+                            <div class="cards-list no-margin">
+                                <div class="card card-horizontal card-horizontal-full">
+                                    <div class="content">
+                                        <a href="#" class="title heading">New USC Research Links ‘Pretty’ Food to Flawed Perceptions of Healthiness</a>
+
+                                        <div class="date">November 12, 2020</div>
+                                    </div>
+
+                                    <a href="#" class="picture">
+                                        <picture>
+                                            <img src="http://justinhartfield_gd52mu8_13002.arcasolutions.com/media/cache/small/custom/domain_1/image_files/sitemgr_photo_28.jpg" />
+                                        </picture>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# Latest Articles #}
+                        {% set data = getRecentPostsData() %}
+                        {% if data.popularPosts %}
+                            <div class="cards-default" data-type="articles">
+                                <div class="cards-header">
+                                    <h2 class="heading h-4">Latest Articles</h2>
+                                </div>
+                                <div class="cards-list no-margin">
+                                    {% for post in data.popularPosts -%}
+
+                                    <div class="card card-horizontal card-horizontal-full">
+                                        <div class="content">
+                                            <a href="{{ path('blog_detail', {'friendlyUrl': post.friendlyUrl, "_format" : "html"}) }}" class="title heading">{{ post.title }}</a>
+
+                                            <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                        </div>
+
+                                        {% if post.thumbnail is not empty %}
+                                        <a href="{{ path('blog_detail', {'friendlyUrl': post.friendlyUrl, "_format" : "html"}) }}" class="picture">
+                                            <img src="/media/cache/small/custom/domain_1/image_files/{{post.thumbnail}}" />
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor -%}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {# LA Weekly Favorites #}
+                        <div class="cards-default" data-type="articles">
+                            <div class="cards-header">
+                                <h2 class="heading h-4">LA Weekly Favorites</h2>
+                            </div>
+                            <div class="cards-list no-margin">
+                                <div class="card card-horizontal card-horizontal-full">
+                                    <div class="content">
+                                        <a href="#" class="title heading">New USC Research Links ‘Pretty’ Food to Flawed Perceptions of Healthiness</a>
+
+                                        <div class="date">November 12, 2020</div>
+                                    </div>
+
+                                    <a href="#" class="picture">
+                                        <picture>
+                                            <img src="http://justinhartfield_gd52mu8_13002.arcasolutions.com/media/cache/small/custom/domain_1/image_files/sitemgr_photo_28.jpg" />
+                                        </picture>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% set banner = getBanner('square') %}
+                        {% if banner is not empty %}
+                            {{ banner|raw }}
+                        {% endif %}
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -83,5 +177,6 @@
 
 {{ addJSFile("assets/js/lib/social-likes.min.js") }}
 {{ addJSFile("assets/js/modules/socialbuttons.js") }}
+{{ addJSFile("assets/js/lib/jquery.fancybox.min.js") }}
 
 

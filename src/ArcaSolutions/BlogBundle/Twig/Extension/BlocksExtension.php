@@ -29,6 +29,10 @@ class BlocksExtension extends \Twig_Extension
                 'needs_environment' => true,
                 'is_safe'           => ['html'],
             ]),
+            new \Twig_SimpleFunction('sliderPost', [$this, 'sliderPost'], [
+                'needs_environment' => true,
+                'is_safe'           => ['html'],
+            ]),
             new \Twig_SimpleFunction('getRecentPostsData', [$this, 'getRecentPostsData']),
         ];
     }
@@ -53,6 +57,22 @@ class BlocksExtension extends \Twig_Extension
         }
 
         return $twig_Environment->render('::modules/blog/blocks/recent-big.html.twig', [
+            'items'      => $items
+        ]);
+    }
+
+    public function sliderPost(\Twig_Environment $twig_Environment, $quantity = 4) {
+        if (!$this->container->get('modules')->isModuleAvailable('blog')) {
+            return '';
+        }
+
+        $items = $this->container->get('search.block')->getRecent('blog', $quantity);
+
+        if (!$items) {
+            return '';
+        }
+
+        return $twig_Environment->render('::modules/blog/blocks/recent-slider.html.twig', [
             'items'      => $items
         ]);
     }

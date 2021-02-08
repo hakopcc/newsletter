@@ -1458,6 +1458,13 @@ class WidgetService
                 'modal'    => '',
             ],
             [
+                'title'    => Widget::RECENT_BLOGS_SLIDER,
+                'twigFile' => '/blog/recent-blogs-slider.html.twig',
+                'type'     => Widget::BLOG_TYPE,
+                'content'  => [],
+                'modal'    => '',
+            ],
+            [
                 'title'    => Widget::BILLBOARD_AD_BAR,
                 'twigFile' => '/banners/banner.html.twig',
                 'type'     => Widget::BANNER_TYPE,

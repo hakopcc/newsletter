@@ -1,0 +1,19 @@
+
+<!-- Popular Posts -->
+{% set slider_post = sliderPost(4) -%}
+
+{% import '::blocks/utility/utility.html.twig' as Utility %}
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+{% if slider_post is not empty %}
+    <div class="cards-default" data-type="articles" is-slider="true" has-gap>
+        <div class="wrapper">
+            <div class="cards-list" data-align="">
+                {% if slider_post is not empty -%}
+                    {{ slider_post|raw }}
+                {% endif -%}
+            </div>
+        </div>
+    </div>
+{% endif %}
+

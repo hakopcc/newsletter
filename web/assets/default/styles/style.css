@@ -14943,39 +14943,6 @@ body.has-shadow:before {
           margin-top: 16px; }
           .details-default.details-blog .detail-body-content .blog-content .blog-facebook-comment iframe {
             width: 100%; }
-        .details-default.details-blog .detail-body-content .blog-content .blog-share {
-          margin-top: 16px; }
-          .details-default.details-blog .detail-body-content .blog-content .blog-share .share-dropdown {
-            line-height: 1;
-            margin: 0;
-            min-height: auto;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            width: 100%; }
-          .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__widget {
-            margin: 0; }
-            .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__widget:not(:first-child) {
-              margin-left: 8px; }
-          .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__button {
-            padding: 0;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            font-size: 16px;
-            text-align: center; }
-            .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__button .social-likes__icon {
-              display: none; }
-            .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__button .social-likes__icon_whatsapp {
-              display: none; }
-          .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__button_whatsapp:hover {
-            background: #65BC54;
-            color: white; }
-          .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__widget_whatsapp {
-            display: block; }
-            @media screen and (min-width: 992px) {
-              .details-default.details-blog .detail-body-content .blog-content .blog-share .social-likes__widget_whatsapp {
-                display: none; } }
       .details-default.details-blog .detail-body-content .blog-sidebar {
         width: 100%;
         margin-top: 24px; }
@@ -15086,6 +15053,40 @@ body.has-shadow:before {
           @media screen and (min-width: 768px) {
             .details-default.details-blog.blog-widget .full-width .card {
               margin: 0 16px; } }
+
+.blog-share {
+  margin-top: 16px; }
+  .blog-share .share-dropdown {
+    line-height: 1;
+    margin: 0;
+    min-height: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; }
+  .blog-share .social-likes__widget {
+    margin: 0; }
+    .blog-share .social-likes__widget:not(:first-child) {
+      margin-left: 8px; }
+  .blog-share .social-likes__button {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center; }
+    .blog-share .social-likes__button .social-likes__icon {
+      display: none; }
+    .blog-share .social-likes__button .social-likes__icon_whatsapp {
+      display: none; }
+  .blog-share .social-likes__button_whatsapp:hover {
+    background: #65BC54;
+    color: white; }
+  .blog-share .social-likes__widget_whatsapp {
+    display: block; }
+    @media screen and (min-width: 992px) {
+      .blog-share .social-likes__widget_whatsapp {
+        display: none; } }
 
 .modal-sign {
   display: -webkit-flex;
@@ -23582,7 +23583,8 @@ body {
       border-left: 1px solid var(--neutral-transp-10, rgba(62, 69, 94, 0.1)); }
 
 .cards-default .cards-list .card .content .description .paragraph {
-  font-weight: 500; }
+  font-weight: 500;
+  font-size: 1em; }
 
 .cards-default .cards-list .card .content .author .author-name {
   margin: 0;
@@ -24369,6 +24371,10 @@ body {
     .details-default.details-articles .tab-content .article-description p {
       font-size: 1.15em;
       font-weight: 400; }
+      .details-default.details-articles .tab-content .article-description p + h1, .details-default.details-articles .tab-content .article-description p + h2 {
+        margin-top: 32px; }
+      .details-default.details-articles .tab-content .article-description p + h3, .details-default.details-articles .tab-content .article-description p + h4, .details-default.details-articles .tab-content .article-description p + h5 {
+        margin-top: 24px; }
     .details-default.details-articles .tab-content .article-description img[style="float:left"] {
       margin-right: 24px; }
     .details-default.details-articles .tab-content .article-description img[style="float:right"] {

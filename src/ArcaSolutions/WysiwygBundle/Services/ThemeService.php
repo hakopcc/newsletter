@@ -149,6 +149,7 @@ class ThemeService
             Widget::RECENT_ARTICLES_SLIDER,
             Widget::BILLBOARD_AD_BAR,
             Widget::VERTICAL_CARDS_WITH_PREVIEW,
+            Widget::RECENT_BLOGS_SLIDER,
         ];
 
         /* ModStores Hooks */
