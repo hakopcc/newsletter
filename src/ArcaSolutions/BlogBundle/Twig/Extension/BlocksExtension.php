@@ -33,6 +33,9 @@ class BlocksExtension extends \Twig_Extension
                 'needs_environment' => true,
                 'is_safe'           => ['html'],
             ]),
+            new \Twig_SimpleFunction('recentBlogPost', [$this, 'recentBlogPost']),
+            new \Twig_SimpleFunction('popularBlogPost', [$this, 'popularBlogPost']),
+            new \Twig_SimpleFunction('relatedBlogPost', [$this, 'relatedBlogPost']),
             new \Twig_SimpleFunction('getRecentPostsData', [$this, 'getRecentPostsData']),
         ];
     }
@@ -92,6 +95,59 @@ class BlocksExtension extends \Twig_Extension
             'categoriesFeatured' => $categoriesFeatured,
             'popularPosts'       => $popularPosts
         ];
+    }
+
+    /**
+     * @param int $quantity
+     *
+     * @return array
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function recentBlogPost($quantity = 2)
+    {
+        if (!$this->container->get('modules')->isModuleAvailable('blog')) {
+            return [];
+        }
+
+        $recentPosts = $this->container->get('search.block')->getRecent('blog', $quantity);
+
+        if (!$recentPosts) {
+            return [];
+        }
+
+        return $recentPosts;
+    }
+
+    public function popularBlogPost($quantity = 5)
+    {
+        $content = new \stdClass();
+        $content->custom = new \stdClass();
+        $content->custom->order1 = 'popular';
+        $content->custom->order2 = 'random';
+        $popularPosts = $this->container->get('search.block')->getCards(ParameterHandler::MODULE_BLOG, $quantity, $content);
+
+        if (!$popularPosts) {
+            return [];
+        }
+
+        return $popularPosts;
+    }
+
+    public function relatedBlogPost($quantity = 1,$categories)
+    {
+        $content = new \stdClass();
+        $content->custom = new \stdClass();
+        $content->custom->order1 = 'popular';
+        $content->custom->order2 = 'random';
+        $relatedPosts = $this->container->get('search.block')->getCardsByCategory(ParameterHandler::MODULE_BLOG, $quantity, $categories, $content);
+
+        if (!$relatedPosts) {
+            return [];
+        }
+
+        return $relatedPosts;
     }
 
     /**
