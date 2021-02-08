@@ -514,6 +514,11 @@ body {
     				.paragraph {
     					font-weight: 500;
     					font-size: 1em;
+
+    					overflow: hidden;
+					    display: -webkit-box;
+					    -webkit-line-clamp: 3;
+					    -webkit-box-orient: vertical;  
     				}
     			}
 
@@ -2408,12 +2413,58 @@ html {
   		} 
   	}
 }
-      
-.admin-bar .admin-bar-link {
-  font-weight: 600; } 
+
+.details-default {
+	&.details-articles,
+	&.details-blog {
+		overflow: visible;
+
+		.tab-content {
+			.article-description {
+				@media (min-width: 992px) {
+					margin-top: 0;
+				}
+
+				img {
+  					margin-top: 24px; 
+  					margin-bottom: 24px; 
+  				}
+
+  				h1, h2 {
+  					margin-top: 32px;
+  				}
+
+  				h3, h4, h5, h6 {
+  					margin-top: 24px;
+  				}
+  			}
+  		}
+
+  		>.detail-body {
+  			.detail-body-content {
+  				.tab-content {
+  					.tab-right {
+  						@media (min-width: 992px) {
+  							position: sticky; 
+  							top: 48px;
+  						}
+
+  						.banner[type=square] {
+  							@media (min-width: 992px) {
+  								padding-top: 0;
+  							}
+  						}
+  					}
+  				}
+
+  				.blog-sidebar {
+  					@media (min-width: 992px) {
+						position: sticky; 
+						top: 48px;
+					}
+  				}
+  			}
+  		}
+  	}
+}
   
-.searchbar-header .popup .content {
-  overflow: inherit; } 
-
-
-//#13: Sticky header

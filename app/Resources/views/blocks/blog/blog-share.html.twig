@@ -1,0 +1,13 @@
+
+<div class="blog-share">
+    <div class="share-dropdown">
+        <div class="facebook"><i class="fa fa-facebook"></i></div>
+        <div class="twitter"><i class="fa fa-twitter"></i></div>
+        {% if getSetting('disable_whatsapp_share_button') != 'y' %}
+        <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
+        {% endif %}
+    </div>
+</div>
+
+{{ addJSFile("assets/js/lib/social-likes.min.js") }}
+{{ addJSFile("assets/js/modules/socialbuttons.js") }}

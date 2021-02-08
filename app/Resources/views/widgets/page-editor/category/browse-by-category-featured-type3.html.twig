@@ -1,7 +1,7 @@
 {% import '::blocks/utility/utility.html.twig' as Utility %}
 {% import '::blocks/utility/cards.html.twig' as UtilityCards %}
 
-{% set module = 'article' -%}
+{% set module = 'blog' -%}
 {% set categories = getCategoriesByModule(module, content.limit, 'featured') -%}
 
 {% if categories.featured %}
