@@ -24826,6 +24826,8 @@ html {
     margin-top: 32px; }
   .details-default.details-articles .tab-content .article-description h3, .details-default.details-articles .tab-content .article-description h4, .details-default.details-articles .tab-content .article-description h5, .details-default.details-articles .tab-content .article-description h6, .details-default.details-blog .tab-content .article-description h3, .details-default.details-blog .tab-content .article-description h4, .details-default.details-blog .tab-content .article-description h5, .details-default.details-blog .tab-content .article-description h6 {
     margin-top: 24px; }
+  .details-default.details-articles .tab-content .main-image, .details-default.details-blog .tab-content .main-image {
+    margin-bottom: 32px; }
   @media (min-width: 992px) {
     .details-default.details-articles > .detail-body .detail-body-content .tab-content .tab-right, .details-default.details-blog > .detail-body .detail-body-content .tab-content .tab-right {
       position: -webkit-sticky;

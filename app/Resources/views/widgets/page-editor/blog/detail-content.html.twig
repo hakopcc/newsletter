@@ -16,13 +16,13 @@
     {% set mainImage = asset(imagePath(item.image), 'domain_images') -%}
 {% endif -%}
 
-<div class="details-default details-posts" data-trans="{{ 'Blog Detail'|trans({}, 'widgets') }}">
+<div class="details-default details-articles" data-trans="{{ 'Blog Detail'|trans({}, 'widgets') }}">
     <div class="details-header" {{ coverImage ? 'style=background-image:url(' ~ coverImage ~ ')' : 'cover-image=false' }}>
         <div class="container">
             <div class="details-header-content">
-                <div class="post-header">
+                <div class="article-header">
 
-                    {% if categories -%}
+                    {# {% if categories -%}
                     <div class="details-categories">
                         {% for category in categories if 'y' == category.enabled -%}
                             {% if isSample -%}
@@ -33,14 +33,14 @@
                             <a href="{{ utility_generateSearchUrl(null, "blog", category.friendlyUrl) }}" class="categorie-item">{{ category.title }}</a>
                         {% endfor %}
                     </div>
-                    {% endif -%}
+                    {% endif -%} #}
                    
-                    <h1 class="heading h-2 post-title">{{ item.title }}</h1>
+                    <h1 class="heading h-2 article-title">{{ item.title }}</h1>
 
-                    <div class="post-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                    <div class="article-date">{{ item.entered|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
                     {# ModStores Hooks #}
-                    <div class="post-actions">
+                    <div class="article-actions">
                         {{ bookmarkButton(item, 'post') }}
 
                         <div class="icon icon-md share-icon">
@@ -65,7 +65,7 @@
                 <div class="tab-content">
                     <div class="tab-left">
                         {% if mainImage -%}
-                            <div class="detail-gallery-main-image">
+                            <div class="main-image">
                                 {% if isSample -%}
                                     <img data-src="{{ asset('assets/images/placeholders/1024x768.jpg') }}" alt="{{ item.title }}" class="lazy">
                                 {% elseif item.image.unsplash is not empty -%}
@@ -76,7 +76,7 @@
                             </div>
                         {% endif -%}
 
-                        <div class="post-description">
+                        <div class="article-description">
                             {{ item.content|raw }}
                         </div>
 
