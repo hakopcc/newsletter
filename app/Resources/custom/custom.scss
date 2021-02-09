@@ -1749,11 +1749,11 @@ body {
 
 			.tab-right {
 				.cards-default {
-					margin-bottom: 96px;
+					margin-bottom: 62px;
 
 					@media (max-width: 992px) {
 						margin: 0;
-						margin-top: 98px;
+						margin-top: 68px;
 					}
 
 					.cards-header {
@@ -1778,7 +1778,7 @@ body {
 					}
 
 					.cards-list {
-						.card {
+						.card.card-horizontal {
 							margin-bottom: 32px;
 
 							@media (min-width: 768px) {

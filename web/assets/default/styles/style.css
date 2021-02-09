@@ -24383,11 +24383,11 @@ body {
     .details-default.details-articles .tab-content .article-description img[style="float:right"] {
       margin-left: 24px; }
   .details-default.details-articles .tab-content .tab-right .cards-default {
-    margin-bottom: 96px; }
+    margin-bottom: 62px; }
     @media (max-width: 992px) {
       .details-default.details-articles .tab-content .tab-right .cards-default {
         margin: 0;
-        margin-top: 98px; } }
+        margin-top: 68px; } }
     .details-default.details-articles .tab-content .tab-right .cards-default .cards-header h2.heading {
       font-size: 26px;
       position: relative;
@@ -24403,10 +24403,10 @@ body {
         width: 1000%;
         left: 100%;
         background: var(--brand-base, #022e69); }
-    .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card {
+    .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal {
       margin-bottom: 32px; }
       @media (min-width: 768px) {
-        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card {
+        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal {
           -webkit-flex-wrap: nowrap;
               -ms-flex-wrap: nowrap;
                   flex-wrap: nowrap;
@@ -24417,18 +24417,18 @@ body {
               -ms-flex-direction: row;
                   flex-direction: row; } }
       @media (min-width: 768px) {
-        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card .picture {
+        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal .picture {
           margin-right: 16px;
           width: 120px; } }
-      .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card .picture img {
+      .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal .picture img {
         width: 100%;
         -o-object-fit: cover;
            object-fit: cover; }
       @media (min-width: 768px) {
-        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card .content {
+        .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal .content {
           margin: 0;
           width: calc(100% - 138px); } }
-      .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card .content .title {
+      .details-default.details-articles .tab-content .tab-right .cards-default .cards-list .card.card-horizontal .content .title {
         margin-top: 0;
         font-weight: 400;
         line-height: 1.3; }

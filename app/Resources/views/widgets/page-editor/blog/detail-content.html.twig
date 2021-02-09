@@ -71,7 +71,7 @@
                                 {% elseif item.image.unsplash is not empty -%}
                                     <img data-src="{{ item.image.unsplash|raw }}" alt="{{ item.title }}" class="lazy">
                                 {% elseif item.image is not empty -%}
-                                    {{ tagPicture(asset(imagePath(item.image), 'domain_images'), item.title, {'desktop': 'medium', 'tablet': 'medium'}) }}
+                                    {{ tagPicture(asset(imagePath(item.image), 'domain_images'), item.title, {'desktop': 'large', 'tablet': 'large'}) }}
                                 {% endif -%}
                             </div>
                         {% endif -%}
@@ -101,52 +101,16 @@
                         {% set popular_post = popularBlogPost(4) -%}
                         {% set related_post = relatedBlogPost(1, categories) %}
 
-                        {% if related_post is not empty -%}
-                            <div class="cards-default" data-type="posts">
-                                <div class="cards-header">
-                                    <h2 class="heading h-4">Related Posts</h2>
-                                </div>
-
-                                <div class="cards-list no-margin" data-align="">
-                                    {% for post in related_post -%}
-                                        {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
-                                        <div class="card card-horizontal card-horizontal-full">
-                                            <div class="content">
-                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
-
-                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
-                                            </div>
-
-                                            <a href="{{ link }}" class="picture">
-                                                {% if post.thumbnail is defined and post.thumbnail is not empty -%}
-                                                    {% set image = asset(post.thumbnail, 'domain_images') -%}
-                                                {% else -%}
-                                                    {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
-                                                {% endif -%}
-                                                {{ tagPicture(image, post.title) }}
-                                            </a>
-                                        </div>
-                                    {% endfor -%}
-                                </div>
-                            </div>
-                        {% endif -%}
-
                         {% if recent_post is not empty -%}
                             <div class="cards-default" data-type="posts">
                                 <div class="cards-header">
-                                    <h2 class="heading h-4">Latest Posts</h2>
+                                    <h2 class="heading h-4">Latest Articles</h2>
                                 </div>
 
                                 <div class="cards-list no-margin" data-align="">
                                     {% for post in recent_post -%}
                                         {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
                                         <div class="card card-horizontal card-horizontal-full">
-                                            <div class="content">
-                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
-
-                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
-                                            </div>
-
                                             <a href="{{ link }}" class="picture">
                                                 {% if post.thumbnail is defined and post.thumbnail is not empty -%}
                                                     {% set image = asset(post.thumbnail, 'domain_images') -%}
@@ -155,6 +119,40 @@
                                                 {% endif -%}
                                                 {{ tagPicture(image, post.title) }}
                                             </a>
+                                            <div class="content">
+                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                            </div>
+                                        </div>
+                                    {% endfor -%}
+                                </div>
+                            </div>
+                        {% endif -%}
+
+                        {% if related_post is not empty -%}
+                            <div class="cards-default" data-type="posts">
+                                <div class="cards-header">
+                                    <h2 class="heading h-4">Related Articles</h2>
+                                </div>
+
+                                <div class="cards-list no-margin" data-align="">
+                                    {% for post in related_post -%}
+                                        {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
+                                        <div class="card">
+                                            <a href="{{ link }}" class="picture">
+                                                {% if post.thumbnail is defined and post.thumbnail is not empty -%}
+                                                    {% set image = asset(post.thumbnail, 'domain_images') -%}
+                                                {% else -%}
+                                                    {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                                {% endif -%}
+                                                {{ tagPicture(image, post.title) }}
+                                            </a>
+                                            <div class="content">
+                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                            </div>
                                         </div>
                                     {% endfor -%}
                                 </div>
@@ -170,12 +168,6 @@
                                     {% for post in popular_post -%}
                                         {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
                                         <div class="card card-horizontal card-horizontal-full">
-                                            <div class="content">
-                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
-
-                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
-                                            </div>
-
                                             <a href="{{ link }}" class="picture">
                                                 {% if post.thumbnail is defined and post.thumbnail is not empty -%}
                                                     {% set image = asset(post.thumbnail, 'domain_images') -%}
@@ -184,6 +176,11 @@
                                                 {% endif -%}
                                                 {{ tagPicture(image, post.title) }}
                                             </a>
+                                            <div class="content">
+                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                            </div>
                                         </div>
                                     {% endfor -%}
                                 </div>
