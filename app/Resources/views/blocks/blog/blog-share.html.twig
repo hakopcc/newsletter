@@ -1,8 +1,8 @@
-
+{% set itemData = getCardData(item, 'blog') %}
 <div class="blog-share">
     <div class="share-dropdown">
-        <div class="facebook"><i class="fa fa-facebook"></i></div>
-        <div class="twitter"><i class="fa fa-twitter"></i></div>
+        <div class="facebook" data-url="{{ itemData.detailLink }}"><i class="fa fa-facebook"></i></div>
+        <div class="twitter" data-url="{{ itemData.detailLink }}"><i class="fa fa-twitter"></i></div>
         {% if getSetting('disable_whatsapp_share_button') != 'y' %}
         <div class="whatsapp" data-url="{{ app.request.uri }}"><i class="fa fa-whatsapp"></i></div>
         {% endif %}
