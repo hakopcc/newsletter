@@ -114,11 +114,14 @@ class Widget
 
     const FOOTER_WITH_NEWSLETTER_TYPE_2                      = 'Footer with Newsletter (Type 2)';
     const HEADER_WITH_SEARCH                                 = 'Header with Search';
-    const FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3             = 'Featured blogs categories';
+    const FEATURED_CATEGORIES_WITH_IMAGES_TYPE_3             = 'Featured posts categories';
     const RECENT_ARTICLES_SLIDER                             = 'Recent articles slider';
     const BILLBOARD_AD_BAR                                   = 'Billboard ad bar (1170x350)';
     const VERTICAL_CARDS_WITH_PREVIEW                        = 'Vertical Cards with preview';
-    const RECENT_BLOGS_SLIDER                                = 'Recent blogs slider';
+    const RECENT_BLOGS_SLIDER                                = 'Recent posts slider';
+    const RECENT_BLOGS_SLIDER_TYPE_2                         = 'Recent posts slider (Type 2)';
+    const FEATURED_CATEGORIES_TYPE_3                         = 'Featured categories (Type 3)';
+    const FEATURED_POSTS_WITH_SIDEBAR                        = 'Featured posts with sidebar';
 
     /**
      * @var integer

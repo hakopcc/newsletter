@@ -95,7 +95,12 @@
                         </section>
                     </div>
 
-                    <div class="tab-right">
+                    <div class="tab-right" data-bg="neutral">
+
+                        {% set banner = getBanner('square') %}
+                        {% if banner is not empty %}
+                            {{ banner|raw }}
+                        {% endif %}
 
                         {% set recent_post = recentBlogPost(4) -%}
                         {% set popular_post = popularBlogPost(4) -%}

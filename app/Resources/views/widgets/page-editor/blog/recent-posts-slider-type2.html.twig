@@ -1,0 +1,51 @@
+
+{% import '::blocks/utility/utility.html.twig' as Utility %}
+{% import "::blocks/utility/cards.html.twig" as UtilityCards -%}
+
+{% set slider_post = sliderPost(1) -%}
+{% if slider_post is not empty -%}
+<div class="cards-default" data-type="articles" is-slider="true" slider-type="2" has-gap>
+	<div class="container">
+        <div class="wrapper">
+            <div class="cards-list has-slider" data-flickity='{ "pageDots": false, "prevNextButtons": false, "autoPlay": 6000 }'>
+				<div class="carousel-cell">
+                	<div class="col">
+	                    {{ slider_post|raw }}
+	                </div>
+	                
+		            <div class="col">
+						{% set slider_post = sliderPost(2) -%}
+		                {{ slider_post|raw }}
+		            </div>
+	            </div>
+
+	            {% set slider_post = sliderPost(1) -%}
+				<div class="carousel-cell">
+                	<div class="col">
+	                    {{ slider_post|raw }}
+	                </div>
+	                
+		            <div class="col">
+						{% set slider_post = sliderPost(2) -%}
+		                {{ slider_post|raw }}
+		            </div>
+	            </div>
+
+	            {% set slider_post = sliderPost(1) -%}
+				<div class="carousel-cell">
+                	<div class="col">
+	                    {{ slider_post|raw }}
+	                </div>
+	                
+		            <div class="col">
+						{% set slider_post = sliderPost(2) -%}
+		                {{ slider_post|raw }}
+		            </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif -%}
+
+{{ addJSFile("assets/js/lib/flickity.pkgd.min.js") -}}

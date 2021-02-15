@@ -1459,7 +1459,14 @@ class WidgetService
             ],
             [
                 'title'    => Widget::RECENT_BLOGS_SLIDER,
-                'twigFile' => '/blog/recent-blogs-slider.html.twig',
+                'twigFile' => '/blog/recent-posts-slider.html.twig',
+                'type'     => Widget::BLOG_TYPE,
+                'content'  => [],
+                'modal'    => '',
+            ],
+            [
+                'title'    => Widget::RECENT_BLOGS_SLIDER_TYPE_2,
+                'twigFile' => '/blog/recent-posts-slider-type2.html.twig',
                 'type'     => Widget::BLOG_TYPE,
                 'content'  => [],
                 'modal'    => '',
@@ -1513,6 +1520,23 @@ class WidgetService
                     'backgroundColor' => 'brand',
                 ],
                 'modal'    => 'edit-cards-modal',
+            ],
+            [
+                'title'    => Widget::FEATURED_CATEGORIES_TYPE_3,
+                'twigFile' => '/category/browse-by-category-list-type2.html.twig',
+                'type'     => Widget::COMMON_TYPE,
+                'content'  => [
+                    'hasDesign'        => 'true',
+                    'backgroundColor'  => 'brand',
+                ],
+                'modal'    => 'edit-generic-modal',
+            ],
+            [
+                'title'    => Widget::FEATURED_POSTS_WITH_SIDEBAR,
+                'twigFile' => '/blog/featured-posts-with-sidebar.html.twig',
+                'type'     => Widget::BLOG_TYPE,
+                'content'  => [],
+                'modal'    => 'edit-generic-modal',
             ],
         ];
 

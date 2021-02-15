@@ -1,0 +1,63 @@
+
+<div class="details-default details-blog blog-widget" has-sidebar="true" data-bg="{{ content.backgroundColor }}" has-gap>
+    <div class="detail-body">
+        <div class="container">
+            <div class="detail-body-content">
+                <div class="blog-content">
+
+                    {% set data = getRecentPostsData() %}
+                    {% if data.categoriesFeatured %}
+
+                    {% for category in data.categoriesFeatured -%}
+
+                        {% set recent_post = recentBlogPost(2) -%}
+                        {% if recent_post is not empty -%}
+                            <div class="cards-default" data-type="posts" data-category="{{ category.title }}">
+                                <div class="cards-header">
+                                    <h2 class="heading h-4"><a href="{{ utility_generateSearchUrl(null, ['blog'], category.friendlyUrl) }}">{{ category.title }}</a></h2>
+                                </div>
+                                <div class="cards-list no-margin">
+                                    {% for post in recent_post -%}
+                                        {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
+                                        <div class="card" data-columns="2">
+                                            <a href="{{ link }}" class="picture">
+                                                {% if post.thumbnail is defined and post.thumbnail is not empty -%}
+                                                    {% set image = asset(post.thumbnail, 'domain_images') -%}
+                                                {% else -%}
+                                                    {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                                {% endif -%}
+                                                {{ tagPicture(image, post.title) }}
+                                            </a>
+                                            <div class="content">
+                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+
+                                                {% if post.content is not empty -%}
+                                                    {%- set description = post.content|striptags -%}
+                                                {% endif -%}
+
+                                                {% if description is not empty -%}
+                                                    <div class="description">
+                                                        <p class="paragraph">{{- (description|length > 320 ? description|slice(0,319) ~ '...' : description)|raw -}}</p>
+                                                    </div>
+                                                {% endif %}
+
+                                                {# {% include 'blocks/blog/blog-share.html.twig' %} #}
+                                            </div>
+                                        </div>
+                                    {% endfor -%}
+                                </div>
+                            </div>
+                        {% endif -%}
+
+                    {% endfor -%}
+                    {% endif -%}
+                </div>
+
+                {% include 'blocks/blog/blog-sidebar-type2.html.twig' %}
+            </div>
+        </div>
+    </div>
+</div>
+

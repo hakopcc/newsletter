@@ -150,6 +150,9 @@ class ThemeService
             Widget::BILLBOARD_AD_BAR,
             Widget::VERTICAL_CARDS_WITH_PREVIEW,
             Widget::RECENT_BLOGS_SLIDER,
+            Widget::RECENT_BLOGS_SLIDER_TYPE_2,
+            Widget::FEATURED_CATEGORIES_TYPE_3,
+            Widget::FEATURED_POSTS_WITH_SIDEBAR,
         ];
 
         /* ModStores Hooks */

@@ -1,0 +1,62 @@
+{% import '::blocks/utility/utility.html.twig' as Utility %}
+{% import '::blocks/utility/cards.html.twig' as UtilityCards %}
+
+{% set module = 'blog' -%}
+{% set categories = getCategoriesByModule(module, content.limit, 'featured') -%}
+
+{% if categories.featured %}
+    {% set all = module ~ '_allcategories' -%}
+        
+    <div class="categories-base" data-type="6" data-bg="{{ content.backgroundColor }}" has-gap is-sticky-categories="true">
+        <div class="container">
+            <div class="categories-content">
+                <div class="categories-item logo">
+                    <a href="{{ path('web_homepage') }}">
+                        <img src="{{ utility_getLogoImage()|imagine_filter('logo') }}" class="img-responsive" />
+                    </a>
+                </div>
+                {% for category in categories.featured -%}
+                    <div class="categories-item" title="{{ category.title }}">
+                        <a href="{{ utility_generateSearchUrl(null, [module], category.friendlyUrl) }}">
+                            {{ category.title }}
+                        </a>
+
+                        {% set recent_post = recentBlogPost(3) -%}
+                        {% if recent_post is not empty -%}
+                        <div class="categories-menu">
+                            <div class="cards-default" card-type="vertical" card-module="blog" data-type="articles" scrollable="false" has-gap>
+                                <div class="cards-header">
+                                    <h2 class="heading h-4">{{ category.title }}</h2>
+                                    <a href="#" class="link">see all</a>
+                                </div>
+                                <div class="cards-wrapper">
+                                    <div class="cards-list">
+                                        {% for post in recent_post -%}
+                                            {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
+                                            <div class="card" data-columns="2">
+                                                <a href="{{ link }}" class="picture">
+                                                    {% if post.thumbnail is defined and post.thumbnail is not empty -%}
+                                                        {% set image = asset(post.thumbnail, 'domain_images') -%}
+                                                    {% else -%}
+                                                        {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                                                    {% endif -%}
+                                                    {{ tagPicture(image, post.title) }}
+                                                </a>
+                                                <div class="content">
+                                                    <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                                                    <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                                </div>
+                                            </div>
+                                        {% endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

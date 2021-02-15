@@ -1,0 +1,92 @@
+<div class="blog-sidebar" data-type="2" data-bg="neutral">
+    
+    {% set banner = getBanner('square') %}
+    {% if banner is not empty %}
+        {{ banner|raw }}
+    {% endif %}
+
+    {% set newsletter = getSetting('arcamailer_customer_listid') -%}
+    {% if newsletter -%}
+
+        <div class="hero-default" data-type="2">
+            <div class="wrapper">
+                <div class="hero-header">
+                    <h2 class="heading h-3">Subscribe to our Newsletter</h2>
+                </div>
+                <form id="formNewsletter" class="hero-form">
+                    <div class="alert-message" data-type="success" is-dismissible="false" is-visible="false"></div>
+                    <div class="hero-form-wrapper">
+                        <div class="input-group">
+                            <input type="text" class="input" id="name" name="name" placeholder="{{ 'Your Name'|trans }}">
+                            <div class="alert-message" data-field="name" data-type="error" is-dismissible="false" is-visible="false"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="email" class="input" id="email" name="email" placeholder="{{ 'Your e-mail'|trans }}">
+                            <div class="alert-message" data-field="email" data-type="error" is-dismissible="false" is-visible="false"></div>
+                        </div>
+
+                        <button class="button button-bg is-primary" data-size="" data-content=""
+                                data-loading="{{ 'Please, wait...'|trans }}">
+                            Subscribe
+                        </button>
+                    </div>
+
+                    {% if ( getSetting('userconsent_status') =='on' ) %}
+                        {#check box accept the information#}
+                        <div class="consents-block">
+                            <label for="termsService-newsletter" class="form-remember">
+                                <input type="checkbox" name="termsService" id="termsService-newsletter" required>
+                                {{ 'By signing up, you agree to our %start_terms% Terms of Services %end_terms% and %start_privacy% Privacy Policy %end_privacy%.'| trans({'%start_terms%' : '<a href="/'~getParameter('alias_terms_url_divisor')~'" class="link">', '%end_terms%' : '</a>', '%start_privacy%' : '<a href="/'~getParameter('alias_privacy_url_divisor')~'" class="link">', '%end_privacy%' : '</a>'}, 'account') | raw }}
+                            </label>
+                            <label for="newsletter-consent" class="form-remember">
+                                <input type="checkbox" name="newsletter" id="newsletter-consent" required>
+                                {{ 'I understand that the name and email I enter will be stored by the website, shared and securely stored with a 3rd party newsletter processor. I understand that I may be contacted by the Admin of the website at this email.'|trans({},'consent')}}
+                            </label>
+                        </div>
+                    {% else %}
+                        <div class="form-privacy">
+                            {{ 'By signing up, you agree to our %start_terms% Terms of Services %end_terms% and %start_privacy% Privacy Policy %end_privacy%.'| trans({'%start_terms%' : '<a href="/'~getParameter('alias_terms_url_divisor')~'" class="link">', '%end_terms%' : '</a>', '%start_privacy%' : '<a href="/'~getParameter('alias_privacy_url_divisor')~'" class="link">', '%end_privacy%' : '</a>'}, 'account') | raw }}
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        {{ addJSFile("assets/js/widgets/newsletter/newsletter.js") }}
+    {% endif -%}
+
+    {% set popular_post = popularBlogPost(4) -%}
+    {% if popular_post %}
+        <div class="cards-default" data-type="posts">
+            <div class="cards-header">
+                <h2 class="heading h-4">LA Weekly Favorites</h2>
+            </div>
+            <div class="cards-list no-margin" data-align="">
+                {% for post in popular_post -%}
+                    {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
+                    <div class="card card-horizontal card-horizontal-full">
+                        <a href="{{ link }}" class="picture">
+                            {% if post.thumbnail is defined and post.thumbnail is not empty -%}
+                                {% set image = asset(post.thumbnail, 'domain_images') -%}
+                            {% else -%}
+                                {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
+                            {% endif -%}
+                            {{ tagPicture(image, post.title) }}
+                        </a>
+                        <div class="content">
+                            <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+
+                            <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                        </div>
+                    </div>
+                {% endfor -%}
+            </div>
+        </div>
+    {% endif -%}
+
+    {% set banner = getBanner('square') %}
+    {% if banner is not empty %}
+        {{ banner|raw }}
+    {% endif %}
+</div>

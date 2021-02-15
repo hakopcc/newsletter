@@ -1779,7 +1779,7 @@ body {
 
 					.cards-list {
 						.card.card-horizontal {
-							margin-bottom: 32px;
+							margin: 0;
 
 							@media (min-width: 768px) {
 								flex-wrap: nowrap;
@@ -1790,7 +1790,7 @@ body {
 							.picture {
 								@media (min-width: 768px) {
 									margin-right: 16px;
-									width: 120px;
+									width: 100px;
 								}
 
 								img {
@@ -1803,21 +1803,49 @@ body {
 								@media (min-width: 768px) {
 									margin: 0;
 
-							    	width: calc(100% - 138px);
+							    	width: calc(100% - 116px);
 							    }
 
 							    .title {
 							    	margin-top: 0;
 							    	font-weight: 400;
 							    	line-height: 1.3;
+							    	font-size: 18px;
 							    }
+							}
+
+							+ .card.card-horizontal {
+								border-bottom: 1px dotted #ddd;
+								padding-bottom: 24px;
+								margin-bottom: 24px;
 							}
 						}
 					}
+				}
 
-					+ .banner[type="square"] {
-						padding-top: 0;
+				.banner[type="square"] {
+					.banner-link {
+						margin: 0;
+
+						&:not(:first-child) {
+							display: none;
+						}
 					}
+				}
+
+				.cards-default,
+				.banner[type="square"] {
+					margin: 0;
+					padding: 0;
+
+					+ .cards-default,
+					+ .banner[type="square"] {
+						margin-top: 62px;
+					}
+				}
+
+				&[data-bg="neutral"] {
+					padding: 32px;
 				}
 			}
 		}
@@ -2471,4 +2499,588 @@ html {
   		}
   	}
 }
-  
+
+
+//#13: Sticky header
+.container {
+	@media (min-width: 1200px) {
+    	max-width: 1200px;
+    }
+}
+
+.banner[type="billboardbanner"] {
+	display: flex;
+	
+	&[data-bg="neutral"] {
+		+ .categories-base[is-sticky-categories="true"][data-bg="neutral"] {
+			padding-top: 0;
+		}
+	}
+
+	&[data-bg="base"] {
+		+ .categories-base[is-sticky-categories="true"][data-bg="base"] {
+			padding-top: 0;
+		}
+	}
+}
+
+.categories-base[is-sticky-categories="true"] {
+	z-index: 1000;
+	padding-bottom: 0;
+
+	transition: all 0.4s ease;
+
+	.categories-content {
+		padding: 0;
+		border-top: none;
+
+		border-bottom-width: 3px;
+		border-color: customColor(brand, base); 
+
+		justify-content: space-around;
+
+		.categories-item {
+			text-transform: uppercase;
+			font-size: 16px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			padding: 8px 16px;
+
+			order: 20;
+
+			@media (max-width: 1200px) {
+				font-size: 14px;
+				padding: 9px 10px;
+			}
+
+			a {
+				&, &:link, &:visited {
+					text-decoration: none;
+				}
+
+				&:hover, &:focus {
+					color: white;
+				}
+			}
+
+			&.logo {
+				order: 1;
+
+				display: none;
+			}
+
+			&[title*="news"],
+			&[title*="NEWS"] {
+				order: 2;
+			}
+
+			&[title*="food"],
+			&[title*="FOOD"] {
+				order: 3;
+			}
+
+			&[title*="music"],
+			&[title*="MUSIC"] {
+				order: 4;
+			}
+
+			&[title*="entertainment"],
+			&[title*="ENTERTAINMENT"] {
+				order: 5;
+			}
+
+			&[title*="arts"],
+			&[title*="ARTS"] {
+				order: 6;
+			}
+
+			&[title*="culture"],
+			&[title*="CULTURE"] {
+				order: 7;
+			}
+
+			&[title*="podcast"],
+			&[title*="PODCAST"] {
+				order: 8;
+			}
+
+			&[title*="cannabis"],
+			&[title*="CANNABIS"] {
+				order: 9;
+			}
+
+			&[title*="cbd"],
+			&[title*="CBD"] {
+				order: 10;
+			}
+
+			&[title*="calendar"],
+			&[title*="CALENDAR"] {
+				order: 11;
+			}
+
+			.categories-menu {
+				display: none;
+
+			    width: 100%;
+			    overflow: auto;
+			    position: absolute;
+			    top: 42px;
+			    left: 50%;
+			    background: customColor(brand, base); 
+			    padding: 24px;
+
+			    flex-direction: row;
+			    transform: translateX(-50%);
+			    z-index: 10;
+
+			    .cards-default {
+			    	padding: 0;
+
+			    	.cards-header {
+			    		flex-direction: row;
+
+			    		.heading {
+			    			font-size: 32px;
+			    			color: white;
+			    		}
+
+			    		.link {
+			    			color: white;
+			    			z-index: 10;
+			    			font-weight: 600;
+    						font-size: 1em;
+			    		}
+			    	}
+
+					.card {
+					    width: calc((100% / 3) - 21px);
+					    margin: 0;
+					    margin-left: 16px;
+
+						.picture {
+							max-height: 240px;
+
+							img {
+								max-width: 100%;
+							}
+						}
+
+						.content {
+							padding: 0 24px;
+
+							.title, .date {
+								color: white;
+								text-align: center;
+							}
+
+							.title {
+								font-size: 18px;
+							}
+						}
+					}
+				}
+			}
+
+			&:hover {
+				background: customColor(brand, base); 
+				color: white;
+
+				a {
+					color: white;
+				}
+
+				.categories-menu {
+					display: flex;
+				}
+			}
+		}
+	}
+
+	+ [data-bg="brand"] {
+		margin-top: -3px;
+	}
+
+	@media (max-width: 992px) {
+		display: none;
+	}
+
+	&[data-bg="brand"] {
+		.categories-content {
+			.categories-item {
+				a {
+					&, &:link, &:visited {
+						color: white;
+					}
+
+					&:hover, &:focus {
+						color: rgba(255,255,255,0.8);
+					}
+				}
+			}
+		}
+	}
+}
+
+.header[data-type="2"][has-search="true"] {
+	&[is-inverse="false"] {
+		+ .banner[type="billboardbanner"],
+		+ .categories-base[is-sticky-categories="true"] {
+			&[data-bg="brand"] {
+				padding-top: 0;
+			}
+		}
+	}
+
+	&[is-inverse="true"] {
+		+ .banner[type="billboardbanner"],
+		+ .categories-base[is-sticky-categories="true"] {
+			&[data-bg="base"] {
+				padding-top: 0;
+			}
+		}
+	}
+
+	+ .banner[type="billboardbanner"] {
+		padding-top: 24px;
+	    padding-bottom: 24px;
+	}
+
+	&.is-sticky {
+		+ .banner[type="billboardbanner"] + .categories-base[is-sticky-categories="true"],
+		+ .categories-base[is-sticky-categories="true"] {
+			position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    margin: 0;
+		    padding-top: 0;
+		    border-bottom: 3px solid customColor(brand, base); 
+
+		    transition: none;
+
+		    .categories-content {
+		    	border: none;
+		    	padding: 0;
+
+		    	justify-content: space-between;
+
+		    	.categories-item {
+		    		font-size: 14px;
+    				padding: 11px 12px;
+
+    				@media (max-width: 1200px) {
+						font-size: 12px;
+						padding: 11px 8px;
+    				}
+
+				    &.logo {
+				    	padding: 5px 0;
+				    	display: block;
+
+				    	img {
+				    		height: 33px;
+
+				    		object-fit: contain;
+
+				    		@media (min-width: 1200px) {
+					    		min-width: 110px;
+					    		height: 33px;
+					    	}
+				    	}
+				    }
+		    	}
+		    }
+
+			&[data-bg="brand"] {
+				background: customColor(brand, transp-20); 
+			}
+
+			&[data-bg="neutral"],
+			&[data-bg="base"] {
+				background: rgba(255,255,255,0.9);
+			}
+		}
+	}
+}
+
+
+
+//#14: Homepage sticky right sidebar
+.details-default.details-blog {
+	&[has-sidebar="true" ] {
+		> .detail-body {
+			@media (max-width: 992px) {
+				padding-top: 0;
+			}
+
+			.detail-body-content {
+				.blog-content {
+					display: flex;
+    				flex-direction: column;
+
+					.cards-default {
+						padding: 0;
+
+						.cards-header .heading {
+							a:hover {
+								text-decoration: none;
+								color: customColor(highlight, base); 
+							}
+						}
+
+						+ .cards-default {
+						    padding-top: 48px;
+						}
+
+						&[data-category*="news"],
+						&[data-category*="NEWS"] {
+							order: 1;
+						}
+
+						&[data-category*="food"],
+						&[data-category*="FOOD"] {
+							order: 2;
+						}
+
+						&[data-category*="music"],
+						&[data-category*="MUSIC"] {
+							order: 3;
+						}
+
+						&[data-category*="entertainment"],
+						&[data-category*="ENTERTAINMENT"] {
+							order: 4;
+						}
+
+						&[data-category*="arts"],
+						&[data-category*="ARTS"] {
+							order: 5;
+						}
+
+						&[data-category*="culture"],
+						&[data-category*="CULTURE"] {
+							order: 6;
+						}
+
+						&[data-category*="podcast"],
+						&[data-category*="PODCAST"] {
+							order: 7;
+						}
+
+						&[data-category*="cannabis"],
+						&[data-category*="CANNABIS"] {
+							order: 8;
+						}
+
+						&[data-category*="cbd"],
+						&[data-category*="CBD"] {
+							order: 9;
+						}
+
+						&[data-category*="calendar"],
+						&[data-category*="CALENDAR"] {
+							order: 10;
+						}
+					}
+				}
+
+				.blog-sidebar {
+					padding: 32px;
+
+					> div {
+						margin: 0;
+						padding: 0;
+
+						+ .hero-default,
+						+ .cards-default,
+						+ .banner[type="square"] {
+							margin-top: 62px;
+						}
+					}
+
+					.banner[type="square"] {
+						.banner-link {
+							margin: 0;
+
+							&:not(:first-child) {
+								display: none;
+							}
+						}
+					}
+
+					.hero-default[data-type="2"] {
+						&:before {
+							display: none;
+						}
+
+						.wrapper {
+							.hero-header {
+								margin-bottom: 24px;
+								text-align: left;
+
+								.heading {
+									font-size: 28px;
+									padding-right: 32px;
+								    font-weight: 500;
+								    position: relative;
+
+									letter-spacing: 0;
+									color: customColor(brand, base); 
+								}
+							}
+
+							.input-group {
+							    width: 100%;
+							    margin: 0;
+							    margin-bottom: 16px;
+							}
+
+							.button {
+								font-size: 12px;
+								width: 100% !important;
+							}
+
+							.hero-form-wrapper {
+								margin: 0;
+    							display: block;
+							}
+
+							.form-privacy {
+								color: customColor(brand, base); 
+								text-align: left;
+							}
+						}
+					}
+
+					.cards-default {
+						> .cards-header {
+							.heading {
+								font-size: 28px;
+							}
+						}
+
+						.cards-list {
+							margin: 0;
+
+							.card.card-horizontal {
+								margin: 0;
+								width: 100%;
+
+								flex-direction: row;
+
+								+ .card.card-horizontal {
+									border-top: 1px dotted #ddd;
+									padding-top: 24px;
+									margin-top: 24px;
+								}
+
+								.picture {
+    								width: 100px;
+    							}
+
+    							.content {
+    								margin: 0;
+								    width: calc(100% - 116px);
+
+								    .title {
+								    	font-size: 18px;
+								    }
+								}
+    						}
+						}
+						
+					}
+				}
+			}
+		}
+	}
+}
+
+.cards-default[data-type="articles"] {
+	&[is-slider="true"][slider-type="2"] {
+		padding-top: 48px;
+		padding-bottom: 48px;
+
+		@media (min-width: 992px) {
+			padding-top: 72px;
+		    padding-bottom: 72px;
+		}
+
+		.cards-list {
+			margin-left: -12px;
+
+			.carousel-cell {
+				width: 100%;
+
+				display: flex;
+				flex-flow: row wrap;
+
+				@media (min-width: 768px) {
+					flex-flow: row nowrap;
+				}
+
+				.col {
+					padding: 0;
+					width: 100%;
+
+					@media (min-width: 768px) {
+						min-width: calc(70% - 24px);
+					}
+
+					.card {
+						height: 460px;
+						width: calc(100% - 12px);
+						margin-left: 12px !important;
+
+						@media (min-width: 992px) {
+							height: 560px;
+						}
+
+						picture {
+							height: 100%;
+
+							img {
+							    height: 100%;
+							    width: 100%;
+							}
+						}
+					}
+
+					+ .col {
+						min-width: 100%;
+
+						@media (min-width: 992px) {
+							min-width: calc(30% - 24px);
+							margin-top: -12px;
+						}
+
+						.card {
+						    height: calc(50% - 12px);
+						    margin-top: 12px !important;
+
+							.content {
+								padding: 16px;
+
+								.title {
+									font-size: 18px;
+
+									@media (min-width: 992px) {
+								    	font-size: 20px;
+								    }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.categories-base[is-sticky-categories="true"] {
+	+ .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] {
+		padding-top: 16px;
+		padding-bottom: 32px;
+	}
+}

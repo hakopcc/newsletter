@@ -400,4 +400,13 @@ $(document).ready(function() {
             elements_selector: '.lazy',
         });
     }
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= 300) {
+            $('header').addClass('is-sticky');
+        }
+        else {
+            $('header').removeClass('is-sticky');
+        }
+    });
 });
