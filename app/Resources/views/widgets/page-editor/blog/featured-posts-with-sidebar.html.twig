@@ -16,7 +16,7 @@
                                 <div class="cards-header">
                                     <h2 class="heading h-4"><a href="{{ utility_generateSearchUrl(null, ['blog'], category.friendlyUrl) }}">{{ category.title }}</a></h2>
                                 </div>
-                                <div class="cards-list no-margin">
+                                <div class="cards-list">
                                     {% for post in recent_post -%}
                                         {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
                                         <div class="card" data-columns="2">

@@ -1315,6 +1315,26 @@ body {
 						}
 					}
 				}
+
+				&[data-type=blog] {
+					.summary-content {
+    					padding: 0;
+
+    					@media (min-width: 992px) {
+    						flex-wrap: nowrap;
+    					}
+
+    					.summary-info {
+    						max-width: 100%;
+    					}
+
+    					.summary-attrs {
+						    @media (min-width: 992px) {
+						    	margin-right: 16px;
+						    }
+						}
+    				}
+				}
 			}
 
 			.summary-item,
@@ -2518,7 +2538,8 @@ html {
 	}
 
 	&[data-bg="base"] {
-		+ .categories-base[is-sticky-categories="true"][data-bg="base"] {
+		+ .categories-base[is-sticky-categories="true"][data-bg="base"],
+		+ .cards-default[data-type=articles][is-slider=true][slider-type="2"] {
 			padding-top: 0;
 		}
 	}
@@ -2546,7 +2567,7 @@ html {
 			letter-spacing: 1px;
 			padding: 8px 16px;
 
-			order: 20;
+			display: none;
 
 			@media (max-width: 1200px) {
 				font-size: 14px;
@@ -2569,54 +2590,82 @@ html {
 				display: none;
 			}
 
-			&[title*="news"],
-			&[title*="NEWS"] {
+			&[title="news"],
+			&[title="News"],
+			&[title="NEWS"] {
 				order: 2;
+
+				display: block;
 			}
 
-			&[title*="food"],
-			&[title*="FOOD"] {
+			&[title="food"],
+			&[title="Food"],
+			&[title="FOOD"] {
 				order: 3;
+
+				display: block;
 			}
 
-			&[title*="music"],
-			&[title*="MUSIC"] {
+			&[title="music"],
+			&[title="Music"],
+			&[title="MUSIC"] {
 				order: 4;
+
+				display: block;
 			}
 
-			&[title*="entertainment"],
-			&[title*="ENTERTAINMENT"] {
+			&[title="entertainment"],
+			&[title="Entertainment"],
+			&[title="ENTERTAINMENT"] {
 				order: 5;
+
+				display: block;
 			}
 
-			&[title*="arts"],
-			&[title*="ARTS"] {
+			&[title="arts"],
+			&[title="Arts"],
+			&[title="ARTS"] {
 				order: 6;
+
+				display: block;
 			}
 
-			&[title*="culture"],
-			&[title*="CULTURE"] {
+			&[title="culture"],
+			&[title="Culture"],
+			&[title="CULTURE"] {
 				order: 7;
+
+				display: block;
 			}
 
-			&[title*="podcast"],
-			&[title*="PODCAST"] {
+			&[title="podcast"],
+			&[title="Podcast"],
+			&[title="PODCAST"] {
 				order: 8;
 			}
 
-			&[title*="cannabis"],
-			&[title*="CANNABIS"] {
+			&[title="cannabis"],
+			&[title="Cannabis"],
+			&[title="CANNABIS"] {
 				order: 9;
+
+				display: block;
 			}
 
-			&[title*="cbd"],
-			&[title*="CBD"] {
+			&[title="cbd"],
+			&[title="Cbd"],
+			&[title="CBD"] {
 				order: 10;
+
+				display: block;
 			}
 
-			&[title*="calendar"],
-			&[title*="CALENDAR"] {
+			&[title="calendar"],
+			&[title="Calendar"],
+			&[title="CALENDAR"] {
 				order: 11;
+
+				display: block;
 			}
 
 			.categories-menu {
@@ -2701,7 +2750,7 @@ html {
 		margin-top: -3px;
 	}
 
-	@media (max-width: 992px) {
+	@media (max-width: 768px) {
 		display: none;
 	}
 
@@ -2810,17 +2859,22 @@ html {
 .details-default.details-blog {
 	&[has-sidebar="true" ] {
 		> .detail-body {
-			@media (max-width: 992px) {
-				padding-top: 0;
-			}
+			padding-top: 0;
 
 			.detail-body-content {
 				.blog-content {
 					display: flex;
     				flex-direction: column;
 
+    				@media (min-width: 1200px) {
+						width: 65%;
+					}
+
 					.cards-default {
 						padding: 0;
+						padding-bottom: 24px;
+
+						display: none;
 
 						.cards-header .heading {
 							a:hover {
@@ -2829,64 +2883,91 @@ html {
 							}
 						}
 
-						+ .cards-default {
-						    padding-top: 48px;
-						}
-
-						&[data-category*="news"],
-						&[data-category*="NEWS"] {
+						&[data-category="news"],
+						&[data-category="NEWS"],
+						&[data-category="News"] {
 							order: 1;
+
+							display: block;
 						}
 
-						&[data-category*="food"],
-						&[data-category*="FOOD"] {
+						&[data-category="food"],
+						&[data-category="FOOD"],
+						&[data-category="Food"] {
 							order: 2;
+
+							display: block;
 						}
 
-						&[data-category*="music"],
-						&[data-category*="MUSIC"] {
+						&[data-category="music"],
+						&[data-category="MUSIC"],
+						&[data-category="Music"] {
 							order: 3;
+
+							display: block;
 						}
 
-						&[data-category*="entertainment"],
-						&[data-category*="ENTERTAINMENT"] {
+						&[data-category="entertainment"],
+						&[data-category="ENTERTAINMENT"],
+						&[data-category="Entertainment"] {
 							order: 4;
+
+							display: block;
 						}
 
-						&[data-category*="arts"],
-						&[data-category*="ARTS"] {
+						&[data-category="arts"],
+						&[data-category="ARTS"],
+						&[data-category="Arts"] {
 							order: 5;
+
+							display: block;
 						}
 
-						&[data-category*="culture"],
-						&[data-category*="CULTURE"] {
+						&[data-category="culture"],
+						&[data-category="CULTURE"],
+						&[data-category="Culture"] {
 							order: 6;
+
+							display: block;
 						}
 
-						&[data-category*="podcast"],
-						&[data-category*="PODCAST"] {
+						&[data-category="podcast"],
+						&[data-category="PODCAST"],
+						&[data-category="Podcast"] {
 							order: 7;
+
+							display: block;
 						}
 
-						&[data-category*="cannabis"],
-						&[data-category*="CANNABIS"] {
+						&[data-category="cannabis"],
+						&[data-category="CANNABIS"],
+						&[data-category="Cannabis"] {
 							order: 8;
 						}
 
-						&[data-category*="cbd"],
-						&[data-category*="CBD"] {
+						&[data-category="cbd"],
+						&[data-category="CBD"] {
 							order: 9;
+
+							display: block;
 						}
 
-						&[data-category*="calendar"],
-						&[data-category*="CALENDAR"] {
+						&[data-category="calendar"],
+						&[data-category="CALENDAR"],
+						&[data-category="Calendar"] {
 							order: 10;
+
+							display: block;
 						}
 					}
 				}
 
 				.blog-sidebar {
 					padding: 32px;
+
+					@media (min-width: 1200px) {
+						width: 31%;
+					}
 
 					> div {
 						margin: 0;
@@ -2994,6 +3075,10 @@ html {
 				}
 			}
 		}
+
+		+ .hero-default.hero-newsletter-footer {
+			display: none;
+		}
 	}
 }
 
@@ -3050,7 +3135,7 @@ html {
 					+ .col {
 						min-width: 100%;
 
-						@media (min-width: 992px) {
+						@media (min-width: 768px) {
 							min-width: calc(30% - 24px);
 							margin-top: -12px;
 						}
@@ -3064,9 +3149,13 @@ html {
 
 								.title {
 									font-size: 18px;
-
+									
 									@media (min-width: 992px) {
 								    	font-size: 20px;
+								    }
+
+								    @media (max-width: 992px) {
+								    	height: auto;
 								    }
 								}
 							}

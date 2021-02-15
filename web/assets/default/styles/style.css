@@ -24104,6 +24104,18 @@ body {
     box-shadow: 2px 10px 25px 0 rgba(0, 0, 0, 0.06); }
     .results-body .results-content .summary-list .summary-item:hover .summary-content .summary-info .summary-title .title {
       color: var(--brand-base, #022e69); }
+  .results-body .results-content .summary-list .summary-item[data-type="blog"] .summary-content {
+    padding: 0; }
+    @media (min-width: 992px) {
+      .results-body .results-content .summary-list .summary-item[data-type="blog"] .summary-content {
+        -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+                flex-wrap: nowrap; } }
+    .results-body .results-content .summary-list .summary-item[data-type=blog] .summary-content .summary-info {
+      max-width: 100%; }
+    @media (min-width: 992px) {
+      .results-body .results-content .summary-list .summary-item[data-type=blog] .summary-content .summary-attrs {
+        margin-right: 16px; } }
 
 .results-body .results-content .summary-list .summary-item[data-type="listing"],
 .results-body .results-content .summary-list .summary-card[data-type="listing"] {
@@ -24870,7 +24882,8 @@ html {
   display: flex; }
   .banner[type="billboardbanner"][data-bg="neutral"] + .categories-base[is-sticky-categories="true"][data-bg="neutral"] {
     padding-top: 0; }
-  .banner[type="billboardbanner"][data-bg="base"] + .categories-base[is-sticky-categories="true"][data-bg="base"] {
+  .banner[type="billboardbanner"][data-bg="base"] + .categories-base[is-sticky-categories="true"][data-bg="base"],
+  .banner[type="billboardbanner"][data-bg="base"] + .cards-default[data-type=articles][is-slider=true][slider-type="2"] {
     padding-top: 0; }
 
 .categories-base[is-sticky-categories="true"] {
@@ -24891,9 +24904,7 @@ html {
       font-weight: 700;
       letter-spacing: 1px;
       padding: 8px 16px;
-      -webkit-order: 20;
-          -ms-flex-order: 20;
-              order: 20; }
+      display: none; }
       @media (max-width: 1200px) {
         .categories-base[is-sticky-categories="true"] .categories-content .categories-item {
           font-size: 14px;
@@ -24907,46 +24918,55 @@ html {
             -ms-flex-order: 1;
                 order: 1;
         display: none; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="news"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="NEWS"] {
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="news"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="News"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="NEWS"] {
         -webkit-order: 2;
             -ms-flex-order: 2;
-                order: 2; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="food"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="FOOD"] {
+                order: 2;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="food"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Food"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="FOOD"] {
         -webkit-order: 3;
             -ms-flex-order: 3;
-                order: 3; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="music"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="MUSIC"] {
+                order: 3;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="music"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Music"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="MUSIC"] {
         -webkit-order: 4;
             -ms-flex-order: 4;
-                order: 4; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="entertainment"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="ENTERTAINMENT"] {
+                order: 4;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="entertainment"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Entertainment"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="ENTERTAINMENT"] {
         -webkit-order: 5;
             -ms-flex-order: 5;
-                order: 5; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="arts"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="ARTS"] {
+                order: 5;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="arts"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Arts"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="ARTS"] {
         -webkit-order: 6;
             -ms-flex-order: 6;
-                order: 6; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="culture"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="CULTURE"] {
+                order: 6;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="culture"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Culture"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="CULTURE"] {
         -webkit-order: 7;
             -ms-flex-order: 7;
-                order: 7; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="podcast"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="PODCAST"] {
+                order: 7;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="podcast"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Podcast"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="PODCAST"] {
         -webkit-order: 8;
             -ms-flex-order: 8;
                 order: 8; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="cannabis"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="CANNABIS"] {
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="cannabis"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Cannabis"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="CANNABIS"] {
         -webkit-order: 9;
             -ms-flex-order: 9;
-                order: 9; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="cbd"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="CBD"] {
+                order: 9;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="cbd"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Cbd"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="CBD"] {
         -webkit-order: 10;
             -ms-flex-order: 10;
-                order: 10; }
-      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="calendar"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title*="CALENDAR"] {
+                order: 10;
+        display: block; }
+      .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="calendar"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="Calendar"], .categories-base[is-sticky-categories="true"] .categories-content .categories-item[title="CALENDAR"] {
         -webkit-order: 11;
             -ms-flex-order: 11;
-                order: 11; }
+                order: 11;
+        display: block; }
       .categories-base[is-sticky-categories="true"] .categories-content .categories-item .categories-menu {
         display: none;
         width: 100%;
@@ -25003,7 +25023,7 @@ html {
           display: flex; }
   .categories-base[is-sticky-categories="true"] + [data-bg="brand"] {
     margin-top: -3px; }
-  @media (max-width: 992px) {
+  @media (max-width: 768px) {
     .categories-base[is-sticky-categories="true"] {
       display: none; } }
   .categories-base[is-sticky-categories="true"][data-bg="brand"] .categories-content .categories-item a, .categories-base[is-sticky-categories="true"][data-bg="brand"] .categories-content .categories-item a:link, .categories-base[is-sticky-categories="true"][data-bg="brand"] .categories-content .categories-item a:visited {
@@ -25071,124 +25091,139 @@ html {
   .header[data-type="2"][has-search="true"].is-sticky + .categories-base[is-sticky-categories="true"][data-bg="base"] {
     background: rgba(255, 255, 255, 0.9); }
 
-@media (max-width: 992px) {
-  .details-default.details-blog[has-sidebar="true"] > .detail-body {
-    padding-top: 0; } }
-
-.details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default {
-    padding: 0; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default .cards-header .heading a:hover {
-      text-decoration: none;
-      color: var(--highlight-base, #137df7); }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default + .cards-default {
-      padding-top: 48px; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="news"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="NEWS"] {
-      -webkit-order: 1;
-          -ms-flex-order: 1;
-              order: 1; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="food"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="FOOD"] {
-      -webkit-order: 2;
-          -ms-flex-order: 2;
-              order: 2; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="music"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="MUSIC"] {
-      -webkit-order: 3;
-          -ms-flex-order: 3;
-              order: 3; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="entertainment"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="ENTERTAINMENT"] {
-      -webkit-order: 4;
-          -ms-flex-order: 4;
-              order: 4; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="arts"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="ARTS"] {
-      -webkit-order: 5;
-          -ms-flex-order: 5;
-              order: 5; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="culture"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="CULTURE"] {
-      -webkit-order: 6;
-          -ms-flex-order: 6;
-              order: 6; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="podcast"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="PODCAST"] {
-      -webkit-order: 7;
-          -ms-flex-order: 7;
-              order: 7; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="cannabis"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="CANNABIS"] {
-      -webkit-order: 8;
-          -ms-flex-order: 8;
-              order: 8; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="cbd"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="CBD"] {
-      -webkit-order: 9;
-          -ms-flex-order: 9;
-              order: 9; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="calendar"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category*="CALENDAR"] {
-      -webkit-order: 10;
-          -ms-flex-order: 10;
-              order: 10; }
-
-.details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar {
-  padding: 32px; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div {
-    margin: 0;
-    padding: 0; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .hero-default,
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .cards-default,
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .banner[type="square"] {
-      margin-top: 62px; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .banner[type="square"] .banner-link {
-    margin: 0; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .banner[type="square"] .banner-link:not(:first-child) {
+.details-default.details-blog[has-sidebar="true"] > .detail-body {
+  padding-top: 0; }
+  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    @media (min-width: 1200px) {
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content {
+        width: 65%; } }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default {
+      padding: 0;
+      padding-bottom: 24px;
       display: none; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"]:before {
-    display: none; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-header {
-    margin-bottom: 24px;
-    text-align: left; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-header .heading {
-      font-size: 28px;
-      padding-right: 32px;
-      font-weight: 500;
-      position: relative;
-      letter-spacing: 0;
-      color: var(--brand-base, #022e69); }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .input-group {
-    width: 100%;
-    margin: 0;
-    margin-bottom: 16px; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .button {
-    font-size: 12px;
-    width: 100% !important; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-form-wrapper {
-    margin: 0;
-    display: block; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .form-privacy {
-    color: var(--brand-base, #022e69);
-    text-align: left; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default > .cards-header .heading {
-    font-size: 28px; }
-  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list {
-    margin: 0; }
-    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal {
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default .cards-header .heading a:hover {
+        text-decoration: none;
+        color: var(--highlight-base, #137df7); }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="news"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="NEWS"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="News"] {
+        -webkit-order: 1;
+            -ms-flex-order: 1;
+                order: 1;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="food"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="FOOD"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Food"] {
+        -webkit-order: 2;
+            -ms-flex-order: 2;
+                order: 2;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="music"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="MUSIC"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Music"] {
+        -webkit-order: 3;
+            -ms-flex-order: 3;
+                order: 3;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="entertainment"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="ENTERTAINMENT"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Entertainment"] {
+        -webkit-order: 4;
+            -ms-flex-order: 4;
+                order: 4;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="arts"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="ARTS"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Arts"] {
+        -webkit-order: 5;
+            -ms-flex-order: 5;
+                order: 5;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="culture"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="CULTURE"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Culture"] {
+        -webkit-order: 6;
+            -ms-flex-order: 6;
+                order: 6;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="podcast"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="PODCAST"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Podcast"] {
+        -webkit-order: 7;
+            -ms-flex-order: 7;
+                order: 7;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="cannabis"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="CANNABIS"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Cannabis"] {
+        -webkit-order: 8;
+            -ms-flex-order: 8;
+                order: 8; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="cbd"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="CBD"] {
+        -webkit-order: 9;
+            -ms-flex-order: 9;
+                order: 9;
+        display: block; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="calendar"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="CALENDAR"], .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-content .cards-default[data-category="Calendar"] {
+        -webkit-order: 10;
+            -ms-flex-order: 10;
+                order: 10;
+        display: block; }
+  .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar {
+    padding: 32px; }
+    @media (min-width: 1200px) {
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar {
+        width: 31%; } }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div {
       margin: 0;
+      padding: 0; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .hero-default,
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .cards-default,
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar > div + .banner[type="square"] {
+        margin-top: 62px; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .banner[type="square"] .banner-link {
+      margin: 0; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .banner[type="square"] .banner-link:not(:first-child) {
+        display: none; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"]:before {
+      display: none; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-header {
+      margin-bottom: 24px;
+      text-align: left; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-header .heading {
+        font-size: 28px;
+        padding-right: 32px;
+        font-weight: 500;
+        position: relative;
+        letter-spacing: 0;
+        color: var(--brand-base, #022e69); }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .input-group {
       width: 100%;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row; }
-      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal + .card.card-horizontal {
-        border-top: 1px dotted #ddd;
-        padding-top: 24px;
-        margin-top: 24px; }
-      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .picture {
-        width: 100px; }
-      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .content {
+      margin: 0;
+      margin-bottom: 16px; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .button {
+      font-size: 12px;
+      width: 100% !important; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .hero-form-wrapper {
+      margin: 0;
+      display: block; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .hero-default[data-type="2"] .wrapper .form-privacy {
+      color: var(--brand-base, #022e69);
+      text-align: left; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default > .cards-header .heading {
+      font-size: 28px; }
+    .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list {
+      margin: 0; }
+      .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal {
         margin: 0;
-        width: calc(100% - 116px); }
-        .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .content .title {
-          font-size: 18px; }
+        width: 100%;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row; }
+        .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal + .card.card-horizontal {
+          border-top: 1px dotted #ddd;
+          padding-top: 24px;
+          margin-top: 24px; }
+        .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .picture {
+          width: 100px; }
+        .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .content {
+          margin: 0;
+          width: calc(100% - 116px); }
+          .details-default.details-blog[has-sidebar="true"] > .detail-body .detail-body-content .blog-sidebar .cards-default .cards-list .card.card-horizontal .content .title {
+            font-size: 18px; }
+
+.details-default.details-blog[has-sidebar="true"] + .hero-default.hero-newsletter-footer {
+  display: none; }
 
 .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] {
   padding-top: 48px;
@@ -25232,7 +25267,7 @@ html {
               width: 100%; }
         .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] .cards-list .carousel-cell .col + .col {
           min-width: 100%; }
-          @media (min-width: 992px) {
+          @media (min-width: 768px) {
             .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] .cards-list .carousel-cell .col + .col {
               min-width: calc(30% - 24px);
               margin-top: -12px; } }
@@ -25246,6 +25281,9 @@ html {
                 @media (min-width: 992px) {
                   .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] .cards-list .carousel-cell .col + .col .card .content .title {
                     font-size: 20px; } }
+                @media (max-width: 992px) {
+                  .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] .cards-list .carousel-cell .col + .col .card .content .title {
+                    height: auto; } }
 
 .categories-base[is-sticky-categories="true"] + .cards-default[data-type="articles"][is-slider="true"][slider-type="2"] {
   padding-top: 16px;
