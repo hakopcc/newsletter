@@ -17,24 +17,24 @@
                                     <h2 class="heading h-4"><a href="{{ utility_generateSearchUrl(null, ['blog'], category.friendlyUrl) }}">{{ category.title }}</a></h2>
                                 </div>
                                 <div class="cards-list">
-                                    {% for post in recent_post -%}
-                                        {% set link = path('blog_detail', {friendlyUrl: post.friendlyUrl, _format: 'html'}) -%}
+                                    {% for item in recent_post -%}
+                                        {% set link = path('blog_detail', {friendlyUrl: item.friendlyUrl, _format: 'html'}) -%}
                                         <div class="card" data-columns="2">
                                             <a href="{{ link }}" class="picture">
-                                                {% if post.thumbnail is defined and post.thumbnail is not empty -%}
-                                                    {% set image = asset(post.thumbnail, 'domain_images') -%}
+                                                {% if item.thumbnail is defined and item.thumbnail is not empty -%}
+                                                    {% set image = asset(item.thumbnail, 'domain_images') -%}
                                                 {% else -%}
                                                     {% set image = utility_getNoImagePath(item.title)|imagine_filter('noImage_small') -%}
                                                 {% endif -%}
-                                                {{ tagPicture(image, post.title) }}
+                                                {{ tagPicture(image, item.title) }}
                                             </a>
                                             <div class="content">
-                                                <a href="{{ link }}" class="title heading">{{ post.title }}</a>
+                                                <a href="{{ link }}" class="title heading">{{ item.title }}</a>
 
-                                                <div class="date">{{ date(post.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
+                                                <div class="date">{{ date(item.publicationDate)|localized_date('extensive.date.year.format'|trans({},'units')) }}</div>
 
-                                                {% if post.content is not empty -%}
-                                                    {%- set description = post.content|striptags -%}
+                                                {% if item.content is not empty -%}
+                                                    {%- set description = item.content|striptags -%}
                                                 {% endif -%}
 
                                                 {% if description is not empty -%}
@@ -43,7 +43,7 @@
                                                     </div>
                                                 {% endif %}
 
-                                                {# {% include 'blocks/blog/blog-share.html.twig' %} #}
+                                                 {% include 'blocks/blog/blog-share.html.twig' %}
                                             </div>
                                         </div>
                                     {% endfor -%}
